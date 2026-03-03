@@ -64,7 +64,7 @@ tab:AddLabel({ Text = "Welcome to Fire Library!" })
 
 ---
 
-## 💎 Premium Features
+## 💎 Performance
 
 | Feature              | Description |
 |---------------------|-------------|
