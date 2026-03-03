@@ -1,12 +1,37 @@
-local global = (getfenv().getgenv or function() return _G end)()
-local key = "FireLibrary"
-
-local fl = global[key]
-if fl then
-	return fl
+local sg = game:GetService("StarterGui");
+local function loadError(message)
+	message = message or "Error occured loading the library"
+	sg:SetCore("SendNotification", {
+		Title = "Fire Library error",
+		Text = message,
+		Duration = 5
+	})
+	
+	error("FireLibrary : " .. message, 0)
 end
 
-fl = loadstring(game:HttpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Files/Library.lua"))(key)
+local key = "FireLibrary";
+local global = (getfenv().getgenv or function() return _G end)();
+
+local fl = global[key];
+if fl then
+	return fl;
+end
+
+local contents = game:HttpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Files/Library.lua", true);
+local local1 = contents:find("local", 1, true);
+if not local1 then return loadError("Invalid request return"); end
+
+local localEnd = contents:find(";", local1);
+if not localEnd then return loadError("Invalid request return"); end
+
+local success, error = loadstring("local parent = nil;" .. contents:sub(localEnd + 1) .. "\nreturn require(obj:FindFirstChildOfClass(\"ModuleScript\"));");
+if not success then return loadError("Library failed to load: " .. error); end
+
+success, error = pcall(success, key);
+if not success then return loadError("Library failed to load: " .. error) end
+
+fl = error
 global[key] = fl
 
 return fl
