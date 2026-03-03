@@ -22,7 +22,7 @@ local contents = game:HttpGet("https://raw.githubusercontent.com/Null-Cherry/Fir
 local local1 = contents:find("local", 1, true);
 if not local1 then return loadError("Invalid request return"); end
 
-local localEnd = contents:find(";", local1);
+local localEnd = contents:find(";", local1, true);
 if not localEnd then return loadError("Invalid request return"); end
 
 local success, error = loadstring("local parent = nil;" .. contents:sub(localEnd + 1) .. "\nreturn require(obj:FindFirstChildOfClass(\"ModuleScript\"));");
