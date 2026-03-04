@@ -63,7 +63,7 @@ tab:AddLabel({ Text = "Welcome to Fire Library!" })
 
 #### To use FireLibrary in your own game, you need to go to Files folder, copy contents of the Library.lua, move them into a ModuleScript and in the very bottom of the script add this:
 ```lua
-return require(obj:FindFirstChildOfClass(\"ModuleScript\"));
+return require(obj:FindFirstChildOfClass("ModuleScript"));
 ```
 
 > No complicated setup required – drop it in and start building beautiful interfaces immediately!
