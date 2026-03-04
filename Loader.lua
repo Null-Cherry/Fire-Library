@@ -6,6 +6,10 @@
 
 	To use FireLibrary in your own game, you need to go to Files folder, copy contents of the Library.lua, move them into a ModuleScript and in the very bottom of the script add this:
 	return require(obj:FindFirstChildOfClass(\"ModuleScript\"));
+
+	---
+
+	Read the README.md for more info
 ]]--
 
 ---
