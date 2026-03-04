@@ -1,5 +1,6 @@
 # 🔥 Fire Library
 The exclusive UI Library specially built for NullFire
+📕 **Documentation:** [Here](#links)  
 
 **The most 🔥 powerful and flexible UI library that works everywhere!**
 
@@ -51,7 +52,7 @@ Supports desktop, mobile, emulators, and touch devices out of the box with autom
 ## 🚀 Getting Started
 
 ```lua
-local lib = loadstring(game:HttpGet("https://your-source/fire-library.lua"))()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Loader.lua"))()
 local window = lib:Window({
     Title = "My Awesome Script"
 })
@@ -105,6 +106,8 @@ You're free to use, modify, and distribute this library in your own projects (co
 ## 🌍 Join Our Community
 
 Want to stay updated with new features, get help, or contribute?
+
+#### Links
 
 💬 **Discord:** [Join our server](https://discord.gg/4bexJD6WVT)  
 📘 **Documentation:** [How to use the library](https://github.com/Null-Cherry/Documentations/blob/main/FireLibrary.md)
