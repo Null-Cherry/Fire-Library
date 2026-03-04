@@ -1,3 +1,15 @@
+--[[
+	This is a loader for FireLibrary (only for exploit environments)
+	That script is not meant to be executed directly
+
+	---
+
+	To use FireLibrary in your own game, you need to go to Files folder, copy contents of the Library.lua, move them into a ModuleScript and in the very bottom of the script add this:
+	return require(obj:FindFirstChildOfClass(\"ModuleScript\"));
+]]--
+
+---
+
 local sg = game:GetService("StarterGui");
 local function loadError(message)
 	message = message or "Error occured loading the library"
