@@ -115,7 +115,7 @@ Want to stay updated with new features, get help, or contribute?
 #### Links
 
 💬 **Discord:** [Join our server](https://discord.gg/4bexJD6WVT)  
-📘 **Documentation:** [How to use the library](https://github.com/Null-Cherry/Documentations/blob/main/FireLibrary.md)
+📘 **Documentation:** [How to use the library](https://github.com/Null-Cherry/Fire-Library/blob/main/Documentation.md)
 
 ---
 
