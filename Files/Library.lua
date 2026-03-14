@@ -283,7 +283,7 @@ local objects = {
 };
 
 do -- Set properties
-    objects["Instance0"]["Enabled"] = false;
+    objects["Instance0"]["Enabled"] = true;
     objects["Instance0"]["ScreenInsets"] = Enum.ScreenInsets.None;
     objects["Instance0"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
     objects["Instance0"]["ClipToDeviceSafeArea"] = false;
@@ -6552,6 +6552,15 @@ local themesRoute = coreFolder .. "Themes" .. json
 local library, downloadImage
 local backgrounds = require(script.Backgrounds)
 
+local function count(tbl)
+    local i = 0
+    for _ in tbl do
+        i += 1
+    end
+    
+    return i
+end
+
 local function windowSetup(object)
     local window = object.Proxy
     if window.Flag == "CORE" then return end
@@ -6702,8 +6711,9 @@ local function windowSetup(object)
         if not configsEnabled then return end
 
         local getConfig; getConfig = function(self, cfg)
-            local self = self or window
-            local cfg = cfg or { }
+            self = self or window
+            cfg = cfg or { }
+            
             local cl = self.Class
             local fl = self.Options.Flag
             
@@ -6711,11 +6721,21 @@ local function windowSetup(object)
                 return nil
             end
             
+            if cl == "ColorPicker" then
+                if self.Options.NoConfigs then
+                    return
+                end
+                
+                return self.Options.Value
+            end
+            
             if cl == "Button" or cl == "Label" then
                 local pickers = { }
                 for i, v in self.ColorPickers do
-                    pickers[i] = v.Options.Value:ToHex()
+                    pickers[i] = getConfig(v)
                 end
+                
+                if count(pickers) == 0 then return end
                 
                 return {
                     ColorPickers = pickers
@@ -6725,16 +6745,26 @@ local function windowSetup(object)
             if cl == "Toggle" or cl == "CheckBox" or cl == "Input" then
                 local pickers = { }
                 for i, v in self.ColorPickers do
-                    pickers[i] = v.Value:ToHex()
+                    pickers[i] = getConfig(v)
                 end
-
-                return {
+                
+                local c = count(pickers) == 0
+                local nc = self.Options.NoConfigs
+                if c and nc then return end
+                
+                return c ~= 0 and not nc and {
                     Value = self.Options.Value,
                     ColorPickers = pickers
+                } or c ~= 0 and nc and {
+                    ColorPickers = pickers
+                } or {
+                    Value = self.Options.Value
                 }
             end
 
             if cl == "Dropdown" or cl == "Slider" or cl == "TextBox" then
+                if self.Options.NoConfigs then return end
+                
                 return {
                     Value = self.Options.Value
                 }
@@ -6744,9 +6774,11 @@ local function windowSetup(object)
                 for i, v in self.Objects do
                     cfg[i] = getConfig(v, { })
                 end
+                
+                return cfg
             end
             
-            return cfg
+            return
         end
         
         task.wait(5)
