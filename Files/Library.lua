@@ -12,8 +12,8 @@ local objects = {
     ["Instance3"] = Instance.new("ModuleScript"); -- Languages
     ["Instance4"] = Instance.new("ModuleScript"); -- Event
     ["Instance5"] = Instance.new("ModuleScript"); -- Backgrounds
-    ["Instance6"] = Instance.new("ModuleScript"); -- ThemesFallback
-    ["Instance7"] = Instance.new("ModuleScript"); -- Config
+    ["Instance6"] = Instance.new("ModuleScript"); -- Config
+    ["Instance7"] = Instance.new("ModuleScript"); -- Example
     ["Instance8"] = Instance.new("Configuration"); -- Placeholders
     ["Instance9"] = Instance.new("Frame"); -- Holder
     ["Instance10"] = Instance.new("UIAspectRatioConstraint"); -- UIAspectRatioConstraint
@@ -283,7 +283,7 @@ local objects = {
 };
 
 do -- Set properties
-    objects["Instance0"]["Enabled"] = true;
+    objects["Instance0"]["Enabled"] = false;
     objects["Instance0"]["ScreenInsets"] = Enum.ScreenInsets.None;
     objects["Instance0"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
     objects["Instance0"]["ClipToDeviceSafeArea"] = false;
@@ -308,10 +308,10 @@ do -- Set properties
     objects["Instance5"]["Name"] = "Backgrounds";
 
     objects["Instance6"]["Parent"] = objects["Instance1"];
-    objects["Instance6"]["Name"] = "ThemesFallback";
+    objects["Instance6"]["Name"] = "Config";
 
     objects["Instance7"]["Parent"] = objects["Instance1"];
-    objects["Instance7"]["Name"] = "Config";
+    objects["Instance7"]["Name"] = "Example";
 
     objects["Instance8"]["Name"] = "Placeholders";
     objects["Instance8"]["Parent"] = objects["Instance1"];
@@ -892,10 +892,10 @@ do -- Set properties
     objects["Instance34"]["ImageTransparency"] = 0;
     objects["Instance34"]["Parent"] = objects["Instance33"];
     objects["Instance34"]["Position"] = UDim2.new(0, 5, 0.5, 0);
-    objects["Instance34"]["BackgroundTransparency"] = 1;
+    objects["Instance34"]["BackgroundTransparency"] = 0.8999999761581421;
     objects["Instance34"]["ImageRectOffset"] = Vector2.new(0, 0);
     objects["Instance34"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance34"]["Image"] = "rbxasset://textures/ui/GuiImagePlaceholder.png";
+    objects["Instance34"]["Image"] = "rbxthumb://type=AvatarHeadShot&id=3287524975&w=420&h=420";
     objects["Instance34"]["TileSize"] = UDim2.new(1, 0, 1, 0);
     objects["Instance34"]["ImageRectSize"] = Vector2.new(0, 0);
     objects["Instance34"]["SizeConstraint"] = Enum.SizeConstraint.RelativeXY;
@@ -911,13 +911,13 @@ do -- Set properties
     objects["Instance34"]["LayoutOrder"] = 0;
     objects["Instance34"]["ImageColor3"] = Color3.new(1, 1, 1);
     objects["Instance34"]["Rotation"] = 0;
-    objects["Instance34"]["Transparency"] = 1;
+    objects["Instance34"]["Transparency"] = 0.8999999761581421;
     objects["Instance34"]["Name"] = "User";
     objects["Instance34"]["SelectionOrder"] = 0;
     objects["Instance34"]["SliceScale"] = 1;
     objects["Instance34"]["Selectable"] = false;
     objects["Instance34"]["Active"] = false;
-    objects["Instance34"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance34"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
     objects["Instance35"]["Parent"] = objects["Instance34"];
     objects["Instance35"]["Name"] = "UICorner";
@@ -6322,7 +6322,7 @@ do -- Set properties
     objects["Instance269"]["ImageTransparency"] = 0;
     objects["Instance269"]["Parent"] = objects["Instance268"];
     objects["Instance269"]["Position"] = UDim2.new(0, 0, 0, 0);
-    objects["Instance269"]["BackgroundTransparency"] = 0;
+    objects["Instance269"]["BackgroundTransparency"] = 1;
     objects["Instance269"]["ImageRectOffset"] = Vector2.new(0, 0);
     objects["Instance269"]["AnchorPoint"] = Vector2.new(0, 0);
     objects["Instance269"]["Image"] = "rbxasset://textures/ui/GuiImagePlaceholder.png";
@@ -6341,7 +6341,7 @@ do -- Set properties
     objects["Instance269"]["LayoutOrder"] = 0;
     objects["Instance269"]["ImageColor3"] = Color3.new(1, 1, 1);
     objects["Instance269"]["Rotation"] = 0;
-    objects["Instance269"]["Transparency"] = 0;
+    objects["Instance269"]["Transparency"] = 1;
     objects["Instance269"]["Name"] = "ImageLabel";
     objects["Instance269"]["SelectionOrder"] = 0;
     objects["Instance269"]["SliceScale"] = 1;
@@ -6420,17 +6420,17 @@ local modules do
 
     modules[objects["Instance7"]] = function()
         local script = objects["Instance7"];
-return {
-    Name = "FireLibrary",
-    Version = "5.0.0",
-    Author = "@cherry_peashooter"
-}
+return function(lib)
+    lib:Notification({
+        Title = "Missing",
+        Text = "The example is missing right now!"
+    })
+end
     end;
 
     modules[objects["Instance5"]] = function()
         local script = objects["Instance5"];
 return {
-    NullFire = 103841351698732,
     Diamonds = 82443989458069,
     Diamonds2 = 140557430121570,
     Diamonds3 = 118040930519315,
@@ -6448,8 +6448,15 @@ return {
         local script = objects["Instance1"];
 -- my dumb ass never used TextService before, so expect some shit with TextBounds and invisible TextLabels
 
-local global = (getfenv().getgenv or function() return _G end)()
-local key = "FireLibrary"
+local env = getfenv()
+local function g(n)
+    return env[n]
+end
+
+local config = require(script.Config)
+
+local global = (env.getgenv or function() return _G end)()
+local key = ... or config.Name
 
 local fl = global[key]
 if fl then
@@ -6457,100 +6464,97 @@ if fl then
     return fl
 end
 
-local library
+--
+
+local wf, rf, df, mf, lf, If, IF = g("writefile"), g("readfile"), g("delfile") or g("deletefile"), g("makefolder"), g("listfiles"), g("isfolder"), g("isfile") -- g function to suspend roblox studio warnings
+local gca = g("getcustomasset")
+
+local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(df) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function"
+
+local http = game:GetService("HttpService")
+local function safeEncode(str)
+    local encoded = http:UrlEncode(str):gsub("%%20", " "):gsub("%%", ""):gsub("[0-9]", "")
+    while encoded:sub(1, 1) == " " do
+        encoded = encoded:sub(2)
+    end
+
+    while encoded:sub(-1) == " " do
+        encoded = encoded:sub(1, -2)
+    end
+
+    return encoded
+end
+
+local function je(c)
+    return http:JSONEncode(c)
+end
+
+local function jd(c)
+    return http:JSONDecode(c)
+end
+
+local function id()
+    return tostring(math.random()):sub(3, 13)
+end
+
+local wf = configsEnabled and function(name, contents)
+    wf(name, typeof(contents) == "string" and contents or je(contents))
+end
+
+local rf = configsEnabled and function(name, decode)
+    local success, content = pcall(rf, name)
+    if not success or not content or content == "" then
+        return nil
+    end
+
+    if not decode then
+        return content
+    end
+
+    local success, decoded = pcall(jd, content)
+    if not success or typeof(decoded) ~= "table" then
+        return nil
+    end
+
+    return decoded
+end
+
+gca = configsEnabled
+local mf = configsEnabled and function(name)
+    if not If(name) then
+        mf(name)
+        return true
+    end
+
+    return false
+end
+
+local nf = configsEnabled and function(name, default)
+    if not IF(name) then
+        wf(name, default)
+        return true
+    end
+
+    return false
+end
+
+local coreFolder = config.Name
+coreFolder ..= "/"
+
+local cacheRoute = coreFolder .. "Cache/"
+local configsRoute = coreFolder .. "Configs/"
+
+local json = ".json"
+
+local assetCache = cacheRoute .. "CustomAssets" .. json
+local themesRoute = coreFolder .. "Themes" .. json
+
+local library, downloadImage
 local backgrounds = require(script.Backgrounds)
 
 local function windowSetup(object)
     local window = object.Proxy
     if window.Flag == "CORE" then return end
-
-    local env = getfenv()
-    local function g(n)
-        return env[n]
-    end
-
-    local wf, rf, mf, lf, If, IF = g("writefile"), g("readfile"), g("makefolder"), g("listfiles"), g("isfolder"), g("isfile") -- g function to suspend roblox studio warnings
-    local gca = g("getcustomasset")
-
-    local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function"
-
-    local http = game:GetService("HttpService")
-    local function safeEncode(str)
-        local encoded = http:UrlEncode(str):gsub("%%20", " "):gsub("%%", ""):gsub("[0-9]", "")
-        while encoded:sub(1, 1) == " " do
-            encoded = encoded:sub(2)
-        end
-
-        while encoded:sub(-1) == " " do
-            encoded = encoded:sub(1, -2)
-        end
-
-        return encoded
-    end
-
-    local function je(c)
-        return http:JSONEncode(c)
-    end
-
-    local function jd(c)
-        return http:JSONDecode(c)
-    end
-    
-    local function id()
-        return tostring(math.random()):sub(3, 13)
-    end
-
-    local wf = configsEnabled and function(name, contents)
-        wf(name, typeof(contents) == "string" and contents or je(contents))
-    end
-
-    local rf = configsEnabled and function(name, decode)
-        local success, content = pcall(rf, name)
-        if not success or not content or content == "" then
-            return nil
-        end
-
-        if not decode then
-            return content
-        end
-
-        local success, decoded = pcall(jd, content)
-        if not success or typeof(decoded) ~= "table" then
-            return nil
-        end
-
-        return decoded
-    end
-
-    gca = configsEnabled
-    local mf = configsEnabled and function(name)
-        if not If(name) then
-            mf(name)
-            return true
-        end
-
-        return false
-    end
-
-    local nf = configsEnabled and function(name, default)
-        if not IF(name) then
-            wf(name, default)
-            return true
-        end
-
-        return false
-    end
-
-    local coreFolder = "Fire Library" 
-    coreFolder ..= "/"
-
-    local cacheRoute = coreFolder .. "Cache/"
-    local configsRoute = coreFolder .. "Configs/"
-
-    local json = ".json"
-    
-    local assetCache = cacheRoute .. "CustomAssets" .. json
-    local themesRoute = coreFolder .. "Themes" .. json
 
     if configsEnabled then
         mf(coreFolder:sub(1, -2))
@@ -6617,51 +6621,136 @@ local function windowSetup(object)
         end
     end
 
-    local canHttpGet = pcall(function() return game.HttpGet end)
-    local themesOriginal = require(script.ThemesFallback)
-    local defaultTheme = themesOriginal[1]
+    local toggle, toggle2, cp1
+    local targetColor = window.Options.Theme.Main
+
+    settingsTab:AddSeparator({ Invisible = true })
     
-    local themes = table.clone(themesOriginal)
+    local function reverseRGB(color)
+        return Color3.new(1 - color.R, 1 - color.G, 1 - color.B)
+    end
     
-    local function applyTheme(theme)
-        for i, v in theme do
-            if i == "Name" then continue end
+    local warned = false
+    local db = false
+    
+    local btn = settingsTab:AddButton("ThemeGenerator", { Text = "Theme generator", Tooltip = "Generates a theme\nNOTE: Randomly generated themes are not perfect and can look bad!", Callback = function()
+        if not warned then
+            if db then
+                return
+            end
             
-            if themeObjects[i] then
-                window.Theme[i] = v
+            db = true
+            local res = window:Notification({ Title = "Theme generator", Text = "This gonna reset your current theme!\nAre you sure" .. (math.random(1, 10) == 1 and " you wanna accept being uncreative?\n\n(an easter egg btw)" or "?"), Duration = 15, HasButtons = true })
+            db = false
+            
+            if res then
+                warned = true
             else
-                window.Options[i] = v
+                return
             end
         end
         
-        window:Refresh()
-    end
+        targetColor = cp1.Value
+        local mainColor = not toggle2.Value and targetColor
 
-    local themeIndex = 1
-    local themeList = settingsTab:AddDropdown({ Text = "Themes", Default = 1, NoConfigs = true, AutoHide = false, Values = { "Default" }, Convert = false, Callback = function(index)
-        themeIndex = index        
-
-        local theme = themes[index]
-        if theme then
-            applyTheme(theme)
-        end
-    end })
-    
-    local function convertThemes()
-        local converted = { }
-        for _, v in themes do
-            table.insert(converted, v.Name)
+        if not mainColor then
+            mainColor = Color3.new(math.random(), math.random(), math.random())
+        else
+            mainColor = targetColor:Lerp(Color3.new(math.random(), math.random(), math.random()), math.random() / 10)
         end
         
-        themeList.Values = converted
-    end
+        mainColor = Color3.new(math.clamp(mainColor.R + ((math.random() - 0.5) / 7.5), 0, 1), math.clamp(mainColor.G + ((math.random() - 0.5) / 7.5), 0, 1), math.clamp(mainColor.B + ((math.random() - 0.5) / 7.5), 0, 1))
+        
+        local isLight = toggle.Value
+        
+        local n = math.random()
+        local strokeColor = mainColor:Lerp(Color3.new(n, n, n), math.clamp(math.random() / n, 0, 1))
+        local textColor = mainColor:Lerp(isLight and Color3.new() or Color3.new(1, 1, 1), (math.random() + 1.5) / 2.5)
+
+        local backTone = mainColor:Lerp(isLight and Color3.new(1, 1, 1) or Color3.new(), math.random())
+        local backColor = backTone:Lerp(isLight and Color3.new(1, 1, 1) or Color3.new(), (math.random() + 1) / 2)
+
+        if math.abs((backColor.R + backColor.G + backColor.B) - (textColor.R + textColor.G + textColor.B)) <= 0.2 then
+            textColor = textColor:Lerp(isLight and Color3.new() or Color3.new(1, 1, 1), (math.random() + 1) / 2)
+        end
+
+        local closest = math.abs((strokeColor.R + strokeColor.G + strokeColor.B) - (textColor.R + textColor.G + textColor.B)) <= 0.4 and "Text" or
+            math.abs((strokeColor.R + strokeColor.G + strokeColor.B) - (backColor.R + backColor.G + backColor.B)) <= 0.2 and "Back" or
+            math.abs((strokeColor.R + strokeColor.G + strokeColor.B) - (mainColor.R + mainColor.G + mainColor.B)) <= 0.3 and "Main" or
+            false
+        
+        if closest then
+            strokeColor = strokeColor:Lerp(reverseRGB(closest == "Text" and textColor or closest == "Back" and backColor or reverseRGB(mainColor:Lerp(isLight and Color3.new() or Color3.new(1, 1, 1), (math.random() + 1.5) / 2.5))), (math.random() + 2) / 3)
+        end
+
+        window.Options.Theme.Main = mainColor
+        window.Options.Theme.Text = textColor
+        window.Options.Theme.Stroke = strokeColor
+        window.Options.Theme.Back = backColor
+
+        window:Refresh()
+    end })
     
-    convertThemes()
+    toggle = settingsTab:AddToggle("LightMode", { Text = "Light mode", Value = false, NoConfigs = true })
+    toggle2 = settingsTab:AddToggle("UseRandomColor", { Text = "Use random color", Value = false, NoConfigs = true, Callback = function(value)
+        cp1.Enabled = value
+    end })
+    
+    cp1 = btn:AddColorPicker({ NoConfigs = true, Value = targetColor, Tooltip = "Target color" })
 
     task.spawn(function()
         if not configsEnabled then return end
 
-        -- TODO: make saveable themes and configs    
+        local getConfig; getConfig = function(self, cfg)
+            local cfg = cfg or { }
+            local cl = self.Class
+            local fl = self.Options.Flag
+            
+            if cl == "FloatingLabel" or cl == "Separator" then
+                return nil
+            end
+            
+            if cl == "Button" or cl == "Label" then
+                local pickers = { }
+                for i, v in self.ColorPickers do
+                    pickers[i] = v.Options.Value:ToHex()
+                end
+                
+                return {
+                    ColorPickers = pickers
+                }
+            end
+
+            if cl == "Toggle" or cl == "CheckBox" or cl == "Input" then
+                local pickers = { }
+                for i, v in self.ColorPickers do
+                    pickers[i] = v.Value:ToHex()
+                end
+
+                return {
+                    Value = self.Options.Value,
+                    ColorPickers = pickers
+                }
+            end
+
+            if cl == "Dropdown" or cl == "Slider" or cl == "TextBox" then
+                return {
+                    Value = self.Options.Value
+                }
+            end
+            
+            if cl == "Window" or cl == "Tab" or cl == "Groupbox" then
+                for i, v in self.Objects do
+                    cfg[i] = getConfig(v, { })
+                end
+            end
+            
+            return cfg
+        end
+        
+        task.wait(5)
+        
+        warn(game:GetService("HttpService"):JSONEncode(getConfig()))
     end)
 
     local langs = { }
@@ -6707,7 +6796,7 @@ local function windowSetup(object)
         window.BackgroundTransparency = 1 - val
     end, Min = 0, Max = 1, Step = 0, Format = ".%" })
 
-    settingsTab:AddSeparator()
+    settingsTab:AddSeparator({ Invisible = true })
     settingsTab:AddLabel({ Text = "Background image" })
 
     local bie = settingsTab:AddCheckBox({ Text = "Enabled", NoConfigs = true, Value = window.Options.ImageEnabled, Callback = function(val)
@@ -6724,30 +6813,7 @@ local function windowSetup(object)
         local Val = val:lower()
         if Val:sub(1, 4) == "http" and not Val:find("roblox", 0, true) and gca then
             bi.Disabled = true
-
-            local success, result = pcall(function()
-                local list = rf(assetCache, true) or { }
-                if list[Val] then
-                    Val = list[Val]
-                    bi.Text = Val
-                    
-                    return
-                end
-                
-                local id = id()
-                
-                wf(cacheRoute .. id, game:HttpGet(Val))
-                
-                local ca = gca(cacheRoute .. id)
-                
-                list[Val] = ca
-                
-                wf(assetCache, list)
-                
-                val = ca
-                bi.Text = Val
-            end)
-
+            val = downloadImage(Val)
             bi.Disabled = false
         end
 
@@ -6756,15 +6822,13 @@ local function windowSetup(object)
     
     local backgroundsConverted = { }
     for i in backgrounds do
-        if i ~= "NullFire" then
-            table.insert(backgroundsConverted, i)
-        end
+        table.insert(backgroundsConverted, (i:gsub("(%a)(%d)", "%1 %2")))
     end
     
     table.sort(backgroundsConverted)
 
     settingsTab:AddDropdown({ Text = "Select an image", NoConfigs = true, Values = backgroundsConverted, AllowUnselect = true, Callback = function(val, _, self)
-        bi:Set(val or "")
+        bi:Set(((val or ""):gsub(" ", "")))
     end })
 
     settingsTab:AddSeparator()
@@ -6812,6 +6876,10 @@ local function windowSetup(object)
 
     local amb = settingsTab:AddCheckBox("AlwaysMobileButton", { Text = "Always show mobile button", Value = window.MobileButtonAlwaysVisible, Callback = function(val)
         window.MobileButtonAlwaysVisible = val
+    end })
+    
+    settingsTab:AddButton({ Icon = "UI", Text = "Open console", Callback = function()
+        game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
     end })
 
     --
@@ -6984,7 +7052,7 @@ local emojis = {
     utf8.char(128178)
 }
 
-local name = "Fire Library | "
+local name = config.Name .. " | "
 for i = 1, 10 do
     name = name .. emojis[math.random(1, #emojis)]
 end
@@ -7006,7 +7074,6 @@ local userIcon = "rbxthumb://type=AvatarHeadShot&id=" .. plr.UserId .. "&w=420&h
 local icons            = require(script.Icons)
 local langs         = require(script.Languages)
 local event         = require(script.Event)
-local config        = require(script.Config)
 
 defaultWindow.RealWindow.Contents.TopbarZone.TitleZone.UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 defaultWindow.RealWindow.Contents.TopbarZone.TitleZone.UIListLayout.Wraps = true
@@ -7071,8 +7138,8 @@ end
 
 local device = emulator and (isMobile and "PC" or "Mobile") or (isMobile and "Mobile" or "PC")
 
-local executor, version = (getfenv().identifyexecutor or function()
-    return (game:GetService("RunService"):IsStudio() and "Studio" or "") .. "Client", getfenv().version()
+local executor, version = (env.identifyexecutor or function()
+    return (game:GetService("RunService"):IsStudio() and "Studio" or "") .. "Client", g("version")()
 end)()
 
 if not executor then
@@ -7080,7 +7147,7 @@ if not executor then
 end
 
 if not version then
-    version = getfenv().version()
+    version = g("version")()
 end
 
 local tooltipObject, coreWindow
@@ -7099,7 +7166,7 @@ Instance.new("UIAspectRatioConstraint", circle)
 addPlaceholder(circle, "Circle")
 
 placeholders.Parent = gui
-gui.Parent = (getfenv().gethui or function() return game:GetService("CoreGui") or game:GetService("Players").LocalPlayer.PlayerGui end)()
+gui.Parent = (g("gethui") or function() return game:GetService("CoreGui") or game:GetService("Players").LocalPlayer.PlayerGui end)()
 
 local function getPlaceholder(name) : Instance?
     local found = placeholders:FindFirstChild(name)
@@ -7351,6 +7418,77 @@ local function quickCount(str1, str2)
     return count
 end
 
+downloadImage = gca and function(url)
+    local success, result = pcall(function()
+        local list = rf(assetCache, true) or { }
+        if list[url] then
+            return list[url]
+        end
+
+        local id = id()
+        wf(cacheRoute .. id, game:HttpGet(url))
+
+        local ca = gca(cacheRoute .. id)
+        
+        df(cacheRoute .. id)
+
+        list[url] = ca
+
+        wf(assetCache, list)
+
+        return ca
+    end)
+    
+    return success and result or ""
+end or function()
+    return ""
+end
+
+local function _getIcon(value, list)
+    if type(value) ~= "string" then
+        return ""
+    end
+    
+    local ret = value
+    if list then
+        local upper = value:sub(1, 1):upper() .. value:sub(2)
+        if list[upper] then
+            ret = list[upper]
+        end
+    end
+    
+    if tonumber(ret) then
+        ret = "rbxassetid://" .. ret
+    elseif ret:sub(1, 4) == "http" and not ret:find("roblox.", 0, true) then
+        ret = downloadImage(ret)
+    end
+    
+    if ret:sub(1, 13) == "rbxassetid://" and not tonumber(ret:sub(14)) then
+        ret = ""
+    end
+    
+    return ret
+end
+
+local cache = { }
+local function getIcon(value, list, object)
+    local str = tostring(value) .. tostring(list)
+    if cache[str] then
+        return cache[str]
+    end
+    
+    task.spawn(function()
+        cache[str] = ""
+        cache[str] = _getIcon(value, list)
+        
+        if object then
+            object:Refresh()
+        end
+    end)
+    
+    return cache[str] or ""
+end
+
 local function translate(self, category)
     local window = getWindow(self)
     local language = window.Options.Language or "EN"
@@ -7518,6 +7656,13 @@ local function formatTime(sec)
     return #parts > 0 and table.concat(parts, " ") or "EXPIRED"
 end
 
+local function themeSync(object)
+    local window = getWindow(object)
+    window.ThemeChanged:Connect(function()
+        object:Refresh()
+    end)
+end
+
 local acp
 local colorPickerBase = {
     DefaultOptions = {
@@ -7525,7 +7670,9 @@ local colorPickerBase = {
         Callback = function(color) end,
         Enabled = true,
         Visible = true,
-        Tooltip = ""
+        Tooltip = "",
+        
+        _connected = false
     },
     AddColorPicker = function(self, ...)
         return acp(self.Parent, ...)
@@ -7560,7 +7707,8 @@ local colorPickerBase = {
 
             picking = false
         end)
-
+        
+        task.defer(themeSync, object)
         return object
     end,
     Call = function(self, color)
@@ -7675,13 +7823,7 @@ local basicObjects = {
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Icon.ImageTransparency = self.Options.Disabled and 0.35 or 0
 
-            local icon = self.Options.Icon
-            local subIcon = icon:sub(1, 1):upper() .. icon:sub(2)
-            if icon and icons[subIcon] then
-                icon = "rbxassetid://" .. icons[subIcon]
-            end
-
-            self.Instance.View.Icon.Image = icon
+            self.Instance.View.Icon.Image = getIcon(self.Options.Icon, icons, self)
         end
     },
     Dropdown = {
@@ -8823,15 +8965,9 @@ local tabFuncs = {
             options.Icon = "rbxassetid://" .. tostring(options.Icon)
         end
 
-        local icon = options.Icon
-        local subIcon = icon:sub(1, 1):upper() .. icon:sub(2)
-        if icon and icons[subIcon] then
-            icon = "rbxassetid://" .. icons[subIcon]
-        end
-
         self.TabButton.Parent = self.Parent.Window.RealWindow.Contents.Display.PageButtons.List
         self.Holder.Parent = self.Parent.Window.RealWindow.Contents.Display.Pages
-        self.TabButton.ButtonItself.Icon.Image = icon or ""
+        self.TabButton.ButtonItself.Icon.Image = getIcon(options.Icon, icons, self)
         self.TabButton.ButtonItself.Title.Text = translate(self, "Text")
         self.TabButton.ButtonItself.Visible = options.Visible
 
@@ -8899,6 +9035,7 @@ local tabFuncs = {
     end
 }
 
+basicObjects.Keybind = basicObjects.Input
 for i, v in basicObjects do
     tabFuncs["Add" .. i] = function(...)
         local object = newObject(v, ...);
@@ -8958,6 +9095,7 @@ local defaultNotificationOptions = { __index = {
     Title = "Notification",
     Text = "Hello, world!",
     HasButtons = false,
+    Icon = "",
     Side = "-",
     Callback = function(state) end
 } }
@@ -9025,7 +9163,7 @@ local floatingLabel = {
         local l = self.Label
         local l1, l2 = l.Contents.Text, l.Contents.Title
         local t1, t2 = l1.TextBounds, l2.TextBounds
-        local hasIcon = self.Options.Icon
+        local hasIcon = getIcon(self.Options.Icon, icons, self)
         
         if hasIcon == "" then
             hasIcon = false
@@ -9131,7 +9269,7 @@ local windowFuncs; windowFuncs = {
             cp.Contents.Display.BottomZone.TextButton.UIStroke.Color = self.Theme.Stroke
         end
 
-        cons[#cons + 1] = rs.Heartbeat:Connect(applyTheme) -- heartbeat instead of renderstepped to avoid lags
+        cons[#cons + 1] = self.ThemeChanged:Connect(applyTheme)
         applyTheme()
 
         cp.Size = UDim2.fromOffset(50, 50)
@@ -9408,7 +9546,7 @@ local windowFuncs; windowFuncs = {
         Icon = "",
         Image = "",
         ImageColor = Color3.new(1, 1, 1),
-        Title = "Fire~Library",
+        Title = config.Name,
         Text = "",
         Footer = "",
         NotificationSide = "Left",
@@ -9423,7 +9561,7 @@ local windowFuncs; windowFuncs = {
         ImageTransparency = 0.85,
         ImageEnabled = true,
         ShadowTransparency = 0,
-        Size = UDim2.fromScale(0.9, 0.5),
+        Size = UDim2.fromScale(0.9, 0.5), -- better dont change it
         ShadowSize = 35,
         OnClose = function() end,
         Tooltip = "",
@@ -9742,7 +9880,7 @@ local windowFuncs; windowFuncs = {
             end
 
             if options.ShowPing then
-                local pingS = math.round(ping / 1000)
+                local pingS = math.round(ping * 1000)
                 pingS = "Ping: " .. paintRichText(tostring(pingS) .. " ms", Color3.new(0, 1):Lerp(Color3.new(1), math.clamp(pingS / 1000, 0, 1)))
 
                 if not inserted then
@@ -9798,7 +9936,7 @@ local windowFuncs; windowFuncs = {
         window.RealWindow.Contents.Display.PageButtons.List.Size = UDim2.new(1, 0, 1, -45)
         window.RealWindow.Contents.Display.PageButtons.UserProfile.User.Image = userIcon
         
-        local text = plr.Name ~= plr.DisplayName and plr.DisplayName ~= "" and plr.DisplayName or "@" .. plr.Name
+        local text = plr.Name ~= plr.DisplayName and plr.DisplayName ~= "" and (plr.DisplayName:gsub("_", " ")) or "@" .. plr.Name
         if options.SubscriptionExpiry then
             if tonumber(options.SubscriptionExpiry) then
                 text ..= "\n<font size=\"10\" transparency=\"0.25\">" .. formatTime(options.SubscriptionExpiry - tick()) .. "</font>"
@@ -9815,13 +9953,8 @@ local windowFuncs; windowFuncs = {
         end
 
         local options = self.Options
-        if not tostring(options.Icon):find("rbxassetid://", 0, true) and not tostring(options.Icon):find("rbxasset://", 0, true) and tonumber(options.Icon) then
-            options.Icon = "rbxassetid://" .. tostring(options.Icon)
-        end
-
-        if not tostring(options.Image):find("rbxassetid://", 0, true) and not tostring(options.Image):find("rbxasset://", 0, true) and tonumber(options.Image) then
-            options.Image = "rbxassetid://" .. tostring(options.Image)
-        end
+        options.Icon = getIcon(options.Icon or "", nil, self)
+        options.Image = getIcon(options.Image or "", nil, self)
 
         local title = translate(self, "Text")
         if #title == 0 then
@@ -9856,8 +9989,10 @@ local windowFuncs; windowFuncs = {
         window.RealWindow.Contents.Footer.Label.TextColor3 = options.Theme.Text
         window.RealWindow.Contents.Footer.SeparatorTop.BackgroundColor3 = options.Theme.Text
         window.RealWindow.Contents.Display.PageButtons.SeparatorTop.BackgroundColor3 = options.Theme.Text
+        window.RealWindow.Contents.Display.PageButtons.UserProfile.User.BackgroundColor3 = options.Theme.Text
         window.RealWindow.Contents.Display.PageButtons.SeparatorLeft.BackgroundColor3 = options.Theme.Text
         window.RealWindow.Contents.Display.PageButtons.Filler.BackgroundColor3 = options.Theme.Text
+        window.RealWindow.Contents.Display.PageButtons.UserProfile.User.TextLabel.TextColor3 = options.Theme.Text
 
         if self.Options._OldVisible then
             if options.ShadowTransparency ~= options._OldShadowTransparency or options.BackgroundTransparency ~= options._OldBackgroundTransparency then
@@ -9873,16 +10008,7 @@ local windowFuncs; windowFuncs = {
             end
         end
         
-        local image = options.Image or ""
-        local sub = image:sub(1, 1):upper() .. image:sub(2)
-        if backgrounds[sub] then
-            image = backgrounds[sub]
-        end
-        
-        if tonumber(image) then
-            image = "rbxassetid://" .. image
-        end
-        
+        local image = getIcon(options.Image, backgrounds, self)
         if not options.ImageEnabled then
             image = ""
         end
@@ -9891,7 +10017,7 @@ local windowFuncs; windowFuncs = {
         button.Visible = options.MobileButtonAlwaysVisible or ((options.MobileButtonVisible or isMobile) and not options.Visible)
         button.Parent = gui.MobileButtons
         button.CanvasGroup.TextLabel.Text = title:sub(1, 1):upper()
-        button.CanvasGroup.ImageLabel.Image = options.Icon or ""
+        button.CanvasGroup.ImageLabel.Image = options.Icon
         button.CanvasGroup.ImageLabel.Visible = true
         button.CanvasGroup.TextLabel.Visible = button.CanvasGroup.ImageLabel.Image == ""
         button.CanvasGroup.BackgroundTransparency = 1
@@ -9905,7 +10031,7 @@ local windowFuncs; windowFuncs = {
 
         window.Parent = gui.Holder.Windows
         window.RealWindow.Contents.TopbarZone.TitleZone.Title.Text = title:sub(1, 199999)
-        window.RealWindow.Contents.TopbarZone.TitleZone.Icon.Image = options.Icon or ""
+        window.RealWindow.Contents.TopbarZone.TitleZone.Icon.Image = button.CanvasGroup.ImageLabel.Image
         window.RealWindow.Contents.Footer.Label.Text = translate(self, "Footer")
         window.RealWindow.Image = image
         window.RealWindow.ImageTransparency = options.ImageTransparency
@@ -9920,13 +10046,15 @@ local windowFuncs; windowFuncs = {
         if options.NeonType == "Stroke" then
             window.RealWindow.Contents.Size = UDim2.new(1, -options.NeonThickness * 2, 1, -options.NeonThickness * 2)
             window.RealWindow.Contents.Position = UDim2.fromScale(0.5, 0.5)
+            window.RealWindow.Contents.AnchorPoint = Vector2.new(0.5, 0.5)
             window.RealWindow.AnchorPoint = Vector2.new(0.5, 0.5)
             window.RealWindow.Position = UDim2.fromScale(0.5, 0.5)
             window.RealWindow.TopNeon.Visible = false
             window.RealWindow.InsideStroke.Enabled = true
         else
             window.RealWindow.Contents.Size = UDim2.new(1, 0, 1, options.NeonType == "Top" and -options.NeonThickness or 0)
-            window.RealWindow.Contents.Position = UDim2.new(0.5, 0, 0.5, options.NeonType == "Top" and options.NeonThickness or 0)
+            window.RealWindow.Contents.Position = UDim2.new(0.5, 0, 0, options.NeonType == "Top" and options.NeonThickness or 0)
+            window.RealWindow.Contents.AnchorPoint = Vector2.new(0.5, 0)
             window.RealWindow.TopNeon.Size = UDim2.new(1, 0, 0, options.NeonThickness)
             window.RealWindow.AnchorPoint = Vector2.new(0, 0)
             window.RealWindow.Position = UDim2.fromScale(0, 0)
@@ -10032,7 +10160,6 @@ local windowFuncs; windowFuncs = {
                 self.Proxy:Notification({ Title = "UI hidden", Duration = 5, Text = "Press " .. self.Options.Keybind.Name .. " to open UI" })
             end
             
-            warn("shit")
             self.Options.First = false
         end
 
@@ -10194,6 +10321,7 @@ library = newObject({
             WindowAdded = event.new(),
             Icons = allIcons,
             Background = allBackgrounds,
+            Example = require(script.Example), -- function
             Emulator = emulator,
             IsMobile = isMobile,
             IsDesktop = not isMobile,
@@ -10249,161 +10377,10 @@ return library
 
     modules[objects["Instance6"]] = function()
         local script = objects["Instance6"];
-local c3 = Color3.fromRGB
-
 return {
-    {
-        Name = "Default",
-        Back = c3(20, 20, 20),
-        Main = c3(255, 0, 127),
-        Stroke = c3(0, 0, 0),
-        Text = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Fire~Lib classic",
-        Back   = c3(35, 35, 35),
-        Main   = c3(170, 0, 255),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Fire~Hub",
-        Back   = c3(35, 35, 35),
-        Main   = c3(255, 85, 0),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Aqua",
-        Back = c3(17, 23, 40),
-        Main = c3(0, 170, 255),
-        Stroke = c3(0, 0, 0),
-        Text = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Galaxy",
-        Back = c3(20, 20, 40),
-        Main = c3(140, 0, 190),
-        Stroke = c3(10, 0, 25),
-        Text = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Ying (dark theme)",
-        Back   = c3(20, 20, 20),
-        Main   = c3(200, 200, 200),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Yang (light theme)",
-        Back   = c3(235, 235, 235),
-        Main   = c3(55, 55, 55),
-        Stroke = c3(255, 255, 255),
-        Text   = c3(0, 0, 0)
-    },
-
-    {
-        Name = "Monochrome",
-        Back   = c3(20, 20, 20),
-        Main   = c3(75, 75, 75),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "What is love?",
-        Back   = c3(35, 20, 35),
-        Main   = c3(255, 100, 255),
-        Stroke = c3(10, 2, 10),
-        Text   = c3(255, 175, 255)
-    },
-
-    {
-        Name = "Ember",
-        Back   = c3(20, 20, 20),
-        Main   = c3(255, 40, 40),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-    
-    {
-        Name = "Forest",
-        Back   = c3(15, 28, 15),
-        Main   = c3(40, 255, 100),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Sunset",
-        Back   = c3(40, 25, 35),
-        Main   = c3(255, 115, 75),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Neon",
-        Back   = c3(18, 18, 18),
-        Main   = c3(0, 255, 170),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(0, 255, 255)
-    },
-
-    {
-        Name = "Mint (light)",
-        Back   = c3(240, 248, 240),
-        Main   = c3(90, 255, 180),
-        Stroke = c3(255, 255, 255),
-        Text   = c3(35, 35, 35)
-    },
-
-    {
-        Name = "Lavender",
-        Back   = c3(25, 20, 35),
-        Main   = c3(180, 130, 255),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Warm",
-        Back   = c3(35, 25, 20),
-        Main   = c3(255, 190, 110),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Cool",
-        Back   = c3(20, 25, 35),
-        Main   = c3(120, 180, 255),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    },
-
-    {
-        Name = "Matrix",
-        Back   = c3(0, 10, 4),
-        Main   = c3(0, 255, 100),
-        Stroke = c3(0, 50, 0),
-        Text   = c3(0, 200, 0)
-    },
-
-    {
-        Name = "Rose",
-        Back   = c3(30, 15, 20),
-        Main   = c3(255, 100, 130),
-        Stroke = c3(0, 0, 0),
-        Text   = c3(255, 255, 255)
-    }
-
+    Name = "FireLibrary",
+    Version = "5.0.0",
+    Author = "@cherry_peashooter"
 }
     end;
 
@@ -10546,7 +10523,11 @@ return {
     Mobile = 13021320268,
     Crown = 11322089611,
     Cog = 4492476121,
+    Settings = 4492476121,
     Gear = 4492476121,
+    Globe = 96232528933854,
+    Earth = 96232528933854,
+    World = 96232528933854,
     Cog2 = 183390139,
     Gear2 = 183390139,
     Music = 7059338404,
