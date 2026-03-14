@@ -6702,6 +6702,7 @@ local function windowSetup(object)
         if not configsEnabled then return end
 
         local getConfig; getConfig = function(self, cfg)
+            local self = self or window
             local cfg = cfg or { }
             local cl = self.Class
             local fl = self.Options.Flag
