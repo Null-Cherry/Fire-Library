@@ -6540,6 +6540,7 @@ return {
         local script = objects["Instance1"];
 -- my dumb ass never used TextService before, so expect some shit with TextBounds and invisible TextLabels
 
+local rs = game:GetService("RunService")
 local env = getfenv()
 local function g(n)
     return env[n]
@@ -6553,6 +6554,7 @@ local key = ... or config.Name
 local fl = global[key]
 if fl then
     script.Parent:Destroy()
+    rs.RenderStepped:Wait()
     return fl
 end
 
@@ -6953,30 +6955,32 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local hidden = { }
 
         local lol = settingsTab:AddLabel({ Text = "Loading configs and themes functions, wait..." })
-        
+
         local function getExistingConfigs()
             local configNames = { }
-            for _, file in (lf(configsRoute .. fl:sub(1, -2)) or { }) do
-                configNames[#configNames + 1] = file:sub(#configsRoute + #fl, -#json - 1)
+            for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
+                table.insert(configNames, file:sub(#configsRoute + #fl + 1, -#json - 1))
             end
             
             return configNames
         end
-        
-        local function validateConfigName(name)
-            return #name >= 1 and #name <= 32 and not table.find(getExistingConfigs(), name)
+
+        local function validateName(name: string)
+            return #name >= 1 and #name <= 32 and not name:find("\\", 1, true) and not name:find("/", 1, true)
         end
 
         hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Configs", Visible = false })
-        local configTextBox = settingsTab:AddTextBox({
-            PlaceholderText = "Config name",
+
+        local configTextBox = settingsTab:AddTextBox("ConfigName", {
+            PlaceholderText = "Enter config name",
             NoConfigs = true,
-            Text = "Config Name",
+            Text = "Config name",
             Visible = false
-        }); hidden[#hidden + 1] = configTextBox
-        
+        })
+        hidden[#hidden + 1] = configTextBox
+
         local configDropdown = settingsTab:AddDropdown("ConfigsList", {
-            Text = "Saved Configs",
+            Text = "Saved configs",
             Values = getExistingConfigs(),
             AllowUnselect = true,
             NoConfigs = true,
@@ -6984,35 +6988,41 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 configTextBox.Value = text or ""
             end,
             Visible = false
-        }); hidden[#hidden + 1] = configDropdown
-        
+        })
+        hidden[#hidden + 1] = configDropdown
+
         hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Save Config",
+            Text = "Save config",
             NoConfigs = true,
             Callback = function()
                 local name = configTextBox.Value
-                if not validateConfigName(name) then
-                    return window:Notification({ Title = "Error", Text = "Invalid config name" })
-                end
-                
-                wf(configsRoute .. fl .. name .. json, getConfig())
+                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
+
+                local route = configsRoute .. fl .. name .. json
+                if IF(route) then if not window:Notification({ Title = "Config exists", Text = "Config '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
+
+                wf(route, getConfig())
                 configDropdown.Values = getExistingConfigs()
+                
+                window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been saved!" })
             end,
             Visible = false
         })
-        
+
         hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Load Config",
+            Text = "Load сonfig",
             NoConfigs = true,
             Callback = function()
                 local name = configTextBox.Value
-                if not validateConfigName(name) then
-                    return window:Notification({ Title = "Error", Text = "Invalid config name" })
-                end
-                
-                local data = rf(configsRoute .. fl .. name .. json, true)
+                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
+
+                local route = configsRoute .. fl .. name .. json
+                if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
+
+                local data = rf(route, true)
                 if data then
                     setConfig(data, window)
+                    window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully loaded!" })
                 else
                     window:Notification({ Title = "Error", Text = "Invalid config file" })
                 end
@@ -7020,32 +7030,49 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             Visible = false
         })
 
+        hidden[#hidden + 1] = settingsTab:AddButton({
+            Text = "Delete config",
+            NoConfigs = true,
+            Icon = "Trash",
+            Callback = function()
+                local name = configTextBox.Value
+                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
+
+                local route = configsRoute .. fl .. name .. json
+                if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
+
+                if window:Notification({ Title = "Delete config", Text = "Are you sure you want to delete config '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
+                    df(route)
+                    configDropdown.Values = getExistingConfigs()
+
+                    window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully deleted!" })
+                end
+            end,
+            Visible = false
+        })
+
         local function getExistingThemes()
             local themeNames = { }
-            
-            for _, file in (lf(themesRoute:sub(1, -2)) or { }) do
-                themeNames[#themeNames + 1] = file:sub(#themesRoute, -#json - 1)
+            for _, file in lf(themesRoute:sub(1, -2)) or { } do
+                table.insert(themeNames, file:sub(#themesRoute + 1, -#json - 1))
             end
             
             return themeNames
         end
-        
-        local function isValidThemeName(name)
-            return #name >= 1 and #name <= 32 and not table.find(getExistingThemes(), name)
-        end
 
         hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
         hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Themes", Visible = false })
-        
-        local themeTextBox = settingsTab:AddTextBox({
-            PlaceholderText = "Theme name",
+
+        local themeTextBox = settingsTab:AddTextBox("ThemeName", {
+            PlaceholderText = "Enter theme name",
             NoConfigs = true,
-            Text = "Theme Name",
+            Text = "Theme name",
             Visible = false
-        }); hidden[#hidden + 1] = themeTextBox
-        
+        })
+        hidden[#hidden + 1] = themeTextBox
+
         local themeDropdown = settingsTab:AddDropdown("ThemesList", {
-            Text = "Saved Themes",
+            Text = "Saved themes",
             Values = getExistingThemes(),
             AllowUnselect = true,
             NoConfigs = true,
@@ -7053,37 +7080,64 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 themeTextBox.Value = text or ""
             end,
             Visible = false
-        }); hidden[#hidden + 1] = themeDropdown
-        
+        })
+        hidden[#hidden + 1] = themeDropdown
+
         hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Save Theme",
+            Text = "Save theme",
             NoConfigs = true,
             Callback = function()
                 local name = themeTextBox.Value
-                if not validateConfigName(name) then
-                    return window:Notification({ Title = "Error", Text = "Invalid theme name" })
-                end
+                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
-                wf(themesRoute .. name .. json, getTheme())
+                local route = themesRoute .. name .. json
+                if IF(route) then if not window:Notification({ Title = "Theme exists", Text = "Theme '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
+
+                wf(route, getTheme())
                 themeDropdown.Values = getExistingThemes()
+                
+                window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been saved!" })
             end,
             Visible = false
         })
-        
+
         hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Load Theme",
+            Text = "Load theme",
             NoConfigs = true,
             Callback = function()
                 local name = themeTextBox.Value
-                if not validateConfigName(name) then
-                    return window:Notification({ Title = "Error", Text = "Invalid theme name" })
-                end
-                
-                local data = rf(themesRoute .. name .. json, true)
+                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
+
+                local route = themesRoute .. name .. json
+                if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
+
+                local data = rf(route, true)
                 if data then
                     setTheme(data)
+                    window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully loaded!" })
                 else
                     window:Notification({ Title = "Error", Text = "Invalid theme file" })
+                end
+            end,
+            Visible = false
+        })
+
+        hidden[#hidden + 1] = settingsTab:AddButton({
+            Text = "Delete theme",
+            NoConfigs = true,
+            Icon = "Trash",
+            Callback = function()
+                local name = themeTextBox.Value
+                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
+
+                local route = themesRoute .. name .. json
+                if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
+
+                if window:Notification({ Title = "Delete theme", Text = "Are you sure you want to delete theme '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
+                    df(route)
+                    themeDropdown.Values = getExistingThemes()
+                    
+                    window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully deleted!" })
                 end
             end,
             Visible = false
@@ -7561,7 +7615,6 @@ gui.Name = name
 
 local tween        = game:GetService("TweenService")
 local uis        = game:GetService("UserInputService")
-local rs        = game:GetService("RunService")
 local http        = game:GetService("HttpService")
 local textS        = game:GetService("TextService")
 local plrs        = game:GetService("Players")
@@ -7640,7 +7693,7 @@ end
 local device = emulator and (isMobile and "PC" or "Mobile") or (isMobile and "Mobile" or "PC")
 
 local executor, version = (env.identifyexecutor or function()
-    return (game:GetService("RunService"):IsStudio() and "Studio" or "") .. "Client", g("version")()
+    return (rs:IsStudio() and "Studio" or "") .. "Client", g("version")()
 end)()
 
 if not executor then
@@ -7797,7 +7850,7 @@ local function getOptions(window, self, ...)
     local options = setmetatable(typeof(options) == "table" and options or { }, { __index = self.DefaultOptions })
     local ID = typeof(flag) == "string" and flag or options.ID or options.id or options.Flag or options.flag or options.Id or options.Idx or options.Index or options.idx or options.index
     if not ID then
-        local str = options.Text or options.Title or ""
+        local str = options.Text ~= "" and options.Text or options.Title ~= "" and options.Title or ""
         if #str == 0 then
             str = "Object"
         end
@@ -8287,7 +8340,7 @@ local keybindBase = {
         Reference = false,
         Visible = false,
         Value = false,
-
+        
         KeySet = function() end
     },
     Set = function(self, value)
@@ -10171,11 +10224,13 @@ local windowFuncs; windowFuncs = {
             local done = false
 
             if options.Duration ~= math.huge then
-                task.delay(options.Duration, function()
+                task.spawn(function()
+                    rs.RenderStepped:Wait()
+                    
+                    tweenOnce(notif.Background.Progress.Fill, TweenInfo.new(options.Duration, Enum.EasingStyle.Linear), { Size = UDim2.fromScale(0, 1) })
+                    task.wait(options.Duration)
                     done = true
                 end)
-
-                tweenOnce(notif.Background.Progress.Fill, TweenInfo.new(options.Duration, Enum.EasingStyle.Linear), { Size = UDim2.fromScale(0, 1) })
             end
 
             local con1 = notif.Background.Holder.Buttons.Yes.MouseButton1Click:Connect(function()
@@ -10959,7 +11014,7 @@ tooltipObject = newObject({
             Class = "Tooltip"
         }, self)
 
-        game:GetService("RunService").RenderStepped:Connect(function()
+        rs.RenderStepped:Connect(function()
             object.Proxy:Refresh()
         end)
 
@@ -11077,6 +11132,8 @@ library = newObject({
 })
 
 global[key] = library
+
+rs.RenderStepped:Wait()
 return library
     end;
 
