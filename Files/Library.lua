@@ -7140,6 +7140,13 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 			end,
 			Visible = false
 		})
+
+		mf(coreFolder:sub(1, -2))
+		mf(cacheRoute:sub(1, -2))
+		mf(configsRoute:sub(1, -2))
+		mf(configsRoute .. fl:sub(1, -2))
+		mf(themesRoute:sub(1, -2))
+		nf(assetCache, { })
 		
 		configDropdown.Values = getExistingConfigs()
 		themeDropdown.Values = getExistingThemes()
