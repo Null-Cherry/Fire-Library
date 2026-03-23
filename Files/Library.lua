@@ -6949,211 +6949,205 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             window:Refresh()
         end
 
-        if not configsEnabled then return settingsTab:AddLabel({ Text = "Saving configs and themes are unavailable in your environment!" }) end
+        		if not configsEnabled then return settingsTab:AddLabel({ Text = "Saving configs and themes are unavailable in your environment!" }) end
 
-        local fl = safeEncode(window.Flag) .. "/"
-        local hidden = { }
+		local fl = safeEncode(window.Flag) .. "/"
+		local hidden = { }
 
-        local lol = settingsTab:AddLabel({ Text = "Loading configs and themes functions, wait..." })
+		local lol = settingsTab:AddLabel({ Text = "Loading configs and themes functions, wait..." })
 
-        mf(coreFolder:sub(1, -2))
-        mf(cacheRoute:sub(1, -2))
-        mf(configsRoute:sub(1, -2))
-        mf(configsRoute .. fl:sub(1, -2))
-        mf(themesRoute:sub(1, -2))
-        nf(assetCache, { })
+		local function getExistingConfigs()
+			local configNames = { }
+			for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
+				table.insert(configNames, file:sub(#configsRoute + #fl + 1, -#json - 1))
+			end
+			
+			return configNames
+		end
 
-        local function getExistingConfigs()
-            local configNames = { }
-            for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
-                table.insert(configNames, file:sub(#configsRoute + #fl + 1, -#json - 1))
-            end
-            
-            return configNames
-        end
+		local function validateName(name: string)
+			return #name >= 1 and #name <= 32 and not name:find("\\", 1, true) and not name:find("/", 1, true)
+		end
 
-        local function validateName(name: string)
-            return #name >= 1 and #name <= 32 and not name:find("\\", 1, true) and not name:find("/", 1, true)
-        end
+		hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Configs", Visible = false })
 
-        hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Configs", Visible = false })
+		local configTextBox = settingsTab:AddTextBox("ConfigName", {
+			PlaceholderText = "Enter config name",
+			NoConfigs = true,
+			Text = "Config name",
+			Visible = false
+		})
+		hidden[#hidden + 1] = configTextBox
 
-        local configTextBox = settingsTab:AddTextBox("ConfigName", {
-            PlaceholderText = "Enter config name",
-            NoConfigs = true,
-            Text = "Config name",
-            Visible = false
-        })
-        hidden[#hidden + 1] = configTextBox
+		local configDropdown = settingsTab:AddDropdown("ConfigsList", {
+			Text = "Saved configs",
+			AllowUnselect = true,
+			NoConfigs = true,
+			Callback = function(text)
+				configTextBox.Value = text or ""
+			end,
+			Visible = false
+		})
+		hidden[#hidden + 1] = configDropdown
 
-        local configDropdown = settingsTab:AddDropdown("ConfigsList", {
-            Text = "Saved configs",
-            Values = getExistingConfigs(),
-            AllowUnselect = true,
-            NoConfigs = true,
-            Callback = function(text)
-                configTextBox.Value = text or ""
-            end,
-            Visible = false
-        })
-        hidden[#hidden + 1] = configDropdown
+		hidden[#hidden + 1] = settingsTab:AddButton({
+			Text = "Save config",
+			NoConfigs = true,
+			Callback = function()
+				local name = configTextBox.Value
+				if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
-        hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Save config",
-            NoConfigs = true,
-            Callback = function()
-                local name = configTextBox.Value
-                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
+				local route = configsRoute .. fl .. name .. json
+				if IF(route) then if not window:Notification({ Title = "Config exists", Text = "Config '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
 
-                local route = configsRoute .. fl .. name .. json
-                if IF(route) then if not window:Notification({ Title = "Config exists", Text = "Config '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
+				wf(route, getConfig())
+				configDropdown.Values = getExistingConfigs()
+				
+				window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been saved!" })
+			end,
+			Visible = false
+		})
 
-                wf(route, getConfig())
-                configDropdown.Values = getExistingConfigs()
-                
-                window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been saved!" })
-            end,
-            Visible = false
-        })
+		hidden[#hidden + 1] = settingsTab:AddButton({
+			Text = "Load сonfig",
+			NoConfigs = true,
+			Callback = function()
+				local name = configTextBox.Value
+				if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
-        hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Load сonfig",
-            NoConfigs = true,
-            Callback = function()
-                local name = configTextBox.Value
-                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
+				local route = configsRoute .. fl .. name .. json
+				if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
 
-                local route = configsRoute .. fl .. name .. json
-                if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
+				local data = rf(route, true)
+				if data then
+					setConfig(data, window)
+					window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully loaded!" })
+				else
+					window:Notification({ Title = "Error", Text = "Invalid config file" })
+				end
+			end,
+			Visible = false
+		})
 
-                local data = rf(route, true)
-                if data then
-                    setConfig(data, window)
-                    window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully loaded!" })
-                else
-                    window:Notification({ Title = "Error", Text = "Invalid config file" })
-                end
-            end,
-            Visible = false
-        })
+		hidden[#hidden + 1] = settingsTab:AddButton({
+			Text = "Delete config",
+			NoConfigs = true,
+			Icon = "Trash",
+			Callback = function()
+				local name = configTextBox.Value
+				if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
-        hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Delete config",
-            NoConfigs = true,
-            Icon = "Trash",
-            Callback = function()
-                local name = configTextBox.Value
-                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
+				local route = configsRoute .. fl .. name .. json
+				if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
 
-                local route = configsRoute .. fl .. name .. json
-                if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
+				if window:Notification({ Title = "Delete config", Text = "Are you sure you want to delete config '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
+					df(route)
+					configDropdown.Values = getExistingConfigs()
 
-                if window:Notification({ Title = "Delete config", Text = "Are you sure you want to delete config '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
-                    df(route)
-                    configDropdown.Values = getExistingConfigs()
+					window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully deleted!" })
+				end
+			end,
+			Visible = false
+		})
 
-                    window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully deleted!" })
-                end
-            end,
-            Visible = false
-        })
+		local function getExistingThemes()
+			local themeNames = { }
+			for _, file in lf(themesRoute:sub(1, -2)) or { } do
+				table.insert(themeNames, file:sub(#themesRoute + 1, -#json - 1))
+			end
+			
+			return themeNames
+		end
 
-        local function getExistingThemes()
-            local themeNames = { }
-            for _, file in lf(themesRoute:sub(1, -2)) or { } do
-                table.insert(themeNames, file:sub(#themesRoute + 1, -#json - 1))
-            end
-            
-            return themeNames
-        end
+		hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
+		hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Themes", Visible = false })
 
-        hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
-        hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Themes", Visible = false })
+		local themeTextBox = settingsTab:AddTextBox("ThemeName", {
+			PlaceholderText = "Enter theme name",
+			NoConfigs = true,
+			Text = "Theme name",
+			Visible = false
+		})
+		hidden[#hidden + 1] = themeTextBox
 
-        local themeTextBox = settingsTab:AddTextBox("ThemeName", {
-            PlaceholderText = "Enter theme name",
-            NoConfigs = true,
-            Text = "Theme name",
-            Visible = false
-        })
-        hidden[#hidden + 1] = themeTextBox
+		local themeDropdown = settingsTab:AddDropdown("ThemesList", {
+			Text = "Saved themes",
+			AllowUnselect = true,
+			NoConfigs = true,
+			Callback = function(text)
+				themeTextBox.Value = text or ""
+			end,
+			Visible = false
+		})
+		hidden[#hidden + 1] = themeDropdown
 
-        local themeDropdown = settingsTab:AddDropdown("ThemesList", {
-            Text = "Saved themes",
-            Values = getExistingThemes(),
-            AllowUnselect = true,
-            NoConfigs = true,
-            Callback = function(text)
-                themeTextBox.Value = text or ""
-            end,
-            Visible = false
-        })
-        hidden[#hidden + 1] = themeDropdown
+		hidden[#hidden + 1] = settingsTab:AddButton({
+			Text = "Save theme",
+			NoConfigs = true,
+			Callback = function()
+				local name = themeTextBox.Value
+				if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
-        hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Save theme",
-            NoConfigs = true,
-            Callback = function()
-                local name = themeTextBox.Value
-                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
+				local route = themesRoute .. name .. json
+				if IF(route) then if not window:Notification({ Title = "Theme exists", Text = "Theme '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
 
-                local route = themesRoute .. name .. json
-                if IF(route) then if not window:Notification({ Title = "Theme exists", Text = "Theme '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
+				wf(route, getTheme())
+				themeDropdown.Values = getExistingThemes()
+				
+				window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been saved!" })
+			end,
+			Visible = false
+		})
 
-                wf(route, getTheme())
-                themeDropdown.Values = getExistingThemes()
-                
-                window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been saved!" })
-            end,
-            Visible = false
-        })
+		hidden[#hidden + 1] = settingsTab:AddButton({
+			Text = "Load theme",
+			NoConfigs = true,
+			Callback = function()
+				local name = themeTextBox.Value
+				if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
-        hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Load theme",
-            NoConfigs = true,
-            Callback = function()
-                local name = themeTextBox.Value
-                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
+				local route = themesRoute .. name .. json
+				if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
 
-                local route = themesRoute .. name .. json
-                if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
+				local data = rf(route, true)
+				if data then
+					setTheme(data)
+					window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully loaded!" })
+				else
+					window:Notification({ Title = "Error", Text = "Invalid theme file" })
+				end
+			end,
+			Visible = false
+		})
 
-                local data = rf(route, true)
-                if data then
-                    setTheme(data)
-                    window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully loaded!" })
-                else
-                    window:Notification({ Title = "Error", Text = "Invalid theme file" })
-                end
-            end,
-            Visible = false
-        })
+		hidden[#hidden + 1] = settingsTab:AddButton({
+			Text = "Delete theme",
+			NoConfigs = true,
+			Icon = "Trash",
+			Callback = function()
+				local name = themeTextBox.Value
+				if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
-        hidden[#hidden + 1] = settingsTab:AddButton({
-            Text = "Delete theme",
-            NoConfigs = true,
-            Icon = "Trash",
-            Callback = function()
-                local name = themeTextBox.Value
-                if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
+				local route = themesRoute .. name .. json
+				if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
 
-                local route = themesRoute .. name .. json
-                if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
-
-                if window:Notification({ Title = "Delete theme", Text = "Are you sure you want to delete theme '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
-                    df(route)
-                    themeDropdown.Values = getExistingThemes()
-                    
-                    window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully deleted!" })
-                end
-            end,
-            Visible = false
-        })
-        
-        lol.Visible = false
-        for i, v in hidden do
-            v.Visible = true
-        end
+				if window:Notification({ Title = "Delete theme", Text = "Are you sure you want to delete theme '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
+					df(route)
+					themeDropdown.Values = getExistingThemes()
+					
+					window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully deleted!" })
+				end
+			end,
+			Visible = false
+		})
+		
+		configDropdown.Values = getExistingConfigs()
+		themeDropdown.Values = getExistingThemes()
+		
+		lol.Visible = false
+		for i, v in hidden do
+			v.Visible = true
+		end
     end)
     
     local themeObjects = { }
