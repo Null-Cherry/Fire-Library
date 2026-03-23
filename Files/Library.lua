@@ -6957,7 +6957,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local function getExistingConfigs()
             local configNames = { }
             for _, file in (lf(configsRoute .. fl:sub(1, -2)) or { }) do
-                configNames[#configNames + 1] = file:sub(#configsRoute, -#json - 1)
+                configNames[#configNames + 1] = file:sub(#configsRoute + #fl, -#json - 1)
             end
             
             return configNames
@@ -6981,12 +6981,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             AllowUnselect = true,
             NoConfigs = true,
             Callback = function(text)
-                configTextBox.Text = text or ""
+                configTextBox.Value = text or ""
             end,
             Visible = false
         }); hidden[#hidden + 1] = configDropdown
         
-        local saveConfigButton = settingsTab:AddButton({
+        hidden[#hidden + 1] = settingsTab:AddButton({
             Text = "Save Config",
             NoConfigs = true,
             Callback = function()
@@ -6999,9 +6999,9 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 configDropdown.Values = getExistingConfigs()
             end,
             Visible = false
-        }); hidden[#hidden + 1] = saveConfigButton
+        })
         
-        local loadConfigButton = settingsTab:AddButton({
+        hidden[#hidden + 1] = settingsTab:AddButton({
             Text = "Load Config",
             NoConfigs = true,
             Callback = function()
@@ -7018,7 +7018,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 end
             end,
             Visible = false
-        }); hidden[#hidden + 1] = loadConfigButton
+        })
 
         local function getExistingThemes()
             local themeNames = { }
@@ -7050,12 +7050,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             AllowUnselect = true,
             NoConfigs = true,
             Callback = function(text)
-                themeTextBox.Text = text or ""
+                themeTextBox.Value = text or ""
             end,
             Visible = false
         }); hidden[#hidden + 1] = themeDropdown
         
-        local saveThemeButton = settingsTab:AddButton({
+        hidden[#hidden + 1] = settingsTab:AddButton({
             Text = "Save Theme",
             NoConfigs = true,
             Callback = function()
@@ -7068,9 +7068,9 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 themeDropdown.Values = getExistingThemes()
             end,
             Visible = false
-        }); hidden[#hidden + 1] = saveThemeButton
+        })
         
-        local loadThemeButton = settingsTab:AddButton({
+        hidden[#hidden + 1] = settingsTab:AddButton({
             Text = "Load Theme",
             NoConfigs = true,
             Callback = function()
@@ -7087,7 +7087,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 end
             end,
             Visible = false
-        }); hidden[#hidden + 1] = loadThemeButton
+        })
         
         mf(coreFolder:sub(1, -2))
         mf(cacheRoute:sub(1, -2))
@@ -11294,100 +11294,27 @@ return {
 
     modules[objects["Instance3"]] = function(...)
         local script = objects["Instance3"];
-return table.freeze({
-    ["EN"] = { "English", "English", "🇺🇸" },
-    ["RU"] = { "Русский", "Russian", "🇷🇺" },
-    ["ES"] = { "Español", "Spanish", "🇪🇸" },
-    ["FR"] = { "Français", "French", "🇫🇷" },
-    ["DE"] = { "Deutsch", "German", "🇩🇪" },
-    ["IT"] = { "Italiano", "Italian", "🇮🇹" },
-    ["PT"] = { "Português", "Portuguese", "🇵🇹" },
-    ["JA"] = { "日本語", "Japanese", "🇯🇵" },
-    ["KO"] = { "한국어", "Korean", "🇰🇷" },
-    ["ZH"] = { "中文", "Chinese", "🇨🇳" },
-    ["AR"] = { "العربية", "Arabic", "🇸🇦" },
-    ["HI"] = { "हिन्दी", "Hindi", "🇮🇳" },
-    ["NL"] = { "Nederlands", "Dutch", "🇳🇱" },
-    ["TR"] = { "Türkçe", "Turkish", "🇹🇷" },
-    ["SV"] = { "Svenska", "Swedish", "🇸🇪" },
-    ["PL"] = { "Polski", "Polish", "🇵🇱" },
-    ["FI"] = { "Suomi", "Finnish", "🇫🇮" },
-    ["DA"] = { "Dansk", "Danish", "🇩🇰" },
-    ["NO"] = { "Norsk", "Norwegian", "🇳🇴" },
-    ["CS"] = { "Čeština", "Czech", "🇨🇿" },
-    ["HU"] = { "Magyar", "Hungarian", "🇭🇺" },
-    ["EL"] = { "Ελληνικά", "Greek", "🇬🇷" },
-    ["HE"] = { "עברית", "Hebrew", "🇮🇱" },
-    ["TH"] = { "ไทย", "Thai", "🇹🇭" },
-    ["ID"] = { "Bahasa Indonesia", "Indonesian", "🇮🇩" },
-    ["VI"] = { "Tiếng Việt", "Vietnamese", "🇻🇳" },
-    ["TL"] = { "Filipino", "Filipino", "🇵🇭" },
-    ["BN"] = { "বাংলা", "Bengali", "🇧🇩" },
-    ["FA"] = { "فارسی", "Persian", "🇮🇷" },
-    ["UR"] = { "اردو", "Urdu", "🇵🇰" },
-    ["ML"] = { "മലയാളം", "Malayalam", "🇮🇳" },
-    ["TA"] = { "தமிழ்", "Tamil", "🇮🇳" },
-    ["TE"] = { "తెలుగు", "Telugu", "🇮🇳" },
-    ["KN"] = { "ಕನ್ನಡ", "Kannada", "🇮🇳" },
-    ["MR"] = { "मराठी", "Marathi", "🇮🇳" },
-    ["PA"] = { "ਪੰਜਾਬੀ", "Punjabi", "🇮🇳" },
-    ["AZ"] = { "Azərbaycanca", "Azerbaijani", "🇦🇿" },
-    ["UK"] = { "Українська", "Ukrainian", "🇺🇦" },
-    ["BE"] = { "Беларуская", "Belarusian", "🇧🇾" },
-    ["SR"] = { "Српски", "Serbian", "🇷🇸" },
-    ["HR"] = { "Hrvatski", "Croatian", "🇭🇷" },
-    ["SL"] = { "Slovenščina", "Slovenian", "🇸🇮" },
-    ["LT"] = { "Lietuvių", "Lithuanian", "🇱🇹" },
-    ["LV"] = { "Latviešu", "Latvian", "🇱🇻" },
-    ["ET"] = { "Eesti", "Estonian", "🇪🇪" },
-    ["IS"] = { "Íslenska", "Icelandic", "🇮🇸" },
-    ["MT"] = { "Malti", "Maltese", "🇲🇹" },
-    ["SK"] = { "Slovenčina", "Slovak", "🇸🇰" },
-    ["BG"] = { "Български", "Bulgarian", "🇧🇬" },
-    ["RO"] = { "Română", "Romanian", "🇷🇴" },
-    ["CA"] = { "Català", "Catalan", "🇪🇸" },
-    ["GL"] = { "Galego", "Galician", "🇪🇸" },
-    ["EU"] = { "Euskara", "Basque", "🇪🇸" },
-    ["CY"] = { "Cymraeg", "Welsh", "🇬🇧" },
-    ["GA"] = { "Gaeilge", "Irish", "🇮🇪" },
-    ["MK"] = { "Македонски", "Macedonian", "🇲🇰" },
-    ["AL"] = { "Shqip", "Albanian", "🇦🇱" },
-    ["MN"] = { "Монгол", "Mongolian", "🇲🇳" },
-    ["NE"] = { "नेपाली", "Nepali", "🇳🇵" },
-    ["KM"] = { "ភាសាខ្មែរ", "Khmer", "🇰🇭" },
-    ["LO"] = { "ລາວ", "Lao", "🇱🇦" },
-    ["MY"] = { "Bahasa Melayu", "Malay", "🇲🇾" },
-    ["SW"] = { "Kiswahili", "Swahili", "🇰🇪" },
-    ["AM"] = { "አማርኛ", "Amharic", "🇪🇹" },
-    ["HA"] = { "Hausa", "Hausa", "🇳🇬" },
-    ["YO"] = { "Yorùbá", "Yoruba", "🇳🇬" },
-    ["IG"] = { "Igbo", "Igbo", "🇳🇬" },
-    ["PS"] = { "پښتو", "Pashto", "🇦🇫" },
-    ["TK"] = { "Türkmençe", "Turkmen", "🇹🇲" },
-    ["UZ"] = { "O'zbekcha", "Uzbek", "🇺🇿" },
-    ["KK"] = { "Қазақша", "Kazakh", "🇰🇿" },
-    ["KY"] = { "Кыргызча", "Kyrgyz", "🇰🇬" },
-    ["TG"] = { "Тоҷикӣ", "Tajik", "🇹🇯" },
-    ["SD"] = { "سنڌي", "Sindhi", "🇵🇰" },
-    ["BO"] = { "བོད་སྐད་", "Tibetan", "🇨🇳" },
-    ["SI"] = { "සිංහල", "Sinhala", "🇱🇰" },
-    ["TY"] = { "Reo Tahiti", "Tahitian", "PF" },
-    ["TO"] = { "Lea Faka-Tonga", "Tongan", "TO" },
-    ["FJ"] = { "Vosa Vakaviti", "Fijian", "FJ" },
-    ["MI"] = { "Te Reo Māori", "Māori", "NZ" },
-    ["HT"] = { "Kreyòl Ayisyen", "Haitian Creole", "HT" },
-    ["WO"] = { "Wolof", "Wolof", "SN" },
-    ["SN"] = { "ChiShona", "Shona", "ZW" },
-    ["ZU"] = { "isiZulu", "Zulu", "ZA" },
-    ["XH"] = { "isiXhosa", "Xhosa", "ZA" },
-    ["AF"] = { "Afrikaans", "Afrikaans", "ZA" },
-    ["BR"] = { "Brezhoneg", "Breton", "FR" },
-    ["OC"] = { "Occitan", "Occitan", "FR" },
-    ["CO"] = { "Corsu", "Corsican", "FR" },
-    ["SA"] = { "संस्कृतम्", "Sanskrit", "IN" },
-    ["LA"] = { "Latina", "Latin", "VA" },
-    ["EO"] = { "Esperanto", "Esperanto", "🌍" }
-})
+-- hate bad executors, forced to do this
+local function hexEncode(str)
+    local result = ""
+    for i = 1, #str do
+        result ..= ("%02x"):format(str:byte(i))
+    end
+    
+    return result
+end
+
+local function hexDecode(str)
+    local result = ""
+    for i = 1, #str, 2 do
+        result ..= string.char(tonumber(str:sub(i, i + 1), 16))
+    end
+    
+    return result
+end
+
+local origin = "7b224c4f223a5b22e0baa5e0bab2e0baa7222c224c616f222c22f09f87b1f09f87a6225d2c224b4f223a5b22ed959ceab5adec96b4222c224b6f7265616e222c22f09f87b0f09f87b7225d2c224b4b223a5b22d29ad0b0d0b7d0b0d29bd188d0b0222c224b617a616b68222c22f09f87b0f09f87bf225d2c225053223a5b22d9beda9ad8aad988222c2250617368746f222c22f09f87a6f09f87ab225d2c224247223a5b22d091d18ad0bbd0b3d0b0d180d181d0bad0b8222c2242756c67617269616e222c22f09f87a7f09f87ac225d2c22424f223a5b22e0bd96e0bdbce0bd91e0bc8be0bda6e0be90e0bd91e0bc8b222c225469626574616e222c22f09f87a8f09f87b3225d2c22434f223a5b22436f727375222c22436f72736963616e222c224652225d2c225357223a5b224b6973776168696c69222c2253776168696c69222c22f09f87b0f09f87aa225d2c224f43223a5b224f63636974616e222c224f63636974616e222c224652225d2c224947223a5b224967626f222c224967626f222c22f09f87b3f09f87ac225d2c225447223a5b22d0a2d0bed2b7d0b8d0bad3a3222c2254616a696b222c22f09f87b9f09f87af225d2c22594f223a5b22596f72c3b962c3a1222c22596f72756261222c22f09f87b3f09f87ac225d2c224353223a5b22c48c65c5a174696e61222c22437a656368222c22f09f87a8f09f87bf225d2c22574f223a5b22576f6c6f66222c22576f6c6f66222c22534e225d2c224553223a5b2245737061c3b16f6c222c225370616e697368222c22f09f87aaf09f87b8225d2c22544f223a5b224c65612046616b612d546f6e6761222c22546f6e67616e222c22544f225d2c224e4f223a5b224e6f72736b222c224e6f7277656769616e222c22f09f87b3f09f87b4225d2c22554b223a5b22d0a3d0bad180d0b0d197d0bdd181d18cd0bad0b0222c22556b7261696e69616e222c22f09f87baf09f87a6225d2c22544b223a5b2254c3bc726b6d656ec3a765222c225475726b6d656e222c22f09f87b9f09f87b2225d2c225054223a5b22506f7274756775c3aa73222c22506f7274756775657365222c22f09f87b5f09f87b9225d2c224d54223a5b224d616c7469222c224d616c74657365222c22f09f87b2f09f87b9225d2c22454c223a5b22ce95cebbcebbceb7cebdceb9cebaceac222c22477265656b222c22f09f87acf09f87b7225d2c224c54223a5b224c696574757669c5b3222c224c69746875616e69616e222c22f09f87b1f09f87b9225d2c22414c223a5b225368716970222c22416c62616e69616e222c22f09f87a6f09f87b1225d2c224944223a5b2242616861736120496e646f6e65736961222c22496e646f6e657369616e222c22f09f87aef09f87a9225d2c225848223a5b2269736958686f7361222c2258686f7361222c225a41225d2c225344223a5b22d8b3d986da8cd98a222c2253696e646869222c22f09f87b5f09f87b0225d2c225a48223a5b22e4b8ade69687222c224368696e657365222c22f09f87a8f09f87b3225d2c224954223a5b224974616c69616e6f222c224974616c69616e222c22f09f87aef09f87b9225d2c22544c223a5b2246696c6970696e6f222c2246696c6970696e6f222c22f09f87b5f09f87ad225d2c224854223a5b224b726579c3b26c204179697379656e222c224861697469616e204372656f6c65222c224854225d2c225448223a5b22e0b984e0b897e0b8a2222c2254686169222c22f09f87b9f09f87ad225d2c22504c223a5b22506f6c736b69222c22506f6c697368222c22f09f87b5f09f87b1225d2c224d4c223a5b22e0b4aee0b4b2e0b4afe0b4bee0b4b3e0b482222c224d616c6179616c616d222c22f09f87aef09f87b3225d2c224e4c223a5b224e656465726c616e6473222c224475746368222c22f09f87b3f09f87b1225d2c225255223a5b22d0a0d183d181d181d0bad0b8d0b9222c225275737369616e222c22f09f87b7f09f87ba225d2c224849223a5b22e0a4b9e0a4bfe0a4a8e0a58de0a4a6e0a580222c2248696e6469222c22f09f87aef09f87b3225d2c224445223a5b2244657574736368222c224765726d616e222c22f09f87a9f09f87aa225d2c224649223a5b2253756f6d69222c2246696e6e697368222c22f09f87abf09f87ae225d2c224245223a5b22d091d0b5d0bbd0b0d180d183d181d0bad0b0d18f222c2242656c6172757369616e222c22f09f87a7f09f87be225d2c224641223a5b22d981d8a7d8b1d8b3db8c222c225065727369616e222c22f09f87aef09f87b7225d2c224441223a5b2244616e736b222c2244616e697368222c22f09f87a9f09f87b0225d2c224e45223a5b22e0a4a8e0a587e0a4aae0a4bee0a4b2e0a580222c224e6570616c69222c22f09f87b3f09f87b5225d2c224a41223a5b22e697a5e69cace8aa9e222c224a6170616e657365222c22f09f87aff09f87b5225d2c224b59223a5b22d09ad18bd180d0b3d18bd0b7d187d0b0222c224b797267797a222c22f09f87b0f09f87ac225d2c22414d223a5b22e18aa0e1889be188ade18a9b222c22416d6861726963222c22f09f87aaf09f87b9225d2c224845223a5b22d7a2d791d7a8d799d7aa222c22486562726577222c22f09f87aef09f87b1225d2c224c41223a5b224c6174696e61222c224c6174696e222c225641225d2c225341223a5b22e0a4b8e0a482e0a4b8e0a58de0a495e0a583e0a4a4e0a4aee0a58d222c2253616e736b726974222c22494e225d2c225445223a5b22e0b0a4e0b186e0b0b2e0b181e0b097e0b181222c2254656c756775222c22f09f87aef09f87b3225d2c225649223a5b225469e1babf6e67205669e1bb8774222c22566965746e616d657365222c22f09f87bbf09f87b3225d2c225441223a5b22e0aea4e0aeaee0aebfe0aeb4e0af8d222c2254616d696c222c22f09f87aef09f87b3225d2c22454f223a5b224573706572616e746f222c224573706572616e746f222c22f09f8c8d225d2c22524f223a5b22526f6dc3a26ec483222c22526f6d616e69616e222c22f09f87b7f09f87b4225d2c224855223a5b224d6167796172222c2248756e67617269616e222c22f09f87adf09f87ba225d2c224d49223a5b2254652052656f204dc4816f7269222c224dc4816f7269222c224e5a225d2c225a55223a5b226973695a756c75222c225a756c75222c225a41225d2c224555223a5b224575736b617261222c22426173717565222c22f09f87aaf09f87b8225d2c225349223a5b22e0b783e0b792e0b682e0b784e0b6bd222c2253696e68616c61222c22f09f87b1f09f87b0225d2c22534e223a5b2243686953686f6e61222c2253686f6e61222c225a57225d2c22464a223a5b22566f73612056616b6176697469222c2246696a69616e222c22464a225d2c224d52223a5b22e0a4aee0a4b0e0a4bee0a4a0e0a580222c224d617261746869222c22f09f87aef09f87b3225d2c224b4e223a5b22e0b295e0b2a8e0b38de0b2a8e0b2a1222c224b616e6e616461222c22f09f87aef09f87b3225d2c22555a223a5b224f277a62656b636861222c22557a62656b222c22f09f87baf09f87bf225d2c22454e223a5b22456e676c697368222c22456e676c697368222c22f09f87baf09f87b8225d2c224c56223a5b224c6174766965c5a175222c224c61747669616e222c22f09f87b1f09f87bb225d2c224146223a5b22416672696b61616e73222c22416672696b61616e73222c225a41225d2c225352223a5b22d0a1d180d0bfd181d0bad0b8222c225365726269616e222c22f09f87b7f09f87b8225d2c225452223a5b2254c3bc726bc3a765222c225475726b697368222c22f09f87b9f09f87b7225d2c22424e223a5b22e0a6ace0a6bee0a682e0a6b2e0a6be222c2242656e67616c69222c22f09f87a7f09f87a9225d2c225459223a5b2252656f20546168697469222c22546168697469616e222c225046225d2c224841223a5b224861757361222c224861757361222c22f09f87b3f09f87ac225d2c225356223a5b225376656e736b61222c2253776564697368222c22f09f87b8f09f87aa225d2c224d59223a5b22426168617361204d656c617975222c224d616c6179222c22f09f87b2f09f87be225d2c224b4d223a5b22e19e97e19eb6e19e9fe19eb6e19e81e19f92e19e98e19f82e19e9a222c224b686d6572222c22f09f87b0f09f87ad225d2c224d4e223a5b22d09cd0bed0bdd0b3d0bed0bb222c224d6f6e676f6c69616e222c22f09f87b2f09f87b3225d2c224d4b223a5b22d09cd0b0d0bad0b5d0b4d0bed0bdd181d0bad0b8222c224d616365646f6e69616e222c22f09f87b2f09f87b0225d2c224741223a5b22476165696c6765222c224972697368222c22f09f87aef09f87aa225d2c224359223a5b2243796d72616567222c2257656c7368222c22f09f87acf09f87a7225d2c22474c223a5b2247616c65676f222c2247616c696369616e222c22f09f87aaf09f87b8225d2c224341223a5b22436174616cc3a0222c22436174616c616e222c22f09f87aaf09f87b8225d2c224152223a5b22d8a7d984d8b9d8b1d8a8d98ad8a9222c22417261626963222c22f09f87b8f09f87a6225d2c224252223a5b224272657a686f6e6567222c22427265746f6e222c224652225d2c22534b223a5b22536c6f76656ec48d696e61222c22536c6f76616b222c22f09f87b8f09f87b0225d2c224953223a5b22c38d736c656e736b61222c224963656c616e646963222c22f09f87aef09f87b8225d2c224554223a5b224565737469222c224573746f6e69616e222c22f09f87aaf09f87aa225d2c224652223a5b224672616ec3a7616973222c224672656e6368222c22f09f87abf09f87b7225d2c22534c223a5b22536c6f76656ec5a1c48d696e61222c22536c6f76656e69616e222c22f09f87b8f09f87ae225d2c224852223a5b224872766174736b69222c2243726f617469616e222c22f09f87adf09f87b7225d2c225552223a5b22d8a7d8b1d8afd988222c2255726475222c22f09f87b5f09f87b0225d2c225041223a5b22e0a8aae0a9b0e0a89ce0a8bee0a8ace0a980222c2250756e6a616269222c22f09f87aef09f87b3225d2c22415a223a5b22417ac9997262617963616e6361222c22417a65726261696a616e69222c22f09f87a6f09f87bf225d7d"
+return game:GetService("HttpService"):JSONDecode(hexDecode(origin))
     end;
 end;
 
