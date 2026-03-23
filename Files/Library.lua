@@ -8286,7 +8286,9 @@ local keybindBase = {
     DefaultOptions = {
         Reference = false,
         Visible = false,
-        Value = false
+        Value = false,
+
+        KeySet = function() end
     },
     Set = function(self, value)
         self.Options.Value = value
