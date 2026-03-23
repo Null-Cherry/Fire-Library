@@ -6625,7 +6625,6 @@ local rf = configsEnabled and function(name, decode)
     return decoded
 end
 
-gca = configsEnabled
 local mf = configsEnabled and function(name)
     if not If(name) then
         mf(name)
