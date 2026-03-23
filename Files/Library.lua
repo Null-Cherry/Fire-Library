@@ -6956,6 +6956,13 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local lol = settingsTab:AddLabel({ Text = "Loading configs and themes functions, wait..." })
 
+        mf(coreFolder:sub(1, -2))
+        mf(cacheRoute:sub(1, -2))
+        mf(configsRoute:sub(1, -2))
+        mf(configsRoute .. fl:sub(1, -2))
+        mf(themesRoute:sub(1, -2))
+        nf(assetCache, { })
+
         local function getExistingConfigs()
             local configNames = { }
             for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
@@ -7142,13 +7149,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end,
             Visible = false
         })
-        
-        mf(coreFolder:sub(1, -2))
-        mf(cacheRoute:sub(1, -2))
-        mf(configsRoute:sub(1, -2))
-        mf(configsRoute .. fl:sub(1, -2))
-        mf(themesRoute:sub(1, -2))
-        nf(assetCache, { })
         
         lol.Visible = false
         for i, v in hidden do
