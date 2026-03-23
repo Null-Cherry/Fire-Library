@@ -7024,7 +7024,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             local themeNames = { }
             
             for _, file in (lf(themesRoute:sub(1, -2)) or { }) do
-                themeNames[themeNames + 1] = file:sub(#themesRoute, -#json - 1)
+                themeNames[#themeNames + 1] = file:sub(#themesRoute, -#json - 1)
             end
             
             return themeNames
