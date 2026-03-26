@@ -651,14 +651,15 @@ do -- Set properties
     objects["Instance46"]["ScrollBarImageColor3"] = Color3.new(1, 0, 0.498039);
     objects["Instance46"]["BorderColor3"] = Color3.new(0, 0, 0);
     objects["Instance46"]["ScrollBarThickness"] = 4;
+    objects["Instance46"]["Size"] = UDim2.new(1, 0, 1, 0);
     objects["Instance46"]["Parent"] = objects["Instance45"];
     objects["Instance46"]["TopImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
-    objects["Instance46"]["Name"] = "Page";
+    objects["Instance46"]["BackgroundTransparency"] = 1;
     objects["Instance46"]["TopImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
     objects["Instance46"]["BottomImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
-    objects["Instance46"]["BackgroundTransparency"] = 1;
+    objects["Instance46"]["CanvasPosition"] = Vector2.new(0, 187);
     objects["Instance46"]["BottomImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
-    objects["Instance46"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance46"]["Name"] = "Page";
     objects["Instance46"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance47"]["ClipsDescendants"] = true;
@@ -3731,6 +3732,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 end
             end
         })
+        
+        task.spawn(function()
+            while task.wait(1) and not window.Closed do
+                themeString.Value = encodeThingy(getTheme())
+            end
+        end)
         
         if toclip then
             settingsTab:AddButton({
@@ -7277,7 +7284,7 @@ local windowFuncs; windowFuncs = {
 
             if options.ShowPing then
                 local pingS = math.round(ping * 1000)
-                pingS = "Ping: " .. paintRichText(tostring(pingS) .. " ms", Color3.new(0, 1):Lerp(Color3.new(1), math.clamp(pingS / 1000, 0, 1)))
+                pingS = "Ping: " .. (pingS >= 0 and paintRichText(tostring(pingS) .. " ms", Color3.new(0, 1):Lerp(Color3.new(1), math.clamp(pingS / 1000, 0, 1))) or paintRichText("Disconnected", Color3.new(1)))
 
                 if not inserted then
                     inserted = true
@@ -7436,7 +7443,7 @@ local windowFuncs; windowFuncs = {
         window.RealWindow.Contents.SettingsOverlay.SettingsHub.Image.ImageTransparency = options.ImageTransparency
         window.RealWindow.Contents.SettingsOverlay.SettingsHub.Image.ImageColor3 = options.ImageColor
         window.RealWindow.BackgroundTransparency = options.BackgroundTransparency
-        window.RealWindow.Contents.SettingsOverlay.SettingsHub.BackgroundTransparency = options.BackgroundTransparency
+        window.RealWindow.Contents.SettingsOverlay.SettingsHub.BackgroundTransparency = 0
         window.RealWindow.Contents.SettingsOverlay.SettingsHub.Image.Image = window.RealWindow.Image
         window.RealWindow.InsideStroke.Thickness = options.NeonThickness
 
@@ -7595,6 +7602,7 @@ local windowFuncs; windowFuncs = {
         if self.Options.Closed then return end
         self.Options.Closed = true
         self.Options.Debounce = false
+        self.MobileButton:Destroy()
 
         self:Hide()
         task.spawn(self.Options.OnClose, self)
