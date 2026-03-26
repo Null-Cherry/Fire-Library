@@ -3386,7 +3386,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             lol.Text = "Looks like your executor experienced an error loading config and themes functions\nPlease retry!"
         end)
 
-        local function getExistingConfigs()
+        getExistingConfigs = function()
             local configNames = { }
             for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
                 table.insert(configNames, file:sub(#configsRoute + #fl + 1, -#json - 1))
@@ -3403,7 +3403,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local configRoute = configsRoute .. fl:sub(1, -2) .. "-AutoLoad" .. json
         local autoLoadConfig
-        local loadTheme, loadConfig
+        local loadTheme, loadConfig, getExistingConfigs, getExistingThemes
 
         if configsEnabled then
             local configTextBox = settingsTab:AddTextBox("ConfigName", {
@@ -3582,7 +3582,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end
         })
 
-        local function getExistingThemes()
+        getExistingThemes = function()
             local themeNames = { }
             for _, file in lf(themesRoute:sub(1, -2)) or { } do
                 table.insert(themeNames, file:sub(#themesRoute + 1, -#json - 1))
