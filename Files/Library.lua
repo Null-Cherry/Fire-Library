@@ -3069,12 +3069,6 @@ local nf = configsEnabled and function(name, default, dontEncode)
         return true
     end
 
-    local cont = rf(name, typeof(default) ~= "string")
-    if typeof(cont) ~= typeof(default) then
-        wf(name, default, dontEncode)
-        return true
-    end
-
     return false
 end
 
