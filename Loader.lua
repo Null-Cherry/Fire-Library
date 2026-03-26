@@ -49,7 +49,7 @@ if fl then
 	return fl
 end
 
-local ext1 = ".json"
+local ext1 = ".txt"
 local ext2 = ".lua"
 
 local wf, rf, iF = g("writefile"), g("readfile"), g("isfile")
