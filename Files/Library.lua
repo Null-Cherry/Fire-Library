@@ -2990,6 +2990,7 @@ end
 
 local wf, rf, df, mf, lf, If, IF = g("writefile"), g("readfile"), g("delfile") or g("deletefile"), g("makefolder"), g("listfiles"), g("isfolder"), g("isfile") -- g function to suspend roblox studio warnings
 local gca = g("getcustomasset")
+local toclip = g("toclipboard") or g("setclipboard")
 
 local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(df) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function"
 
@@ -3195,6 +3196,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         window.Language = window.PossibleLanguages[val]
     end, Value = 1 })
 
+    local cp1
     task.spawn(function()
         local getConfig; getConfig = function(self, cfg)
             self = self or window
@@ -3506,6 +3508,74 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         })
         hidden[#hidden + 1] = autoLoadConfig
 
+        local function encodeThingy(theme)
+            return encoder:Encode(je(theme))
+        end
+
+        hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
+        local configString = settingsTab:AddTextBox("ConfigString", {
+            NoConfigs = true,
+            PlaceholderText = "Click \"Generate code\" button",
+            Visible = false,
+            ReadOnly = true,
+            Callback = function(text)
+                if text ~= encodeThingy(getConfig()) then
+                    local s, e = pcall(encoder.Decode, encoder, text)
+                    if s then
+                        s, e = pcall(jd, e)
+                        if s then
+                            return setConfig(e)
+                        end
+                    end
+
+                    window:Notification({ Title = "Error", Text = "Invalid share string!" })
+                end
+            end
+        })
+        hidden[#hidden + 1] = configString
+
+        local i = 0
+        hidden[#hidden + 1] = settingsTab:AddButton({
+            Text = "Generate code",
+            Visible = false,
+            Callback = function()
+                i += 1
+                local I = i
+                
+                configString.ReadOnly = false
+                configString.Value = encodeThingy(getConfig())
+                task.wait(20)
+                
+                if I == i then
+                    configString.Options.ReadOnly = true
+                    configString.Value = "Code expired"
+                    task.wait(5)
+                    
+                    if I == i then
+                        configString.Value = ""
+                    end
+                end
+            end
+        })
+        
+        if toclip then
+            hidden[#hidden + 1] = settingsTab:AddButton({
+                Text = "Copy code",
+                Visible = false,
+                Callback = function()
+                    toclip(configString.Value)
+                    window:Notification({ Title = "Copied", Text = "Code copied to clipboard!" })
+                end
+            })
+        end
+        hidden[#hidden + 1] = settingsTab:AddButton({
+            Text = "Clear code",
+            Visible = false,
+            Callback = function()
+                configString.Value = ""
+            end
+        })
+
         local function getExistingThemes()
             local themeNames = { }
             for _, file in lf(themesRoute:sub(1, -2)) or { } do
@@ -3516,10 +3586,11 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
+        hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
         hidden[#hidden + 1] = settingsTab:AddLabel({ Text = "Themes", Visible = false })
 
         local autoLoadTheme
-        local themeRoute = themesRoute:sub(1, -2) .. "-AutoLoad" .. json
+        local themeRoute = themesRoute:sub(1, -3) .. "-AutoLoad" .. json
         local themeTextBox = settingsTab:AddTextBox("ThemeName", {
             PlaceholderText = "Enter theme name",
             NoConfigs = true,
@@ -3576,6 +3647,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             if data then
                 rs.RenderStepped:Wait()
                 setTheme(data)
+                cp1.Value = window.Theme.Main
                 window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully loaded!" })
             else
                 window:Notification({ Title = "Error", Text = "Invalid theme file" })
@@ -3627,6 +3699,44 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end,
         })
         hidden[#hidden + 1] = autoLoadTheme
+        
+        hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
+        local themeString = settingsTab:AddTextBox("ThemeString", {
+            NoConfigs = true,
+            Text = "Theme share string",
+            Visible = false,
+            Callback = function(text)
+                if text ~= encodeThingy(getTheme()) then
+                    local s, e = pcall(encoder.Decode, encoder, text)
+                    if s then
+                        s, e = pcall(jd, e)
+                        if s then
+                            return setTheme(e)
+                        end
+                    end
+                    
+                    window:Notification({ Title = "Error", Text = "Invalid share string!" })
+                end
+            end
+        })
+        hidden[#hidden + 1] = themeString
+        if toclip then
+            hidden[#hidden + 1] = settingsTab:AddButton({
+                Text = "Copy code",
+                Visible = false,
+                Callback = function()
+                    toclip(themeString.Value)
+                    window:Notification({ Title = "Copied", Text = "Code copied to clipboard!" })
+                end
+            })
+        end
+        hidden[#hidden + 1] = settingsTab:AddButton({
+            Text = "Clear code",
+            Visible = false,
+            Callback = function()
+                themeString.Value = ""
+            end
+        })
 
         mf(coreFolder:sub(1, -2))
         mf(cacheRoute:sub(1, -2))
@@ -3653,6 +3763,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             configTextBox.Value = cont[1]
             task.delay(5 - rs.RenderStepped:Wait(), loadConfig, cont[1])
         end
+
+        window.ThemeChanged:Connect(function()
+            themeString.Value = encodeThingy(getTheme())
+        end)
+
+        themeString.Value = encodeThingy(getTheme())
         
         lol.Visible = false
         for i, v in hidden do
@@ -3678,7 +3794,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
     end
 
-    local toggle, toggle2, cp1
+    local toggle, toggle2
     local targetColor = window.Options.Theme.Main
 
     settingsTab:AddSeparator({ Invisible = true })
