@@ -3386,6 +3386,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             lol.Text = "Looks like your executor experienced an error loading config and themes functions\nPlease retry!"
         end)
 
+        local loadTheme, loadConfig, getExistingConfigs, getExistingThemes
         getExistingConfigs = function()
             local configNames = { }
             for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
@@ -3403,10 +3404,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local configRoute = configsRoute .. fl:sub(1, -2) .. "-AutoLoad" .. json
         local autoLoadConfig
-        local loadTheme, loadConfig, getExistingConfigs, getExistingThemes
+        local configTextBox, configDropdown, themeTextBox, themeDropdown
 
         if configsEnabled then
-            local configTextBox = settingsTab:AddTextBox("ConfigName", {
+            configTextBox = settingsTab:AddTextBox("ConfigName", {
                 PlaceholderText = "Enter config name",
                 NoConfigs = true,
                 Text = "Config name",
@@ -3422,7 +3423,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             })
             hidden[#hidden + 1] = configTextBox
 
-            local configDropdown = settingsTab:AddDropdown("ConfigsList", {
+            configDropdown = settingsTab:AddDropdown("ConfigsList", {
                 Text = "Saved configs",
                 AllowUnselect = true,
                 NoConfigs = true,
@@ -3599,7 +3600,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local themeRoute = themesRoute:sub(1, -3) .. "-AutoLoad" .. json
 
         if configsEnabled then
-            local themeTextBox = settingsTab:AddTextBox("ThemeName", {
+            themeTextBox = settingsTab:AddTextBox("ThemeName", {
                 PlaceholderText = "Enter theme name",
                 NoConfigs = true,
                 Text = "Theme name",
@@ -3615,7 +3616,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             })
             hidden[#hidden + 1] = themeTextBox
 
-            local themeDropdown = settingsTab:AddDropdown("ThemesList", {
+            themeDropdown = settingsTab:AddDropdown("ThemesList", {
                 Text = "Saved themes",
                 AllowUnselect = true,
                 NoConfigs = true,
@@ -8026,4 +8027,3 @@ end;
 -- YOUR CODE DOWN HERE --
 
 local obj = objects["Instance0"];
-
