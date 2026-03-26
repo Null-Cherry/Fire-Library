@@ -4244,7 +4244,7 @@ local function tweenOnce(obj: Instance, ti: TweenInfo, props: { any })
 end
 
 local function paintRichText(text, color)
-    return "<font color=\"rgb(" .. math.floor(color.R * 255) .. "," .. math.floor(color.G * 255) .. "," .. math.floor(color.B * 255) .. ")\">" .. text .. "</font>"
+    return "<font color=\"rgb(" .. math.clamp(math.floor(color.R * 255), 0, 255) .. "," .. math.clamp(math.floor(color.G * 255), 0, 255) .. "," .. math.clamp(math.floor(color.B * 255), 0, 255) .. ")\">" .. text .. "</font>"
 end
 
 local references = { }
@@ -4488,7 +4488,7 @@ downloadImage = gca and function(url)
 
         local ca = gca(cacheRoute .. Id)
 
-        list[url] = ca
+        -- list[url] = ca -- roblox updates gonna ruin it, so removing
         wf(assetCache, list)
 
         return ca
@@ -7141,7 +7141,7 @@ local windowFuncs; windowFuncs = {
                     estFpsS ..= ".0"
                 end
 
-                table.insert(lines, "FPS: " .. paintRichText(estFpsS, Color3.new(1):Lerp(Color3.new(0, 1, 1), estFps / 120)))
+                table.insert(lines, "FPS: " .. paintRichText(estFpsS, estFps <= 120 and Color3.new(1):Lerp(Color3.new(0, 1, 1), estFps / 120) or Color3.new(0, 1, 1):Lerp(Color3.new(0.7, 0.3, 1), math.clamp((estFps - 120) / 120, 0, 2))))
             end
 
             if options.ShowPing then
