@@ -3517,7 +3517,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             NoConfigs = true,
             PlaceholderText = "Click \"Generate code\" button",
             Visible = false,
-            ReadOnly = true,
+            Disabled = true,
             Callback = function(text)
                 if text ~= encodeThingy(getConfig()) then
                     local s, e = pcall(encoder.Decode, encoder, text)
@@ -3542,12 +3542,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 i += 1
                 local I = i
                 
-                configString.ReadOnly = false
+                configString.Disabled = false
                 configString.Value = encodeThingy(getConfig())
                 task.wait(20)
                 
                 if I == i then
-                    configString.Options.ReadOnly = true
+                    configString.Options.Disabled = true
                     configString.Value = "Code expired"
                     task.wait(5)
                     
@@ -3572,7 +3572,9 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             Text = "Clear code",
             Visible = false,
             Callback = function()
+                configString.Options.Disabled = true
                 configString.Value = ""
+                i += 1
             end
         })
 
