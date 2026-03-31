@@ -16,9 +16,25 @@
 
 local http = game:GetService("HttpService")
 local sg = game:GetService("StarterGui")
+local request = request
+
+local function gHTTPG(url)
+	return game:HttpGet(url)
+end
+
+local function httpGet(url)
+	if request then
+		local result = request({ Url = url, Method = "GET", Headers = { } })
+		local success = result.Success or tostring(result.StatusCode):sub(1, 1) == "2"
+		return success and result.Body or "", success
+	else
+		local s, e = pcall(gHTTPG, url)
+		return s and e or "", s
+	end
+end
 
 local function getLastCommitID()
-	return http:JSONDecode(game:HttpGet("https://api.github.com/repos/Null-Cherry/Fire-Library/commits?path=Files%2FLibrary%2Elua", true))[1].sha
+	return http:JSONDecode(httpGet("https://api.github.com/repos/Null-Cherry/Fire-Library/commits?path=Files%2FLibrary%2Elua", true))[1].sha
 end
 
 local function fix(str)
@@ -72,7 +88,7 @@ if wf and rf and iF and current and iF(key .. "/Library" .. ext1) and iF(key .. 
 	end
 end
 
-local contents = game:HttpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Files/Library.lua", true)
+local contents = httpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Files/Library.lua", true)
 local local1 = contents:find("local", 1, true)
 if not local1 then return loadError("Invalid request return") end
 
