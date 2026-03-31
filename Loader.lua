@@ -16,7 +16,13 @@
 
 local http = game:GetService("HttpService")
 local sg = game:GetService("StarterGui")
-local request = request
+
+local env = getfenv()
+local function g(n)
+	return env[n]
+end
+
+local request = g("request")
 
 local function gHTTPG(url)
 	return game:HttpGet(url)
@@ -52,13 +58,8 @@ local function loadError(message)
 	error("FireLibrary : " .. message, 0)
 end
 
-local env = getfenv()
-local function g(n)
-	return env[n]
-end
-
 local key = "FireLibrary"
-local global = (getfenv().getgenv or function() return _G end)()
+local global = (g("getgenv") or function() return _G end)()
 
 local fl = global[key]
 if fl then
