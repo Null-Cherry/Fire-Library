@@ -300,7 +300,7 @@ do -- Set properties
     objects["Instance0"]["Name"] = "FireLibV5";
     objects["Instance0"]["DisplayOrder"] = 2147483647;
     objects["Instance0"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
-    objects["Instance0"]["ScreenInsets"] = Enum.ScreenInsets.None;
+    objects["Instance0"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
     objects["Instance0"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
     objects["Instance0"]["ResetOnSpawn"] = false;
 
@@ -1990,6 +1990,7 @@ do -- Set properties
 });
     objects["Instance177"]["Parent"] = objects["Instance176"];
 
+    objects["Instance178"]["Visible"] = false;
     objects["Instance178"]["BorderColor3"] = Color3.new(0, 0, 0);
     objects["Instance178"]["Name"] = "TopNeon";
     objects["Instance178"]["Size"] = UDim2.new(1, 0, 0, 1);
@@ -3140,7 +3141,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 allFalses = false
 
                 local color = v.Options.Reference.Options.Value and window.Options.Theme.Main or window.Options.Theme.Text
-                str ..= ` <font color="rgb({math.floor(color.R * 255)}, {math.floor(color.G * 255)}, {math.floor(color.B * 255)})" transparency="{v.Options.Reference.Options.Disabled and 0.35 or 0}">{"[" .. gsubInput(Enum.KeyCode:FromValue(v.Options.Value).Name) .. "] " .. v.Options.Reference.Options.Text}</font> \n`
+                str ..= ` <font color="#{color:ToHex()}" transparency="{v.Options.Reference.Options.Disabled and 0.35 or 0}">{"[" .. gsubInput(Enum.KeyCode:FromValue(v.Options.Value).Name) .. "] " .. v.Options.Reference.Options.Text}</font> \n`
             end
         end
 
@@ -3203,7 +3204,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     task.spawn(function()
         local getConfig; getConfig = function(self, cfg)
             self = self or window
-            cfg = cfg or { }
+            cfg = cfg or { Type = 0 }
 
             local cl = self.Class
             local fl = self.Options.Flag
@@ -3266,6 +3267,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         local setConfig; setConfig = function(cfg, self)
+            if cfg.Type ~= 0 then return window:Notification({ Title = "Config", Text = "The given config is not a config (most likely a theme!)" }) end
             self = self or window
 
             local cl = self.Class
@@ -3332,6 +3334,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local getTheme = function()
             return {
+                Type = 1,
+                
                 ShadowSize = window.Options.ShadowSize,
                 ShadowTransparency = window.Options.ShadowTransparency,
                 BackgroundTransparency = window.Options.BackgroundTransparency,
@@ -3355,6 +3359,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         local setTheme = function(theme)
+            if theme.Type ~= 1 then return window:Notification({ Title = "Theme", Text = "The given theme is not a theme (most likely a config!)" }) end
+            
             window.Options.ShadowSize = theme.ShadowSize
             window.Options.ShadowTransparency = theme.ShadowTransparency
             window.Options.BackgroundTransparency = theme.BackgroundTransparency
@@ -3526,8 +3532,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local configString = settingsTab:AddTextBox("ConfigString", {
             NoConfigs = true,
-            PlaceholderText = "Click \"Generate code\" button",
-            Disabled = true,
+            PlaceholderText = "Click \"Generate code\" button, or insert your config share string here",
             Callback = function(text)
                 if text ~= encodeThingy(getConfig()) then
                     local s, e = pcall(encoder.Decode, encoder, text)
@@ -3551,12 +3556,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 i += 1
                 local I = i
 
-                configString.Disabled = false
                 configString.Value = encodeThingy(getConfig())
                 task.wait(20)
 
                 if I == i then
-                    configString.Options.Disabled = true
                     configString.Value = "Code expired"
                     task.wait(5)
 
@@ -3580,7 +3583,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             Text = "Clear code",
             Icon = "Cross",
             Callback = function()
-                configString.Options.Disabled = true
                 configString.Value = ""
                 i += 1
             end
@@ -3734,12 +3736,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 end
             end
         })
-        
-        task.spawn(function()
-            while task.wait(1) and not window.Closed do
-                themeString.Value = encodeThingy(getTheme())
-            end
-        end)
         
         if toclip then
             settingsTab:AddButton({
@@ -4381,7 +4377,7 @@ local function tweenOnce(obj: Instance, ti: TweenInfo, props: { any })
 end
 
 local function paintRichText(text, color)
-    return "<font color=\"rgb(" .. math.clamp(math.floor(color.R * 255), 0, 255) .. "," .. math.clamp(math.floor(color.G * 255), 0, 255) .. "," .. math.clamp(math.floor(color.B * 255), 0, 255) .. ")\">" .. text .. "</font>"
+    return "<font color=\"#" .. color:ToHex() .. "\">" .. text .. "</font>"
 end
 
 local references = { }
@@ -6955,9 +6951,9 @@ local windowFuncs; windowFuncs = {
         BackgroundTransparency = 0,
         ImageTransparency = 0.85,
         ImageEnabled = true,
-        ShadowTransparency = 0,
-        Size = UDim2.fromScale(0.9, 0.5), -- better dont change it
-        ShadowSize = 35,
+        ShadowTransparency = 0.5,
+        Size = UDim2.fromScale(0.9, 0.5), -- better dont change it, I forgot to implement it correctly, now I'm just lazy to fix it
+        ShadowSize = 27,
         OnClose = function() end,
         Tooltip = "",
         NeonType = "Stroke", -- None, Stroke, Top
