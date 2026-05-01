@@ -54,7 +54,7 @@ local function loadError(message)
 		Text = message,
 		Duration = 5
 	})
-	
+
 	error("FireLibrary : " .. message, 0)
 end
 
@@ -76,8 +76,33 @@ if success then
 	current = fix(error)
 end
 
+local function update()
+	local contents = httpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Files/Library.lua", true)
+	local local1 = contents:find("local", 1, true)
+	if not local1 then return false, "Invalid request return" end
+
+	local localEnd = contents:find(";", local1, true)
+	if not localEnd then return false, "Invalid request return" end
+
+	local cont = "local parent = nil" .. contents:sub(localEnd + 1) .. "\nreturn require(obj:FindFirstChildOfClass(\"ModuleScript\"))"
+	success, error = loadstring(cont)
+	if not success then return false, "Library failed to load: " .. error end
+
+	if wf and rf and iF then
+		wf(key .. "/Library" .. ext2, cont)
+	end
+
+	if current then
+		wf(key .. "/Library" .. ext1, current)
+	end
+
+	return success
+end
+
 if wf and rf and iF and current and iF(key .. "/Library" .. ext1) and iF(key .. "/Library" .. ext2) and fix(rf(key .. "/Library" .. ext1)) == current then
+	task.spawn(update)
 	success, error = loadstring(rf(key .. "/Library" .. ext2))
+	
 	if success then
 		success, error = pcall(success, key)
 		if success then
@@ -89,29 +114,13 @@ if wf and rf and iF and current and iF(key .. "/Library" .. ext1) and iF(key .. 
 	end
 end
 
-local contents = httpGet("https://raw.githubusercontent.com/Null-Cherry/Fire-Library/refs/heads/main/Files/Library.lua", true)
-local local1 = contents:find("local", 1, true)
-if not local1 then return loadError("Invalid request return") end
-
-local localEnd = contents:find(";", local1, true)
-if not localEnd then return loadError("Invalid request return") end
-
-local cont = "local parent = nil" .. contents:sub(localEnd + 1) .. "\nreturn require(obj:FindFirstChildOfClass(\"ModuleScript\"))"
-success, error = loadstring(cont)
-if not success then return loadError("Library failed to load: " .. error) end
+local success, error = update()
+if not success then return loadError(error) end
 
 success, error = pcall(success, key)
 if not success then return loadError("Library failed to load: " .. error) end
 
 fl = error
 global[key] = fl
-
-if wf and rf and iF then
-	wf(key .. "/Library" .. ext2, cont)
-end
-
-if current then
-	wf(key .. "/Library" .. ext1, current)
-end
 
 return fl
