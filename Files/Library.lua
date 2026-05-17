@@ -4148,10 +4148,35 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     window:Refresh()
 end
 
+local function fixNum(n)
+    local str = tostring(n)
+    local dot = str:find(".", 0, true)
+    
+    if dot then
+        local afterDot = str:sub(dot + 1)
+        local beforeDot = str:sub(1, dot - 1)
+        
+        if #afterDot >= 13 then
+            afterDot = afterDot:sub(1, 13)
+            while afterDot:sub(-1, -1) == "0" do
+                afterDot = afterDot:sub(1, -2)
+            end
+        end
+        
+        if afterDot ~= "" then
+            return beforeDot .. "." .. afterDot
+        end
+        
+        return beforeDot
+    else
+        return str
+    end
+end
+
 local functions = {
     -- Basic value display
     ["."] = function(self)
-        return self.Value
+        return fixNum(self.Value)
     end,
 
     -- Percent with % symbol (raw)
@@ -4176,7 +4201,7 @@ local functions = {
 
     -- Fraction display: Value / Max
     ["/"] = function(self)
-        return tostring(self.Value) .. " / " .. tostring(self.Max)
+        return fixNum(self.Value) .. " / " .. fixNum(self.Max)
     end,
 
     -- Fraction as decimal (Value / Max)
@@ -4710,27 +4735,27 @@ end
 
 local cache = { }
 local function getIcon(value, list, object)
-	value = value or ""
-	local str = tostring(value) .. tostring(list)
-	
-	if tonumber(value) then
-		cache[str] = "rbxassetid://" .. value
-	end
-	
-	if cache[str] then
-		return cache[str]
-	end
+    value = value or ""
+    local str = tostring(value) .. tostring(list)
+    
+    if tonumber(value) then
+        cache[str] = "rbxassetid://" .. value
+    end
+    
+    if cache[str] then
+        return cache[str]
+    end
 
-	task.spawn(function()
-		cache[str] = ""
-		cache[str] = _getIcon(value, list)
+    task.spawn(function()
+        cache[str] = ""
+        cache[str] = _getIcon(value, list)
 
-		if object then
-			object:Refresh()
-		end
-	end)
+        if object then
+            object:Refresh()
+        end
+    end)
 
-	return cache[str] or ""
+    return cache[str] or ""
 end
 
 local function translate(self, category)
@@ -5707,7 +5732,7 @@ local basicObjects = {
                 self.Options.Format = functions[self.Options.Format or ""] or functions["/"]
             end
 
-            self.Instance.View.Bar.Progress.Text = self.Options.Format and (typeof(self.Options.Format) == "string" and self.Options["Format"] --[[suspend studio warning]] or tostring(self.Options.Format(self.Options))) or self.Value .. " / " .. self.Max
+            self.Instance.View.Bar.Progress.Text = self.Options.Format and (typeof(self.Options.Format) == "string" and self.Options["Format"] --[[suspend studio warning]] or tostring(self.Options.Format(self.Options))) or fixNum(self.Value) .. " / " .. fixNum(self.Max)
             self.Instance.Size = UDim2.new(1, 0, 0, y)
             self.Instance.View.Size = UDim2.new(1, x, 0, y2)
             self.Instance.View.Position = self.Parent.Class == "Groupbox" and UDim2.new(0, 7, 0.275, 0) or UDim2.new(0, 15, 0.3, 0)
