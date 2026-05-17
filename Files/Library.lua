@@ -4284,13 +4284,13 @@ local mps        = game:GetService("MarketplaceService")
 
 local textParams = Instance.new("GetTextBoundsParams")
 local function getTextSize(text, size, font, bounds)
-	textParams.Text = text
-	textParams.Size = size
-	textParams.Font = Font.fromEnum(font)
-	textParams.RichText = true
-	textParams.Width = tonumber(bounds) or bounds.X
-	
-	return textS:GetTextBoundsAsync(textParams)
+    textParams.Text = text
+    textParams.Size = size
+    textParams.Font = Font.fromEnum(font)
+    textParams.RichText = true
+    textParams.Width = tonumber(bounds) or bounds.X
+    
+    return textS:GetTextBoundsAsync(textParams)
 end
 
 local plr = plrs.LocalPlayer
@@ -6572,8 +6572,16 @@ local floatingLabel = {
 
         task.defer(addCons, object, cons)
 
+        local canChange = true
         cons[#cons + 1] = floatingLabel.Changed:Connect(function()
+            if not canChange then return end
+            
+            canChange = false
             object:_Rescale()
+            
+            task.wait()
+
+            canChange = true
         end)
 
         makeDraggable(floatingLabel, object, cons)
@@ -7403,6 +7411,8 @@ local windowFuncs; windowFuncs = {
         window.RealWindow.Contents.Display.PageButtons.UserProfile.User.TextLabel.Text = text
     end,
     Refresh = function(self)
+        if self.Options.Closed then return end
+
         if table.isfrozen(self.Options.Theme) then
             self.Options.Theme = table.clone(self.Options.Theme)
         end
