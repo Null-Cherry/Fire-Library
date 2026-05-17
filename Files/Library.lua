@@ -4282,6 +4282,17 @@ local textS        = game:GetService("TextService")
 local plrs        = game:GetService("Players")
 local mps        = game:GetService("MarketplaceService")
 
+local textParams = Instance.new("GetTextBoundsParams")
+local function getTextSize(text, size, font, bounds)
+    textParams.Text = text
+    textParams.Size = size
+    textParams.Font = font
+    textParams.RichText = true
+    textParams.Width = tonumber(bounds) or bounds.X
+    
+    return textS:GetTextBoundsAsync(params)
+end
+
 local plr = plrs.LocalPlayer
 local mouse = plr:GetMouse()
 local userIcon = "rbxthumb://type=AvatarHeadShot&id=" .. plr.UserId .. "&w=420&h=420"
@@ -5910,7 +5921,7 @@ local basicObjects = {
             cons[#cons + 1] = instance.Label.Changed:Connect(function()
                 if not getWindow(object).Visible then return end
 
-                instance.Label.Size = UDim2.new(1, -30, 0, textS:GetTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
+                instance.Label.Size = UDim2.new(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
                 instance.Size = UDim2.new(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
             end)
 
@@ -7840,8 +7851,8 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.1",
-    Author = "@cherry_peashooter"
+    Version = "5.0.2",
+    Author = "@kawaii_kebodo"
 }
     end;
 
