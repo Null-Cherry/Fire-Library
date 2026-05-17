@@ -4710,23 +4710,27 @@ end
 
 local cache = { }
 local function getIcon(value, list, object)
-    value = value or ""
-    local str = tostring(value) .. tostring(list)
-    
-    if cache[str] then
-        return cache[str]
-    end
+	value = value or ""
+	local str = tostring(value) .. tostring(list)
+	
+	if tonumber(value) then
+		cache[str] = "rbxassetid://" .. value
+	end
+	
+	if cache[str] then
+		return cache[str]
+	end
 
-    task.spawn(function()
-        cache[str] = ""
-        cache[str] = _getIcon(value, list)
+	task.spawn(function()
+		cache[str] = ""
+		cache[str] = _getIcon(value, list)
 
-        if object then
-            object:Refresh()
-        end
-    end)
+		if object then
+			object:Refresh()
+		end
+	end)
 
-    return cache[str] or ""
+	return cache[str] or ""
 end
 
 local function translate(self, category)
