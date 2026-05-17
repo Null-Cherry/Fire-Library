@@ -4284,13 +4284,13 @@ local mps        = game:GetService("MarketplaceService")
 
 local textParams = Instance.new("GetTextBoundsParams")
 local function getTextSize(text, size, font, bounds)
-    textParams.Text = text
-    textParams.Size = size
-    textParams.Font = font
-    textParams.RichText = true
-    textParams.Width = tonumber(bounds) or bounds.X
-    
-    return textS:GetTextBoundsAsync(params)
+	textParams.Text = text
+	textParams.Size = size
+	textParams.Font = Font.fromEnum(font)
+	textParams.RichText = true
+	textParams.Width = tonumber(bounds) or bounds.X
+	
+	return textS:GetTextBoundsAsync(textParams)
 end
 
 local plr = plrs.LocalPlayer
