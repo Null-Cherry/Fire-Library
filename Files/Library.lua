@@ -5807,9 +5807,13 @@ local basicObjects = {
                 end
             end)
 
+            local cd = true
             cons[#cons + 1] = instance.View.BarInvisible.Changed:Connect(function()
-                if not getWindow(object).Visible then return end
+                if not cd or not getWindow(object).Visible then return end
+                cd = false
                 object:Refresh(true)
+                task.wait()
+                cd = true
             end)
 
             local oldN = 1
@@ -5918,11 +5922,15 @@ local basicObjects = {
             local cons = { }
             task.defer(addCons, object, cons)
 
+            local cd = true
             cons[#cons + 1] = instance.Label.Changed:Connect(function()
-                if not getWindow(object).Visible then return end
+                if not cd or not getWindow(object).Visible then return end
 
+                cd = false
                 instance.Label.Size = UDim2.new(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
                 instance.Size = UDim2.new(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
+                task.wait()
+                cd = true
             end)
 
             return object
@@ -7097,8 +7105,15 @@ local windowFuncs; windowFuncs = {
         object._PrevLang = options.Language
 
         local titleZone = window.RealWindow.Contents.TopbarZone.TitleZone
+        local cd = true
+        
         cons[#cons + 1] = titleZone.Title.Changed:Connect(function()
+            if not cd then return end
+            
+            cd = false
             titleZone.Title.Size = UDim2.new(0, titleZone.Title.TextBounds.X, 1, 0)
+            task.wait()
+            cd = true
         end)
 
         cons[#cons + 1] = titleZone.Icon.Changed:Connect(function()
@@ -7723,9 +7738,15 @@ tooltipObject = newObject({
     Init = function(self, options)
         local tooltip = getPlaceholder("Tooltip")
 
+        local cd = true
         tooltip.TextLabelInvisible.Changed:Connect(function()
+            if not cd then return end
+            
+            cd = true
             tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
             tooltip.Size = UDim2.fromOffset(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
+            task.wait()
+            cd = false
         end)
 
         local object = addFunctions({
