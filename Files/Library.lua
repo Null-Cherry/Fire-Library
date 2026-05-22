@@ -3062,7 +3062,6 @@ local rf = configsEnabled and function(name, decode)
     return decoded
 end
 
-gca = configsEnabled
 local mf = configsEnabled and function(name)
     if not If(name) then
         mf(name)
@@ -4682,7 +4681,7 @@ downloadImage = gca and function(url)
     end
 
     if not success then
-        warn("Download failed:", error)
+        warn("Download failed:", result)
     end
 
     return success and result or ""
