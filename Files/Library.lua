@@ -3412,6 +3412,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local function validateName(name: string)
             return #name >= 1 and #name <= 32 and not name:find("\\", 1, true) and not name:find("/", 1, true)
         end
+        
+        local function clean(str)
+            return (str:gsub("[\n\r\f\t\0 ]", ""))
+        end
 
         settingsTab:AddLabel({ Text = "Configs" })
 
@@ -3467,6 +3471,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             })
 
             loadConfig = function(name)
+                if window.Closed then return end
                 if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
                 local route = configsRoute .. fl .. name .. json
@@ -3517,7 +3522,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Text = "Auto load config",
                 Value = false,
                 NoConfigs = true,
-                Visible = false,
                 Callback = function(value)
                     if value then
                         wf(configRoute, { configTextBox.Value })
@@ -3526,6 +3530,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                     end
                 end,
             })
+            
             hidden[#hidden + 1] = autoLoadConfig
             hidden[#hidden + 1] = settingsTab:AddSeparator({ Invisible = true, Visible = false })
         end
@@ -3546,8 +3551,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                             return setConfig(e)
                         end
                     end
-
-                    window:Notification({ Title = "Error", Text = "Invalid share string!" })
+                    
+                    if clean(text) ~= "" then
+                        window:Notification({ Title = "Error", Text = "Invalid share string!" })
+                    end
                 end
             end
         })
@@ -3656,6 +3663,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             })
 
             loadTheme = function(name)
+                if window.Closed then return end
                 if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
                 local route = themesRoute .. name .. json
@@ -3735,8 +3743,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                             return
                         end
                     end
-
-                    window:Notification({ Title = "Error", Text = "Invalid share string!" })
+                    
+                    if clean(text) ~= "" then
+                        window:Notification({ Title = "Error", Text = "Invalid share string!" })
+                    end
                 end
             end
         })
@@ -6646,6 +6656,9 @@ local floatingLabel = {
     end,
 
     Refresh = function(self)
+        local window = getWindow(self)
+        if not window or window.Closed then return end
+        
         local l = self.Label
         l.Parent = gui.FloatingLabels
         l.AnchorPoint = self.Options.AnchorPoint
@@ -6663,9 +6676,6 @@ local floatingLabel = {
             l.Contents.Title.Text = self.Options.Title:sub(1, 199999)
             self:_Rescale()
         end
-
-        local window = getWindow(self)
-        if not window then return end
 
         l.BackgroundColor3 = window.Theme.Back
         l.OutsideStroke.Color = window.Theme.Stroke
@@ -8002,7 +8012,7 @@ local connectionBase = {
         if self.Connected then
             rawset(self, "Connected", false)
             freeze(self)
-            
+
             self.Parent:Cleanup()
         end
     end,
@@ -8017,8 +8027,6 @@ local eventBase = {
     Connect = function(self, func)
         local connection = smt({ Callback = func, Connected = true, Enabled = true, Parent = self }, connectionBase)
         insert(self._Connections, connection)
-        
-        self:Cleanup()
 
         return connection
     end,
@@ -8044,29 +8052,32 @@ local eventBase = {
     end,
     Cleanup = function(self) -- usually not needed to be called manually
         local cons = self._Connections
-        local i = 1
-        
-        while i <= #cons do
-            if not cons[i].Connected then
+        local i, ln = 1, #cons
+
+        while i <= ln do
+            if not cons[i] or not cons[i].Connected then
                 remove(cons, i)
+                ln -= 1
             else
                 i += 1
             end
         end
     end,
-    
+
     Fire = function(self, ...)
+        self:Cleanup()
+
         local cons = self._Connections
         for i = 1, #cons do
-            cons[i]:Fire(...)
+            if cons[i] then
+                cons[i]:Fire(...)
+            end
         end
     end,
     DisconnectAll = function(self)
         for i, v in self._Connections do
             v:Disconnect()
         end
-        
-        self:Cleanup()
     end
 }
 
@@ -8080,27 +8091,27 @@ local lib = setmetatable({
         if typeof(events[1]) == "table" then
             events = events[1]
         end
-        
+
         if #events == 0 then return end
         if #events == 1 then return events[1]:Wait() end
-        
+
         local result, winner
         local connections = { }
-        
+
         for i, v in events do
             connections[#connections + 1] = v:Once(function(...)
                 for i, v in connections do
                     v:Disconnect()
                 end
-                
+
                 winner = v
                 result = pack(...)
                 quick:Fire()
             end)
         end
-        
+
         repeat quickEvent:Wait() until result
-        
+
         insert(result, 1, winner)
         return unpack(result, 1, result.n + 1)
     end
@@ -8119,17 +8130,17 @@ clock:Connect(function(isDefer, dontFire)
     local current = tick()
     fakeClock:Fire(current - last, isDefer)
     last = current
-    
+
     if dontFire then return end
-    
+
     race(clock, r1, r2, r3)
     fire(clock, false, false)
     delay(0, fire, clock, false, true)
-    
+
     for i = 1, maxDefer do
         defer(fire, deferClock)
         deferClock:Wait()
-        
+
         if i <= 3 or i == 10 or i == maxDefer then
             fire(clock, true, true)
             delay(0, fire, clock, false, true)
