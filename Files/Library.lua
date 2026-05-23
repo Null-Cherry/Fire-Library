@@ -5939,6 +5939,8 @@ local basicObjects = {
                 instance.Label.Size = UDim2.new(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
                 instance.Size = UDim2.new(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
                 task.wait()
+                instance.Label.Size = UDim2.new(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
+                instance.Size = UDim2.new(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
                 cd = true
             end)
 
@@ -7122,6 +7124,7 @@ local windowFuncs; windowFuncs = {
             cd = false
             titleZone.Title.Size = UDim2.new(0, titleZone.Title.TextBounds.X, 1, 0)
             task.wait()
+            titleZone.Title.Size = UDim2.new(0, titleZone.Title.TextBounds.X, 1, 0)
             cd = true
         end)
 
@@ -7751,11 +7754,13 @@ tooltipObject = newObject({
         tooltip.TextLabelInvisible.Changed:Connect(function()
             if not cd then return end
             
-            cd = true
+            cd = false
             tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
             tooltip.Size = UDim2.fromOffset(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
             task.wait()
-            cd = false
+            tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
+            tooltip.Size = UDim2.fromOffset(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
+            cd = true
         end)
 
         local object = addFunctions({
