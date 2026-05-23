@@ -3141,7 +3141,7 @@ local function safeReparent(a, b)
     
     if #myQueue == 0 or myQueue[#myQueue] ~= b then
         myQueue[#myQueue + 1] = b
-        -- flushQueue(a, myQueue)
+        flushQueue(a, myQueue)
     end
 end
 
@@ -3151,7 +3151,6 @@ event.Clock:Connect(function(delta, skip)
     
     for object, queue in reparentQueue do
         flushQueue(object, queue)
-        print("flush")
     end
 end)
 
