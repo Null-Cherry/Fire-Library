@@ -3145,7 +3145,6 @@ local function safeReparent(a, b)
     end
 end
 
-local att = 0
 event.Clock:Connect(function(delta, skip)
     if skip then return end
     
@@ -4110,7 +4109,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local pr = window.Options.Image
     local function upd()
-        if window.Closed then return end
+        if window.Closed or not window.Options.InfoLabel then return end
         
         ss.Value = window.Options.ShadowSize
         so.Value = 1 - window.Options.ShadowTransparency
@@ -4173,10 +4172,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local c1, c2
     local function reparent()
-        safeReparent(settingsTab.Holder, window.Window.RealWindow.Contents.SettingsOverlay.SettingsHub)
         settingsTab.Holder.Size = UDim2.new(1, 0, 1, -1)
         settingsTab.Holder.Position = UDim2.fromOffset(0, 1)
-        safeReparent(settingsTab.TabButton, nil)
 
         settingsTab.Holder.Visible = true
         settingsTab.Holder.ZIndex = 42
@@ -4188,8 +4185,17 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
     end
 
-    c1 = settingsTab.Holder.Changed:Connect(reparent)
-    c2 = settingsTab.TabButton.Changed:Connect(reparent)
+    c1 = settingsTab.Holder.Changed:Connect(function()
+        safeReparent(settingsTab.Holder, window.Window.RealWindow.Contents.SettingsOverlay.SettingsHub)
+        reparent()
+    end)
+    c2 = settingsTab.TabButton.Changed:Connect(function()
+        safeReparent(settingsTab.TabButton, nil)
+        reparent()
+    end)
+
+    safeReparent(settingsTab.Holder, window.Window.RealWindow.Contents.SettingsOverlay.SettingsHub)
+    safeReparent(settingsTab.TabButton, nil)
     reparent()
 
     window:Refresh()
@@ -6450,9 +6456,12 @@ local tabFuncs = {
         if dont then return self end
 
         local options = self.Options
-
-        safeReparent(self.TabButton, self.Parent.Window.RealWindow.Contents.Display.PageButtons.List)
-        safeReparent(self.Holder, self.Parent.Window.RealWindow.Contents.Display.Pages)
+        
+        if options.Flag ~= "LibrarySettings" or options.Text ~= "Settings" then
+            safeReparent(self.TabButton, self.Parent.Window.RealWindow.Contents.Display.PageButtons.List)
+            safeReparent(self.Holder, self.Parent.Window.RealWindow.Contents.Display.Pages)
+        end
+    
         self.TabButton.ButtonItself.Icon.Image = getIcon(options.Icon, icons, self)
         self.TabButton.ButtonItself.Title.Text = translate(self, "Text")
         self.TabButton.ButtonItself.Visible = options.Visible
