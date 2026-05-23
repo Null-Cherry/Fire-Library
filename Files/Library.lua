@@ -3118,6 +3118,43 @@ local event = require(script.Event)
 local guid = http:GenerateGUID()
 local gsubInput, playSound
 
+local reparentQueue = { }
+local function flushQueue(object, queue)
+    if #queue == 0 then
+        reparentQueue[object] = nil
+        return
+    end
+    
+    object.Parent = table.remove(queue, 1)
+    
+    if #queue == 0 then
+        reparentQueue[object] = nil
+    end
+end
+
+local function safeReparent(a, b)
+    local myQueue = reparentQueue[a]
+    if not myQueue then
+        myQueue = setmetatable({ }, { __mode = "kv" })
+        reparentQueue[a] = myQueue
+    end
+    
+    if #myQueue == 0 or myQueue[#myQueue] ~= b then
+        myQueue[#myQueue + 1] = b
+        -- flushQueue(a, myQueue)
+    end
+end
+
+local att = 0
+event.Clock:Connect(function(delta, skip)
+    if skip then return end
+    
+    for object, queue in reparentQueue do
+        flushQueue(object, queue)
+        print("flush")
+    end
+end)
+
 local function windowSetup(object) -- in theory, that function is just a plugin for that UI lib
     local window = object.Proxy
     if window.Flag == guid then return end
@@ -4074,6 +4111,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local pr = window.Options.Image
     local function upd()
+        if window.Closed then return end
+        
         ss.Value = window.Options.ShadowSize
         so.Value = 1 - window.Options.ShadowTransparency
         bo.Value = 1 - window.Options.BackgroundTransparency
@@ -4135,10 +4174,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local c1, c2
     local function reparent()
-        settingsTab.Holder.Parent = window.Window.RealWindow.Contents.SettingsOverlay.SettingsHub
+        safeReparent(settingsTab.Holder, window.Window.RealWindow.Contents.SettingsOverlay.SettingsHub)
         settingsTab.Holder.Size = UDim2.new(1, 0, 1, -1)
         settingsTab.Holder.Position = UDim2.fromOffset(0, 1)
-        settingsTab.TabButton.Parent = nil
+        safeReparent(settingsTab.TabButton, nil)
 
         settingsTab.Holder.Visible = true
         settingsTab.Holder.ZIndex = 42
@@ -4318,7 +4357,7 @@ gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local function addPlaceholder(obj, newName)
     obj.Name = newName or obj.Name
-    obj.Parent = placeholders
+    safeReparent(obj, placeholders)
 end
 
 addPlaceholder(defaultDisplay.Pages.Page.NormalZone.Label.ColorPickers.Picker, "ColorPicker")
@@ -4353,7 +4392,7 @@ addPlaceholder(gui.Notifications.NotificationsLeft.Holder, "Notification")
 
 addPlaceholder(gui.FloatingLabel)
 
-script.Parent = nil
+safeReparent(script, nil)
 pcall(function()
     gui.OnTopOfCoreBlur = true
 end)
@@ -4404,8 +4443,8 @@ Instance.new("UIAspectRatioConstraint", circle)
 
 addPlaceholder(circle, "Circle")
 
-placeholders.Parent = gui
-gui.Parent = (g("gethui") or function() return game:GetService("CoreGui") or game:GetService("Players").LocalPlayer.PlayerGui end)()
+safeReparent(placeholders, gui)
+safeReparent(gui, (g("gethui") or function() return game:GetService("CoreGui") or game:GetService("Players").LocalPlayer.PlayerGui end)())
 
 local function getPlaceholder(name) : Instance?
     local found = placeholders:FindFirstChild(name)
@@ -4422,7 +4461,7 @@ local function tweenOnce(obj: Instance, ti: TweenInfo, props: { any })
     props = nil
 
     tween:Play()
-    tween:Destroy()
+    task.defer(tween.Destroy, tween)
 end
 
 local function paintRichText(text, color)
@@ -4621,7 +4660,7 @@ end
 
 local function castCircle(button, window, holder)
     local circle = getPlaceholder("Circle")
-    circle.Parent = holder or button
+    safeReparent(circle, holder or button)
 
     local mp = Vector2.new(mouse.X, mouse.Y)
     local pos = Vector2.new(mp.X - button.AbsolutePosition.X, mp.Y - button.AbsolutePosition.Y)
@@ -5038,9 +5077,9 @@ local colorPickerBase = {
 
         local instance = parent.Instance
         local pickers = instance:FindFirstChild("ColorPickers") or getPlaceholder("ColorPickers")
-        pickers.Parent = instance
+        safeReparent(pickers, instance)
 
-        self.Instance.Parent = pickers
+        safeReparent(self.Instance, pickers)
     end
 }
 
@@ -5191,9 +5230,9 @@ local keybindBase = {
 
         local instance = ref.Instance
         local pickers = instance:FindFirstChild("ColorPickers") or getPlaceholder("ColorPickers")
-        pickers.Parent = instance
-
-        self.Instance.Parent = pickers
+        
+        safeReparent(pickers, instance)
+        safeReparent(self.Instance, pickers)
     end
 }
 
@@ -5311,7 +5350,7 @@ local basicObjects = {
             self.Instance.View.Size = UDim2.new(100, 0, 0, y2)
             self.Instance.View.Position = UDim2.new(0, x, 0.5, 0)
             self.Instance.Visible = self.Options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Icon.ImageTransparency = self.Options.Disabled and 0.35 or 0
@@ -5495,7 +5534,7 @@ local basicObjects = {
             end
 
             self.Instance.Visible = options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Label.Label.Text = translate(self, "Text")
             self.Instance.View.Label.Label.TextTransparency = options.Disabled and 0.35 or 0
             self.Instance.View.Label.Icon.ImageTransparency = options.Disabled and 0.35 or 0
@@ -5542,7 +5581,7 @@ local basicObjects = {
                             row.Name = tostring(i)
                         end
 
-                        row.Parent = self.Instance.View.List.List
+                        safeReparent(row, self.Instance.View.List.List)
                         row.Text = tostring(val)
                         row.Size = UDim2.fromScale(1, 1 / #options.Values)
                         row.TextColor3 = ((options.Multi and table.find(options.Value, i)) or (not options.Multi and options.Value == i)) and window.Theme.Main or window.Theme.Text
@@ -5738,7 +5777,7 @@ local basicObjects = {
             self.Instance.View.Bar.UIStroke.Color = window.Theme.Stroke
 
             self.Instance.Visible = self.Options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Bar.Fill.BackgroundTransparency = self.Options.Disabled and 0.35 or 0
@@ -5889,7 +5928,7 @@ local basicObjects = {
             self.Instance.View.Bar.UIStroke.Color = window.Theme.Stroke
 
             self.Instance.Visible = self.Options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Bar.PlaceholderText = ""
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Bar.MultiLine = self.Options.MultiLine
@@ -5954,7 +5993,7 @@ local basicObjects = {
             self.Instance.Label.TextColor3 = window.Theme.Text
 
             self.Instance.Visible = self.Options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.Label.Text = translate(self, "Text"):sub(0, 199999)
             self.Instance.Size = UDim2.new(1, 0, 0, y)
             self.Instance.Label.Position = self.Parent.Class == "Groupbox" and UDim2.fromOffset(9, 5) or UDim2.fromOffset(15, 12)
@@ -5979,7 +6018,7 @@ local basicObjects = {
             self.Instance.SeparatorMiddle.BackgroundColor3 = window.Theme.Text
 
             self.Instance.Visible = self.Options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.SeparatorMiddle.Visible = not self.Options.Invisible
             self.Instance.Size = UDim2.new(1, 0, 0, 10)
         end
@@ -6057,7 +6096,7 @@ local basicObjects = {
             local x = self.Parent.Class == "Groupbox" and 7 or 15
 
             self.Instance.Visible = self.Options.Visible
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Icon[self.Options.CheckBox and "BackgroundTransparency" or "ImageTransparency"] = 1
@@ -6171,7 +6210,7 @@ local basicObjects = {
             local window = getWindow(self)
 
             self.Instance.Visible = self.Options.Visible and window.IsDesktop
-            self.Instance.Parent = self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone
+            safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Display.TextTransparency = self.Options.Disabled and 0.35 or 0
@@ -6264,7 +6303,7 @@ local groupBoxFuncs = {
         self.Holder.Holder.Title.TextColor3 = window.Theme.Text
 
         self.Holder.Holder.Title.Text = translate(self, "Text")
-        self.Holder.Parent = self.Parent.Holder.GroupboxZone[self.Options.Side .. "GroupboxZone"]
+        safeReparent(self.Holder, self.Parent.Holder.GroupboxZone[self.Options.Side .. "GroupboxZone"])
         self.Holder.Visible = self.Options.Visible
 
         local ySize = 0
@@ -6413,8 +6452,8 @@ local tabFuncs = {
 
         local options = self.Options
 
-        self.TabButton.Parent = self.Parent.Window.RealWindow.Contents.Display.PageButtons.List
-        self.Holder.Parent = self.Parent.Window.RealWindow.Contents.Display.Pages
+        safeReparent(self.TabButton, self.Parent.Window.RealWindow.Contents.Display.PageButtons.List)
+        safeReparent(self.Holder, self.Parent.Window.RealWindow.Contents.Display.Pages)
         self.TabButton.ButtonItself.Icon.Image = getIcon(options.Icon, icons, self)
         self.TabButton.ButtonItself.Title.Text = translate(self, "Text")
         self.TabButton.ButtonItself.Visible = options.Visible
@@ -6661,7 +6700,7 @@ local floatingLabel = {
         if not window or window.Closed then return end
         
         local l = self.Label
-        l.Parent = gui.FloatingLabels
+        safeReparent(l, gui.FloatingLabels)
         l.AnchorPoint = self.Options.AnchorPoint
         l.Visible = self.Options.Visible and (#l.Contents.Text.Text ~= 0 or #l.Contents.Title.Text ~= 0)
 
@@ -6699,7 +6738,7 @@ local windowFuncs; windowFuncs = {
         options = setmetatable(options or { }, defaultColorPickerOptions)
 
         local cp = getPlaceholder("ColorPickerWindow")
-        cp.Parent = gui.Holder.ColorPickerWindows
+        safeReparent(cp, gui.Holder.ColorPickerWindows)
         cp.Visible = true
 
         local cons = { }
@@ -6923,7 +6962,7 @@ local windowFuncs; windowFuncs = {
 
         local notif = getPlaceholder("Notification")
         notif.LayoutOrder = s == "Right" and ridx or 0
-        notif.Parent = gui.Notifications["Notifications" .. s]
+        safeReparent(notif, gui.Notifications["Notifications" .. s])
         notif.Background.Position = tpos
         notif.Background.Holder.Position = tpos2
         notif.Background.Holder.AnchorPoint = Vector2.new(s == "Left" and 0 or 1, 0)
@@ -7063,7 +7102,7 @@ local windowFuncs; windowFuncs = {
         local window = getPlaceholder("Window")
         local mobileButton = getPlaceholder("MobileButton")
         local sounds = getPlaceholder("Sounds")
-        sounds.Parent = window
+        safeReparent(sounds, window)
 
         local cons = { }
         local object = addFunctions({
@@ -7504,7 +7543,7 @@ local windowFuncs; windowFuncs = {
 
         local button = self.MobileButton
         button.Visible = options.MobileButtonAlwaysVisible or ((options.MobileButtonVisible or isMobile) and not options.Visible)
-        button.Parent = gui.MobileButtons
+        safeReparent(button, gui.MobileButtons)
         button.CanvasGroup.TextLabel.Text = title:sub(1, 1):upper()
         button.CanvasGroup.ImageLabel.Image = getIcon(options.Icon or "", nil, self)
         button.CanvasGroup.ImageLabel.Visible = true
@@ -7518,7 +7557,7 @@ local windowFuncs; windowFuncs = {
         button.CanvasGroup.TextLabel.TextStrokeColor3 = options.Theme.Stroke
         button.CanvasGroup.UIStroke.Color = button.CanvasGroup.ImageLabel.Image ~= "" and options.Theme.Main or options.Theme.Stroke
 
-        window.Parent = gui.Holder.Windows
+        safeReparent(window, gui.Holder.Windows)
         window.SoundCache.Volume = options.Volume / 200
         window.Sounds.Notification.SoundId = options.NotificationSound
         window.Sounds.Click.SoundId = options.ClickSound
@@ -7780,7 +7819,7 @@ tooltipObject = newObject({
         local cap : string = self.Options.Text
         self.Tooltip.Visible = #cap ~= 0
         self.Tooltip.TextLabelInvisible.Text = cap:sub(0, 199999)
-        self.Tooltip.Parent = gui
+        safeReparent(self.Tooltip, gui)
 
         self.Options.CustomMousePosition = self.Options.CustomMousePosition or mouse
 
@@ -7821,10 +7860,10 @@ library = newObject({
     Init = function(self, options)
         coreWindow = newObject(windowFuncs, nil, { Visible = false, UnlockMouse = false, Text = guid, Flag = guid, MobileButtonVisible = false, MobileButtonAlwaysVisible = false })
         coreWindow.Window.Visible = false
-        coreWindow.Window.Parent = nil
+        safeReparent(coreWindow.Window, nil)
         coreWindow.Window:GetPropertyChangedSignal("Parent"):Connect(function()
-            coreWindow.Window.Parent = nil
-            coreWindow.MobileButton.Parent = nil
+            safeReparent(coreWindow.Window, nil)
+            safeReparent(coreWindow.MobileButton, nil)
         end)
 
         local object = addFunctions({
