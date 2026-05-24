@@ -4778,7 +4778,7 @@ end
 local imageCache = { }
 local tryDownloadImage = gca and function(url)
     local ext = getFileExtension(url)
-    local fileHash = cacheRoute .. hash(url) .. ext
+    local fileHash = cacheRoute .. hash(url) .. "." .. ext
     
     if imageCache[fileHash] then
         return imageCache[fileHash]
@@ -4792,7 +4792,14 @@ local tryDownloadImage = gca and function(url)
     end
     
     local success, result = pcall(function()
-        wf(fileHash, game:HttpGet(url, true), true)
+        local content = game:HttpGet(url, true)
+        if #content < 1024 then
+            error("Image size too small!", 0)
+            return ""
+        end
+        
+        wf(fileHash, content, true)
+        
         local asset = gca(fileHash)
         imageCache[fileHash] = asset
 
