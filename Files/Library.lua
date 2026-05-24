@@ -275,21 +275,20 @@ local objects = {
     ["Instance266"] = Instance.new("UIAspectRatioConstraint");
     ["Instance267"] = Instance.new("ImageButton");
     ["Instance268"] = Instance.new("ImageButton");
-    ["Instance269"] = Instance.new("TextLabel");
+    ["Instance269"] = Instance.new("Frame");
     ["Instance270"] = Instance.new("Frame");
     ["Instance271"] = Instance.new("Frame");
-    ["Instance272"] = Instance.new("Frame");
-    ["Instance273"] = Instance.new("UIListLayout");
-    ["Instance274"] = Instance.new("TextButton");
-    ["Instance275"] = Instance.new("UIStroke");
+    ["Instance272"] = Instance.new("UIListLayout");
+    ["Instance273"] = Instance.new("TextButton");
+    ["Instance274"] = Instance.new("UIStroke");
+    ["Instance275"] = Instance.new("Frame");
     ["Instance276"] = Instance.new("Frame");
-    ["Instance277"] = Instance.new("Frame");
-    ["Instance278"] = Instance.new("TextLabel");
-    ["Instance279"] = Instance.new("ImageLabel");
-    ["Instance280"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance281"] = Instance.new("TextLabel");
+    ["Instance277"] = Instance.new("TextLabel");
+    ["Instance278"] = Instance.new("ImageLabel");
+    ["Instance279"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance280"] = Instance.new("TextLabel");
+    ["Instance281"] = Instance.new("Folder");
     ["Instance282"] = Instance.new("Folder");
-    ["Instance283"] = Instance.new("Folder");
 };
 
 do -- Set properties
@@ -2815,128 +2814,126 @@ do -- Set properties
     objects["Instance268"]["BorderSizePixel"] = 0;
     objects["Instance268"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance269"]["Parent"] = objects["Instance259"];
+    objects["Instance269"]["BackgroundTransparency"] = 0.5;
+    objects["Instance269"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance269"]["Name"] = "Progress";
+    objects["Instance269"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance269"]["Parent"] = objects["Instance257"];
+    objects["Instance269"]["ZIndex"] = 2147483643;
+    objects["Instance269"]["BorderSizePixel"] = 0;
+    objects["Instance269"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance270"]["BackgroundTransparency"] = 0.5;
+    objects["Instance270"]["Name"] = "Fill";
     objects["Instance270"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance270"]["Name"] = "Progress";
-    objects["Instance270"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance270"]["Parent"] = objects["Instance257"];
-    objects["Instance270"]["ZIndex"] = 2147483643;
+    objects["Instance270"]["Parent"] = objects["Instance269"];
+    objects["Instance270"]["Size"] = UDim2.new(0.75, 0, 1, 0);
     objects["Instance270"]["BorderSizePixel"] = 0;
     objects["Instance270"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance271"]["Name"] = "Fill";
+    objects["Instance271"]["Parent"] = objects["Instance252"];
     objects["Instance271"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance271"]["Parent"] = objects["Instance270"];
-    objects["Instance271"]["Size"] = UDim2.new(0.75, 0, 1, 0);
+    objects["Instance271"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance271"]["BackgroundTransparency"] = 1;
+    objects["Instance271"]["Name"] = "NotificationsRight";
+    objects["Instance271"]["Position"] = UDim2.new(1, 0, 0, 50);
+    objects["Instance271"]["Size"] = UDim2.new(0, 250, 1, -50);
+    objects["Instance271"]["ZIndex"] = 214748364;
     objects["Instance271"]["BorderSizePixel"] = 0;
-    objects["Instance271"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance271"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance272"]["Parent"] = objects["Instance252"];
-    objects["Instance272"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance272"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance272"]["BackgroundTransparency"] = 1;
-    objects["Instance272"]["Name"] = "NotificationsRight";
-    objects["Instance272"]["Position"] = UDim2.new(1, 0, 0, 50);
-    objects["Instance272"]["Size"] = UDim2.new(0, 250, 1, -50);
-    objects["Instance272"]["ZIndex"] = 214748364;
-    objects["Instance272"]["BorderSizePixel"] = 0;
-    objects["Instance272"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance272"]["Parent"] = objects["Instance271"];
+    objects["Instance272"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance272"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
 
-    objects["Instance273"]["Parent"] = objects["Instance272"];
-    objects["Instance273"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-    objects["Instance273"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+    objects["Instance273"]["Active"] = false;
+    objects["Instance273"]["Selectable"] = false;
+    objects["Instance273"]["Text"] = "";
+    objects["Instance273"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance273"]["AutoButtonColor"] = false;
+    objects["Instance273"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance273"]["Parent"] = objects["Instance0"];
+    objects["Instance273"]["Name"] = "FloatingLabel";
+    objects["Instance273"]["Position"] = UDim2.new(0.05000000074505806, 0, 0.5, 0);
+    objects["Instance273"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance273"]["ZIndex"] = 147483646;
+    objects["Instance273"]["BorderSizePixel"] = 0;
+    objects["Instance273"]["Size"] = UDim2.new(0, 113, 0, 37);
 
-    objects["Instance274"]["Active"] = false;
-    objects["Instance274"]["Selectable"] = false;
-    objects["Instance274"]["Text"] = "";
-    objects["Instance274"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
-    objects["Instance274"]["AutoButtonColor"] = false;
-    objects["Instance274"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance274"]["Parent"] = objects["Instance0"];
-    objects["Instance274"]["Name"] = "FloatingLabel";
-    objects["Instance274"]["Position"] = UDim2.new(0.05000000074505806, 0, 0.5, 0);
-    objects["Instance274"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance274"]["ZIndex"] = 147483646;
-    objects["Instance274"]["BorderSizePixel"] = 0;
-    objects["Instance274"]["Size"] = UDim2.new(0, 113, 0, 37);
+    objects["Instance274"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance274"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance274"]["Name"] = "OutsideStroke";
+    objects["Instance274"]["Parent"] = objects["Instance273"];
+    objects["Instance274"]["Thickness"] = 1.2000000476837158;
 
-    objects["Instance275"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance275"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-    objects["Instance275"]["Name"] = "OutsideStroke";
-    objects["Instance275"]["Parent"] = objects["Instance274"];
-    objects["Instance275"]["Thickness"] = 1.2000000476837158;
+    objects["Instance275"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance275"]["Name"] = "TopNeon";
+    objects["Instance275"]["Size"] = UDim2.new(1, 0, 0, 1);
+    objects["Instance275"]["Parent"] = objects["Instance273"];
+    objects["Instance275"]["ZIndex"] = 147483647;
+    objects["Instance275"]["BorderSizePixel"] = 0;
+    objects["Instance275"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
+    objects["Instance276"]["Parent"] = objects["Instance273"];
     objects["Instance276"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance276"]["Name"] = "TopNeon";
-    objects["Instance276"]["Size"] = UDim2.new(1, 0, 0, 1);
-    objects["Instance276"]["Parent"] = objects["Instance274"];
+    objects["Instance276"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance276"]["BackgroundTransparency"] = 1;
+    objects["Instance276"]["Name"] = "Contents";
+    objects["Instance276"]["Position"] = UDim2.new(0.5, 0, 0, 3);
+    objects["Instance276"]["Size"] = UDim2.new(1, -8, 1, -3);
     objects["Instance276"]["ZIndex"] = 147483647;
     objects["Instance276"]["BorderSizePixel"] = 0;
-    objects["Instance276"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance276"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance277"]["Parent"] = objects["Instance274"];
+    objects["Instance277"]["FontSize"] = Enum.FontSize.Size18;
+    objects["Instance277"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance277"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance277"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance277"]["Text"] = "Keybinds";
+    objects["Instance277"]["TextSize"] = 16;
+    objects["Instance277"]["Name"] = "Title";
+    objects["Instance277"]["Parent"] = objects["Instance276"];
+    objects["Instance277"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
     objects["Instance277"]["BackgroundTransparency"] = 1;
-    objects["Instance277"]["Name"] = "Contents";
-    objects["Instance277"]["Position"] = UDim2.new(0.5, 0, 0, 3);
-    objects["Instance277"]["Size"] = UDim2.new(1, -8, 1, -3);
-    objects["Instance277"]["ZIndex"] = 147483647;
+    objects["Instance277"]["RichText"] = true;
+    objects["Instance277"]["Size"] = UDim2.new(1, 0, 0, 16);
+    objects["Instance277"]["ZIndex"] = 147483648;
     objects["Instance277"]["BorderSizePixel"] = 0;
     objects["Instance277"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance278"]["FontSize"] = Enum.FontSize.Size18;
-    objects["Instance278"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance278"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance278"]["Text"] = "Keybinds";
-    objects["Instance278"]["TextSize"] = 16;
-    objects["Instance278"]["Name"] = "Title";
+    objects["Instance278"]["Visible"] = false;
     objects["Instance278"]["Parent"] = objects["Instance277"];
-    objects["Instance278"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance278"]["Image"] = "rbxasset://textures/ui/GuiImagePlaceholder.png";
     objects["Instance278"]["BackgroundTransparency"] = 1;
-    objects["Instance278"]["RichText"] = true;
-    objects["Instance278"]["Size"] = UDim2.new(1, 0, 0, 16);
-    objects["Instance278"]["ZIndex"] = 147483648;
+    objects["Instance278"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance278"]["ImageContent"] = Content.fromUri("rbxasset://textures/ui/GuiImagePlaceholder.png");
+    objects["Instance278"]["Size"] = UDim2.new(1, 0, 1, 0);
     objects["Instance278"]["BorderSizePixel"] = 0;
     objects["Instance278"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance279"]["Visible"] = false;
     objects["Instance279"]["Parent"] = objects["Instance278"];
-    objects["Instance279"]["Image"] = "rbxasset://textures/ui/GuiImagePlaceholder.png";
-    objects["Instance279"]["BackgroundTransparency"] = 1;
-    objects["Instance279"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance279"]["ImageContent"] = Content.fromUri("rbxasset://textures/ui/GuiImagePlaceholder.png");
-    objects["Instance279"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance279"]["BorderSizePixel"] = 0;
-    objects["Instance279"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance280"]["Parent"] = objects["Instance279"];
+    objects["Instance280"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance280"]["Parent"] = objects["Instance276"];
+    objects["Instance280"]["ZIndex"] = 147483648;
+    objects["Instance280"]["BorderSizePixel"] = 0;
+    objects["Instance280"]["Size"] = UDim2.new(1, 0, 1, -16);
+    objects["Instance280"]["RichText"] = true;
+    objects["Instance280"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance280"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance280"]["Text"] = "Keybinds";
+    objects["Instance280"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance280"]["Name"] = "Text";
+    objects["Instance280"]["BackgroundTransparency"] = 1;
+    objects["Instance280"]["Position"] = UDim2.new(0, 0, 0, 16);
+    objects["Instance280"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance280"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance280"]["TextSize"] = 14;
+    objects["Instance280"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance281"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance281"]["Parent"] = objects["Instance277"];
-    objects["Instance281"]["ZIndex"] = 147483648;
-    objects["Instance281"]["BorderSizePixel"] = 0;
-    objects["Instance281"]["Size"] = UDim2.new(1, 0, 1, -16);
-    objects["Instance281"]["RichText"] = true;
-    objects["Instance281"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance281"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance281"]["Text"] = "Keybinds";
-    objects["Instance281"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance281"]["Name"] = "Text";
-    objects["Instance281"]["BackgroundTransparency"] = 1;
-    objects["Instance281"]["Position"] = UDim2.new(0, 0, 0, 16);
-    objects["Instance281"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance281"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance281"]["TextSize"] = 14;
-    objects["Instance281"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance281"]["Name"] = "MobileButtons";
+    objects["Instance281"]["Parent"] = objects["Instance0"];
 
-    objects["Instance282"]["Name"] = "MobileButtons";
+    objects["Instance282"]["Name"] = "FloatingLabels";
     objects["Instance282"]["Parent"] = objects["Instance0"];
-
-    objects["Instance283"]["Name"] = "FloatingLabels";
-    objects["Instance283"]["Parent"] = objects["Instance0"];
 end;
 local ___args = table.pack(...); local ___up = unpack;
 
@@ -3725,6 +3722,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Callback = function(text)
                     themeTextBox.Value = text or ""
+                    loadTheme(themeTextBox.Value)
                 end,
                 Visible = false
             })
