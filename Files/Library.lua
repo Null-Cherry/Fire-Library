@@ -2974,7 +2974,60 @@ return {
 
     modules[objects["Instance1"]] = function(...)
         local script = objects["Instance1"];
--- my dumb ass never used TextService before, so expect some shit with TextBounds and invisible TextLabels
+local tfind = table.find
+local game = game
+local workspace = workspace
+local getfenv = getfenv
+local typeof = typeof
+local newproxy = newproxy
+local tostring = tostring
+local tonumber = tonumber
+local mrandom = math.random
+local pcall = pcall
+local tremove = table.remove
+local spawn = task.spawn
+local delay = task.delay
+local wait = task.wait
+local defer = task.defer
+local clamp = math.clamp
+local abs = math.abs
+local round = math.round
+local floor = math.floor
+local inf, nan = 1 / 0, 0 / 0
+local max = math.max
+local min = math.min
+local tinsert = table.insert
+local concat = table.concat
+local tsort = table.sort
+local tclear = table.clear
+local tfreeze = table.freeze
+local warn, error, print = warn, error, print
+local type = type
+
+local tclone = function(a)
+    local b = { }
+    for i, v in a do
+        b[i] = v
+    end
+    
+    return b
+end
+
+local Enum = Enum
+local U2n = UDim2.new
+local U2s = UDim2.fromScale
+local U2o = UDim2.fromOffset
+local Un = UDim.new
+local unpack = unpack
+local Inew = Instance.new
+local setmetatable = setmetatable
+local getmetatable = getmetatable
+local select = select
+local C3h = Color3.fromHex
+local C3n = Color3.new
+local C3R = Color3.fromRGB
+local V2n = Vector2.new
+local TIn = TweenInfo.new
 
 local rs = game:GetService("RunService")
 local env = getfenv()
@@ -3025,7 +3078,7 @@ local function jd(c)
 end
 
 local function id()
-    return tostring(math.random()):sub(3, 13)
+    return tostring(mrandom()):sub(3, 13)
 end
 
 local compressor, base64 = require(script.Compressor), require(script.Base64)
@@ -3089,7 +3142,6 @@ local configsRoute = coreFolder .. "Configs/"
 local json = "shrimp"
 json = "." .. json
 
-local assetCache = cacheRoute .. "CustomAssets" .. json
 local themesRoute = coreFolder .. "Themes"
 themesRoute ..= "/"
 
@@ -3125,7 +3177,7 @@ local function flushQueue(object, queue)
         return
     end
     
-    object.Parent = table.remove(queue, 1)
+    object.Parent = tremove(queue, 1)
     
     if #queue == 0 then
         reparentQueue[object] = nil
@@ -3163,7 +3215,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     local objs = { }
     window.Options.KeybindObjects = objs
 
-    local keybindsLabel = window:FloatingLabel("Keybinds" .. id(), { Title = "Keybinds", Text = "", Position = UDim2.new(0, 20, 0.5, 0), AnchorPoint = Vector2.new(0, 0.5), Visible = false })
+    local keybindsLabel = window:FloatingLabel("Keybinds" .. id(), { Title = "Keybinds", Text = "", Position = U2n(0, 20, 0.5, 0), AnchorPoint = V2n(0, 0.5), Visible = false })
     local function drawKBL(val)
         window.Options.KeybindModeActive = val
 
@@ -3195,7 +3247,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     drawKBL(false)
     window.Options.KeybindMode:Connect(drawKBL)
 
-    local settingsTab = window:AddTab("LibrarySettings", { Text = "Settings", Icon = "Cog", Order = 2147483647 })
+    local settingsTab = window:AddTab("LibrarySettings" .. window.Flag, { Text = "Settings", Icon = "Cog", Order = 2147483647 })
 
     local db = false
     settingsTab:AddButton({ Icon = "Cross", Text = "Close UI", Callback = function()
@@ -3223,7 +3275,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     settingsTab:AddSeparator()
 
-    settingsTab:AddLabel({ Text = table.concat({
+    settingsTab:AddLabel({ Text = concat({
         "Executor: " .. window.Executor,
         "Executor version: " .. window.ExecutorVersion,
         "Device: " .. window.Device,
@@ -3239,7 +3291,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     end, Value = 1 })
 
     local cp1
-    task.spawn(function()
+    spawn(function()
         local getConfig; getConfig = function(self, cfg)
             self = self or window
             cfg = cfg or { Type = 0 }
@@ -3315,7 +3367,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
             if cl == "ColorPicker" then
                 if self.Options.NoConfigs then return end
-                local newCol = Color3.fromHex(string["for" .. "mat"]("%06x", cfg)) -- suspend studio warning
+                local newCol = C3h(string["for" .. "mat"]("%06x", cfg)) -- suspend studio warning
                 if self.Options.Value == newCol then return end
 
                 return self:Set(newCol)
@@ -3403,7 +3455,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             window.Options.ShadowTransparency = theme.ShadowTransparency
             window.Options.BackgroundTransparency = theme.BackgroundTransparency
             window.Options.ImageEnabled = theme.ImageEnabled
-            window.Options.ImageColor = Color3.fromHex(string["for" .. "mat"]("%06x", theme.ImageColor)) -- suspend studio warning
+            window.Options.ImageColor = C3h(string["for" .. "mat"]("%06x", theme.ImageColor)) -- suspend studio warning
             window.Options.ImageTransparency = theme.ImageTransparency
             window.Options.Image = theme.Image
             window.Options.NeonThickness = theme.NeonThickness
@@ -3413,10 +3465,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             window.Options.Volume = theme.Volume
             window.Options.MobileButtonAlwaysVisible = theme.MobileButtonAlwaysVisible
             window.Options.MobileButtonVisible = theme.MobileButtonVisible
-            window.Options.Theme.Main = Color3.fromHex(string["for" .. "mat"]("%06x", theme.Main)) -- same here and under
-            window.Options.Theme.Stroke = Color3.fromHex(string["for" .. "mat"]("%06x", theme.Stroke))
-            window.Options.Theme.Back = Color3.fromHex(string["for" .. "mat"]("%06x", theme.Back))
-            window.Options.Theme.Text = Color3.fromHex(string["for" .. "mat"]("%06x", theme.Text))
+            window.Options.Theme.Main = C3h(string["for" .. "mat"]("%06x", theme.Main)) -- same here and under
+            window.Options.Theme.Stroke = C3h(string["for" .. "mat"]("%06x", theme.Stroke))
+            window.Options.Theme.Back = C3h(string["for" .. "mat"]("%06x", theme.Back))
+            window.Options.Theme.Text = C3h(string["for" .. "mat"]("%06x", theme.Text))
             window:Refresh()
         end
 
@@ -3429,7 +3481,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         local lol = settingsTab:AddLabel({ Text = "Loading configs and themes functions, wait...", Visible = configsEnabled })
-        task.delay(10, function()
+        delay(10, function()
             lol.Text = "Looks like your executor experienced an error loading config and themes functions\nPlease retry!"
         end)
 
@@ -3437,7 +3489,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         getExistingConfigs = function()
             local configNames = { }
             for _, file in lf(configsRoute .. fl:sub(1, -2)) or { } do
-                table.insert(configNames, file:sub(#configsRoute + #fl + 1, -#json - 1))
+                tinsert(configNames, file:sub(#configsRoute + #fl + 1, -#json - 1))
             end
 
             return configNames
@@ -3602,11 +3654,11 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 local I = i
 
                 configString.Value = encodeThingy(getConfig())
-                task.wait(20)
+                wait(20)
 
                 if I == i then
                     configString.Value = "Code expired"
-                    task.wait(5)
+                    wait(5)
 
                     if I == i then
                         configString.Value = ""
@@ -3624,6 +3676,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 end
             })
         end
+        
         settingsTab:AddButton({
             Text = "Clear code",
             Icon = "Cross",
@@ -3636,7 +3689,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         getExistingThemes = function()
             local themeNames = { }
             for _, file in lf(themesRoute:sub(1, -2)) or { } do
-                table.insert(themeNames, file:sub(#themesRoute + 1, -#json - 1))
+                tinsert(themeNames, file:sub(#themesRoute + 1, -#json - 1))
             end
 
             return themeNames
@@ -3808,7 +3861,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             mf(configsRoute:sub(1, -2))
             mf(configsRoute .. fl:sub(1, -2))
             mf(themesRoute:sub(1, -2))
-            nf(assetCache, { })
             nf(configRoute, false)
             nf(themeRoute, false)
 
@@ -3819,14 +3871,14 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             if typeof(cont) == "table" then
                 autoLoadTheme.Value = true
                 themeTextBox.Value = cont[1]
-                task.delay(rs.RenderStepped:Wait() and 0, loadTheme, cont[1])
+                delay(rs.RenderStepped:Wait() and 0, loadTheme, cont[1])
             end
 
             local cont = rf(configRoute, true)
             if typeof(cont) == "table" then
                 autoLoadConfig.Value = true
                 configTextBox.Value = cont[1]
-                task.delay(5 - rs.RenderStepped:Wait(), loadConfig, cont[1])
+                delay(5 - rs.RenderStepped:Wait(), loadConfig, cont[1])
             end
         end
 
@@ -3868,7 +3920,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     settingsTab:AddSeparator({ Invisible = true })
 
     local function reverseRGB(color)
-        return Color3.new(1 - color.R, 1 - color.G, 1 - color.B)
+        return C3n(1 - color.R, 1 - color.G, 1 - color.B)
     end
 
     local function rotateRGB(color, pattern)
@@ -3877,7 +3929,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
             while pattern[1] == "R" and pattern[2] == "G" do
                 for i = 1, 3 do
-                    local i1, i2 = math.random(1, 3), math.random(1, 3)
+                    local i1, i2 = mrandom(1, 3), mrandom(1, 3)
                     pattern[i], pattern[i1] = pattern[i1], pattern[i]
                 end
             end
@@ -3888,7 +3940,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             new[i] = color[pattern[i]]
         end
 
-        return Color3.new(unpack(new)), pattern
+        return C3n(unpack(new)), pattern
     end
 
     local warned = false
@@ -3901,7 +3953,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end
 
             db = true
-            local res = window:Notification({ Title = "Theme generator", Text = "This gonna reset your current theme!\nAre you sure" .. (math.random(1, 10) == 1 and " you wanna accept being uncreative?\n\n(an easter egg btw)" or "?"), Duration = 15, HasButtons = true })
+            local res = window:Notification({ Title = "Theme generator", Text = "This gonna reset your current theme!\nAre you sure" .. (mrandom(1, 10) == 1 and " you wanna accept being uncreative?\n\n(an easter egg btw)" or "?"), Duration = 15, HasButtons = true })
             db = false
 
             if res then
@@ -3919,33 +3971,33 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local mainColor = not toggle2.Value and targetColor
 
         if not mainColor then
-            mainColor = Color3.new(math.random(), math.random(), math.random())
+            mainColor = C3n(mrandom(), mrandom(), mrandom())
         else
-            mainColor = targetColor:Lerp(Color3.new(math.random(), math.random(), math.random()), math.random() / 10)
+            mainColor = targetColor:Lerp(C3n(mrandom(), mrandom(), mrandom()), mrandom() / 10)
         end
 
-        mainColor = Color3.new(math.clamp(mainColor.R + ((math.random() - 0.5) / 7.5), 0, 1), math.clamp(mainColor.G + ((math.random() - 0.5) / 7.5), 0, 1), math.clamp(mainColor.B + ((math.random() - 0.5) / 7.5), 0, 1))
+        mainColor = C3n(clamp(mainColor.R + ((mrandom() - 0.5) / 7.5), 0, 1), clamp(mainColor.G + ((mrandom() - 0.5) / 7.5), 0, 1), clamp(mainColor.B + ((mrandom() - 0.5) / 7.5), 0, 1))
 
         local isLight = toggle.Value
 
-        local n = math.random()
-        local strokeColor = mainColor:Lerp(Color3.new(n, n, n), math.clamp(math.random() / n, 0, 1))
-        local textColor = mainColor:Lerp(isLight and Color3.new() or Color3.new(1, 1, 1), (math.random() + 1.5) / 2.5)
+        local n = mrandom()
+        local strokeColor = mainColor:Lerp(C3n(n, n, n), clamp(mrandom() / n, 0, 1))
+        local textColor = mainColor:Lerp(isLight and C3n() or C3n(1, 1, 1), (mrandom() + 1.5) / 2.5)
 
-        local backTone = mainColor:Lerp(isLight and Color3.new(1, 1, 1) or Color3.new(), math.random())
-        local backColor = backTone:Lerp(isLight and Color3.new(1, 1, 1) or Color3.new(), (math.random() + 1) / 2)
+        local backTone = mainColor:Lerp(isLight and C3n(1, 1, 1) or C3n(), mrandom())
+        local backColor = backTone:Lerp(isLight and C3n(1, 1, 1) or C3n(), (mrandom() + 1) / 2)
 
-        if math.abs((backColor.R + backColor.G + backColor.B) - (textColor.R + textColor.G + textColor.B)) <= 0.2 then
-            textColor = textColor:Lerp(isLight and Color3.new() or Color3.new(1, 1, 1), (math.random() + 1) / 2)
+        if abs((backColor.R + backColor.G + backColor.B) - (textColor.R + textColor.G + textColor.B)) <= 0.2 then
+            textColor = textColor:Lerp(isLight and C3n() or C3n(1, 1, 1), (mrandom() + 1) / 2)
         end
 
-        local closest = math.abs((strokeColor.R + strokeColor.G + strokeColor.B) - (textColor.R + textColor.G + textColor.B)) <= 0.4 and "Text" or
-            math.abs((strokeColor.R + strokeColor.G + strokeColor.B) - (backColor.R + backColor.G + backColor.B)) <= 0.2 and "Back" or
-            math.abs((strokeColor.R + strokeColor.G + strokeColor.B) - (mainColor.R + mainColor.G + mainColor.B)) <= 0.3 and "Main" or
+        local closest = abs((strokeColor.R + strokeColor.G + strokeColor.B) - (textColor.R + textColor.G + textColor.B)) <= 0.4 and "Text" or
+            abs((strokeColor.R + strokeColor.G + strokeColor.B) - (backColor.R + backColor.G + backColor.B)) <= 0.2 and "Back" or
+            abs((strokeColor.R + strokeColor.G + strokeColor.B) - (mainColor.R + mainColor.G + mainColor.B)) <= 0.3 and "Main" or
             false
 
         if closest then
-            strokeColor = strokeColor:Lerp(closest == "Text" and textColor or closest == "Back" and backColor or mainColor:Lerp(isLight and Color3.new() or Color3.new(1, 1, 1), (math.random() + 1.5) / 2.5), (math.random() + 2) / 3)
+            strokeColor = strokeColor:Lerp(closest == "Text" and textColor or closest == "Back" and backColor or mainColor:Lerp(isLight and C3n() or C3n(1, 1, 1), (mrandom() + 1.5) / 2.5), (mrandom() + 2) / 3)
         end
 
         window.Options.Theme.Main = mainColor
@@ -4036,10 +4088,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local backgroundsConverted = { }
     for i in backgrounds do
-        table.insert(backgroundsConverted, (i:gsub("(%a)(%d)", "%1 %2")))
+        tinsert(backgroundsConverted, (i:gsub("(%a)(%d)", "%1 %2")))
     end
 
-    table.sort(backgroundsConverted)
+    tsort(backgroundsConverted)
 
     settingsTab:AddDropdown({ Text = "Select an image", NoConfigs = true, Values = backgroundsConverted, AllowUnselect = true, Callback = function(val, _, self)
         bi:Set(((val or ""):gsub(" ", "")))
@@ -4061,7 +4113,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     local nt2 = settingsTab:AddDropdown({ Text = "Neon type", NoConfigs = true, Convert = false, Values = neonTypes, Callback = function(val)
         window.Options.NeonType = neonTypes[val]
         window:Refresh()
-    end, Value = table.find(neonTypes, window.Options.NeonType) or 1 })
+    end, Value = tfind(neonTypes, window.Options.NeonType) or 1 })
 
     settingsTab:AddSeparator()
     settingsTab:AddLabel({ Text = "Other" })
@@ -4081,7 +4133,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local ns = settingsTab:AddDropdown("NotificationSide", { Text = "Notifications default side", NoConfigs = true, Values = sides, Callback = function(val)
         window.Options.NotificationSide = val
-    end, Value = table.find(sides, window.Options.NotificationSide) or 1 })
+    end, Value = tfind(sides, window.Options.NotificationSide) or 1 })
 
     local as = settingsTab:AddSlider("AnimationSpeed", { Text = "Animation speeds", NoConfigs = true, Value = window.Options.AnimationSpeed, Callback = function(val)
         window.Options.AnimationSpeed = val
@@ -4116,9 +4168,9 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         bo.Value = 1 - window.Options.BackgroundTransparency
         io.Value = 1 - window.Options.ImageTransparency
         nt.Value = window.Options.NeonThickness
-        nt2.Value = table.find(neonTypes, window.Options.NeonType) or 1
+        nt2.Value = tfind(neonTypes, window.Options.NeonType) or 1
         um.Value = window.Options.UnlockMouse
-        ns.Value = table.find(sides, window.Options.NotificationSide) or 1
+        ns.Value = tfind(sides, window.Options.NotificationSide) or 1
         as.Value = window.Options.AnimationSpeed
         pl.Visible = #window.PossibleLanguages > 1
         bie.Value = window.Options.ImageEnabled
@@ -4144,16 +4196,16 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         if #langs ~= #window.PossibleLanguages then                                                                      
-            table.clear(langs)
+            tclear(langs)
 
             for i, v in window.PossibleLanguages do
                 local v = window.Languages[v]
                 if not v then
-                    table.remove(window.PossibleLanguages, i)
+                    tremove(window.PossibleLanguages, i)
                     break
                 end
 
-                table.insert(langs, v[3] .. " " .. v[1] .. " (" .. v[2] .. ")")
+                tinsert(langs, v[3] .. " " .. v[1] .. " (" .. v[2] .. ")")
             end
         end
     end
@@ -4164,16 +4216,16 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         upd()
     end)
 
-    task.spawn(function()
-        while task.wait(0.35) and not window.Closed do
+    spawn(function()
+        while wait(0.35) and not window.Closed do
             upd()
         end
     end)                                                                                                                                                                                                                                                                                                                                                                                                
 
     local c1, c2
     local function reparent()
-        settingsTab.Holder.Size = UDim2.new(1, 0, 1, -1)
-        settingsTab.Holder.Position = UDim2.fromOffset(0, 1)
+        settingsTab.Holder.Size = U2n(1, 0, 1, -1)
+        settingsTab.Holder.Position = U2o(0, 1)
 
         settingsTab.Holder.Visible = true
         settingsTab.Holder.ZIndex = 42
@@ -4203,24 +4255,21 @@ end
 
 local function fixNum(n)
     local str = tostring(n)
-    local dot = str:find(".", 0, true)
-    
+    local dot = str:find(".", 1, true)
+
     if dot then
-        local afterDot = str:sub(dot + 1)
-        local beforeDot = str:sub(1, dot - 1)
-        
-        if #afterDot >= 13 then
-            afterDot = afterDot:sub(1, 13)
-            while afterDot:sub(-1, -1) == "0" do
-                afterDot = afterDot:sub(1, -2)
-            end
+        local before = str:sub(1, dot - 1)
+        local after = str:sub(dot + 1)
+
+        if #after >= 13 then
+            after = after:sub(1, 13):gsub("0+$", "")
         end
-        
-        if afterDot ~= "" then
-            return beforeDot .. "." .. afterDot
+
+        if after ~= "" then
+            return before .. "." .. after
+        else
+            return before
         end
-        
-        return beforeDot
     else
         return str
     end
@@ -4234,22 +4283,22 @@ local functions = {
 
     -- Percent with % symbol (raw)
     ["%"] = function(self)
-        return math.round(self.Value) .. "%"
+        return round(self.Value) .. "%"
     end,
 
     -- Rounded percent (0–100 scale, rounded to nearest integer)
     [".%"] = function(self)
-        return (math.round(self.Value * 100)) .. "%"
+        return (round(self.Value * 100)) .. "%"
     end,
 
     -- Rounded percent with 1 decimal place
     [".1%"] = function(self)
-        return string.format("%.1f%%", self.Value * 100)
+        return ("%.1f%%"):format(self.Value * 100)
     end,
 
     -- Rounded percent with 2 decimal places
     [".2%"] = function(self)
-        return string.format("%.2f%%", self.Value * 100)
+        return ("%.2f%%"):format(self.Value * 100)
     end,
 
     -- Fraction display: Value / Max
@@ -4259,17 +4308,17 @@ local functions = {
 
     -- Fraction as decimal (Value / Max)
     ["//"] = function(self)
-        return string.format("%.3f", self.Value / self.Max)
+        return ("%.3f"):format(self.Value / self.Max)
     end,
 
     -- Fraction as percentage of Max (same as .% but relative to Max)
     ["/%"] = function(self)
-        return (math.round(((self.Value - self.Min) / (self.Max - self.Min)) * 100)) .. "%"
+        return (round(((self.Value - self.Min) / (self.Max - self.Min)) * 100)) .. "%"
     end,
 
     -- Absolute value (useful for negative numbers)
     ["a"] = function(self)
-        return tostring(math.abs(self.Value))
+        return tostring(abs(self.Value))
     end,
 
     -- Signed display: +5, -3
@@ -4280,26 +4329,26 @@ local functions = {
     -- Currency format (e.g., $1,234.56)
     ["$"] = function(self)
         local val = self.Value
-        local absVal = math.abs(val)
-        local integer = math.round(absVal)
-        return (val < 0 and "-" or "") .. "$" .. string.format("%d", integer):gsub("(%d)(%d%d%d)(%d%d%d)$", "%1,%2,%3"):gsub("(%d)(%d%d%d)$", "%1,%2") .. "." .. string.format("%02d", math.floor((absVal - integer) * 100 + 0.5))
+        local absVal = abs(val)
+        local integer = round(absVal)
+        return (val < 0 and "-" or "") .. "$" .. ("%d"):format(integer):gsub("(%d)(%d%d%d)(%d%d%d)$", "%1,%2,%3"):gsub("(%d)(%d%d%d)$", "%1,%2") .. "." .. ("%02d"):format(floor((absVal - integer) * 100 + 0.5))
     end,
 
     -- Scientific notation (for very large/small numbers)
     ["e"] = function(self)
-        return string.format("%.2e", self.Value)
+        return ("%.2e"):format(self.Value)
     end,
 
     -- Hexadecimal representation
     ["x"] = function(self)
-        local n = math.round(self.Value)
-        return string.format("0x%X", n)
+        local n = round(self.Value)
+        return ("0x%X"):format(n)
     end,
 
     -- Comma-separated thousands (e.g., 1,234,567)
     [","] = function(self)
-        local val = math.round(self.Value)
-        return (val < 0 and "-" or "") .. string.format("%d", math.abs(val)):gsub("(%d)(%d%d%d)(%d%d%d)$", "%1,%2,%3"):gsub("(%d)(%d%d%d)$", "%1,%2")
+        local val = round(self.Value)
+        return (val < 0 and "-" or "") .. ("%d"):format(abs(val)):gsub("(%d)(%d%d%d)(%d%d%d)$", "%1,%2,%3"):gsub("(%d)(%d%d%d)$", "%1,%2")
     end
 }
 
@@ -4323,7 +4372,7 @@ local emojis = {
 
 local name = config.Name .. " | "
 for i = 1, 10 do
-    name = name .. emojis[math.random(1, #emojis)]
+    name = name .. emojis[mrandom(1, #emojis)]
 end
 
 gui.Name = name
@@ -4335,7 +4384,7 @@ local textS        = game:GetService("TextService")
 local plrs        = game:GetService("Players")
 local mps        = game:GetService("MarketplaceService")
 
-local textParams = Instance.new("GetTextBoundsParams")
+local textParams = Inew("GetTextBoundsParams")
 local function getTextSize(text, size, font, bounds)
     textParams.Text = text
     textParams.Size = size
@@ -4407,7 +4456,7 @@ local emulator, realPlatform = false, nil
 local s, platform = pcall(uis.GetPlatform, uis)
 if s then
     realPlatform = platform
-    local isMobilePlatform = table.find({ Enum.Platform.IOS, Enum.Platform.Android, Enum.Platform.Ouya }, platform)
+    local isMobilePlatform = tfind({ Enum.Platform.IOS, Enum.Platform.Android, Enum.Platform.Ouya }, platform)
     if isMobilePlatform and not isMobile or isMobile and not isMobilePlatform then
         emulator = true
     end
@@ -4435,16 +4484,16 @@ end
 
 local tooltipObject, coreWindow
 
-local circle = Instance.new("Frame")
+local circle = Inew("Frame")
 circle.BackgroundTransparency = 0.95
-circle.AnchorPoint = Vector2.new(0.5, 0.5)
-circle.Size = UDim2.fromOffset(0, 10000)
+circle.AnchorPoint = V2n(0.5, 0.5)
+circle.Size = U2o(0, 10000)
 circle.BorderSizePixel = 0
 circle.ZIndex = 3
-circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+circle.BackgroundColor3 = C3R(255, 255, 255)
 
-Instance.new("UICorner", circle).CornerRadius = UDim.new(1, 0)
-Instance.new("UIAspectRatioConstraint", circle)
+Inew("UICorner", circle).CornerRadius = Un(1, 0)
+Inew("UIAspectRatioConstraint", circle)
 
 addPlaceholder(circle, "Circle")
 
@@ -4459,14 +4508,14 @@ local function getPlaceholder(name) : Instance?
 end
 
 local function tweenOnce(obj: Instance, ti: TweenInfo, props: { any })
-    local tween = tween:Create(obj, ti or TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), props)
+    local tween = tween:Create(obj, ti or TIn(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), props)
 
     obj = nil
     ti = nil
     props = nil
 
     tween:Play()
-    task.defer(tween.Destroy, tween)
+    defer(tween.Destroy, tween)
 end
 
 local function paintRichText(text, color)
@@ -4615,7 +4664,7 @@ local function newObject(instructions, parent, ...)
     meta.__index = idx
     meta.__newindex = newidx
 
-    table.freeze(meta)
+    tfreeze(meta)
     references[object] = inited
     inited.Proxy = object
     inited.Parent = parent
@@ -4626,7 +4675,7 @@ end
 local function addFunctions(toAdd, list)
     for i, v in list do
         if typeof(i) == "string" and i ~= "DefaultOptions" and i ~= "Init" and toAdd[i] == nil then
-            toAdd[i] = i == "Translations" and table.clone(v) or v
+            toAdd[i] = i == "Translations" and tclone(v) or v
         end
     end
 
@@ -4636,7 +4685,7 @@ end
 
 local function handleAnimationSpeed(value)
     if value < 0.1 or value >= 10 then
-        return math.huge -- instant animation
+        return inf -- instant animation
     end
 
     return value
@@ -4660,25 +4709,25 @@ local function OR(...)
         cons[#cons + 1] = select(i, ...):Connect(cn)
     end
 
-    repeat task.wait() until done
+    repeat wait() until done
 end
 
 local function castCircle(button, window, holder)
     local circle = getPlaceholder("Circle")
     safeReparent(circle, holder or button)
 
-    local mp = Vector2.new(mouse.X, mouse.Y)
-    local pos = Vector2.new(mp.X - button.AbsolutePosition.X, mp.Y - button.AbsolutePosition.Y)
-    local relative = UDim2.fromScale(pos.X / button.AbsoluteSize.X, pos.Y / button.AbsoluteSize.Y)
+    local mp = V2n(mouse.X, mouse.Y)
+    local pos = V2n(mp.X - button.AbsolutePosition.X, mp.Y - button.AbsolutePosition.Y)
+    local relative = U2s(pos.X / button.AbsoluteSize.X, pos.Y / button.AbsoluteSize.Y)
 
     circle.Position = relative
     circle.BackgroundColor3 = window.Theme.Text
 
     local time = 0.35 / handleAnimationSpeed(window.AnimationSpeed)
-    tweenOnce(circle, TweenInfo.new(time), { Size = UDim2.new(2.5, 0, 0, 10000), BackgroundTransparency = 0.9 })
+    tweenOnce(circle, TIn(time), { Size = U2n(2.5, 0, 0, 10000), BackgroundTransparency = 0.9 })
     OR(button.MouseButton1Up, button.MouseLeave, button.Destroying)
-    tweenOnce(circle, TweenInfo.new(time * 2.5), { BackgroundTransparency = 1 })
-    task.wait(time * 2.5)
+    tweenOnce(circle, TIn(time * 2.5), { BackgroundTransparency = 1 })
+    wait(time * 2.5)
 
     circle:Destroy()
 end
@@ -4701,36 +4750,68 @@ local function quickCount(str1, str2)
     return count
 end
 
-downloadImage = gca and function(url)
-    local Id
+local encodingServ = game:GetService("EncodingService")
+local function hash(str)
+    return (encodingServ:ComputeStringHash(str, Enum.HashAlgorithm.Md5):gsub(".", function(str) return ("%02x"):format(str:byte()) end))
+end
+
+local blockExstensions = {
+    "com", "ru", "web", "online", "org", "net", "biz", "info", "pro", "mobi", "us", "ca", "co", "cc", "tv", "fr", "to", "jp", "it", "de", "se", "no", "es", "pt"
+}
+
+local function getFileExtension(str)
+    local start, stop = str:reverse():find("%.")
+    local att = str:sub(-stop + 1)
+    
+    local br = att:find("?", 0, true) or att:find("&", 0, true) or att:find("=", 0, true) or att:find("/", 0, true) or att:find("\\", 0, true)
+    if br then
+        att = att:sub(1, br - 1)
+    end
+    
+    if tfind(blockExstensions, att) then
+        return "png"
+    end
+    
+    return att
+end
+
+local imageCache = { }
+local tryDownloadImage = gca and function(url)
+    local ext = getFileExtension(url)
+    local fileHash = cacheRoute .. hash(url) .. ext
+    
+    if imageCache[fileHash] then
+        return imageCache[fileHash]
+    end
+    
+    if IF(fileHash) then
+        local asset = gca(fileHash)
+        imageCache[fileHash] = asset
+        
+        return asset
+    end
+    
     local success, result = pcall(function()
-        local list = rf(assetCache, true) or { }
-        if list[url] then
-            return list[url]
-        end
+        wf(fileHash, game:HttpGet(url, true), true)
+        local asset = gca(fileHash)
+        imageCache[fileHash] = asset
 
-        Id = id()
-        wf(cacheRoute .. Id, game:HttpGet(url), true)
-
-        local ca = gca(cacheRoute .. Id)
-
-        -- list[url] = ca -- roblox updates gonna ruin it, so removing
-        wf(assetCache, list)
-
-        return ca
+        return asset
     end)
 
-    if Id then
-        pcall(df, cacheRoute .. Id)
-    end
-
     if not success then
-        warn("Download failed:", result)
+        warn("Download", "\"" .. url .. "\"", "failed:", result)
     end
 
     return success and result or ""
-end or function()
+end or function(url)
+    warn("Unable to download", "\"" .. url .. "\"!")
     return ""
+end
+
+downloadImage = function(...)
+    local s, e = pcall(tryDownloadImage, ...)
+    return s and e or ""
 end
 
 local function valueSafeCheck(value, list)
@@ -4787,7 +4868,7 @@ playSound = function(sound, holder)
     sound = _getIcon(sound)
     if #sound <= 11 then return end
 
-    local snd = Instance.new("Sound", holder.Window.SoundCache)
+    local snd = Inew("Sound", holder.Window.SoundCache)
     snd.SoundGroup = holder.Window.SoundCache
     snd.SoundId = sound
     snd.Volume = 0.5
@@ -4810,7 +4891,7 @@ local function getIcon(value, list, object)
         return cache[str]
     end
 
-    task.spawn(function()
+    spawn(function()
         cache[str] = ""
         cache[str] = _getIcon(value, list)
 
@@ -4841,7 +4922,7 @@ local function hoverLogic(object, instance)
 
     cons[#cons + 1] = instance.MouseEnter:Connect(function()
         if not object.Options.Disabled then
-            task.spawn(playSound, "Hover", window)
+            spawn(playSound, "Hover", window)
         end
 
         tooltipObject.Options.Window = window
@@ -4874,8 +4955,8 @@ local function addPossibleTranslations(object)
 
     if object.Translations then
         for lang in object.Translations do
-            if langs[lang] and not table.find(window.PossibleLanguages, lang) then
-                table.insert(window.PossibleLanguages, lang)
+            if langs[lang] and not tfind(window.PossibleLanguages, lang) then
+                tinsert(window.PossibleLanguages, lang)
                 window.LanguageAdded:Fire(window.PossibleLanguages, lang)
             end
         end
@@ -4884,17 +4965,17 @@ end
 
 local allIcons = { }
 for icon in icons do
-    table.insert(allIcons, icon)
+    tinsert(allIcons, icon)
 end
 
-table.freeze(allIcons)
+tfreeze(allIcons)
 
 local allBackgrounds = { }
 for icon in backgrounds do
-    table.insert(allBackgrounds, icon)
+    tinsert(allBackgrounds, icon)
 end
 
-table.freeze(allBackgrounds)
+tfreeze(allBackgrounds)
 
 local inputting = false
 local blockedKeys = {
@@ -4928,7 +5009,7 @@ local gsubs = {
 }
 
 gsubInput = function(inp)
-    for i, v in pairs(gsubs) do
+    for i, v in gsubs do
         inp = inp:gsub(i, v)
     end
 
@@ -4936,7 +5017,7 @@ gsubInput = function(inp)
 end
 
 uis.InputBegan:Connect(function(inp, chat)
-    if not inputting or table.find(blockedKeys, inp.KeyCode) then
+    if not inputting or tfind(blockedKeys, inp.KeyCode) then
         return
     end
 
@@ -4964,7 +5045,7 @@ local function addCons(object, cons)
     local connections = window._Connections
     
     for i, v in cons do
-        table.insert(connections, v)
+        tinsert(connections, v)
     end
     
     pcall(addDefault, object, window.Defaults)
@@ -4979,7 +5060,7 @@ local units = {
 }
 
 local function formatTime(sec)
-    sec = math.floor(sec)
+    sec = floor(sec)
 
     if sec >= 1e9 then
         return "NEVER"
@@ -4989,18 +5070,18 @@ local function formatTime(sec)
 
     local parts = { }
     for _, u in units  do
-        local val = math.floor(sec / u[1])
+        local val = floor(sec / u[1])
         if val > 0 then
-            table.insert(parts, tostring(val) .. u[2])
+            tinsert(parts, tostring(val) .. u[2])
             sec %= u[1]
         end
     end
 
     while #parts > 3 do
-        table.remove(parts, #parts)
+        tremove(parts, #parts)
     end
 
-    return #parts > 0 and table.concat(parts, " ") or "EXPIRED"
+    return #parts > 0 and concat(parts, " ") or "EXPIRED"
 end
 
 local function themeSync(object)
@@ -5013,7 +5094,7 @@ end
 local acp
 local colorPickerBase = {
     DefaultOptions = {
-        Value = Color3.new(1, 1, 1),
+        Value = C3n(1, 1, 1),
         Callback = function(color) end,
         Enabled = true,
         Visible = true,
@@ -5028,7 +5109,7 @@ local colorPickerBase = {
         self.Options.Value = value
         self:Refresh()
         self.Changed:Fire(self.Options.Value, self)
-        task.spawn(self.Options.Callback, self.Options.Value, self)
+        spawn(self.Options.Callback, self.Options.Value, self)
     end,
     Init = function(self, options)
         local instance = getPlaceholder("ColorPicker")
@@ -5039,16 +5120,16 @@ local colorPickerBase = {
             Changed = event.new()
         }, self)
 
-        task.defer(hoverLogic, object, instance)
+        defer(hoverLogic, object, instance)
 
         local picking = false
         local cons = { }
-        task.defer(addCons, object, cons)
+        defer(addCons, object, cons)
 
         cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
             if picking or not object.Options.Enabled then return end
             picking = true
-            task.spawn(playSound, "Click", object)
+            spawn(playSound, "Click", object)
 
             local color = getWindow(object.Proxy):ColorPicker({ Value = object.Options.Value, Text = #object.Options.Tooltip > 0 and object.Options.Tooltip or object.Proxy.Parent and object.Proxy.Parent.Text or "Color Picker" })
             if color then
@@ -5058,7 +5139,7 @@ local colorPickerBase = {
             picking = false
         end)
 
-        task.defer(themeSync, object)
+        defer(themeSync, object)
         return object
     end,
     Call = function(self, color)
@@ -5068,7 +5149,7 @@ local colorPickerBase = {
 
         self.Options.Value = color
         self:Refresh()
-        task.spawn(self.Options.Callback, color, self)
+        spawn(self.Options.Callback, color, self)
     end,
     Refresh = function(self)
         local window = getWindow(self)
@@ -5090,7 +5171,7 @@ local colorPickerBase = {
 
 acp = function(...)
     local colorPicker = newObject(colorPickerBase, ...)
-    table.insert((...).ColorPickers, colorPicker)
+    tinsert((...).ColorPickers, colorPicker)
 
     return colorPicker
 end
@@ -5108,7 +5189,7 @@ local keybindBase = {
         self:Refresh()
 
         self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
-        task.spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+        spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
 
         local window = getWindow(self)
         window.KeybindMode:Fire(window.KeybindModeActive)
@@ -5131,13 +5212,13 @@ local keybindBase = {
         }, self)
 
         local cons = { }
-        task.defer(addCons, object, cons)
+        defer(addCons, object, cons)
 
         cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
             object.Proxy:Click()
         end)
 
-        task.defer(object.Setup, object)
+        defer(object.Setup, object)
 
         return object
     end,
@@ -5164,7 +5245,7 @@ local keybindBase = {
             window.KeybindMode:Fire(window.KeybindModeActive) -- cast a refresh
         end)
 
-        table.insert(window.KeybindObjects, self)
+        tinsert(window.KeybindObjects, self)
     end,
     Call = function(self, value)
         self.Options.Value = value
@@ -5180,7 +5261,7 @@ local keybindBase = {
 
         local i = inputting
         inputting = self
-        task.spawn(playSound, "Click", self)
+        spawn(playSound, "Click", self)
 
         if i then
             if i == inputting then
@@ -5225,7 +5306,7 @@ local keybindBase = {
         if not ref then return end
 
         local gb = ref.Parent.Class == "Groupbox"
-        local pad = UDim.new(0, gb and 2 or 3)
+        local pad = Un(0, gb and 2 or 3)
 
         self.Instance.Display.UIPadding.PaddingBottom = pad
         self.Instance.Display.UIPadding.PaddingTop = pad
@@ -5244,7 +5325,7 @@ local keybindBase = {
 local keybindSetup; keybindSetup = function(object, depth)
     depth = depth or 10
     if depth ~= 0 then
-        return task.defer(keybindSetup, object, depth - 1)
+        return defer(keybindSetup, object, depth - 1)
     end
 
     local object = object.Proxy
@@ -5266,7 +5347,7 @@ local basicObjects = {
             Value = false,
             Tooltip = "",
             Icon = "Cursor",
-            Translations = table.freeze({ })
+            Translations = tfreeze({ })
         },
         AddColorPicker = acp,
         Init = function(self, options)
@@ -5279,11 +5360,11 @@ local basicObjects = {
                 Changed = event.new()
             }, self)
 
-            task.defer(hoverLogic, object, instance)
-            task.defer(keybindSetup, object)
+            defer(hoverLogic, object, instance)
+            defer(keybindSetup, object)
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
                 if object.Options.Holdable then return end
@@ -5336,7 +5417,7 @@ local basicObjects = {
             end
 
             if not self.Options.Disabled then
-                task.spawn(playSound, "Click", self)
+                spawn(playSound, "Click", self)
             end
 
             self:Call(self.Options.Holdable and (isDown == nil and true or isDown ~= nil and not not isDown) or not self.Options.Holdable and nil, dontFire)
@@ -5349,11 +5430,11 @@ local basicObjects = {
             local window = getWindow(self)
             self.Instance.Separator.BackgroundColor3 = window.Theme.Text
             self.Instance.View.Label.TextColor3 = window.Theme.Text
-            self.Instance.View.Icon.ImageColor3 = self.Options.RecolorIcon and window.Theme.Text or Color3.new(1, 1, 1)
+            self.Instance.View.Icon.ImageColor3 = self.Options.RecolorIcon and window.Theme.Text or C3n(1, 1, 1)
 
-            self.Instance.Size = UDim2.new(1, 0, 0, y)
-            self.Instance.View.Size = UDim2.new(100, 0, 0, y2)
-            self.Instance.View.Position = UDim2.new(0, x, 0.5, 0)
+            self.Instance.Size = U2n(1, 0, 0, y)
+            self.Instance.View.Size = U2n(100, 0, 0, y2)
+            self.Instance.View.Position = U2n(0, x, 0.5, 0)
             self.Instance.Visible = self.Options.Visible
             safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.View.Label.Text = translate(self, "Text")
@@ -5393,7 +5474,7 @@ local basicObjects = {
             end
 
             self.Changed:Fire(value, converted, self)
-            task.spawn(self.Options.Callback, value, converted, self)
+            spawn(self.Options.Callback, value, converted, self)
         end,
         Init = function(self, options)
             local instance = getPlaceholder("Dropdown")
@@ -5405,10 +5486,10 @@ local basicObjects = {
                 Changed = event.new()
             }, self)
 
-            task.defer(hoverLogic, object, instance)
+            defer(hoverLogic, object, instance)
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
                 object:Click()
@@ -5428,7 +5509,7 @@ local basicObjects = {
                 return self.Proxy:Refresh()
             end
 
-            task.spawn(playSound, "Click", self)
+            spawn(playSound, "Click", self)
             self.Options.Opened = not self.Options.Opened
             self.Proxy:Refresh()
         end,
@@ -5445,10 +5526,10 @@ local basicObjects = {
                 if opts.Multi then
                     local texts = { }
                     for _, idx in value do
-                        table.insert(texts, tostring(opts.Values[idx]))
+                        tinsert(texts, tostring(opts.Values[idx]))
                     end
 
-                    return #texts > 0 and (#texts < #opts.Values and table.concat(texts, ", ") or "*Everything*") or "None"
+                    return #texts > 0 and (#texts < #opts.Values and concat(texts, ", ") or "*Everything*") or "None"
                 else
                     return tostring(opts.Values[value] or "None")
                 end
@@ -5456,7 +5537,7 @@ local basicObjects = {
                 if opts.Multi then
                     local val = { }
                     for i, v in self.Options.Values do
-                        val[v] = not not table.find(value, i)
+                        val[v] = not not tfind(value, i)
                     end
 
                     return val
@@ -5491,7 +5572,7 @@ local basicObjects = {
             self.Instance.View.List.UIStroke.Color = window.Theme.Stroke
 
             if options.Value ~= false and typeof(options.Value) ~= "number" and typeof(options.Value) ~= "table" then
-                options.Value = table.find(options.Values, options.Value) or false
+                options.Value = tfind(options.Values, options.Value) or false
             end
 
             if options.Multi then
@@ -5505,7 +5586,7 @@ local basicObjects = {
             end
 
             if options.Value ~= false and typeof(options.Value) ~= "number" and typeof(options.Value) ~= "table" then
-                options.Value = table.find(options.Values, options.Value) or false
+                options.Value = tfind(options.Values, options.Value) or false
             end
 
             if typeof(options.Value) == "table" then
@@ -5519,7 +5600,7 @@ local basicObjects = {
                     local newValue = { }
                     for i, v in options.Value do
                         if v then
-                            table.insert(newValue, i)
+                            tinsert(newValue, i)
                         end
                     end
 
@@ -5528,7 +5609,7 @@ local basicObjects = {
 
                 for i, v in options.Value do
                     if v ~= false and typeof(v) ~= "number" then
-                        options.Value[i] = table.find(options.Values, v) or nil
+                        options.Value[i] = tfind(options.Values, v) or nil
                     end
                 end
             end
@@ -5551,8 +5632,8 @@ local basicObjects = {
             self.Instance.View.List.List.Visible = false
             self.Instance.View.List.Selected.Visible = false
             self.Instance.View.List.NoContents.Visible = false
-            self.Instance.View.Position = self.Parent.Class == "Groupbox" and UDim2.fromOffset(7, 4) or UDim2.fromOffset(15, 8)
-            self.Instance.View.Size = self.Parent.Class == "Groupbox" and UDim2.new(1, -14, 0, 14) or UDim2.new(1, -30, 0, 16)
+            self.Instance.View.Position = self.Parent.Class == "Groupbox" and U2o(7, 4) or U2o(15, 8)
+            self.Instance.View.Size = self.Parent.Class == "Groupbox" and U2n(1, -14, 0, 14) or U2n(1, -30, 0, 16)
             self.Instance.View.Label.Icon.ImageTransparency = options.Opened and 1 or 0
             self.Instance.View.Label.Icon.Opened.Visible = options.Opened
 
@@ -5562,12 +5643,12 @@ local basicObjects = {
                 end
             end
 
-            table.clear(self.DynamicConnections)
+            tclear(self.DynamicConnections)
             if options.Opened then
                 if #options.Values == 0 then
                     self.Instance.View.List.NoContents.Visible = true
-                    self.Instance.Size = UDim2.new(1, 0, 0, y)
-                    self.Instance.View.List.Size = UDim2.new(1, 0, 0, y2)
+                    self.Instance.Size = U2n(1, 0, 0, y)
+                    self.Instance.View.List.Size = U2n(1, 0, 0, y2)
 
                     for _, child in self.Instance.View.List.List:GetChildren() do
                         if child:IsA("GuiObject") then
@@ -5576,8 +5657,8 @@ local basicObjects = {
                     end
                 else
                     self.Instance.View.List.List.Visible = true
-                    self.Instance.Size = UDim2.new(1, 0, 0, (y - y3) + (#options.Values * 14))
-                    self.Instance.View.List.Size = UDim2.new(1, 0, 0, #options.Values * 14)
+                    self.Instance.Size = U2n(1, 0, 0, (y - y3) + (#options.Values * 14))
+                    self.Instance.View.List.Size = U2n(1, 0, 0, #options.Values * 14)
 
                     for i, val in options.Values do
                         local row = self.Instance.View.List.List:FindFirstChild(tostring(i))
@@ -5588,20 +5669,20 @@ local basicObjects = {
 
                         safeReparent(row, self.Instance.View.List.List)
                         row.Text = tostring(val)
-                        row.Size = UDim2.fromScale(1, 1 / #options.Values)
-                        row.TextColor3 = ((options.Multi and table.find(options.Value, i)) or (not options.Multi and options.Value == i)) and window.Theme.Main or window.Theme.Text
+                        row.Size = U2s(1, 1 / #options.Values)
+                        row.TextColor3 = ((options.Multi and tfind(options.Value, i)) or (not options.Multi and options.Value == i)) and window.Theme.Main or window.Theme.Text
                         row.TextStrokeColor3 = window.Theme.Stroke
 
                         self.DynamicConnections[#self.DynamicConnections + 1] = row.MouseButton1Click:Connect(function()
                             if options.Multi then
-                                local found = table.find(options.Value, i)
+                                local found = tfind(options.Value, i)
                                 if found then
-                                    table.remove(options.Value, found)
+                                    tremove(options.Value, found)
                                 else
-                                    table.insert(options.Value, i)
+                                    tinsert(options.Value, i)
                                 end
 
-                                table.sort(options.Value)
+                                tsort(options.Value)
                             else
                                 local old = options.Value
                                 if options.AllowUnselect and options.Value == i then
@@ -5620,7 +5701,7 @@ local basicObjects = {
                                 value, converted = converted, value
                             end
 
-                            task.spawn(playSound, "Click", self)
+                            spawn(playSound, "Click", self)
                             self:Refresh()
                             self:Call(value, converted)
                         end)
@@ -5630,7 +5711,7 @@ local basicObjects = {
                         end)
 
                         self.DynamicConnections[#self.DynamicConnections + 1] = row.MouseEnter:Connect(function()
-                            task.spawn(playSound, "Hover", self)
+                            spawn(playSound, "Hover", self)
                         end)
                     end
 
@@ -5642,8 +5723,8 @@ local basicObjects = {
                 end
             else
                 self.Instance.View.List.Selected.Visible = true
-                self.Instance.Size = UDim2.new(1, 0, 0, y)
-                self.Instance.View.List.Size = UDim2.new(1, 0, 0, y2)
+                self.Instance.Size = U2n(1, 0, 0, y)
+                self.Instance.View.List.Size = U2n(1, 0, 0, y2)
 
                 for _, child in self.Instance.View.List.List:GetChildren() do
                     if child:IsA("GuiObject") then
@@ -5671,13 +5752,13 @@ local basicObjects = {
             Value = 50,
             _Value = -1,
             Tooltip = "",
-            Translations = table.freeze({ })
+            Translations = tfreeze({ })
         },
         Set = function(self, value)
             self.Options.Value = value
             self:Refresh()
             self.Changed:Fire(self.Options.Value, self)
-            task.spawn(self.Options.Callback, self.Options.Value, self)
+            spawn(self.Options.Callback, self.Options.Value, self)
         end,
         Init = function(self, options)
             local instance = getPlaceholder("Slider")
@@ -5688,13 +5769,13 @@ local basicObjects = {
                 Changed = event.new()
             }, self)
 
-            task.defer(hoverLogic, object, instance)
+            defer(hoverLogic, object, instance)
 
             local sliding = false
             local bar = instance.View.Bar
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             local con
             con = instance.InputBegan:Connect(function(input)
@@ -5711,10 +5792,10 @@ local basicObjects = {
                     local barSize = bar.AbsoluteSize.X
                     local barPosition = bar.AbsolutePosition.X
 
-                    local relativeX = math.clamp((mouse.X - barPosition) / barSize, 0, 1)
+                    local relativeX = clamp((mouse.X - barPosition) / barSize, 0, 1)
 
-                    task.spawn(object.Call, object, relativeX, true)
-                    task.wait()
+                    spawn(object.Call, object, relativeX, true)
+                    wait()
                 end
 
                 if c.Connected then
@@ -5731,20 +5812,20 @@ local basicObjects = {
                 end
             end)
 
-            object.Options._Value = math.clamp(object.Options.Value / (object.Options.Max - object.Options.Min), 0, 1)
+            object.Options._Value = clamp(object.Options.Value / (object.Options.Max - object.Options.Min), 0, 1)
             return object
         end,
         Call = function(self, value, valueCompare)    
-            value = math.max(0, math.min(1, tonumber(value) or 0.5))
+            value = max(0, min(1, tonumber(value) or 0.5))
 
             local realValue = value * (self.Options.Max - self.Options.Min) + self.Options.Min
-            realValue = math.round(realValue * 1e8) / 1e8
+            realValue = round(realValue * 1e8) / 1e8
 
             if self.Options.Step > 0 then
-                realValue = math.floor((realValue + self.Options.Step / 2) / self.Options.Step) * self.Options.Step
+                realValue = floor((realValue + self.Options.Step / 2) / self.Options.Step) * self.Options.Step
             end
 
-            realValue = math.max(self.Options.Min, math.min(self.Options.Max, realValue))
+            realValue = max(self.Options.Min, min(self.Options.Max, realValue))
             if valueCompare then
                 if realValue == self.Options.Value then
                     self:Refresh()
@@ -5756,7 +5837,7 @@ local basicObjects = {
             self.Options.Value = realValue
 
             self:Refresh()
-            task.spawn(playSound, "Hover", self)
+            spawn(playSound, "Hover", self)
             self.Changed:Fire(realValue, self.Proxy)
             self.Options.Callback(realValue, self.Proxy)
         end,
@@ -5797,11 +5878,11 @@ local basicObjects = {
             end
 
             self.Instance.View.Bar.Progress.Text = self.Options.Format and (typeof(self.Options.Format) == "string" and self.Options["Format"] --[[suspend studio warning]] or tostring(self.Options.Format(self.Options))) or fixNum(self.Value) .. " / " .. fixNum(self.Max)
-            self.Instance.Size = UDim2.new(1, 0, 0, y)
-            self.Instance.View.Size = UDim2.new(1, x, 0, y2)
-            self.Instance.View.Position = self.Parent.Class == "Groupbox" and UDim2.new(0, 7, 0.275, 0) or UDim2.new(0, 15, 0.3, 0)
+            self.Instance.Size = U2n(1, 0, 0, y)
+            self.Instance.View.Size = U2n(1, x, 0, y2)
+            self.Instance.View.Position = self.Parent.Class == "Groupbox" and U2n(0, 7, 0.275, 0) or U2n(0, 15, 0.3, 0)
 
-            tweenOnce(self.Instance.View.Bar.Fill, TweenInfo.new(math.max(0.25 / handleAnimationSpeed(getWindow(self).AnimationSpeed), 0.05), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.fromScale(math.clamp((self.Options.Value - self.Options.Min) / (self.Options.Max - self.Options.Min), 0, 1), 1) })
+            tweenOnce(self.Instance.View.Bar.Fill, TIn(max(0.25 / handleAnimationSpeed(getWindow(self).AnimationSpeed), 0.05), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = U2s(clamp((self.Options.Value - self.Options.Min) / (self.Options.Max - self.Options.Min), 0, 1), 1) })
         end
     },
     TextBox = {
@@ -5818,13 +5899,13 @@ local basicObjects = {
             PlaceholderText = "Type here...", -- supports Rich Text
             Value = "",
             Disabled = false,
-            Translations = table.freeze({ })
+            Translations = tfreeze({ })
         },
         Set = function(self, value)
             self.Options.Value = value
             self:Refresh()
             self.Changed:Fire(self.Options.Value, self)
-            task.spawn(self.Options.Callback, self.Options.Value, self)
+            spawn(self.Options.Callback, self.Options.Value, self)
         end,
         Init = function(self, options)
             local instance = getPlaceholder("TextBox")
@@ -5835,10 +5916,10 @@ local basicObjects = {
                 Changed = event.new()
             }, self)
 
-            task.defer(hoverLogic, object, instance)
+            defer(hoverLogic, object, instance)
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
                 object:Click()
@@ -5851,7 +5932,7 @@ local basicObjects = {
 
             cons[#cons + 1] = instance.MouseEnter:Connect(function()
                 if object.Proxy.Disabled then return end
-                task.spawn(playSound, "Hover", object)
+                spawn(playSound, "Hover", object)
             end)
 
             cons[#cons + 1] = instance.View.Bar.FocusLost:Connect(function(enter)
@@ -5865,7 +5946,7 @@ local basicObjects = {
                 if not cd or not getWindow(object).Visible then return end
                 cd = false
                 object:Refresh(true)
-                task.wait()
+                wait()
                 cd = true
             end)
 
@@ -5879,7 +5960,7 @@ local basicObjects = {
                 oldN = newN
 
                 if object.Proxy.Parent.Class ~= "Groupbox" then
-                    object.Proxy.Parent.Holder.CanvasPosition += Vector2.new(0, diff * 12)
+                    object.Proxy.Parent.Holder.CanvasPosition += V2n(0, diff * 12)
                 end
 
                 instance.View.BarInvisible.RichText = #new == 0
@@ -5914,7 +5995,7 @@ local basicObjects = {
             self.Options.Callback(text, self.Proxy)
         end,
         Click = function(self)
-            task.spawn(playSound, "Click", self)
+            spawn(playSound, "Click", self)
             self.Proxy:Refresh()
             self.Instance.View.Bar:CaptureFocus()
         end,
@@ -5945,11 +6026,11 @@ local basicObjects = {
             self.Instance.View.Bar.Placeholder.RichText = true
             self.Instance.View.Bar.RichText = false
             self.Instance.View.Bar.Placeholder.TextTransparency = self.Instance.View.Bar.TextTransparency
-            self.Instance.View.Bar.Size = UDim2.new(1, 0, 0, self.Instance.View.BarInvisible.TextBounds.Y + 2)
-            self.Instance.Size = UDim2.new(1, 0, 0, (y - 14) + self.Instance.View.Bar.Size.Y.Offset)
-            self.Instance.View.Size = UDim2.new(1, x, 0, y2)
-            self.Instance.View.Position = self.Parent.Class == "Groupbox" and UDim2.new(0, 7, 0, 1) or UDim2.new(0, 15, 0, 8)
-            self.Instance.View.AnchorPoint = Vector2.new(0, 0)
+            self.Instance.View.Bar.Size = U2n(1, 0, 0, self.Instance.View.BarInvisible.TextBounds.Y + 2)
+            self.Instance.Size = U2n(1, 0, 0, (y - 14) + self.Instance.View.Bar.Size.Y.Offset)
+            self.Instance.View.Size = U2n(1, x, 0, y2)
+            self.Instance.View.Position = self.Parent.Class == "Groupbox" and U2n(0, 7, 0, 1) or U2n(0, 15, 0, 8)
+            self.Instance.View.AnchorPoint = V2n(0, 0)
 
             if not dontSetText then
                 self.Instance.View.Bar.Text = self.Options.Value
@@ -5960,7 +6041,7 @@ local basicObjects = {
         DefaultOptions = {
             Text = "Label",
             Visible = true,
-            Translations = table.freeze({ })
+            Translations = tfreeze({ })
         },
         AddColorPicker = acp,
         Init = function(self, options)
@@ -5973,18 +6054,18 @@ local basicObjects = {
             }, self)
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             local cd = true
             cons[#cons + 1] = instance.Label.Changed:Connect(function()
                 if not cd or not getWindow(object).Visible then return end
 
                 cd = false
-                instance.Label.Size = UDim2.new(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
-                instance.Size = UDim2.new(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
-                task.wait()
-                instance.Label.Size = UDim2.new(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, Vector2.new(instance.Label.AbsoluteSize.X, 10000)).Y)
-                instance.Size = UDim2.new(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
+                instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 10000)).Y)
+                instance.Size = U2n(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
+                wait()
+                instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 10000)).Y)
+                instance.Size = U2n(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
                 cd = true
             end)
 
@@ -6000,8 +6081,8 @@ local basicObjects = {
             self.Instance.Visible = self.Options.Visible
             safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.Label.Text = translate(self, "Text"):sub(0, 199999)
-            self.Instance.Size = UDim2.new(1, 0, 0, y)
-            self.Instance.Label.Position = self.Parent.Class == "Groupbox" and UDim2.fromOffset(9, 5) or UDim2.fromOffset(15, 12)
+            self.Instance.Size = U2n(1, 0, 0, y)
+            self.Instance.Label.Position = self.Parent.Class == "Groupbox" and U2o(9, 5) or U2o(15, 12)
         end
     },
     Separator = {
@@ -6025,7 +6106,7 @@ local basicObjects = {
             self.Instance.Visible = self.Options.Visible
             safeReparent(self.Instance, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             self.Instance.SeparatorMiddle.Visible = not self.Options.Invisible
-            self.Instance.Size = UDim2.new(1, 0, 0, 10)
+            self.Instance.Size = U2n(1, 0, 0, 10)
         end
     },
     Toggle = {
@@ -6038,13 +6119,13 @@ local basicObjects = {
             Disabled = false,
             CheckBox = false,
             Tooltip = "",
-            Translations = table.freeze({ })
+            Translations = tfreeze({ })
         },
         Set = function(self, value)
             self.Options.Value = value
             self:Refresh()
             self.Changed:Fire(self.Options.Value, self)
-            task.spawn(self.Options.Callback, self.Options.Value, self)
+            spawn(self.Options.Callback, self.Options.Value, self)
         end,
         AddColorPicker = acp,
         Init = function(self, options)
@@ -6057,11 +6138,11 @@ local basicObjects = {
                 Changed = event.new()
             }, self)
 
-            task.defer(hoverLogic, object, instance)
-            task.defer(keybindSetup, object)
+            defer(hoverLogic, object, instance)
+            defer(keybindSetup, object)
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
                 object:Click()
@@ -6092,7 +6173,7 @@ local basicObjects = {
         end,
         Click = function(self)
             if self.Options.Disabled then return end
-            task.spawn(playSound, "Click", self)
+            spawn(playSound, "Click", self)
             self:Toggle()
         end,
         Refresh = function(self)
@@ -6105,10 +6186,10 @@ local basicObjects = {
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Icon[self.Options.CheckBox and "BackgroundTransparency" or "ImageTransparency"] = 1
-            self.Instance.Size = UDim2.new(1, 0, 0, y)
-            self.Instance.View.Size = UDim2.new(100, 0, 0, y2)
-            self.Instance.View.Position = UDim2.new(0, x, 0.5, 0)
-            self.Instance.View.Icon.Size = self.Parent.Class == "Groupbox" and UDim2.fromScale(1, 1) or UDim2.fromScale(1.2, 1.2)
+            self.Instance.Size = U2n(1, 0, 0, y)
+            self.Instance.View.Size = U2n(100, 0, 0, y2)
+            self.Instance.View.Position = U2n(0, x, 0.5, 0)
+            self.Instance.View.Icon.Size = self.Parent.Class == "Groupbox" and U2s(1, 1) or U2s(1.2, 1.2)
 
             local window = getWindow(self)
             self.Instance.Separator.BackgroundColor3 = window.Theme.Text
@@ -6117,7 +6198,7 @@ local basicObjects = {
             self.Instance.View.Icon.BackgroundColor3 = window.Theme.Main
             self.Instance.View.Icon.UIStroke.Color = window.Theme.Stroke
 
-            tweenOnce(self.Instance.View.Icon, TweenInfo.new(0.3 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { [self.Options.CheckBox and "BackgroundTransparency" or "ImageTransparency"] = 1, [self.Options.CheckBox and "ImageTransparency" or "BackgroundTransparency"] = not self.Options.Disabled and (self.Options.Value and 0 or 1) or self.Options.Value and 0.75 or 1 })
+            tweenOnce(self.Instance.View.Icon, TIn(0.3 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { [self.Options.CheckBox and "BackgroundTransparency" or "ImageTransparency"] = 1, [self.Options.CheckBox and "ImageTransparency" or "BackgroundTransparency"] = not self.Options.Disabled and (self.Options.Value and 0 or 1) or self.Options.Value and 0.75 or 1 })
         end
     },
     Input = {
@@ -6131,14 +6212,14 @@ local basicObjects = {
             Disabled = false,
 
             Tooltip = "",
-            Translations = table.freeze({ })
+            Translations = tfreeze({ })
         },
         Set = function(self, value)
             self.Options.Value = value
             self:Refresh()
 
             self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
-            task.spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+            spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
         end,
         AddColorPicker = acp,
         Init = function(self, options)
@@ -6151,10 +6232,10 @@ local basicObjects = {
                 Changed = event.new()
             }, self)
 
-            task.defer(hoverLogic, object, instance)
+            defer(hoverLogic, object, instance)
 
             local cons = { }
-            task.defer(addCons, object, cons)
+            defer(addCons, object, cons)
 
             cons[#cons + 1] = instance.MouseButton1Click:Connect(function()
                 object.Proxy:Click()
@@ -6165,7 +6246,7 @@ local basicObjects = {
                 castCircle(instance, getWindow(object))
             end)
 
-            task.defer(object.Setup, object)
+            defer(object.Setup, object)
 
             return object
         end,
@@ -6180,7 +6261,7 @@ local basicObjects = {
         end,
         KeyClick = function(self)
             if self.Options.Disabled then return end
-            task.spawn(self.Options.Callback, self)
+            spawn(self.Options.Callback, self)
         end,
         Call = function(self, value)
             self.Options.Value = value
@@ -6192,7 +6273,7 @@ local basicObjects = {
         Click = function(self)
             if self.Options.Disabled then return end
 
-            task.spawn(playSound, "Click", self)
+            spawn(playSound, "Click", self)
             local i = inputting
             inputting = self
 
@@ -6219,9 +6300,9 @@ local basicObjects = {
             self.Instance.View.Label.Text = translate(self, "Text")
             self.Instance.View.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
             self.Instance.View.Display.TextTransparency = self.Options.Disabled and 0.35 or 0
-            self.Instance.Size = UDim2.new(1, 0, 0, y)
-            self.Instance.View.Size = UDim2.new(100, 0, 0, y2)
-            self.Instance.View.Position = UDim2.new(0, x, 0.5, 0)
+            self.Instance.Size = U2n(1, 0, 0, y)
+            self.Instance.View.Size = U2n(100, 0, 0, y2)
+            self.Instance.View.Position = U2n(0, x, 0.5, 0)
 
             self.Instance.Separator.BackgroundColor3 = window.Theme.Text
             self.Instance.View.Label.TextColor3 = window.Theme.Text
@@ -6254,7 +6335,7 @@ local groupBoxFuncs = {
         Text = "",
         Side = "Left",
         Visible = true,
-        Translations = table.freeze({ })
+        Translations = tfreeze({ })
     },
     Init = function(self, options)
         local groupbox = getPlaceholder("Groupbox")
@@ -6270,7 +6351,7 @@ local groupBoxFuncs = {
         addPossibleTranslations(object)
 
         local cons = { }
-        task.defer(addCons, object, cons)
+        defer(addCons, object, cons)
 
         cons[#cons + 1] = object.ChildAdded:Connect(function(newObject)
             if newObject and newObject.Options then
@@ -6318,7 +6399,7 @@ local groupBoxFuncs = {
             end
         end
 
-        self.Holder.Size = ySize ~= 0 and UDim2.new(1, 0, 0, 35 + ySize) or UDim2.new(1, 0, 0, 30)
+        self.Holder.Size = ySize ~= 0 and U2n(1, 0, 0, 35 + ySize) or U2n(1, 0, 0, 30)
         self.Holder.Holder.Contents.Visible = ySize ~= 0
     end
 }
@@ -6330,7 +6411,7 @@ local tabFuncs = {
         Visible = true,
         Tooltip = "",
         RecolorIcon = true,
-        Translations = table.freeze({ }),
+        Translations = tfreeze({ }),
         Order = 0
     },
     Init = function(self, options)
@@ -6349,7 +6430,7 @@ local tabFuncs = {
         addPossibleTranslations(object)
 
         local cons = { }
-        task.defer(addCons, object, cons)
+        defer(addCons, object, cons)
 
         cons[#cons + 1] = object.ChildAdded:Connect(function(newObject)
             if newObject and newObject.Options then
@@ -6363,27 +6444,27 @@ local tabFuncs = {
             end
         end)
 
-        task.defer(hoverLogic, object, tabButton)
+        defer(hoverLogic, object, tabButton)
 
         cons[#cons + 1] = tabButton.MouseButton1Down:Connect(function()
             castCircle(tabButton, getWindow(object))
         end)
 
         cons[#cons + 1] = tabButton.MouseEnter:Connect(function()
-            task.spawn(playSound, "Hover", object)
-            tweenOnce(tabButton.ButtonItself.Icon, TweenInfo.new(0.4 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { ImageTransparency = 0 })
-            tweenOnce(tabButton.ButtonItself.Title, TweenInfo.new(0.4 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { TextTransparency = 0 })
+            spawn(playSound, "Hover", object)
+            tweenOnce(tabButton.ButtonItself.Icon, TIn(0.4 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { ImageTransparency = 0 })
+            tweenOnce(tabButton.ButtonItself.Title, TIn(0.4 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { TextTransparency = 0 })
         end)
 
         cons[#cons + 1] = tabButton.MouseLeave:Connect(function()
             if object.Parent.CurrentTab and object.Parent.CurrentTab.Holder ~= object.Holder or not object.Parent.CurrentTab then
-                tweenOnce(tabButton.ButtonItself.Icon, TweenInfo.new(0.6 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { ImageTransparency = 0.25 })
-                tweenOnce(tabButton.ButtonItself.Title, TweenInfo.new(0.6 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { TextTransparency = 0.25 })
+                tweenOnce(tabButton.ButtonItself.Icon, TIn(0.6 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { ImageTransparency = 0.25 })
+                tweenOnce(tabButton.ButtonItself.Title, TIn(0.6 / handleAnimationSpeed(getWindow(object).AnimationSpeed)), { TextTransparency = 0.25 })
             end
         end)
 
         cons[#cons + 1] = tabButton.MouseButton1Click:Connect(function()
-            task.spawn(playSound, "Click", object)
+            spawn(playSound, "Click", object)
             object:SwitchTo()
         end)
 
@@ -6430,7 +6511,7 @@ local tabFuncs = {
         cons[#cons + 1] = tab.GroupboxZone.RightGroupboxZone.ChildAdded:Connect(gbc)
         cons[#cons + 1] = tab.GroupboxZone.RightGroupboxZone.ChildRemoved:Connect(gbc2)
 
-        task.defer(function()
+        defer(function()
             if not object.Parent.CurrentTab then
                 object.Proxy:SwitchTo()
             end
@@ -6444,8 +6525,8 @@ local tabFuncs = {
                 local visible = v.Holder == self.Holder
                 v.Holder.Visible = visible
 
-                tweenOnce(v.TabButton.ButtonItself.Icon, TweenInfo.new(0.75 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { ImageTransparency = visible and 0 or 0.25 })
-                tweenOnce(v.TabButton.ButtonItself.Title, TweenInfo.new(0.75 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { TextTransparency = visible and 0 or 0.25 })
+                tweenOnce(v.TabButton.ButtonItself.Icon, TIn(0.75 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { ImageTransparency = visible and 0 or 0.25 })
+                tweenOnce(v.TabButton.ButtonItself.Title, TIn(0.75 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { TextTransparency = visible and 0 or 0.25 })
             end
         end
 
@@ -6454,10 +6535,12 @@ local tabFuncs = {
     end,
     Refresh = function(self, dont)
         if dont then return self end
+        local window = getWindow(self)
+        if not window then return self end
 
         local options = self.Options
         
-        if options.Flag ~= "LibrarySettings" or options.Text ~= "Settings" then
+        if options.Flag ~= "LibrarySettings" .. window.Flag then
             safeReparent(self.TabButton, self.Parent.Window.RealWindow.Contents.Display.PageButtons.List)
             safeReparent(self.Holder, self.Parent.Window.RealWindow.Contents.Display.Pages)
         end
@@ -6466,11 +6549,10 @@ local tabFuncs = {
         self.TabButton.ButtonItself.Title.Text = translate(self, "Text")
         self.TabButton.ButtonItself.Visible = options.Visible
 
-        local window = getWindow(self)
         self.TabButton.BackgroundColor3 = window.Theme.Main
         self.TabButton.Filler.BackgroundColor3 = window.Theme.Text
         self.TabButton.LayoutOrder = tonumber(options.Order) or 1
-        self.TabButton.ButtonItself.Icon.ImageColor3 = self.Options.RecolorIcon and window.Theme.Text or Color3.new(1, 1, 1)
+        self.TabButton.ButtonItself.Icon.ImageColor3 = self.Options.RecolorIcon and window.Theme.Text or C3n(1, 1, 1)
         self.TabButton.ButtonItself.Title.TextColor3 = window.Theme.Text
         self.Holder.ScrollBarImageColor3 = window.Theme.Main
 
@@ -6481,7 +6563,7 @@ local tabFuncs = {
             end
         end
 
-        self.Holder.NormalZone.Size = UDim2.new(1, 0, 0, ySize)
+        self.Holder.NormalZone.Size = U2n(1, 0, 0, ySize)
 
         local leftYSize = 0
         local rightYSize = 0
@@ -6498,7 +6580,7 @@ local tabFuncs = {
             end
         end
 
-        self.Holder.GroupboxZone.Size = UDim2.new(1, 0, 0, math.max(leftYSize, rightYSize))
+        self.Holder.GroupboxZone.Size = U2n(1, 0, 0, max(leftYSize, rightYSize))
 
         if not options.Visible and self.Parent.CurrentTab and self.Parent.CurrentTab.Holder == self.Holder then
             self.Parent.CurrentTab.Holder.Visible = false
@@ -6560,7 +6642,7 @@ local function makeDraggable(instance, object, cons)
     local con = instance.MouseButton1Down:Connect(function()
         local window = getWindow(object)
 
-        dragStartPos = Vector2.new(mouse.X, mouse.Y)
+        dragStartPos = V2n(mouse.X, mouse.Y)
         dragStartPosition = instance.Position
 
         if dragConnection then
@@ -6574,8 +6656,8 @@ local function makeDraggable(instance, object, cons)
         end
 
         dragConnection = mouse.Move:Connect(function()
-            local delta = Vector2.new(mouse.X, mouse.Y) - dragStartPos
-            instance:TweenPosition(UDim2.new(dragStartPosition.X.Scale, dragStartPosition.X.Offset + delta.X, dragStartPosition.Y.Scale, dragStartPosition.Y.Offset + delta.Y), nil, nil, 0.35 / handleAnimationSpeed(window.Options.AnimationSpeed), true)
+            local delta = V2n(mouse.X, mouse.Y) - dragStartPos
+            instance:TweenPosition(U2n(dragStartPosition.X.Scale, dragStartPosition.X.Offset + delta.X, dragStartPosition.Y.Scale, dragStartPosition.Y.Offset + delta.Y), nil, nil, 0.35 / handleAnimationSpeed(window.Options.AnimationSpeed), true)
         end)
 
         dragUpConnection = uis.InputEnded:Connect(function(input)
@@ -6605,7 +6687,7 @@ local defaultNotificationOptions = { __index = {
 
 local defaultColorPickerOptions = { __index = {
     Text = "Color picker",
-    Value = Color3.new(1, 1, 1),
+    Value = C3n(1, 1, 1),
     Callback = function(color) end
 } }
 
@@ -6613,8 +6695,8 @@ local floatingLabel = {
     DefaultOptions = {
         Text = "",
         Title = "",
-        Position = UDim2.new(0, 20, 0.5, 0),
-        AnchorPoint = Vector2.new(0, 0.5),
+        Position = U2n(0, 20, 0.5, 0),
+        AnchorPoint = V2n(0, 0.5),
         Visible = true,
         Icon = "",
 
@@ -6636,7 +6718,7 @@ local floatingLabel = {
             Destroying = event.new()
         }, self)
 
-        task.defer(addCons, object, cons)
+        defer(addCons, object, cons)
 
         local canChange = true
         cons[#cons + 1] = floatingLabel.Changed:Connect(function()
@@ -6645,7 +6727,7 @@ local floatingLabel = {
             canChange = false
             object:_Rescale()
             
-            task.wait()
+            wait()
 
             canChange = true
         end)
@@ -6687,19 +6769,19 @@ local floatingLabel = {
 
         local a1, a2 = #l1.Text ~= 0, #l2.Text ~= 0
 
-        l1.Size = UDim2.new(1, 0, 1, -16)
-        l1.Position = UDim2.fromOffset(0, 16)
+        l1.Size = U2n(1, 0, 1, -16)
+        l1.Position = U2o(0, 16)
         l.Visible = self.Options.Visible and (a1 or a2)
 
         if a1 and a2 then
-            l.Size = UDim2.fromOffset(math.max(t1.X, t2.X + 16) + 8 + add, t1.Y + t2.Y + 7)
+            l.Size = U2o(max(t1.X, t2.X + 16) + 8 + add, t1.Y + t2.Y + 7)
         elseif a1 then
-            l1.Size = UDim2.fromScale(1, 1)
-            l1.Position = UDim2.fromScale(0, 0)
+            l1.Size = U2s(1, 1)
+            l1.Position = U2s(0, 0)
 
-            l.Size = UDim2.fromOffset(t1.X + 8, t1.Y + 8)
+            l.Size = U2o(t1.X + 8, t1.Y + 8)
         elseif a2 then
-            l.Size = UDim2.fromOffset(t2.X + 24 + add, 22)
+            l.Size = U2o(t2.X + 24 + add, 22)
         end
     end,
 
@@ -6783,8 +6865,8 @@ local windowFuncs; windowFuncs = {
         cons[#cons + 1] = self.ThemeChanged:Connect(applyTheme)
         applyTheme()
 
-        cp.Size = UDim2.fromOffset(50, 50)
-        tweenOnce(cp, TweenInfo.new(1 / handleAnimationSpeed(self.Options.AnimationSpeed), Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { Size = UDim2.fromScale(0.8, 0.8) })
+        cp.Size = U2o(50, 50)
+        tweenOnce(cp, TIn(1 / handleAnimationSpeed(self.Options.AnimationSpeed), Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { Size = U2s(0.8, 0.8) })
 
         local HSV = { }
         HSV.H, HSV.S, HSV.V = options.Value:ToHSV()
@@ -6792,15 +6874,15 @@ local windowFuncs; windowFuncs = {
         local function updateColor()
             local rgb = Color3.fromHSV(HSV.H, HSV.S, HSV.V)
 
-            cp.Contents.Display.ColorZone.PickerZone.Cursor.Position = UDim2.fromScale(HSV.S, 1 - HSV.V)
-            cp.Contents.Display.ColorZone.HUEZone.Cursor.Position = UDim2.fromScale(0.5, HSV.H)
+            cp.Contents.Display.ColorZone.PickerZone.Cursor.Position = U2s(HSV.S, 1 - HSV.V)
+            cp.Contents.Display.ColorZone.HUEZone.Cursor.Position = U2s(0.5, HSV.H)
             cp.Contents.Display.ColorZone.Preview.BackgroundColor3 = rgb
             cp.Contents.Display.ColorZone.PickerZone.BackgroundColor3 = Color3.fromHSV(HSV.H, 1, 1)
-            cp.Contents.Display.BottomZone.TextBoxes.R.TextBox.Text = tostring(math.clamp(math.round(rgb.R * 255), 0, 255))
-            cp.Contents.Display.BottomZone.TextBoxes.G.TextBox.Text = tostring(math.clamp(math.round(rgb.G * 255), 0, 255))
-            cp.Contents.Display.BottomZone.TextBoxes.B.TextBox.Text = tostring(math.clamp(math.round(rgb.B * 255), 0, 255))
+            cp.Contents.Display.BottomZone.TextBoxes.R.TextBox.Text = tostring(clamp(round(rgb.R * 255), 0, 255))
+            cp.Contents.Display.BottomZone.TextBoxes.G.TextBox.Text = tostring(clamp(round(rgb.G * 255), 0, 255))
+            cp.Contents.Display.BottomZone.TextBoxes.B.TextBox.Text = tostring(clamp(round(rgb.B * 255), 0, 255))
 
-            task.wait()
+            wait()
         end
 
         makeDraggable(cp, self, cons)
@@ -6814,21 +6896,21 @@ local windowFuncs; windowFuncs = {
 
             local old = uis.MouseIconEnabled
             uis.MouseIconEnabled = false
-            tweenOnce(cp.Contents.Display.ColorZone.HUEZone.Cursor, TweenInfo.new(0.35 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = UDim2.new(1, 2, 0, 5), BackgroundTransparency = 0 })
+            tweenOnce(cp.Contents.Display.ColorZone.HUEZone.Cursor, TIn(0.35 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = U2n(1, 2, 0, 5), BackgroundTransparency = 0 })
 
             while HDragging and con1.Connected do
-                HSV.H = math.clamp((mouse.Y - cp.Contents.Display.ColorZone.HUEZone.AbsolutePosition.Y) / cp.Contents.Display.ColorZone.HUEZone.AbsoluteSize.Y, 0, 1)
-                self.Tooltip = "Hue: " .. math.floor(HSV.H * 360) .. "°"
-                tooltipObject.CustomMousePosition = cp.Contents.Display.ColorZone.HUEZone.Cursor.AbsolutePosition + Vector2.new(cp.Contents.Display.ColorZone.HUEZone.Cursor.AbsoluteSize.X - 2)
+                HSV.H = clamp((mouse.Y - cp.Contents.Display.ColorZone.HUEZone.AbsolutePosition.Y) / cp.Contents.Display.ColorZone.HUEZone.AbsoluteSize.Y, 0, 1)
+                self.Tooltip = "Hue: " .. floor(HSV.H * 360) .. "°"
+                tooltipObject.CustomMousePosition = cp.Contents.Display.ColorZone.HUEZone.Cursor.AbsolutePosition + V2n(cp.Contents.Display.ColorZone.HUEZone.Cursor.AbsoluteSize.X - 2)
 
                 updateColor()
             end
 
             tooltipObject.CustomMousePosition = mouse
             uis.MouseIconEnabled = old
-            tweenOnce(cp.Contents.Display.ColorZone.HUEZone.Cursor, TweenInfo.new(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = UDim2.new(1, 2, 0, 2), BackgroundTransparency = 0.25 })
+            tweenOnce(cp.Contents.Display.ColorZone.HUEZone.Cursor, TIn(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = U2n(1, 2, 0, 2), BackgroundTransparency = 0.25 })
 
-            task.wait(task.wait())
+            wait(wait())
             self.Tooltip = ""
         end)
 
@@ -6844,12 +6926,12 @@ local windowFuncs; windowFuncs = {
 
             local old = uis.MouseIconEnabled
             uis.MouseIconEnabled = false
-            tweenOnce(cp.Contents.Display.ColorZone.PickerZone.Cursor, TweenInfo.new(0.35 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = UDim2.fromOffset(7, 7), BackgroundTransparency = 0 })
+            tweenOnce(cp.Contents.Display.ColorZone.PickerZone.Cursor, TIn(0.35 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = U2o(7, 7), BackgroundTransparency = 0 })
 
             while VSDragging and con2 do
-                HSV.S = math.clamp((mouse.X - cp.Contents.Display.ColorZone.PickerZone.AbsolutePosition.X) / cp.Contents.Display.ColorZone.PickerZone.AbsoluteSize.X, 0, 1)
-                HSV.V = 1 - math.clamp((mouse.Y - cp.Contents.Display.ColorZone.PickerZone.AbsolutePosition.Y) / cp.Contents.Display.ColorZone.PickerZone.AbsoluteSize.Y, 0, 1)
-                self.Tooltip = "Hue: " .. math.floor(HSV.H * 360) .. "°; Saturation: " .. math.floor(HSV.S * 100) .. "%; Value: " .. math.floor(HSV.V * 100) .. "%"
+                HSV.S = clamp((mouse.X - cp.Contents.Display.ColorZone.PickerZone.AbsolutePosition.X) / cp.Contents.Display.ColorZone.PickerZone.AbsoluteSize.X, 0, 1)
+                HSV.V = 1 - clamp((mouse.Y - cp.Contents.Display.ColorZone.PickerZone.AbsolutePosition.Y) / cp.Contents.Display.ColorZone.PickerZone.AbsoluteSize.Y, 0, 1)
+                self.Tooltip = "Hue: " .. floor(HSV.H * 360) .. "°; Saturation: " .. floor(HSV.S * 100) .. "%; Value: " .. floor(HSV.V * 100) .. "%"
                 tooltipObject.CustomMousePosition = cp.Contents.Display.ColorZone.PickerZone.Cursor.AbsolutePosition - (cp.Contents.Display.ColorZone.PickerZone.Cursor.AbsoluteSize / 2)
 
                 updateColor()
@@ -6857,9 +6939,9 @@ local windowFuncs; windowFuncs = {
 
             tooltipObject.CustomMousePosition = mouse
             uis.MouseIconEnabled = old
-            tweenOnce(cp.Contents.Display.ColorZone.PickerZone.Cursor, TweenInfo.new(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = UDim2.fromOffset(5, 5), BackgroundTransparency = 0.25 })
+            tweenOnce(cp.Contents.Display.ColorZone.PickerZone.Cursor, TIn(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = U2o(5, 5), BackgroundTransparency = 0.25 })
 
-            task.wait(task.wait())
+            wait(wait())
             self.Tooltip = ""
         end)
 
@@ -6880,15 +6962,15 @@ local windowFuncs; windowFuncs = {
                     if component == "R" then
                         local newH, newS, newV = Color3.fromHSV(HSV.H, HSV.S, HSV.V):ToHSV()
                         local newColor = Color3.fromHSV(newH, newS, newV)
-                        HSV.H, HSV.S, HSV.V = Color3.new(value, newColor.G, newColor.B):ToHSV()
+                        HSV.H, HSV.S, HSV.V = C3n(value, newColor.G, newColor.B):ToHSV()
                     elseif component == "G" then
                         local newH, newS, newV = Color3.fromHSV(HSV.H, HSV.S, HSV.V):ToHSV()
                         local newColor = Color3.fromHSV(newH, newS, newV)
-                        HSV.H, HSV.S, HSV.V = Color3.new(newColor.R, value, newColor.B):ToHSV()
+                        HSV.H, HSV.S, HSV.V = C3n(newColor.R, value, newColor.B):ToHSV()
                     elseif component == "B" then
                         local newH, newS, newV = Color3.fromHSV(HSV.H, HSV.S, HSV.V):ToHSV()
                         local newColor = Color3.fromHSV(newH, newS, newV)
-                        HSV.H, HSV.S, HSV.V = Color3.new(newColor.R, newColor.G, value):ToHSV()
+                        HSV.H, HSV.S, HSV.V = C3n(newColor.R, newColor.G, value):ToHSV()
                     end
                 end
 
@@ -6915,7 +6997,7 @@ local windowFuncs; windowFuncs = {
 
         updateColor()
 
-        repeat task.wait() until completed
+        repeat wait() until completed
 
         for i, v in cons do
             if v.Connected then
@@ -6923,33 +7005,33 @@ local windowFuncs; windowFuncs = {
             end
         end
 
-        task.spawn(options.Callback, result)
-        task.spawn(function()
-            tweenOnce(cp, TweenInfo.new(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed), Enum.EasingStyle.Quint, Enum.EasingDirection.In), { Size = UDim2.fromOffset(0, 0) })
-            task.wait(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed))
+        spawn(options.Callback, result)
+        spawn(function()
+            tweenOnce(cp, TIn(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed), Enum.EasingStyle.Quint, Enum.EasingDirection.In), { Size = U2o(0, 0) })
+            wait(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed))
 
             cp:Destroy()
         end)
 
-        task.spawn(playSound, "Click", self)
+        spawn(playSound, "Click", self)
         return result
     end,
     PlaySound = function(self, name)
-        task.spawn(playSound, name, self)
+        spawn(playSound, name, self)
     end,
     Notification = function(self, options)
         options = setmetatable(options or { }, defaultNotificationOptions)
 
         if options.HasButtons then
             if options.Duration >= 1000 or options.Duration <= 0 then
-                options.Duration = math.huge
+                options.Duration = inf
             end
         else
             if options.Duration >= 1000 or options.Duration <= 0 then
                 options.Duration = 120
             end
 
-            options.Duration = math.clamp(options.Duration, 2, 120)
+            options.Duration = clamp(options.Duration, 2, 120)
         end
 
         if options.Side == "-" then
@@ -6961,8 +7043,8 @@ local windowFuncs; windowFuncs = {
             s = "Left"
         end
 
-        local tpos = UDim2.fromScale(s == "Left" and -1 or 1, 0)
-        local tpos2 = UDim2.new(s == "Left" and -1 or 2, 0, 0, 3)
+        local tpos = U2s(s == "Left" and -1 or 1, 0)
+        local tpos2 = U2n(s == "Left" and -1 or 2, 0, 0, 3)
 
         if s == "Right" then
             ridx -= 1
@@ -6973,12 +7055,12 @@ local windowFuncs; windowFuncs = {
         safeReparent(notif, gui.Notifications["Notifications" .. s])
         notif.Background.Position = tpos
         notif.Background.Holder.Position = tpos2
-        notif.Background.Holder.AnchorPoint = Vector2.new(s == "Left" and 0 or 1, 0)
+        notif.Background.Holder.AnchorPoint = V2n(s == "Left" and 0 or 1, 0)
         notif.Background.Holder.Title.Text = options.Title
         notif.Background.Holder.Text.Text = options.Text
-        notif.Background.Progress.Fill.Size = UDim2.fromScale(1, 1)
-        notif.Background.Progress.Fill.AnchorPoint = Vector2.new(s == "Left" and 0 or 1, 0)
-        notif.Background.Progress.Fill.Position = UDim2.fromScale(s == "Left" and 0 or 1, 0)
+        notif.Background.Progress.Fill.Size = U2s(1, 1)
+        notif.Background.Progress.Fill.AnchorPoint = V2n(s == "Left" and 0 or 1, 0)
+        notif.Background.Progress.Fill.Position = U2s(s == "Left" and 0 or 1, 0)
         notif.Background.Holder.Buttons.Visible = options.HasButtons
         notif.Visible = true
 
@@ -6994,19 +7076,19 @@ local windowFuncs; windowFuncs = {
         notif.Background.Holder.Buttons.No.ImageColor3 = self.Theme.Text
 
         local old = notif.Size
-        notif.Size = UDim2.fromScale(1, 0)
+        notif.Size = U2s(1, 0)
 
         local function main()
-            task.spawn(playSound, "Notification", self)
+            spawn(playSound, "Notification", self)
             local pick = false
             local done = false
 
-            if options.Duration ~= math.huge then
-                task.spawn(function()
+            if options.Duration ~= inf then
+                spawn(function()
                     rs.RenderStepped:Wait()
 
-                    tweenOnce(notif.Background.Progress.Fill, TweenInfo.new(options.Duration, Enum.EasingStyle.Linear), { Size = UDim2.fromScale(0, 1) })
-                    task.wait(options.Duration)
+                    tweenOnce(notif.Background.Progress.Fill, TIn(options.Duration, Enum.EasingStyle.Linear), { Size = U2s(0, 1) })
+                    wait(options.Duration)
                     done = true
                 end)
             end
@@ -7021,49 +7103,49 @@ local windowFuncs; windowFuncs = {
                 done = true
             end)
 
-            task.spawn(function()
-                tweenOnce(notif, TweenInfo.new(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Size = old })
+            spawn(function()
+                tweenOnce(notif, TIn(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Size = old })
 
-                task.wait(0.2)
+                wait(0.2)
                 if done then return end
 
-                tweenOnce(notif.Background, TweenInfo.new(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = UDim2.fromOffset(0, 0) })
-                tweenOnce(notif.Background.Holder, TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = UDim2.new(s == "Left" and 0 or 1, 0, 0, 3) })
+                tweenOnce(notif.Background, TIn(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2o(0, 0) })
+                tweenOnce(notif.Background.Holder, TIn(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2n(s == "Left" and 0 or 1, 0, 0, 3) })
             end)
 
-            repeat task.wait() until done
+            repeat wait() until done
 
             con1:Disconnect()
             con2:Disconnect()
 
-            task.spawn(function()
-                tweenOnce(notif.Background.Holder, TweenInfo.new(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), { Position = tpos2 })
-                task.wait(0.2)
+            spawn(function()
+                tweenOnce(notif.Background.Holder, TIn(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), { Position = tpos2 })
+                wait(0.2)
 
-                tweenOnce(notif.Background, TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), { Position = tpos })
-                task.wait(0.5)
+                tweenOnce(notif.Background, TIn(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), { Position = tpos })
+                wait(0.5)
 
-                tweenOnce(notif, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Size = UDim2.fromScale(1, 0) })
-                task.wait(0.2)
+                tweenOnce(notif, TIn(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Size = U2s(1, 0) })
+                wait(0.2)
 
                 notif:Destroy()
             end)
 
-            task.spawn(options.Callback, options.HasButtons and pick or nil)
+            spawn(options.Callback, options.HasButtons and pick or nil)
             return pick
         end
 
         if options.HasButtons then
             return main()
         else
-            task.spawn(main)
+            spawn(main)
         end
     end,
     DefaultOptions = {
         RecolorIcon = false,
         Icon = "",
         Image = "",
-        ImageColor = Color3.new(1, 1, 1),
+        ImageColor = C3n(1, 1, 1),
         Title = config.Name,
         Text = "",
         Footer = "",
@@ -7079,12 +7161,12 @@ local windowFuncs; windowFuncs = {
         ImageTransparency = 0.85,
         ImageEnabled = true,
         ShadowTransparency = 0.5,
-        Size = UDim2.fromScale(0.9, 0.5), -- better dont change it, I forgot to implement it correctly, now I'm just lazy to fix it
+        Size = U2s(0.9, 0.5), -- better dont change it, I forgot to implement it correctly, now I'm just lazy to fix it
         ShadowSize = 27,
         OnClose = function() end,
         Tooltip = "",
         NeonType = "Stroke", -- None, Stroke, Top
-        Translations = table.freeze({ }),
+        Translations = tfreeze({ }),
         Language = "EN",
         _PrevLang = "EN",
         UnlockMouse = false,
@@ -7099,11 +7181,11 @@ local windowFuncs; windowFuncs = {
         HoverSound = sounds.Hover.SoundId,
         Volume = 100, -- being divided by 200
 
-        Theme = table.freeze({
-            Back = Color3.fromRGB(20, 20, 20),
-            Main = Color3.fromRGB(255, 0, 127),
-            Stroke = Color3.fromRGB(0, 0, 0),
-            Text = Color3.fromRGB(255, 255, 255)
+        Theme = tfreeze({
+            Back = C3R(20, 20, 20),
+            Main = C3R(255, 0, 127),
+            Stroke = C3R(0, 0, 0),
+            Text = C3R(255, 255, 255)
         })
     },
     Init = function(self, options)
@@ -7144,8 +7226,8 @@ local windowFuncs; windowFuncs = {
             Config = config
         }, self)
 
-        object.Options.Theme = table.clone(object.Options.Theme)
-        object.Options._PrevTheme = table.clone(object.Options.Theme)
+        object.Options.Theme = tclone(object.Options.Theme)
+        object.Options._PrevTheme = tclone(object.Options.Theme)
 
         addPossibleTranslations(object)
         cons[#cons + 1] = object.ChildAdded:Connect(function(newObject)
@@ -7169,9 +7251,9 @@ local windowFuncs; windowFuncs = {
             if not cd then return end
             
             cd = false
-            titleZone.Title.Size = UDim2.new(0, titleZone.Title.TextBounds.X, 1, 0)
-            task.wait()
-            titleZone.Title.Size = UDim2.new(0, titleZone.Title.TextBounds.X, 1, 0)
+            titleZone.Title.Size = U2n(0, titleZone.Title.TextBounds.X, 1, 0)
+            wait()
+            titleZone.Title.Size = U2n(0, titleZone.Title.TextBounds.X, 1, 0)
             cd = true
         end)
 
@@ -7186,7 +7268,7 @@ local windowFuncs; windowFuncs = {
             local isVisible = footer.Text:gsub("[\0\f\t\r\n ]", "") ~= ""
 
             footer.Parent.Visible = isVisible
-            window.RealWindow.Contents.Display.Size = UDim2.new(1, 0, 1, isVisible and -15 or 0)
+            window.RealWindow.Contents.Display.Size = U2n(1, 0, 1, isVisible and -15 or 0)
         end)
 
         makeDraggable(window, object, cons)
@@ -7208,16 +7290,16 @@ local windowFuncs; windowFuncs = {
         local function move()
             if not moveConnection or not upConnection then return end
 
-            local delta = Vector2.new(mouse.X, mouse.Y) - startPos
-            local xOffset, yOffset = math.max(0, startSize.X.Offset + delta.X), math.max(0, startSize.Y.Offset + delta.Y)
+            local delta = V2n(mouse.X, mouse.Y) - startPos
+            local xOffset, yOffset = max(0, startSize.X.Offset + delta.X), max(0, startSize.Y.Offset + delta.Y)
 
-            window:TweenSizeAndPosition(UDim2.new(startSize.X.Scale, xOffset, startSize.Y.Scale, yOffset), UDim2.new(startPosition.X.Scale, startPosition.X.Offset + (xOffset > 0 and delta.X / 2 or oldDeltaX), startPosition.Y.Scale, startPosition.Y.Offset + (yOffset > 0 and delta.Y / 2 or oldDeltaY)), nil, nil, 0.35 / handleAnimationSpeed(object.Options.AnimationSpeed), true)
+            window:TweenSizeAndPosition(U2n(startSize.X.Scale, xOffset, startSize.Y.Scale, yOffset), U2n(startPosition.X.Scale, startPosition.X.Offset + (xOffset > 0 and delta.X / 2 or oldDeltaX), startPosition.Y.Scale, startPosition.Y.Offset + (yOffset > 0 and delta.Y / 2 or oldDeltaY)), nil, nil, 0.35 / handleAnimationSpeed(object.Options.AnimationSpeed), true)
 
             oldDeltaX, oldDeltaY = xOffset > 0 and delta.X / 2 or oldDeltaX, yOffset > 0 and delta.Y / 2 or oldDeltaY
         end
 
         cons[#cons + 1] = window.RealWindow.Resize.MouseButton1Down:Connect(function()
-            startPos = Vector2.new(mouse.X, mouse.Y)
+            startPos = V2n(mouse.X, mouse.Y)
             startSize = window.Size
             startPosition = window.Position
 
@@ -7234,7 +7316,7 @@ local windowFuncs; windowFuncs = {
             end
 
             moveConnection = mouse.Move:Connect(function()
-                task.defer(move) -- wait for full mouse update
+                defer(move) -- wait for full mouse update
             end)
 
             upConnection = uis.InputEnded:Connect(function(input)
@@ -7254,23 +7336,23 @@ local windowFuncs; windowFuncs = {
         cons[#cons + 1] = rs.RenderStepped:Connect(function()
             for i, v in object.Options._PrevTheme do
                 if object.Options.Theme[i] ~= v then
-                    object.Options._PrevTheme = table.clone(object.Options.Theme)
+                    object.Options._PrevTheme = tclone(object.Options.Theme)
                     object.ThemeChanged:Fire(object.Options.Theme)
                     break
                 end
             end
 
             if not object.Options.UnlockMouse or not object.Options.Visible then return end
-            task.defer(task.defer, task.defer, unlockMouse)
+            defer(defer, defer, unlockMouse)
         end)
 
         local tui = window.RealWindow.Contents.TopbarZone.Right.ToggleUI
         cons[#cons + 1] = tui.MouseEnter:Connect(function()
-            tweenOnce(tui.ImageLabel, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0 })
+            tweenOnce(tui.ImageLabel, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0 })
         end)
 
         cons[#cons + 1] = tui.MouseLeave:Connect(function()
-            tweenOnce(tui.ImageLabel, TweenInfo.new(0.6 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0.25 })
+            tweenOnce(tui.ImageLabel, TIn(0.6 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0.25 })
         end)
 
         cons[#cons + 1] = tui.MouseButton1Click:Connect(function()
@@ -7282,25 +7364,25 @@ local windowFuncs; windowFuncs = {
         local so = window.RealWindow.Contents.SettingsOverlay
 
         so.Visible = false
-        so.SettingsHub.AnchorPoint = Vector2.new(0, 0)
+        so.SettingsHub.AnchorPoint = V2n(0, 0)
         so.BackgroundTransparency = 1
-        so.SettingsHub.Image.Position = UDim2.fromScale(0, 0)
+        so.SettingsHub.Image.Position = U2s(0, 0)
 
         window.Visible = false
-        window.Size = UDim2.fromScale(0, 0)
+        window.Size = U2s(0, 0)
         window.RealWindow.ClipsDescendants = true
         window.RealWindow.Overlay.Visible = true
-        window.Shadow.Size = UDim2.fromScale(0, 0)
+        window.Shadow.Size = U2s(0, 0)
         window.Shadow.ImageTransparency = 1
         window.RealWindow.Overlay.BackgroundTransparency = 0
 
         cons[#cons + 1] = s.MouseEnter:Connect(function()
-            tweenOnce(s.ImageLabel, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0 })
+            tweenOnce(s.ImageLabel, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0 })
         end)
 
         cons[#cons + 1] = s.MouseLeave:Connect(function()
             if not shOpen then
-                tweenOnce(s.ImageLabel, TweenInfo.new(0.6 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0.25 })
+                tweenOnce(s.ImageLabel, TIn(0.6 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0.25 })
             end
         end)
 
@@ -7310,15 +7392,15 @@ local windowFuncs; windowFuncs = {
             if shOpen then
                 so.Visible = true
 
-                tweenOnce(so, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { BackgroundTransparency = 0.75 })
-                tweenOnce(so.SettingsHub, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { AnchorPoint = Vector2.new(0, 1) })
-                tweenOnce(so.SettingsHub.Image, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { Position = UDim2.fromScale(0, 1) })
+                tweenOnce(so, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { BackgroundTransparency = 0.75 })
+                tweenOnce(so.SettingsHub, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { AnchorPoint = V2n(0, 1) })
+                tweenOnce(so.SettingsHub.Image, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { Position = U2s(0, 1) })
             else
-                tweenOnce(so, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { BackgroundTransparency = 1 })
-                tweenOnce(so.SettingsHub, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { AnchorPoint = Vector2.new(0, 0) })
-                tweenOnce(so.SettingsHub.Image, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { Position = UDim2.fromScale(0, 0) })
+                tweenOnce(so, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { BackgroundTransparency = 1 })
+                tweenOnce(so.SettingsHub, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { AnchorPoint = V2n(0, 0) })
+                tweenOnce(so.SettingsHub.Image, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { Position = U2s(0, 0) })
 
-                task.wait(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed))
+                wait(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed))
                 if shOpen then return end
 
                 so.Visible = false
@@ -7328,20 +7410,20 @@ local windowFuncs; windowFuncs = {
         cons[#cons + 1] = so.MouseButton1Click:Connect(function()
             shOpen = false
 
-            tweenOnce(so, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { BackgroundTransparency = 1 })
-            tweenOnce(so.SettingsHub, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { AnchorPoint = Vector2.new(0, 0) })
-            tweenOnce(so.SettingsHub.Image, TweenInfo.new(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { Position = UDim2.fromScale(0, 0) })
-            tweenOnce(s.ImageLabel, TweenInfo.new(0.6 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0.25 })
+            tweenOnce(so, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { BackgroundTransparency = 1 })
+            tweenOnce(so.SettingsHub, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { AnchorPoint = V2n(0, 0) })
+            tweenOnce(so.SettingsHub.Image, TIn(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed)), { Position = U2s(0, 0) })
+            tweenOnce(s.ImageLabel, TIn(0.6 / handleAnimationSpeed(object.Options.AnimationSpeed)), { ImageTransparency = 0.25 })
 
-            task.wait(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed))
+            wait(0.4 / handleAnimationSpeed(object.Options.AnimationSpeed))
             if shOpen then return end
 
             so.Visible = false
         end)
 
-        task.defer(windowSetup, object)
+        defer(windowSetup, object)
 
-        local options = { Position = UDim2.fromOffset(20, 65), AnchorPoint = Vector2.new(0, 0),
+        local options = { Position = U2o(20, 65), AnchorPoint = V2n(0, 0),
             Visible = false,
             ShowFPS = true,
             ShowExecutor = true,
@@ -7364,8 +7446,8 @@ local windowFuncs; windowFuncs = {
         local buffer = { }
         local ping = plr:GetNetworkPing()
 
-        task.spawn(function()
-            while task.wait(1) and not object.Closed do
+        spawn(function()
+            while wait(1) and not object.Closed do
                 object.Options.First = false
                 ping = plr:GetNetworkPing()
             end
@@ -7377,12 +7459,12 @@ local windowFuncs; windowFuncs = {
                 fps = 0
             end
 
-            local ffps = math.max(math.round(fps), 1)
+            local ffps = max(round(fps), 1)
             while #buffer >= ffps do
-                table.remove(buffer, 1)
+                tremove(buffer, 1)
             end
 
-            table.insert(buffer, fps)
+            tinsert(buffer, fps)
 
             if not label.Visible then return end
 
@@ -7390,11 +7472,11 @@ local windowFuncs; windowFuncs = {
             local inserted = false
             if options.ShowExecutor then
                 inserted = true
-                table.insert(lines, executor .. " | " .. version)
+                tinsert(lines, executor .. " | " .. version)
             end
 
             if inserted and options.ShowGap then
-                table.insert(lines, "")
+                tinsert(lines, "")
             end
 
             inserted = false
@@ -7406,23 +7488,23 @@ local windowFuncs; windowFuncs = {
                     estFps += v
                 end
 
-                estFps = math.clamp(math.round((estFps / #buffer) * 10) / 10, 0, 2e9)
+                estFps = clamp(round((estFps / #buffer) * 10) / 10, 0, 2e9)
 
                 local estFpsS = tostring(estFps)
                 if not estFpsS:find("%.") then
                     estFpsS ..= ".0"
                 end
 
-                table.insert(lines, "FPS: " .. paintRichText(estFpsS, estFps <= 120 and Color3.new(1):Lerp(Color3.new(0, 1, 1), estFps / 120) or Color3.new(0, 1, 1):Lerp(Color3.new(0.7, 0.3, 1), math.clamp((estFps - 120) / 120, 0, 2))))
+                tinsert(lines, "FPS: " .. paintRichText(estFpsS, estFps <= 120 and C3n(1):Lerp(C3n(0, 1, 1), estFps / 120) or C3n(0, 1, 1):Lerp(C3n(0.7, 0.3, 1), clamp((estFps - 120) / 120, 0, 2))))
             end
 
             if options.ShowPing then
-                local pingS = math.round(ping * 1000)
-                pingS = "Ping: " .. (pingS >= 0 and paintRichText(tostring(pingS) .. " ms", Color3.new(0, 1):Lerp(Color3.new(1), math.clamp(pingS / 1000, 0, 1))) or paintRichText("Disconnected", Color3.new(1)))
+                local pingS = round(ping * 1000)
+                pingS = "Ping: " .. (pingS >= 0 and paintRichText(tostring(pingS) .. " ms", C3n(0, 1):Lerp(C3n(1), clamp(pingS / 1000, 0, 1))) or paintRichText("Disconnected", C3n(1)))
 
                 if not inserted then
                     inserted = true
-                    table.insert(lines, pingS)
+                    tinsert(lines, pingS)
                 else
                     lines[#lines] ..= " | " .. pingS
                 end
@@ -7430,19 +7512,19 @@ local windowFuncs; windowFuncs = {
 
             if options.ShowPlayers then
                 inserted = true
-                table.insert(lines, "Players: " .. (#plrs:GetPlayers()) .. " / " .. plrs.MaxPlayers)
+                tinsert(lines, "Players: " .. (#plrs:GetPlayers()) .. " / " .. plrs.MaxPlayers)
             end
 
             if options.ShowTime then
                 inserted = true
-                table.insert(lines, os.date("%H:%M:%S"))
+                tinsert(lines, os.date("%H:%M:%S"))
             end
 
             if not inserted then
                 lines[#lines] = nil
             end
 
-            label.Text = table.concat(lines, "\n")
+            label.Text = concat(lines, "\n")
         end)
 
         object.Options.InfoLabel = label
@@ -7450,8 +7532,8 @@ local windowFuncs; windowFuncs = {
             cons[#cons + 1] = v
         end
 
-        task.spawn(function()
-            while not object.Closed and task.wait(0.05) do
+        spawn(function()
+            while not object.Closed and wait(0.05) do
                 object:RefreshUserProfile()
             end
         end)
@@ -7464,13 +7546,13 @@ local windowFuncs; windowFuncs = {
 
         if not options.UserProfile then
             window.RealWindow.Contents.Display.PageButtons.UserProfile.Visible = false
-            window.RealWindow.Contents.Display.PageButtons.List.Size = UDim2.new(1, 0, 1, -5)
+            window.RealWindow.Contents.Display.PageButtons.List.Size = U2n(1, 0, 1, -5)
 
             return
         end
 
         window.RealWindow.Contents.Display.PageButtons.UserProfile.Visible = true
-        window.RealWindow.Contents.Display.PageButtons.List.Size = UDim2.new(1, 0, 1, -45)
+        window.RealWindow.Contents.Display.PageButtons.List.Size = U2n(1, 0, 1, -45)
         window.RealWindow.Contents.Display.PageButtons.UserProfile.User.Image = userIcon
 
         local text = plr.Name ~= plr.DisplayName and plr.DisplayName ~= "" and (plr.DisplayName:gsub("_", " ")) or "@" .. plr.Name
@@ -7488,7 +7570,7 @@ local windowFuncs; windowFuncs = {
         if self.Options.Closed then return end
 
         if table.isfrozen(self.Options.Theme) then
-            self.Options.Theme = table.clone(self.Options.Theme)
+            self.Options.Theme = tclone(self.Options.Theme)
         end
 
         local options = self.Options
@@ -7519,7 +7601,7 @@ local windowFuncs; windowFuncs = {
 
         window.RealWindow.Contents.SettingsOverlay.SettingsHub.Separator.BackgroundColor3 = options.Theme.Text
         window.RealWindow.Contents.TopbarZone.TitleZone.Title.TextColor3 = options.Theme.Text
-        window.RealWindow.Contents.TopbarZone.TitleZone.Icon.ImageColor3 = options.RecolorIcon and options.Theme.Text or Color3.new(1, 1, 1)
+        window.RealWindow.Contents.TopbarZone.TitleZone.Icon.ImageColor3 = options.RecolorIcon and options.Theme.Text or C3n(1, 1, 1)
         window.RealWindow.Contents.TopbarZone.Right.Settings.ImageLabel.ImageColor3 = options.Theme.Text
         window.RealWindow.Contents.TopbarZone.Right.ToggleUI.ImageLabel.ImageColor3 = options.Theme.Text
         window.RealWindow.Contents.Footer.Label.TextColor3 = options.Theme.Text
@@ -7540,7 +7622,7 @@ local windowFuncs; windowFuncs = {
                 options._OldNeonType = options.NeonType
                 options._OldShadowSize = options.ShadowSize
 
-                window.Shadow.Size = UDim2.new(1, options.ShadowSize * 2, 1, options.ShadowSize * 2)
+                window.Shadow.Size = U2n(1, options.ShadowSize * 2, 1, options.ShadowSize * 2)
             end
         end
 
@@ -7557,7 +7639,7 @@ local windowFuncs; windowFuncs = {
         button.CanvasGroup.ImageLabel.Visible = true
         button.CanvasGroup.TextLabel.Visible = button.CanvasGroup.ImageLabel.Image == ""
         button.CanvasGroup.BackgroundTransparency = 1
-        button.CanvasGroup.Size = UDim2.fromScale(1, 1)
+        button.CanvasGroup.Size = U2s(1, 1)
 
         button.BackgroundColor3 = options.Theme.Back
         button.UIStroke.Color = options.Theme.Stroke
@@ -7584,20 +7666,20 @@ local windowFuncs; windowFuncs = {
         window.RealWindow.InsideStroke.Thickness = options.NeonThickness
 
         if options.NeonType == "Stroke" then
-            window.RealWindow.Contents.Size = UDim2.new(1, -options.NeonThickness * 2, 1, -options.NeonThickness * 2)
-            window.RealWindow.Contents.Position = UDim2.fromScale(0.5, 0.5)
-            window.RealWindow.Contents.AnchorPoint = Vector2.new(0.5, 0.5)
-            window.RealWindow.AnchorPoint = Vector2.new(0.5, 0.5)
-            window.RealWindow.Position = UDim2.fromScale(0.5, 0.5)
+            window.RealWindow.Contents.Size = U2n(1, -options.NeonThickness * 2, 1, -options.NeonThickness * 2)
+            window.RealWindow.Contents.Position = U2s(0.5, 0.5)
+            window.RealWindow.Contents.AnchorPoint = V2n(0.5, 0.5)
+            window.RealWindow.AnchorPoint = V2n(0.5, 0.5)
+            window.RealWindow.Position = U2s(0.5, 0.5)
             window.RealWindow.TopNeon.Visible = false
             window.RealWindow.InsideStroke.Enabled = true
         else
-            window.RealWindow.Contents.Size = UDim2.new(1, 0, 1, options.NeonType == "Top" and -options.NeonThickness or 0)
-            window.RealWindow.Contents.Position = UDim2.new(0.5, 0, 0, options.NeonType == "Top" and options.NeonThickness or 0)
-            window.RealWindow.Contents.AnchorPoint = Vector2.new(0.5, 0)
-            window.RealWindow.TopNeon.Size = UDim2.new(1, 0, 0, options.NeonThickness)
-            window.RealWindow.AnchorPoint = Vector2.new(0, 0)
-            window.RealWindow.Position = UDim2.fromScale(0, 0)
+            window.RealWindow.Contents.Size = U2n(1, 0, 1, options.NeonType == "Top" and -options.NeonThickness or 0)
+            window.RealWindow.Contents.Position = U2n(0.5, 0, 0, options.NeonType == "Top" and options.NeonThickness or 0)
+            window.RealWindow.Contents.AnchorPoint = V2n(0.5, 0)
+            window.RealWindow.TopNeon.Size = U2n(1, 0, 0, options.NeonThickness)
+            window.RealWindow.AnchorPoint = V2n(0, 0)
+            window.RealWindow.Position = U2s(0, 0)
             window.RealWindow.TopNeon.Visible = options.NeonType == "Top"
             window.RealWindow.InsideStroke.Enabled = false
         end
@@ -7671,19 +7753,19 @@ local windowFuncs; windowFuncs = {
         window.ClipsDescendants = true
         window.Overlay.BackgroundTransparency = 0
 
-        tweenOnce(window.Parent, TweenInfo.new(t, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { Size = self.Options.Size })
-        tweenOnce(window.Parent.Shadow, TweenInfo.new(t, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { ImageTransparency = 1 - ((1 - self.Options.ShadowTransparency) * (1 - self.Options.BackgroundTransparency)), Size = UDim2.new(1, self.Options.ShadowSize * 2, 1, self.Options.ShadowSize * 2) })
-        tweenOnce(window.Overlay, TweenInfo.new(t * 2, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { BackgroundTransparency = 1 })
+        tweenOnce(window.Parent, TIn(t, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { Size = self.Options.Size })
+        tweenOnce(window.Parent.Shadow, TIn(t, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { ImageTransparency = 1 - ((1 - self.Options.ShadowTransparency) * (1 - self.Options.BackgroundTransparency)), Size = U2n(1, self.Options.ShadowSize * 2, 1, self.Options.ShadowSize * 2) })
+        tweenOnce(window.Overlay, TIn(t * 2, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { BackgroundTransparency = 1 })
 
-        task.wait(0.1 / handleAnimationSpeed(self.Options.AnimationSpeed))
+        wait(0.1 / handleAnimationSpeed(self.Options.AnimationSpeed))
 
         window.ClipsDescendants = false
 
-        task.wait(t - 0.1)
+        wait(t - 0.1)
 
         window.Overlay.Visible = false
 
-        task.wait(0.1)
+        wait(0.1)
         self.Options.Debounce = false
     end,
     _Hide = function(self)
@@ -7718,20 +7800,20 @@ local windowFuncs; windowFuncs = {
         window.ClipsDescendants = false
         window.Overlay.BackgroundTransparency = 1
 
-        tweenOnce(window.Parent, TweenInfo.new(t, Enum.EasingStyle.Quint, Enum.EasingDirection.In), { Size = UDim2.fromScale(0, 0) })
-        tweenOnce(window.Parent.Shadow, TweenInfo.new(t * 5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { ImageTransparency = 1, Size = UDim2.fromScale(0, 0) })
-        tweenOnce(window.Overlay, TweenInfo.new(t / 1.5), { BackgroundTransparency = 0 })
+        tweenOnce(window.Parent, TIn(t, Enum.EasingStyle.Quint, Enum.EasingDirection.In), { Size = U2s(0, 0) })
+        tweenOnce(window.Parent.Shadow, TIn(t * 5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), { ImageTransparency = 1, Size = U2s(0, 0) })
+        tweenOnce(window.Overlay, TIn(t / 1.5), { BackgroundTransparency = 0 })
 
-        task.wait(t - 0.1)
+        wait(t - 0.1)
         window.ClipsDescendants = true
 
         if t - 0.1 > 0 then
-            task.wait(0.1 / handleAnimationSpeed(self.Options.AnimationSpeed))
+            wait(0.1 / handleAnimationSpeed(self.Options.AnimationSpeed))
         end
 
         window.Parent.Visible = false
 
-        task.wait(0.1)
+        wait(0.1)
         self.Options.Debounce = false
     end,
     Close = function(self)
@@ -7741,7 +7823,7 @@ local windowFuncs; windowFuncs = {
         self.MobileButton:Destroy()
 
         self:Hide()
-        task.spawn(self.Options.OnClose, self)
+        spawn(self.Options.OnClose, self)
 
         for i, v in self.Defaults do
             i:Set(v)
@@ -7755,7 +7837,7 @@ local windowFuncs; windowFuncs = {
 
         for i, v in self._Connections do
             if v.Connected then
-                task.delay(1, v.Disconnect, v)
+                delay(1, v.Disconnect, v)
             end
         end
     end,
@@ -7763,13 +7845,13 @@ local windowFuncs; windowFuncs = {
         if self.Options.Debounce then return end
 
         self.Options.Visible = true
-        task.spawn(self._Show, self)
+        spawn(self._Show, self)
     end,
     Hide = function(self)
         if self.Options.Debounce then return end
 
         self.Options.Visible = false
-        task.spawn(self._Hide, self)
+        spawn(self._Hide, self)
     end,
     Toggle = function(self)
         if self.Options.Debounce then return end
@@ -7803,10 +7885,10 @@ tooltipObject = newObject({
             
             cd = false
             tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
-            tooltip.Size = UDim2.fromOffset(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
-            task.wait()
+            tooltip.Size = U2o(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
+            wait()
             tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
-            tooltip.Size = UDim2.fromOffset(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
+            tooltip.Size = U2o(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
             cd = true
         end)
 
@@ -7834,11 +7916,11 @@ tooltipObject = newObject({
         local safe = 25
         local tooltipSize = self.Tooltip.AbsoluteSize
         local screenSize = gui.FullScreen.AbsoluteSize
-        local mousePos = Vector2.new(self.Options.CustomMousePosition.X, self.Options.CustomMousePosition.Y)
-        local targetPos = mousePos + Vector2.new(15, 50)
+        local mousePos = V2n(self.Options.CustomMousePosition.X, self.Options.CustomMousePosition.Y)
+        local targetPos = mousePos + V2n(15, 50)
 
-        self.Tooltip.Position = UDim2.fromOffset(math.clamp(targetPos.X, safe, screenSize.X - tooltipSize.X - safe), math.clamp(targetPos.Y, safe + tooltipSize.Y, screenSize.Y - tooltipSize.Y - safe))
-        self.Tooltip.TextLabelInvisible.Size = UDim2.fromOffset(math.floor(gui.FullScreen.AbsoluteSize.X / 2.5), 10000)
+        self.Tooltip.Position = U2o(clamp(targetPos.X, safe, screenSize.X - tooltipSize.X - safe), clamp(targetPos.Y, safe + tooltipSize.Y, screenSize.Y - tooltipSize.Y - safe))
+        self.Tooltip.TextLabelInvisible.Size = U2o(floor(gui.FullScreen.AbsoluteSize.X / 2.5), 10000)
 
         local theme = (self.Options.Window or coreWindow)
         if theme then
@@ -7858,10 +7940,10 @@ library = newObject({
         Tooltip = "",
 
         Theme = {
-            Back = Color3.fromRGB(20, 20, 20),
-            Main = Color3.fromRGB(255, 0, 127),
-            Stroke = Color3.fromRGB(0, 0, 0),
-            Text = Color3.fromRGB(255, 255, 255)
+            Back = C3R(20, 20, 20),
+            Main = C3R(255, 0, 127),
+            Stroke = C3R(0, 0, 0),
+            Text = C3R(255, 255, 255)
         }
     },
 
@@ -7921,7 +8003,7 @@ library = newObject({
         self:Refresh()
 
         local window = newObject(windowFuncs, nil, ...)
-        table.insert(self.Windows, window)
+        tinsert(self.Windows, window)
         self.WindowAdded:Fire(window)
 
         return window
@@ -7943,7 +8025,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.2",
+    Version = "5.0.3",
     Author = "@kawaii_kebodo"
 }
     end;
