@@ -3450,7 +3450,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local getTheme = function()
             return {
-                Type = 2,
+                Type = 3,
 
                 ["0"] = window.Options.ShadowSize,
                 ["1"] = floor(window.Options.ShadowTransparency * 100),
@@ -3467,16 +3467,17 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 ["12"] = window.Options.MobileButtonAlwaysVisible and 1 or 0,
                 ["13"] = window.Options.MobileButtonVisible and 1 or 0,
                 ["14"] = window.Options.NotificationOgScaling and 1 or 0,
-
                 ["15"] = tonumber(window.Options.Theme.Main:ToHex(), 16),
                 ["16"] = tonumber(window.Options.Theme.Stroke:ToHex(), 16),
                 ["17"] = tonumber(window.Options.Theme.Back:ToHex(), 16),
-                ["18"] = tonumber(window.Options.Theme.Text:ToHex(), 16)
+                ["18"] = tonumber(window.Options.Theme.Text:ToHex(), 16),
+                ["19"] = window.Options.InfoLabelExtra,
+                ["20"] = window.Options.ExtraInfoLabelTextEnabled == 1,
             }
         end
 
         local setTheme = function(theme)
-            if theme.Type ~= 1 and theme.Type ~= 2 then return window:Notification({ Title = "Theme", Text = "The given theme is not a theme (most likely a config!)" }) end
+            if theme.Type ~= 1 and theme.Type ~= 2 and theme.Type ~= 3 then return window:Notification({ Title = "Theme", Text = "The given theme is not a theme (most likely a config!)" }) end
 
             if theme.Type == 1 then
                 window.Options.ShadowSize = theme.ShadowSize
@@ -3517,8 +3518,13 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 window.Options.Theme.Stroke = C3h(string["for" .. "mat"]("%06x", theme["16"]))
                 window.Options.Theme.Back = C3h(string["for" .. "mat"]("%06x", theme["17"]))
                 window.Options.Theme.Text = C3h(string["for" .. "mat"]("%06x", theme["18"]))
+
+                if theme.Type == 3 then
+                    window.Options.InfoLabelExtra = theme["19"]
+                    window.Options.ExtraInfoLabelTextEnabled = theme["20"] == 1
+                end
             end
-            
+
             window:Refresh()
         end
 
@@ -3568,7 +3574,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Instant = true,
                 Callback = function(text)
                     if window.Closed then return end
-                    
+
                     if autoLoadConfig.Value then
                         wf(configRoute, { text })
                     else
@@ -3596,7 +3602,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Icon = "Save",
                 Callback = function()
                     if window.Closed then return end
-                    
+
                     local name = configTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
@@ -3731,7 +3737,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Text = "Copy code",
                 Callback = function()
                     if window.Closed then return end
-                    
+
                     toclip(configString.Value)
                     window:Notification({ Title = "Copied", Text = "Code copied to clipboard!" })
                 end
@@ -3772,7 +3778,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Instant = true,
                 Callback = function(text)
                     if window.Closed then return end
-                    
+
                     if autoLoadTheme.Value then
                         wf(themeRoute, { text })
                     else
@@ -3788,7 +3794,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Callback = function(text)
                     if window.Closed then return end
-                    
+
                     themeTextBox.Value = text or ""
                     loadTheme(themeTextBox.Value)
                 end,
@@ -3802,7 +3808,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Icon = "Save",
                 Callback = function()
                     if window.Closed then return end
-                    
+
                     local name = themeTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
@@ -3850,7 +3856,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Icon = "Trash",
                 Callback = function()
                     if window.Closed then return end
-                    
+
                     local name = themeTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
@@ -3874,7 +3880,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Visible = false,
                 Callback = function(value)
                     if window.Closed then return end
-                    
+
                     if value then
                         wf(themeRoute, { themeTextBox.Value })
                     else
@@ -3891,7 +3897,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             Text = "Theme share string",
             Callback = function(text)
                 if window.Closed then return end
-                
+
                 if text ~= encodeThingy(getTheme()) then
                     local s, e = pcall(encoder.Decode, encoder, text)
                     if s then
@@ -3983,7 +3989,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         v.Tooltip = i .. " color"
         v.Callback = function(color)
             if window.Closed then return end
-            
+
             window.Theme[i] = color
             window:Refresh()
         end
@@ -4037,7 +4043,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 return true
             end
         end
-        
+
         return false
     end
 
@@ -4123,15 +4129,22 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     settingsTab:AddSeparator()
 
-    for _, i in { "ShowExecutor", "ShowFPS", "ShowPing", "ShowTime", "ShowPlayers", "", "ShowGap" } do
+    for _, i in { "ShowExecutor", "ShowFPS", "ShowPing", "ShowTime", "ShowPlayers", "", "ShowGap", "ExtraInfoLabelTextEnabled" } do
         if i == "" then
             settingsTab:AddSeparator()
         else
-            infoLabelObjs[i] = settingsTab:AddCheckBox("InfoLabel" .. i, { Text = i:lower():gsub("show", "Show "):gsub("fps", "FPS") .. " in info label", Value = window.Options.InfoLabel.Options[i], Callback = function(val)
+            infoLabelObjs[i] = settingsTab:AddCheckBox("InfoLabel" .. i, { Text = i:lower():gsub("show", "Show "):gsub("fps", "FPS"):gsub("InfoLabel", " "):gsub("TextEnabled", "Text enabled") .. " in info label", Value = window.Options.InfoLabel.Options[i], Callback = function(val)
                 window.Options.InfoLabel[i] = val
             end, Disabled = true })
         end
     end
+
+    settingsTab:AddSeparator({ Invisible = true })
+    local ile = settingsTab:AddTextBox({ PlaceholderText = gca and "Info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra, Text = "Info label extra text", Callback = function(val)
+        window.Options.InfoLabelExtra = val
+    end })
+
+    infoLabelObjs.InfoLabelExtra = ile
 
     settingsTab:AddSeparator()
     settingsTab:AddLabel({ Text = "UI decorations" })
@@ -4215,12 +4228,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     local nos = settingsTab:AddCheckBox("NotificationOG", { Text = "Use legacy notification window size", NoConfigs = true, Value = window.NotificationOgScaling, Callback = function(val)
         window.NotificationOgScaling = val
         if window.Closed then return end
-        
+
         local randomText = ""
         for i = 1, mrandom(1, mrandom(2, mrandom(3, 4))) do
             randomText ..= "Line " .. i .. "\n"
         end
-        
+
         window:Notification({ Title = "This is a notification!", Text = randomText:sub(1, -2) })
     end })
 
@@ -4264,11 +4277,12 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         pl.Visible = #window.PossibleLanguages > 1
         bie.Value = window.Options.ImageEnabled
         bic.Value = window.Options.ImageColor
-        mb.Options.Value = window.MobileButtonVisible
-        amb.Value = window.MobileButtonAlwaysVisible
-        mb.Disabled = amb.Value
+        mb.Options.Value = window.Options.MobileButtonVisible
+        amb.Value = window.Options.MobileButtonAlwaysVisible
+        mb.Disabled = amb.Options.Value
         mv.Value = window.Options.Volume
-        nos.Value = window.NotificationOgScaling
+        nos.Value = window.Options.NotificationOgScaling
+        ile.Value = window.Options.InfoLabelExtra
 
         sil.Value = window.Options.InfoLabel.Options.Visible
 
@@ -4481,11 +4495,11 @@ local function getTextSize(text, size, font, bounds)
     local font = Font.fromEnum(font)
     local index = text .. size .. tostring(font) .. tostring(bounds)
     local value = cachedThingy[index]
-    
+
     if value then
         return value
     end
-    
+
     textParams.Text = text
     textParams.Size = size
     textParams.Font = font
@@ -4494,7 +4508,7 @@ local function getTextSize(text, size, font, bounds)
 
     local result = textS:GetTextBoundsAsync(textParams)
     cachedThingy[index] = result
-    
+
     return result
 end
 
@@ -4616,7 +4630,7 @@ end
 
 local function tweenOnce(obj: Instance, ti: TweenInfo, props: { any })
     local ti = ti or TIn(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-    
+
     if ti.Time > 0.005 then
         local tween = tween:Create(obj, ti, props)
 
@@ -4664,7 +4678,7 @@ local function tryTostring(v, t)
     if t == "table" and str:sub(1, 7) == "table: " then
         local strList = { }
         local can = true
-        
+
         for i, va in v do
             if can and typeof(va) == "table" then
                 local s, e = pcall(http.JSONEncode, http, v)
@@ -4674,24 +4688,24 @@ local function tryTostring(v, t)
                     return e
                 end
             end
-            
+
             strList[#strList + 1] = i .. " = " .. tostring(va)
         end
 
         return concat(strList, " ; ")
     end
-    
+
     return str
 end
 
 local function printM(self)
     local inited = references[self]
     if not inited then return warn("== NO METHODS/READONLY PROPERTIES FOUND FOR", self, "==") end
-    
+
     local methods, props = "    :Get???() -> any -- Gets property/option 'x'\n    :Set???(...) -- Sets property/option 'x'\nExample: object:SetValue(999)\n    :PrintAll()\n", ""
     for i, v in inited do
         if i == "Self" or i == "self" or i:sub(1, 1) == "_" or i == "Proxy" then continue end
-        
+
         local type = typeof(v)
         if type == "function" then
             methods ..= "    :" .. i .. "(...) -> any?\n"
@@ -4700,20 +4714,20 @@ local function printM(self)
             if #stringVer >= 130 then
                 stringVer = stringVer:sub(1, 128) .. "..."
             end
-            
+
             props ..= "    ." .. i .. " : " .. stringVer .. " : " .. type .. " (read only)\n"
         else
             props ..= "    ." .. i .. " : table (read only)\n"
         end
     end
-    
+
     print(self, "\n== METHODS & READONLY PROPERTIES OF", inited.Class or "Object", "==\n\nMethods:\n" .. methods, "\nR.O. Properties:\n" .. props, "\n")
 end
 
 local function idx(self, indx)
     local inited = references[self]
     local index = (indx:sub(1, 1):upper() .. indx:sub(2)):gsub("Caption", "Tooltip"):gsub("HoverText", "Tooltip")
-    
+
     if index == "PrintAll" then
         return printM
     elseif (index ~= "Set" and index ~= "Get") or #indx == 3 then
@@ -4824,11 +4838,11 @@ local function tostrmt(self)
     local self = references[self] and self or self.Proxy
     local str = tostrLookups[self]
     local ref = references[self]
-    
+
     if not str or not ref then
         return "???: 0x????????????????"
     end
-    
+
     return (str:gsub("userdata", ref.Class or "Object"))
 end
 
@@ -4842,7 +4856,7 @@ local function newObject(instructions, parent, ...)
 
     local object = newproxy(true)
     tostrLookups[object] = tostring(object)
-    
+
     local meta : { any } = getmetatable(object)
     meta.__metatable = getmetatable(game)
     meta.__index = idx
@@ -5302,7 +5316,7 @@ local colorPickerBase = {
         local old = self.Options.Value
         self.Options.Value = value
         self:Refresh()
-        
+
         if old ~= self.Options.Value then
             self.Changed:Fire(self.Options.Value, self)
             spawn(self.Options.Callback, self.Options.Value, self)
@@ -5386,7 +5400,7 @@ local keybindBase = {
         local old = self.Options.Value
         self.Options.Value = value
         self:Refresh()
-        
+
         if old ~= self.Options.Value then
             self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
             spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
@@ -5776,7 +5790,7 @@ local basicObjects = {
             local view = inst.View
             local label = view.Label
             local viewList = view.List
-            
+
             inst.Separator.BackgroundColor3 = window.Theme.Text
             label.Label.TextColor3 = window.Theme.Text
             label.Icon.ImageColor3 = window.Theme.Text
@@ -5975,7 +5989,7 @@ local basicObjects = {
             local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
-            
+
             if old ~= self.Options.Value then
                 self.Changed:Fire(self.Options.Value, self)
                 spawn(self.Options.Callback, self.Options.Value, self)
@@ -6128,7 +6142,7 @@ local basicObjects = {
             local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
-            
+
             if old ~= self.Options.Value then
                 self.Changed:Fire(self.Options.Value, self)
                 spawn(self.Options.Callback, self.Options.Value, self)
@@ -6305,7 +6319,7 @@ local basicObjects = {
 
             local window = getWindow(self)
             local inst = self.Instance
-            
+
             inst.Separator.BackgroundColor3 = window.Theme.Text
             inst.Label.TextColor3 = window.Theme.Text
 
@@ -6357,7 +6371,7 @@ local basicObjects = {
             local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
-            
+
             if old ~= self.Options.Value then
                 self.Changed:Fire(self.Options.Value, self)
                 spawn(self.Options.Callback, self.Options.Value, self)
@@ -6416,7 +6430,7 @@ local basicObjects = {
             local y = self.Parent.Class == "Groupbox" and 25 or 40
             local y2 = self.Parent.Class == "Groupbox" and 14 or 16
             local x = self.Parent.Class == "Groupbox" and 7 or 15
-            
+
             local inst = self.Instance
             local view = inst.View
 
@@ -7304,9 +7318,9 @@ local windowFuncs; windowFuncs = {
         if s == "-" then
             s = "Left"
         end
-        
+
         gui.Notifications.NotificationsRight.Position = U2n(1, 0, 0, tbMeasurer.AbsoluteSize.Y + 2)
-        
+
         local scaling = options.UseOgScaling
         local text = options.Text
         local side = gui.Notifications["Notifications" .. s]
@@ -7322,7 +7336,7 @@ local windowFuncs; windowFuncs = {
         local scale = U2n(1, 0, 0, scaling and 110 or max(getTextSize(text, 14, notif.Background.Holder.Text.Font, V2n(side.AbsoluteSize.X - 9, 99999)).Y, 14) + 33)
 
         safeReparent(notif, side)
-        
+
         notif.Size = scale
         notif.LayoutOrder = s == "Right" and ridx or 0
         notif.Background.Position = tpos
@@ -7422,6 +7436,9 @@ local windowFuncs; windowFuncs = {
         Text = "",
         Footer = "",
         NotificationSide = "Left",
+        ExtraInfoLabelText = "",
+        InfoLabelExtra = "",
+        ExtraInfoLabelTextEnabled = true,
         NotificationOgScaling = false,
         Closed = false,
         Visible = true,
@@ -7797,7 +7814,16 @@ local windowFuncs; windowFuncs = {
                 lines[#lines] = nil
             end
 
-            label.Text = concat(lines, "\n")
+            local lines = concat(lines, "\n")
+            if #options.ExtraInfoLabelText ~= 0 and options.ExtraInfoLabelTextEnabled then
+                lines = lines .. (lines ~= "" and "\n" or "") .. typeof(options.ExtraInfoLabelText) == "table" and table.concat(options.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
+            end
+
+            if options.InfoLabelExtra ~= "" then
+                lines = lines .. (lines ~= "" and "\n" or "") .. options.InfoLabelExtra
+            end
+
+            label.Text = lines
         end)
 
         object.Options.InfoLabel = label
@@ -8312,7 +8338,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.5",
+    Version = "5.0.6",
     Author = "@kawaii_kebodo"
 }
     end;
