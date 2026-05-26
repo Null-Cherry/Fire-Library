@@ -7774,9 +7774,9 @@ local windowFuncs; windowFuncs = {
                 tinsert(lines, "")
             end
 
-            inserted = false
+            local inserted2 = false
             if options.ShowFPS then
-                inserted = true
+                inserted2 = true
 
                 local estFps = 0
                 for i, v in buffer do
@@ -7797,8 +7797,8 @@ local windowFuncs; windowFuncs = {
                 local pingS = round(ping * 1000)
                 pingS = "Ping: " .. (pingS >= 0 and paintRichText(tostring(pingS) .. " ms", C3n(0, 1):Lerp(C3n(1), clamp(pingS / 1000, 0, 1))) or paintRichText("Disconnected", C3n(1)))
 
-                if not inserted then
-                    inserted = true
+                if not inserted2 then
+                    inserted2 = true
                     tinsert(lines, pingS)
                 else
                     lines[#lines] ..= " | " .. pingS
@@ -7806,16 +7806,16 @@ local windowFuncs; windowFuncs = {
             end
 
             if options.ShowPlayers then
-                inserted = true
+                inserted2 = true
                 tinsert(lines, "Players: " .. (#plrs:GetPlayers()) .. " / " .. plrs.MaxPlayers)
             end
 
             if options.ShowTime then
-                inserted = true
+                inserted2 = true
                 tinsert(lines, os.date("%H:%M:%S"))
             end
 
-            if not inserted then
+            if not inserted2 and not inserted then
                 lines[#lines] = nil
             end
 
