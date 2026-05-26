@@ -4133,14 +4133,18 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         if i == "" then
             settingsTab:AddSeparator()
         else
-            infoLabelObjs[i] = settingsTab:AddCheckBox("InfoLabel" .. i, { Text = i:lower():gsub("show", "Show "):gsub("fps", "FPS"):gsub("InfoLabel", " "):gsub("TextEnabled", "Text enabled") .. " in info label", Value = window.Options.InfoLabel.Options[i], Callback = function(val)
-                window.Options.InfoLabel[i] = val
+            infoLabelObjs[i] = settingsTab:AddCheckBox("InfoLabel" .. i, { Text = i:lower():gsub("show", "Show "):gsub("fps", "FPS"):gsub("infolabel", " "):gsub("textenabled", "Text enabled") .. " in info label", Value = window.Options.InfoLabel.Options[i], Callback = function(val)
+                if i ~= "ExtraInfoLabelTextEnabled" then
+                    window.Options.InfoLabel[i] = val
+                else
+                    window.Options[i] = val
+                end
             end, Disabled = true })
         end
     end
 
     settingsTab:AddSeparator({ Invisible = true })
-    local ile = settingsTab:AddTextBox({ PlaceholderText = gca and "Info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra, Text = "Info label extra text", Callback = function(val)
+    local ile = settingsTab:AddTextBox({ PlaceholderText = gca and "Info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
         window.Options.InfoLabelExtra = val
     end })
 
