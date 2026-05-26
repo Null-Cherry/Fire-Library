@@ -8338,7 +8338,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.6",
+    Version = "5.0.5",
     Author = "@kawaii_kebodo"
 }
     end;
