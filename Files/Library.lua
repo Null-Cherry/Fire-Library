@@ -2705,12 +2705,11 @@ do -- Set properties
     objects["Instance256"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
     objects["Instance256"]["Parent"] = objects["Instance255"];
 
-    objects["Instance257"]["Visible"] = false;
-    objects["Instance257"]["Parent"] = objects["Instance255"];
     objects["Instance257"]["BackgroundTransparency"] = 1;
-    objects["Instance257"]["Name"] = "Holder";
     objects["Instance257"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance257"]["Size"] = UDim2.new(1, 0, 0, 110);
+    objects["Instance257"]["Name"] = "Holder";
+    objects["Instance257"]["Size"] = UDim2.new(1, 0, 0, 47);
+    objects["Instance257"]["Parent"] = objects["Instance255"];
     objects["Instance257"]["ZIndex"] = 2147483641;
     objects["Instance257"]["BorderSizePixel"] = 0;
     objects["Instance257"]["BackgroundColor3"] = Color3.new(1, 1, 1);
@@ -3041,8 +3040,8 @@ end
 enumLookup.GetEnums = function() return enumLookup end
 
 local Enum = enumLookup
-local U2n = UDim2.new
 local U2s = UDim2.fromScale
+local U2n = UDim2.new
 local U2o = UDim2.fromOffset
 local Un = UDim.new
 local unpack = unpack
@@ -3281,7 +3280,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         if db or window.Closed then return end
         db = true
 
-        if window:Notification({ Duration = 15, Title = "Are you sure?", Text = "Are you sure you want to close the UI?", HasButtons = true }) then
+        if window:Notification({ Side = "Left", Duration = 15, Title = "Are you sure?", Text = "Are you sure you want to close the UI?", HasButtons = true }) then
             window:Close()
         end
 
@@ -3384,8 +3383,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         local setConfig; setConfig = function(cfg, self)
-            if cfg.Type ~= 0 then return window:Notification({ Title = "Config", Text = "The given config is not a config (most likely a theme!)" }) end
             self = self or window
+            if self == window and cfg.Type ~= 0 then return window:Notification({ Title = "Config", Text = "The given config is not a config (most likely a theme!)" }) end
 
             local cl = self.Class
             local fl = self.Options.Flag
@@ -3451,51 +3450,75 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local getTheme = function()
             return {
-                Type = 1,
+                Type = 2,
 
-                ShadowSize = window.Options.ShadowSize,
-                ShadowTransparency = window.Options.ShadowTransparency,
-                BackgroundTransparency = window.Options.BackgroundTransparency,
-                ImageEnabled = window.Options.ImageEnabled,
-                ImageColor = tonumber(window.Options.ImageColor:ToHex(), 16),
-                ImageTransparency = window.Options.ImageTransparency,
-                Image = window.Options.Image,
-                NeonThickness = window.Options.NeonThickness,
-                NeonType = window.Options.NeonType,
-                NotificationSide = window.Options.NotificationSide,
-                AnimationSpeed = window.Options.AnimationSpeed,
-                Volume = window.Options.Volume,
-                MobileButtonAlwaysVisible = window.Options.MobileButtonAlwaysVisible,
-                MobileButtonVisible = window.Options.MobileButtonVisible,
+                ["0"] = window.Options.ShadowSize,
+                ["1"] = floor(window.Options.ShadowTransparency * 100),
+                ["2"] = floor(window.Options.BackgroundTransparency * 100),
+                ["3"] = window.Options.ImageEnabled and 1 or 0,
+                ["4"] = tonumber(window.Options.ImageColor:ToHex(), 16),
+                ["5"] = floor(window.Options.ImageTransparency * 100),
+                ["6"] = window.Options.Image,
+                ["7"] = window.Options.NeonThickness,
+                ["8"] = window.Options.NeonType,
+                ["9"] = window.Options.NotificationSide,
+                ["10"] = window.Options.AnimationSpeed,
+                ["11"] = window.Options.Volume,
+                ["12"] = window.Options.MobileButtonAlwaysVisible and 1 or 0,
+                ["13"] = window.Options.MobileButtonVisible and 1 or 0,
+                ["14"] = window.Options.NotificationOgScaling and 1 or 0,
 
-                Main = tonumber(window.Options.Theme.Main:ToHex(), 16),
-                Stroke = tonumber(window.Options.Theme.Stroke:ToHex(), 16),
-                Back = tonumber(window.Options.Theme.Back:ToHex(), 16),
-                Text = tonumber(window.Options.Theme.Text:ToHex(), 16)
+                ["15"] = tonumber(window.Options.Theme.Main:ToHex(), 16),
+                ["16"] = tonumber(window.Options.Theme.Stroke:ToHex(), 16),
+                ["17"] = tonumber(window.Options.Theme.Back:ToHex(), 16),
+                ["18"] = tonumber(window.Options.Theme.Text:ToHex(), 16)
             }
         end
 
         local setTheme = function(theme)
-            if theme.Type ~= 1 then return window:Notification({ Title = "Theme", Text = "The given theme is not a theme (most likely a config!)" }) end
+            if theme.Type ~= 1 and theme.Type ~= 2 then return window:Notification({ Title = "Theme", Text = "The given theme is not a theme (most likely a config!)" }) end
 
-            window.Options.ShadowSize = theme.ShadowSize
-            window.Options.ShadowTransparency = theme.ShadowTransparency
-            window.Options.BackgroundTransparency = theme.BackgroundTransparency
-            window.Options.ImageEnabled = theme.ImageEnabled
-            window.Options.ImageColor = C3h(string["for" .. "mat"]("%06x", theme.ImageColor)) -- suspend studio warning
-            window.Options.ImageTransparency = theme.ImageTransparency
-            window.Options.Image = theme.Image
-            window.Options.NeonThickness = theme.NeonThickness
-            window.Options.NeonType = theme.NeonType
-            window.Options.NotificationSide = theme.NotificationSide
-            window.Options.AnimationSpeed = theme.AnimationSpeed
-            window.Options.Volume = theme.Volume
-            window.Options.MobileButtonAlwaysVisible = theme.MobileButtonAlwaysVisible
-            window.Options.MobileButtonVisible = theme.MobileButtonVisible
-            window.Options.Theme.Main = C3h(string["for" .. "mat"]("%06x", theme.Main)) -- same here and under
-            window.Options.Theme.Stroke = C3h(string["for" .. "mat"]("%06x", theme.Stroke))
-            window.Options.Theme.Back = C3h(string["for" .. "mat"]("%06x", theme.Back))
-            window.Options.Theme.Text = C3h(string["for" .. "mat"]("%06x", theme.Text))
+            if theme.Type == 1 then
+                window.Options.ShadowSize = theme.ShadowSize
+                window.Options.ShadowTransparency = theme.ShadowTransparency
+                window.Options.BackgroundTransparency = theme.BackgroundTransparency
+                window.Options.ImageEnabled = theme.ImageEnabled
+                window.Options.ImageColor = C3h(string["for" .. "mat"]("%06x", theme.ImageColor)) -- suspend studio warning
+                window.Options.ImageTransparency = theme.ImageTransparency
+                window.Options.Image = theme.Image
+                window.Options.NeonThickness = theme.NeonThickness
+                window.Options.NeonType = theme.NeonType
+                window.Options.NotificationSide = theme.NotificationSide
+                window.Options.AnimationSpeed = theme.AnimationSpeed
+                window.Options.Volume = theme.Volume
+                window.Options.MobileButtonAlwaysVisible = theme.MobileButtonAlwaysVisible
+                window.Options.MobileButtonVisible = theme.MobileButtonVisible
+                window.Options.Theme.Main = C3h(string["for" .. "mat"]("%06x", theme.Main)) -- same here and under
+                window.Options.Theme.Stroke = C3h(string["for" .. "mat"]("%06x", theme.Stroke))
+                window.Options.Theme.Back = C3h(string["for" .. "mat"]("%06x", theme.Back))
+                window.Options.Theme.Text = C3h(string["for" .. "mat"]("%06x", theme.Text))
+            else
+                window.Options.ShadowSize = theme["0"]
+                window.Options.ShadowTransparency = theme["1"] / 100
+                window.Options.BackgroundTransparency = theme["2"] / 100
+                window.Options.ImageEnabled = theme["3"] == 1
+                window.Options.ImageColor = C3h(string["for" .. "mat"]("%06x", theme["4"])) -- suspend studio warning
+                window.Options.ImageTransparency = theme["5"] / 100
+                window.Options.Image = theme["6"]
+                window.Options.NeonThickness = theme["7"]
+                window.Options.NeonType = theme["8"]
+                window.Options.NotificationSide = theme["9"]
+                window.Options.AnimationSpeed = theme["10"]
+                window.Options.Volume = theme["11"]
+                window.Options.MobileButtonAlwaysVisible = theme["12"] == 1
+                window.Options.MobileButtonVisible = theme["13"] == 1
+                window.Options.NotificationOgScaling = theme["14"] == 1
+                window.Options.Theme.Main = C3h(string["for" .. "mat"]("%06x", theme["15"])) -- same here and under
+                window.Options.Theme.Stroke = C3h(string["for" .. "mat"]("%06x", theme["16"]))
+                window.Options.Theme.Back = C3h(string["for" .. "mat"]("%06x", theme["17"]))
+                window.Options.Theme.Text = C3h(string["for" .. "mat"]("%06x", theme["18"]))
+            end
+            
             window:Refresh()
         end
 
@@ -3544,6 +3567,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Visible = false,
                 Instant = true,
                 Callback = function(text)
+                    if window.Closed then return end
+                    
                     if autoLoadConfig.Value then
                         wf(configRoute, { text })
                     else
@@ -3558,6 +3583,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 AllowUnselect = true,
                 NoConfigs = true,
                 Callback = function(text)
+                    if window.Closed then return end
                     configTextBox.Value = text or ""
                 end,
                 Visible = false
@@ -3569,16 +3595,18 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Icon = "Save",
                 Callback = function()
+                    if window.Closed then return end
+                    
                     local name = configTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
                     local route = configsRoute .. fl .. name .. json
-                    if IF(route) then if not window:Notification({ Title = "Config exists", Text = "Config '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
+                    if IF(route) then if not window:Notification({ Side = "Left", Title = "Config exists", Text = "Config '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
 
                     wf(route, getConfig())
                     configDropdown.Values = getExistingConfigs()
 
-                    window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been saved!" })
+                    window:Notification({ Side = "Left", Title = "Success", Text = "Config '" .. name .. "' has been saved!" })
                 end,
                 Visible = false
             })
@@ -3605,6 +3633,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Icon = "Config",
                 Callback = function()
+                    if window.Closed then return end
                     loadConfig(configTextBox.Value)
                 end,
                 Visible = false
@@ -3615,17 +3644,18 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Icon = "Trash",
                 Callback = function()
+                    if window.Closed then return end
                     local name = configTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid config name. Use 1–32 characters, no \\ or /" }) end
 
                     local route = configsRoute .. fl .. name .. json
                     if not IF(route) then return window:Notification({ Title = "Error", Text = "Config '" .. name .. "' does not exist" }) end
 
-                    if window:Notification({ Title = "Delete config", Text = "Are you sure you want to delete config '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
+                    if window:Notification({ Side = "Left", Title = "Delete config", Text = "Are you sure you want to delete config '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
                         df(route)
                         configDropdown.Values = getExistingConfigs()
 
-                        window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully deleted!" })
+                        window:Notification({ Side = "Left", Title = "Success", Text = "Config '" .. name .. "' has been successfully deleted!" })
                     end
                 end,
                 Visible = false
@@ -3636,6 +3666,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Value = false,
                 NoConfigs = true,
                 Callback = function(value)
+                    if window.Closed then return end
                     if value then
                         wf(configRoute, { configTextBox.Value })
                     else
@@ -3656,6 +3687,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             NoConfigs = true,
             PlaceholderText = "Click \"Generate code\" button, or insert your config share string here",
             Callback = function(text)
+                if window.Closed then return end
                 if text ~= encodeThingy(getConfig()) then
                     local s, e = pcall(encoder.Decode, encoder, text)
                     if s then
@@ -3698,6 +3730,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             settingsTab:AddButton({
                 Text = "Copy code",
                 Callback = function()
+                    if window.Closed then return end
+                    
                     toclip(configString.Value)
                     window:Notification({ Title = "Copied", Text = "Code copied to clipboard!" })
                 end
@@ -3737,6 +3771,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 Visible = false,
                 Instant = true,
                 Callback = function(text)
+                    if window.Closed then return end
+                    
                     if autoLoadTheme.Value then
                         wf(themeRoute, { text })
                     else
@@ -3751,6 +3787,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 AllowUnselect = true,
                 NoConfigs = true,
                 Callback = function(text)
+                    if window.Closed then return end
+                    
                     themeTextBox.Value = text or ""
                     loadTheme(themeTextBox.Value)
                 end,
@@ -3763,16 +3801,18 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Icon = "Save",
                 Callback = function()
+                    if window.Closed then return end
+                    
                     local name = themeTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
                     local route = themesRoute .. name .. json
-                    if IF(route) then if not window:Notification({ Title = "Theme exists", Text = "Theme '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
+                    if IF(route) then if not window:Notification({ Side = "Left", Title = "Theme exists", Text = "Theme '" .. name .. "' already exists!\nDo you want to overwrite it?", HasButtons = true, Duration = 10 }) then return end end
 
                     wf(route, getTheme())
                     themeDropdown.Values = getExistingThemes()
 
-                    window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been saved!" })
+                    window:Notification({ Side = "Left", Title = "Success", Text = "Theme '" .. name .. "' has been saved!" })
                 end,
                 Visible = false
             })
@@ -3797,9 +3837,9 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
             hidden[#hidden + 1] = settingsTab:AddButton({
                 Text = "Load theme",
-                NoConfigs = true,
                 Icon = "Star",
                 Callback = function()
+                    if window.Closed then return end
                     loadTheme(themeTextBox.Value)
                 end,
                 Visible = false
@@ -3807,20 +3847,21 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
             hidden[#hidden + 1] = settingsTab:AddButton({
                 Text = "Delete theme",
-                NoConfigs = true,
                 Icon = "Trash",
                 Callback = function()
+                    if window.Closed then return end
+                    
                     local name = themeTextBox.Value
                     if not validateName(name) then return window:Notification({ Title = "Error", Text = "Invalid theme name. Use 1–32 characters, no \\ or /" }) end
 
                     local route = themesRoute .. name .. json
                     if not IF(route) then return window:Notification({ Title = "Error", Text = "Theme '" .. name .. "' does not exist" }) end
 
-                    if window:Notification({ Title = "Delete theme", Text = "Are you sure you want to delete theme '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
+                    if window:Notification({ Side = "Left", Title = "Delete theme", Text = "Are you sure you want to delete theme '" .. name .. "'?", HasButtons = true, Duration = 10 }) then
                         df(route)
                         themeDropdown.Values = getExistingThemes()
 
-                        window:Notification({ Title = "Success", Text = "Theme '" .. name .. "' has been successfully deleted!" })
+                        window:Notification({ Side = "Left", Title = "Success", Text = "Theme '" .. name .. "' has been successfully deleted!" })
                     end
                 end,
                 Visible = false
@@ -3832,6 +3873,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 NoConfigs = true,
                 Visible = false,
                 Callback = function(value)
+                    if window.Closed then return end
+                    
                     if value then
                         wf(themeRoute, { themeTextBox.Value })
                     else
@@ -3847,6 +3890,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             NoConfigs = true,
             Text = "Theme share string",
             Callback = function(text)
+                if window.Closed then return end
+                
                 if text ~= encodeThingy(getTheme()) then
                     local s, e = pcall(encoder.Decode, encoder, text)
                     if s then
@@ -3937,6 +3982,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         v.Value = window.Theme[i]
         v.Tooltip = i .. " color"
         v.Callback = function(color)
+            if window.Closed then return end
+            
             window.Theme[i] = color
             window:Refresh()
         end
@@ -3981,7 +4028,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end
 
             db = true
-            local res = window:Notification({ Title = "Theme generator", Text = "This gonna reset your current theme!\nAre you sure" .. (mrandom(1, 10) == 1 and " you wanna accept being uncreative?\n\n(an easter egg btw)" or "?"), Duration = 15, HasButtons = true })
+            local res = window:Notification({ Side = "Left", Title = "Theme generator", Text = "This gonna reset your current theme!\nAre you sure" .. (mrandom(1, 10) == 1 and " you wanna accept being uncreative?\n\n(an easter egg btw)" or "?"), Duration = 15, HasButtons = true })
             db = false
 
             if res then
@@ -3990,6 +4037,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 return true
             end
         end
+        
+        return false
     end
 
     local btn = settingsTab:AddButton("ThemeGenerator", { Text = "Theme generator", Icon = "Brush", Tooltip = "Generates a theme\nNOTE: Randomly generated themes are not perfect and can look bad!", Callback = function()
@@ -4163,6 +4212,18 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         window.Options.NotificationSide = val
     end, Value = tfind(sides, window.Options.NotificationSide) or 1 })
 
+    local nos = settingsTab:AddCheckBox("NotificationOG", { Text = "Use legacy notification window size", NoConfigs = true, Value = window.NotificationOgScaling, Callback = function(val)
+        window.NotificationOgScaling = val
+        if window.Closed then return end
+        
+        local randomText = ""
+        for i = 1, mrandom(1, mrandom(2, mrandom(3, 4))) do
+            randomText ..= "Line " .. i .. "\n"
+        end
+        
+        window:Notification({ Title = "This is a notification!", Text = randomText:sub(1, -2) })
+    end })
+
     local as = settingsTab:AddSlider("AnimationSpeed", { Text = "Animation speeds", NoConfigs = true, Value = window.Options.AnimationSpeed, Callback = function(val)
         window.Options.AnimationSpeed = val
     end, Min = 0, Max = 10, Step = 0.1, Format = ".%" })
@@ -4207,6 +4268,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         amb.Value = window.MobileButtonAlwaysVisible
         mb.Disabled = amb.Value
         mv.Value = window.Options.Volume
+        nos.Value = window.NotificationOgScaling
 
         sil.Value = window.Options.InfoLabel.Options.Visible
 
@@ -4413,14 +4475,27 @@ local plrs        = game:GetService("Players")
 local mps        = game:GetService("MarketplaceService")
 
 local textParams = Inew("GetTextBoundsParams")
+local cachedThingy = { }
+
 local function getTextSize(text, size, font, bounds)
+    local font = Font.fromEnum(font)
+    local index = text .. size .. tostring(font) .. tostring(bounds)
+    local value = cachedThingy[index]
+    
+    if value then
+        return value
+    end
+    
     textParams.Text = text
     textParams.Size = size
-    textParams.Font = Font.fromEnum(font)
+    textParams.Font = font
     textParams.RichText = true
     textParams.Width = tonumber(bounds) or bounds.X
 
-    return textS:GetTextBoundsAsync(textParams)
+    local result = textS:GetTextBoundsAsync(textParams)
+    cachedThingy[index] = result
+    
+    return result
 end
 
 local plr = plrs.LocalPlayer
@@ -4528,6 +4603,10 @@ addPlaceholder(circle, "Circle")
 safeReparent(placeholders, gui)
 safeReparent(gui, (g("gethui") or function() return game:GetService("CoreGui") or game:GetService("Players").LocalPlayer.PlayerGui end)())
 
+local tbMeasurer = Inew("ScreenGui", gui.Parent)
+tbMeasurer.ScreenInsets = Enum.ScreenInsets.TopbarSafeInsets
+tbMeasurer.ResetOnSpawn = false
+
 local function getPlaceholder(name) : Instance?
     local found = placeholders:FindFirstChild(name)
     if found then
@@ -4536,14 +4615,22 @@ local function getPlaceholder(name) : Instance?
 end
 
 local function tweenOnce(obj: Instance, ti: TweenInfo, props: { any })
-    local tween = tween:Create(obj, ti or TIn(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), props)
+    local ti = ti or TIn(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+    
+    if ti.Time > 0.005 then
+        local tween = tween:Create(obj, ti, props)
 
-    obj = nil
-    ti = nil
-    props = nil
+        obj = nil
+        ti = nil
+        props = nil
 
-    tween:Play()
-    defer(tween.Destroy, tween)
+        tween:Play()
+        defer(tween.Destroy, tween)
+    else
+        for i, v in props do
+            obj[i] = v
+        end
+    end
 end
 
 local function paintRichText(text, color)
@@ -4572,20 +4659,74 @@ local function getprop(self, value)
     return inited.Options[currentProperty]
 end
 
-local function idx(self, idx)
+local function tryTostring(v, t)
+    local str = tostring(v)
+    if t == "table" and str:sub(1, 7) == "table: " then
+        local strList = { }
+        local can = true
+        
+        for i, va in v do
+            if can and typeof(va) == "table" then
+                local s, e = pcall(http.JSONEncode, http, v)
+                if not s then
+                    can = false
+                else
+                    return e
+                end
+            end
+            
+            strList[#strList + 1] = i .. " = " .. tostring(va)
+        end
+
+        return concat(strList, " ; ")
+    end
+    
+    return str
+end
+
+local function printM(self)
     local inited = references[self]
-    local index = (idx:sub(1, 1):upper() .. idx:sub(2)):gsub("Caption", "Tooltip"):gsub("HoverText", "Tooltip")
-    if (index ~= "Set" and index ~= "Get") or #idx == 3 then
-        local val = inited[idx]
+    if not inited then return warn("== NO METHODS/READONLY PROPERTIES FOUND FOR", self, "==") end
+    
+    local methods, props = "    :Get???() -> any -- Gets property/option 'x'\n    :Set???(...) -- Sets property/option 'x'\nExample: object:SetValue(999)\n    :PrintAll()\n", ""
+    for i, v in inited do
+        if i == "Self" or i == "self" or i:sub(1, 1) == "_" or i == "Proxy" then continue end
+        
+        local type = typeof(v)
+        if type == "function" then
+            methods ..= "    :" .. i .. "(...) -> any?\n"
+        elseif i ~= "Options" then
+            local stringVer = tryTostring(v, type)
+            if #stringVer >= 130 then
+                stringVer = stringVer:sub(1, 128) .. "..."
+            end
+            
+            props ..= "    ." .. i .. " : " .. stringVer .. " : " .. type .. " (read only)\n"
+        else
+            props ..= "    ." .. i .. " : table (read only)\n"
+        end
+    end
+    
+    print(self, "\n== METHODS & READONLY PROPERTIES OF", inited.Class or "Object", "==\n\nMethods:\n" .. methods, "\nR.O. Properties:\n" .. props, "\n")
+end
+
+local function idx(self, indx)
+    local inited = references[self]
+    local index = (indx:sub(1, 1):upper() .. indx:sub(2)):gsub("Caption", "Tooltip"):gsub("HoverText", "Tooltip")
+    
+    if index == "PrintAll" then
+        return printM
+    elseif (index ~= "Set" and index ~= "Get") or #indx == 3 then
+        local val = inited[indx]
         if val ~= nil then
             return val
         else
-            local val = inited.Options[idx]
+            local val = inited.Options[indx]
             if val == nil then
                 if inited.Objects then
-                    val = inited.Objects[idx]
+                    val = inited.Objects[indx]
                     if val == nil then
-                        error(("No property called '%s'"):format(idx), 0)
+                        error(("No property called '%s'"):format(indx), 0)
                     end
                 end
             end
@@ -4593,20 +4734,20 @@ local function idx(self, idx)
             return val
         end
     elseif index == "Set" then
-        idx = idx:sub(4)
-        if inited.Options[idx] ~= nil then
-            currentProperty = idx
+        indx = indx:sub(4)
+        if inited.Options[indx] ~= nil then
+            currentProperty = indx
             return prop
         else
-            error(("No property called '%s'"):format(idx), 0)
+            error(("No property called '%s'"):format(indx), 0)
         end
     elseif index == "Get" then
-        idx = idx:sub(4)
-        if inited.Options[idx] ~= nil then
-            currentProperty = idx
+        indx = indx:sub(4)
+        if inited.Options[indx] ~= nil then
+            currentProperty = indx
             return getprop
         else
-            error(("No property called '%s'"):format(idx), 0)
+            error(("No property called '%s'"):format(indx), 0)
         end
     end
 end
@@ -4678,6 +4819,19 @@ local function getOptions(window, self, ...)
     return options
 end
 
+local tostrLookups = { }
+local function tostrmt(self)
+    local self = references[self] and self or self.Proxy
+    local str = tostrLookups[self]
+    local ref = references[self]
+    
+    if not str or not ref then
+        return "???: 0x????????????????"
+    end
+    
+    return (str:gsub("userdata", ref.Class or "Object"))
+end
+
 local function newObject(instructions, parent, ...)
     local inited = instructions:Init(getOptions(parent and getWindow(parent), instructions, ...))
     for i, v in instructions do
@@ -4687,10 +4841,14 @@ local function newObject(instructions, parent, ...)
     end
 
     local object = newproxy(true)
+    tostrLookups[object] = tostring(object)
+    
     local meta : { any } = getmetatable(object)
     meta.__metatable = getmetatable(game)
     meta.__index = idx
     meta.__newindex = newidx
+    meta.__tostring = tostrmt
+    meta.__metatable = "LOL!"
 
     tfreeze(meta)
     references[object] = inited
@@ -5141,10 +5299,14 @@ local colorPickerBase = {
         return acp(self.Parent, ...)
     end,
     Set = function(self, value)
+        local old = self.Options.Value
         self.Options.Value = value
         self:Refresh()
-        self.Changed:Fire(self.Options.Value, self)
-        spawn(self.Options.Callback, self.Options.Value, self)
+        
+        if old ~= self.Options.Value then
+            self.Changed:Fire(self.Options.Value, self)
+            spawn(self.Options.Callback, self.Options.Value, self)
+        end
     end,
     Init = function(self, options)
         local instance = getPlaceholder("ColorPicker")
@@ -5221,11 +5383,14 @@ local keybindBase = {
         KeySet = function() end
     },
     Set = function(self, value)
+        local old = self.Options.Value
         self.Options.Value = value
         self:Refresh()
-
-        self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
-        spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+        
+        if old ~= self.Options.Value then
+            self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+            spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+        end
 
         local window = getWindow(self)
         window.KeybindMode:Fire(window.KeybindModeActive)
@@ -5507,18 +5672,21 @@ local basicObjects = {
             Translations = { }
         },
         Set = function(self, value)
+            local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
 
-            local value = self.Options.Value
-            local converted = self:Convert(value)
+            if old ~= self.Options.Value then
+                local value = self.Options.Value
+                local converted = self:Convert(value)
 
-            if self.Options.Convert then
-                value, converted = converted, value
+                if self.Options.Convert then
+                    value, converted = converted, value
+                end
+
+                self.Changed:Fire(value, converted, self)
+                spawn(self.Options.Callback, value, converted, self)
             end
-
-            self.Changed:Fire(value, converted, self)
-            spawn(self.Options.Callback, value, converted, self)
         end,
         Init = function(self, options)
             local instance = getPlaceholder("Dropdown")
@@ -5804,10 +5972,14 @@ local basicObjects = {
             Translations = tfreeze({ })
         },
         Set = function(self, value)
+            local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
-            self.Changed:Fire(self.Options.Value, self)
-            spawn(self.Options.Callback, self.Options.Value, self)
+            
+            if old ~= self.Options.Value then
+                self.Changed:Fire(self.Options.Value, self)
+                spawn(self.Options.Callback, self.Options.Value, self)
+            end
         end,
         Init = function(self, options)
             local instance = getPlaceholder("Slider")
@@ -5953,10 +6125,14 @@ local basicObjects = {
             Translations = tfreeze({ })
         },
         Set = function(self, value)
+            local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
-            self.Changed:Fire(self.Options.Value, self)
-            spawn(self.Options.Callback, self.Options.Value, self)
+            
+            if old ~= self.Options.Value then
+                self.Changed:Fire(self.Options.Value, self)
+                spawn(self.Options.Callback, self.Options.Value, self)
+            end
         end,
         Init = function(self, options)
             local instance = getPlaceholder("TextBox")
@@ -6056,7 +6232,7 @@ local basicObjects = {
             local x = self.Parent.Class == "Groupbox" and -14 or -30
 
             local window = getWindow(self)
-            local inst = window.Instance
+            local inst = self.Instance
             local view = inst.View
             inst.Separator.BackgroundColor3 = window.Theme.Text
             view.Label.TextColor3 = window.Theme.Text
@@ -6114,10 +6290,10 @@ local basicObjects = {
                 if not cd or not getWindow(object).Visible then return end
 
                 cd = false
-                instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 10000)).Y)
+                instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 99999)).Y)
                 instance.Size = U2n(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
                 wait()
-                instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 10000)).Y)
+                instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 99999)).Y)
                 instance.Size = U2n(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
                 cd = true
             end)
@@ -6178,10 +6354,14 @@ local basicObjects = {
             Translations = tfreeze({ })
         },
         Set = function(self, value)
+            local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
-            self.Changed:Fire(self.Options.Value, self)
-            spawn(self.Options.Callback, self.Options.Value, self)
+            
+            if old ~= self.Options.Value then
+                self.Changed:Fire(self.Options.Value, self)
+                spawn(self.Options.Callback, self.Options.Value, self)
+            end
         end,
         AddColorPicker = acp,
         Init = function(self, options)
@@ -6274,11 +6454,14 @@ local basicObjects = {
             Translations = tfreeze({ })
         },
         Set = function(self, value)
+            local old = self.Options.Value
             self.Options.Value = value
             self:Refresh()
 
-            self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
-            spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+            if old ~= self.Options.Value then
+                self.Changed:Fire(self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+                spawn(self.Options.KeySet, self.Options.Value ~= false and Enum.KeyCode:FromValue(self.Options.Value) or nil, self.Proxy)
+            end
         end,
         AddColorPicker = acp,
         Init = function(self, options)
@@ -6753,6 +6936,7 @@ local defaultNotificationOptions = { __index = {
     HasButtons = false,
     Icon = "",
     Side = "-",
+    UseOgScaling = "-",
     Callback = function(state) end
 } }
 
@@ -7090,6 +7274,9 @@ local windowFuncs; windowFuncs = {
     PlaySound = function(self, name)
         spawn(playSound, name, self)
     end,
+    Notify = function(self, ...)
+        return self:Notification(...)
+    end,
     Notification = function(self, options)
         options = setmetatable(options or { }, defaultNotificationOptions)
 
@@ -7106,13 +7293,23 @@ local windowFuncs; windowFuncs = {
         end
 
         if options.Side == "-" then
-            options.Side = self.Options.NotificationSide or self.Options.Side
+            options.Side = self.Options.NotificationSide or "Left"
+        end
+
+        if options.UseOgScaling == "-" then
+            options.UseOgScaling = self.Options.NotificationOgScaling or false
         end
 
         local s = options.Side
         if s == "-" then
             s = "Left"
         end
+        
+        gui.Notifications.NotificationsRight.Position = U2n(1, 0, 0, tbMeasurer.AbsoluteSize.Y + 2)
+        
+        local scaling = options.UseOgScaling
+        local text = options.Text
+        local side = gui.Notifications["Notifications" .. s]
 
         local tpos = U2s(s == "Left" and -1 or 1, 0)
         local tpos2 = U2n(s == "Left" and -1 or 2, 0, 0, 3)
@@ -7122,13 +7319,17 @@ local windowFuncs; windowFuncs = {
         end
 
         local notif = getPlaceholder("Notification")
+        local scale = U2n(1, 0, 0, scaling and 110 or max(getTextSize(text, 14, notif.Background.Holder.Text.Font, V2n(side.AbsoluteSize.X - 9, 99999)).Y, 14) + 33)
+
+        safeReparent(notif, side)
+        
+        notif.Size = scale
         notif.LayoutOrder = s == "Right" and ridx or 0
-        safeReparent(notif, gui.Notifications["Notifications" .. s])
         notif.Background.Position = tpos
         notif.Background.Holder.Position = tpos2
         notif.Background.Holder.AnchorPoint = V2n(s == "Left" and 0 or 1, 0)
         notif.Background.Holder.Title.Text = options.Title
-        notif.Background.Holder.Text.Text = options.Text
+        notif.Background.Holder.Text.Text = text
         notif.Background.Progress.Fill.Size = U2s(1, 1)
         notif.Background.Progress.Fill.AnchorPoint = V2n(s == "Left" and 0 or 1, 0)
         notif.Background.Progress.Fill.Position = U2s(s == "Left" and 0 or 1, 0)
@@ -7181,7 +7382,7 @@ local windowFuncs; windowFuncs = {
                 if done then return end
 
                 tweenOnce(notif.Background, TIn(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2o(0, 0) })
-                tweenOnce(notif.Background.Holder, TIn(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2n(s == "Left" and 0 or 1, 0, 0, 3) })
+                tweenOnce(notif.Background.Holder, TIn(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2n(s == "Left" and 0 or 1, 0, 0, 3) })
             end)
 
             repeat wait() until done
@@ -7221,6 +7422,7 @@ local windowFuncs; windowFuncs = {
         Text = "",
         Footer = "",
         NotificationSide = "Left",
+        NotificationOgScaling = false,
         Closed = false,
         Visible = true,
         _PrevVisible = false,
@@ -7604,11 +7806,14 @@ local windowFuncs; windowFuncs = {
         end
 
         spawn(function()
+            gui.Enabled = false
+            rs.RenderStepped:Wait()
+            gui.Enabled = true
+
             while not object.Closed and wait(0.05) do
                 object:RefreshUserProfile()
             end
         end)
-
         return object
     end,
     RefreshUserProfile = function(self)
@@ -8091,6 +8296,9 @@ library = newObject({
     Notification = function(self, ...)
         self:Refresh()
         return self._CoreWindow:Notification(...)
+    end,
+    Notify = function(self, ...)
+        return self:Notification(...)
     end
 })
 
@@ -8104,7 +8312,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.3",
+    Version = "5.0.5",
     Author = "@kawaii_kebodo"
 }
     end;
