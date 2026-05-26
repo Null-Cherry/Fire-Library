@@ -6186,6 +6186,8 @@ local basicObjects = {
                 if object.Options.MultiLine or object.Options.RequiresEnter and enter or not object.Options.RequiresEnter then
                     object:Call(instance.View.Bar.Text)
                 end
+
+                object:Refresh(true)
             end)
 
             local cd = true
@@ -6194,6 +6196,7 @@ local basicObjects = {
                 cd = false
                 object:Refresh(true)
                 wait()
+                object:Refresh(true)
                 cd = true
             end)
 
@@ -6216,12 +6219,7 @@ local basicObjects = {
                 instance.View.Bar.CursorPosition -= 1
                 instance.View.Bar.CursorPosition += 1
                 instance.View.Bar.CursorPosition = old
-
-                if #new == 0 then
-                    new = object.Options.PlaceholderText
-                end
-
-                instance.View.BarInvisible.Text = new:sub(0, 199999)
+                instance.View.BarInvisible.Text = (#new == 0 and object.Options.PlaceholderText or new):sub(0, 199999)
 
                 if not object.Options.Instant then return end
                 object:Call(new)
