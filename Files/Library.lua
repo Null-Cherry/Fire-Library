@@ -7713,6 +7713,7 @@ local windowFuncs; windowFuncs = {
 
         defer(windowSetup, object)
 
+        local origOptions = options
         local options = { Position = U2o(20, 65), AnchorPoint = V2n(0, 0),
             Visible = false,
             ShowFPS = true,
@@ -7815,12 +7816,12 @@ local windowFuncs; windowFuncs = {
             end
 
             local lines = concat(lines, "\n")
-            if #options.ExtraInfoLabelText ~= 0 and options.ExtraInfoLabelTextEnabled then
-                lines = lines .. (lines ~= "" and "\n" or "") .. typeof(options.ExtraInfoLabelText) == "table" and table.concat(options.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
+            if #origOptions.ExtraInfoLabelText ~= 0 and origOptions.ExtraInfoLabelTextEnabled then
+                lines = lines .. (lines ~= "" and "\n" or "") .. typeof(origOptions.ExtraInfoLabelText) == "table" and table.concat(origOptions.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
             end
 
-            if options.InfoLabelExtra ~= "" then
-                lines = lines .. (lines ~= "" and "\n" or "") .. options.InfoLabelExtra
+            if origOptions.InfoLabelExtra ~= "" then
+                lines = lines .. (lines ~= "" and "\n" or "") .. origOptions.InfoLabelExtra
             end
 
             label.Text = lines
@@ -8338,7 +8339,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.5",
+    Version = "5.0.6",
     Author = "@kawaii_kebodo"
 }
     end;
