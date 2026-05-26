@@ -4133,7 +4133,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         if i == "" then
             settingsTab:AddSeparator()
         else
-            infoLabelObjs[i] = settingsTab:AddCheckBox("InfoLabel" .. i, { Text = i:lower():gsub("show", "Show "):gsub("fps", "FPS"):gsub("infolabel", " "):gsub("textenabled", "Text enabled") .. " in info label", Value = window.Options.InfoLabel.Options[i], Callback = function(val)
+            infoLabelObjs[i] = settingsTab:AddCheckBox("InfoLabel" .. i, { Text = i:lower():gsub("show", "Show "):gsub("extra", "Scripted extra"):gsub("fps", "FPS"):gsub("infolabel", " "):gsub("textenabled", "Text enabled") .. " in info label", Value = window.Options.InfoLabel.Options[i], Callback = function(val)
                 if i ~= "ExtraInfoLabelTextEnabled" then
                     window.Options.InfoLabel[i] = val
                 else
@@ -4144,11 +4144,9 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     end
 
     settingsTab:AddSeparator({ Invisible = true })
-    local ile = settingsTab:AddTextBox({ PlaceholderText = gca and "Info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
+    local ile = settingsTab:AddTextBox({ PlaceholderText = gca and "Manual info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
         window.Options.InfoLabelExtra = val
     end })
-
-    infoLabelObjs.InfoLabelExtra = ile
 
     settingsTab:AddSeparator()
     settingsTab:AddLabel({ Text = "UI decorations" })
@@ -4291,7 +4289,11 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         sil.Value = window.Options.InfoLabel.Options.Visible
 
         for i, v in infoLabelObjs do
-            v.Value = window.Options.InfoLabel.Options[i]
+            if i == "ExtraInfoLabelTextEnabled" then
+                v.Value = window.Options[i]
+            else
+                v.Value = window.Options.InfoLabel.Options[i]
+            end
         end
 
         for i, v in themeObjects do
