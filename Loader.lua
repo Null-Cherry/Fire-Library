@@ -114,11 +114,26 @@ if wf and rf and iF and current and iF(key .. "/Library" .. ext1) and iF(key .. 
 	end
 end
 
+fl = global[key]
+if fl then
+	return fl
+end
+
 local success, error = update()
 if not success then return loadError(error) end
 
+fl = global[key]
+if fl then
+	return fl
+end
+
 success, error = pcall(success, key)
 if not success then return loadError("Library failed to load: " .. error) end
+
+fl = global[key]
+if fl then
+	return fl
+end
 
 fl = error
 global[key] = fl
