@@ -3111,7 +3111,7 @@ pc.BottomSurface = 0
 pc.Anchored = true
 pc.CanCollide = false
 pc.Material = "Glass"
-pc.Transparency = 0.99
+pc.Transparency = 0.98
 pc.Name = "BlurPart"
 
 local mesh = Inew("SpecialMesh", pc)
@@ -3237,6 +3237,12 @@ end
 local dof = Inew("DepthOfFieldEffect")
 local light = game:GetService("Lighting")
 
+dof.Enabled = true
+dof.FarIntensity = 0
+dof.InFocusRadius = 50
+dof.NearIntensity = 1
+dof.FocusDistance = 51.6
+
 local function f()
     camera = workspace.CurrentCamera or camera
 
@@ -3269,12 +3275,14 @@ local function f()
         pcall(parent, dof, par)
     end
 
+    dof.Name = "UIBlurEffect"
+    if true then return end
+
     dof.Enabled = true
     dof.FarIntensity = 0
     dof.InFocusRadius = 50
     dof.NearIntensity = 1
     dof.FocusDistance = 51.6
-    dof.Name = "UIBlurEffect"
 end
 
 workspace.Changed:Connect(f)
