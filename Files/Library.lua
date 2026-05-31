@@ -3499,6 +3499,10 @@ local encoder = {
     Decode = function(self, str) return compressor:Decompress(base64:Decode(str:reverse():gsub("ZzZ", "="):gsub("QqQ", "+"):gsub("XxX", "/")):reverse()):reverse() end
 }
 
+local function clean(str)
+    return str:gsub("[\n\r\f\t\0 ]", "")
+end
+
 local wf = configsEnabled and function(name, contents, dontEncode)
     wf(name, typeof(contents) == "string" and (not dontEncode and encoder:Encode(contents) or contents) or encoder:Encode(je(contents)))
 end
@@ -3732,10 +3736,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         local function validateName(name: string)
             return #name >= 1 and #name <= 32 and not name:find("\\", 1, true) and not name:find("/", 1, true)
-        end
-
-        local function clean(str)
-            return (str:gsub("[\n\r\f\t\0 ]", ""))
         end
 
         settingsTab:AddLabel({ Text = "Configs" })
@@ -5037,13 +5037,13 @@ local newObject do
                 str = "Object"
             end
 
-            str = str:gsub("[\n\r\0 \t\f]", "")
+            str = clean(str)
 
             counters[str] = (counters[str] or -1) + 1
             ID = str .. (counters[str] ~= 0 and counters[str] or "")
         end
 
-        ID = tostring(ID):gsub("\n\r\0 \t\f", "")
+        ID = clean(tostring(ID))
 
         options.Flag = ID
 
@@ -5367,7 +5367,7 @@ local getIcon, setIcon do
         instance.ImageRectOffset = imageRectOffset and V2n(unpack(imageRectOffset)) or V2n()
         instance.ImageRectSize = imageRectSize and V2n(unpack(imageRectSize)) or V2n()
 
-        return image:gsub("[\n\f\r\t\0 ]", "")
+        return clean(image)
     end
 end
 
@@ -6373,7 +6373,10 @@ local basicObjects = {
             self.Options.Callback(realValue, self.Proxy)
         end,
         Refresh = function(self)
-            local compact = self.Options.Compact
+            local texttt = translate(self, "Text")
+            local forceCompact = clean(texttt) == ""
+            local compact = self.Options.Compact or forceCompact
+            
             local y = self.Parent.Class == "Groupbox" and (compact and 30 or 40) or (compact and 30 or 50)
             local y2 = self.Parent.Class == "Groupbox" and 14 or 16
             local x = self.Parent.Class == "Groupbox" and -14 or -30
@@ -6407,8 +6410,7 @@ local basicObjects = {
             if typeof(self.Options.Format) ~= "function" then
                 self.Options.Format = functions[self.Options.Format or ""] or functions["/"]
             end
-
-            local texttt = translate(self, "Text")
+            
             local formattedText = self.Options.Format and (typeof(self.Options.Format) == "string" and self.Options["Format"] --[[suspend studio warning]] or tostring(self.Options.Format(self.Options))) or fixNum(self.Value) .. " / " .. fixNum(self.Max)
 
             view.Label.Visible = not compact
@@ -6418,7 +6420,7 @@ local basicObjects = {
                 view.Bar.Progress.Text = formattedText
                 view.Label.Text = texttt
             else
-                view.Bar.Progress.Text = texttt .. (self.Options.ShowCompactValue and " (" .. formattedText .. ")" or "")
+                view.Bar.Progress.Text = forceCompact and (self.Options.ShowCompactValue and formattedText or "") or texttt .. (self.Options.ShowCompactValue and " (" .. formattedText .. ")" or "")
             end
 
             view.Label.TextTransparency = self.Options.Disabled and 0.35 or 0
@@ -6981,7 +6983,7 @@ local groupBoxFuncs = {
         holder.Title.TextColor3 = window.Theme.Text
 
         local texttt = translate(self, "Text")
-        local textVisible = texttt:gsub("[\n\r\f\t\0 ]", "") ~= ""
+        local textVisible = clean(texttt)
         
         holder.Title.Text = texttt
         safeReparent(holder.Parent, self.Parent.Holder.GroupboxZone[self.Options.Side .. "GroupboxZone"])
@@ -6997,7 +6999,7 @@ local groupBoxFuncs = {
         holder.Contents.Position = U2n(0.5, 0, 0, textVisible and 20 or 7)
         holder.Contents.Size = U2n(1, -10, 1, textVisible and -25 or -10)
         holder.Parent.Size = U2n(1, 0, 0, ySize ~= 0 and (textVisible and 35 or 20) + ySize or 0)
-        holder.Parent.Visible = ySize ~= 0
+        holder.Parent.Visible = self.Options.Visible and ySize ~= 0
     end
 }
 
@@ -8245,7 +8247,7 @@ local windowFuncs; windowFuncs = {
         cons[#cons + 1] = footer:GetPropertyChangedSignal("Text"):Connect(function()
             if not object.Options.Visible then return end
 
-            local isVisible = footer.Text:gsub("[\0\f\t\r\n ]", "") ~= ""
+            local isVisible = clean(footer.Text) ~= ""
 
             footer.Parent.Visible = isVisible
             window.RealWindow.Contents.Display.Size = U2n(1, 0, 1, isVisible and -15 or 0)
@@ -9065,7 +9067,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.0.7",
+    Version = "5.0.9",
     Author = "@kawaii_kebodo"
 }
     end;
