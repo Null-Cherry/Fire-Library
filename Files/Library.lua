@@ -3111,8 +3111,8 @@ pc.BottomSurface = 0
 pc.Anchored = true
 pc.CanCollide = false
 pc.Material = "Glass"
-pc.Transparency = 0.98
-pc.Name = "Triangle"
+pc.Transparency = 0.99
+pc.Name = "BlurPart"
 
 local mesh = Inew("SpecialMesh", pc)
 mesh.MeshType = 2
@@ -3257,6 +3257,8 @@ local function f()
         pcall(parent, coreFolder, par)
     end
     
+    coreFolder.Name = "UIBlur"
+    
     for i, v in binds do
         pcall(parent, v[2], coreFolder)
     end
@@ -3343,6 +3345,8 @@ return table.freeze({
                     parts[i] = nil
                 end
             end
+            
+            holderFolder.Name = "UIBlurHolder"
         end
         
         binding[4] = frame.Changed:Connect(refresh)
@@ -3805,7 +3809,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
                 local data = rf(route, false)
                 if data then
-                    warn(data)
                     if not window:SetConfigString(data) then
                         window:SetConfig(data)
                     end
@@ -4002,7 +4005,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
                 local data = rf(route, false)
                 if data then
-                    warn(data)
                     if not window:SetThemeString(data) then
                         window:SetTheme(data)
                     end
@@ -8128,6 +8130,7 @@ local windowFuncs; windowFuncs = {
         Closed = false,
         Visible = true,
         BlurBackground = false,
+        DisableBlurBackground = false,
         OutsideStroke = true,
         CornerRadius = 0,
         _PrevVisible = false,
@@ -8705,7 +8708,7 @@ local windowFuncs; windowFuncs = {
             tooltipObject:Refresh()
         end
 
-        window.Blur.Visible = options.BlurBackground and options.Visible
+        window.Blur.Visible = not options.DisableBlurBackground and options.BlurBackground and options.Visible
         if self.Options._OldVisible ~= options.Visible and not options.Debounce then
             self.Options._OldVisible = options.Visible
             if options.Visible then
@@ -9053,12 +9056,13 @@ library = newObject({
 
 global[key] = library
 isFirstTime = If and If(coreFolder:sub(1, -2)) == false or false
-warn(isFirstTime)
 
-mf(coreFolder:sub(1, -2))
-mf(cacheRoute:sub(1, -2))
-mf(configsRoute:sub(1, -2))
-mf(themesRoute:sub(1, -2))
+if mf then
+    mf(coreFolder:sub(1, -2))
+    mf(cacheRoute:sub(1, -2))
+    mf(configsRoute:sub(1, -2))
+    mf(themesRoute:sub(1, -2))
+end
 
 return library
     end;
