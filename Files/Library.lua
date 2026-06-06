@@ -6744,19 +6744,19 @@ local basicObjects = {
             return object
         end,
         Refresh = function(self)
-            local y = self.Parent.Class == "Groupbox" and 25 or 40
+            local y = self.Parent.Class == "Groupbox" and 14 or 16
 
             local window = getWindow(self)
             local inst = self.Instance
 
             inst.Separator.BackgroundColor3 = window.Theme.Text
             inst.Label.TextColor3 = window.Theme.Text
+            inst.Label.TextSize = y
 
             orderUpdate(inst, self.Options.Order)
             inst.Visible = self.Options.Visible
             safeReparent(inst, self.Parent.Class == "Groupbox" and self.Parent.Holder.Holder.Contents or self.Parent.Holder.NormalZone)
             inst.Label.Text = translate(self, "Text"):sub(0, 199999)
-            inst.Size = U2n(1, 0, 0, y)
             inst.Label.Position = self.Parent.Class == "Groupbox" and U2o(9, 5) or U2o(15, 12)
         end
     },
