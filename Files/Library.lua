@@ -5524,8 +5524,8 @@ local gsubs = {
     Quote = "'", Backquote = "`", Comma = ",",
     Semicolon = ";", Plus = "+", Asterisk = "*",
     Multiply = "*", Divide = "/", Keypad = "Kp",
-    Tab = "Tab", Return = "Enter", Escape = "Esc",
-    Backspace = "Backspace", Insert = "Ins", Delete = "Del",
+    Return = "Enter", Escape = "Esc",
+    Insert = "Ins", Delete = "Del",
     PageUp = "PgUp", PageDown = "PgDown"
 }
 
@@ -7248,7 +7248,7 @@ local tabFuncs = {
 
         for i, v in self.Parent.Objects do
             if v.Class == "Tab" or v.Class == "CustomTab" then
-                local visible = v.Holder == self.Holder
+                local visible = v.Proxy == self.Proxy
                 v.Holder.Visible = visible
 
                 tweenOnce(v.TabButton.ButtonItself.Icon, TIn(0.75 / handleAnimationSpeed(window.AnimationSpeed)), { ImageTransparency = visible and 0 or 0.25 })
@@ -7262,7 +7262,6 @@ local tabFuncs = {
         return self:Refresh(dont)
     end,
     Refresh = function(self, dont)
-        if dont then return self end
         local window = getWindow(self)
         if not window then return self end
 
@@ -7318,10 +7317,10 @@ local tabFuncs = {
             holder.GroupboxZone.Size = U2n(1, 0, 0, max(leftYSize, rightYSize))
         end
 
-        if not options.Visible and self.Parent.CurrentTab and self.Parent.CurrentTab.Holder == holder then
+        if not options.Visible and self.Parent.CurrentTab and self.Parent.CurrentTab.Proxy == self.Proxy then
             self.Parent.CurrentTab.Holder.Visible = false
             self.Parent.Self.CurrentTab = false
-        elseif options.Visible and self.Parent.CurrentTab and holder == self.Parent.CurrentTab.Holder then
+        elseif options.Visible and self.Parent.CurrentTab and self.Proxy == self.Parent.CurrentTab.Proxy and not dont then
             return self:SwitchTo(true)
         end
 
