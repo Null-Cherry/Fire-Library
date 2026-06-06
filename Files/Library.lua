@@ -4162,7 +4162,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             if typeof(cont) == "table" then
                 autoLoadConfig.Value = true
                 configTextBox.Value = cont[1]
-                delay(5 - rs.RenderStepped:Wait(), loadConfig, cont[1])
+                delay(0.5 - rs.RenderStepped:Wait(), loadConfig, cont[1])
             end
         end
 
@@ -4746,8 +4746,6 @@ local http        = game:GetService("HttpService")
 local textS        = game:GetService("TextService")
 local plrs        = game:GetService("Players")
 local mps        = game:GetService("MarketplaceService")
-
-local textParams = Inew("GetTextBoundsParams")
 local cachedThingy = { }
 
 local function getTextSize(text, size, font, bounds)
@@ -4758,7 +4756,8 @@ local function getTextSize(text, size, font, bounds)
     if value then
         return value
     end
-
+    
+    local textParams = Inew("GetTextBoundsParams")
     textParams.Text = text
     textParams.Size = size
     textParams.Font = font
@@ -4767,6 +4766,7 @@ local function getTextSize(text, size, font, bounds)
 
     local result = textS:GetTextBoundsAsync(textParams)
     cachedThingy[index] = result
+    textParams:Destroy()
 
     return result
 end
