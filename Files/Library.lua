@@ -9282,7 +9282,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.0",
+    Version = "5.1.1",
     Author = "@kawaii_kebodo"
 }
     end;
