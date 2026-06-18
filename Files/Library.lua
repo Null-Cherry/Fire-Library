@@ -7,302 +7,308 @@
 local parent = game:GetService("StarterGui");
 local objects = {
     ["Instance0"] = Instance.new("ScreenGui");
-    ["Instance1"] = Instance.new("Frame");
-    ["Instance2"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance3"] = Instance.new("TextButton");
-    ["Instance4"] = Instance.new("ImageLabel");
-    ["Instance5"] = Instance.new("ImageLabel");
-    ["Instance6"] = Instance.new("UIStroke");
-    ["Instance7"] = Instance.new("UIStroke");
-    ["Instance8"] = Instance.new("Frame");
-    ["Instance9"] = Instance.new("Frame");
-    ["Instance10"] = Instance.new("Frame");
-    ["Instance11"] = Instance.new("Frame");
-    ["Instance12"] = Instance.new("ScrollingFrame");
-    ["Instance13"] = Instance.new("TextButton");
-    ["Instance14"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance15"] = Instance.new("Frame");
-    ["Instance16"] = Instance.new("UIListLayout");
-    ["Instance17"] = Instance.new("ImageLabel");
-    ["Instance18"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance19"] = Instance.new("UICorner");
-    ["Instance20"] = Instance.new("TextLabel");
-    ["Instance21"] = Instance.new("Frame");
-    ["Instance22"] = Instance.new("Frame");
-    ["Instance23"] = Instance.new("UICorner");
-    ["Instance24"] = Instance.new("UIListLayout");
-    ["Instance25"] = Instance.new("Frame");
+    ["Instance1"] = Instance.new("ModuleScript");
+    ["Instance2"] = Instance.new("ModuleScript");
+    ["Instance3"] = Instance.new("ModuleScript");
+    ["Instance4"] = Instance.new("ModuleScript");
+    ["Instance5"] = Instance.new("ModuleScript");
+    ["Instance6"] = Instance.new("ModuleScript");
+    ["Instance7"] = Instance.new("ModuleScript");
+    ["Instance8"] = Instance.new("ModuleScript");
+    ["Instance9"] = Instance.new("ModuleScript");
+    ["Instance10"] = Instance.new("ModuleScript");
+    ["Instance11"] = Instance.new("ModuleScript");
+    ["Instance12"] = Instance.new("ModuleScript");
+    ["Instance13"] = Instance.new("Configuration");
+    ["Instance14"] = Instance.new("Folder");
+    ["Instance15"] = Instance.new("Sound");
+    ["Instance16"] = Instance.new("Sound");
+    ["Instance17"] = Instance.new("Sound");
+    ["Instance18"] = Instance.new("Sound");
+    ["Instance19"] = Instance.new("Frame");
+    ["Instance20"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance21"] = Instance.new("TextButton");
+    ["Instance22"] = Instance.new("ImageLabel");
+    ["Instance23"] = Instance.new("ImageLabel");
+    ["Instance24"] = Instance.new("UIStroke");
+    ["Instance25"] = Instance.new("UIStroke");
     ["Instance26"] = Instance.new("Frame");
     ["Instance27"] = Instance.new("Frame");
-    ["Instance28"] = Instance.new("ImageLabel");
-    ["Instance29"] = Instance.new("UICorner");
-    ["Instance30"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance31"] = Instance.new("TextLabel");
-    ["Instance32"] = Instance.new("Frame");
-    ["Instance33"] = Instance.new("ScrollingFrame");
-    ["Instance34"] = Instance.new("Frame");
-    ["Instance35"] = Instance.new("UIListLayout");
-    ["Instance36"] = Instance.new("TextButton");
-    ["Instance37"] = Instance.new("Frame");
-    ["Instance38"] = Instance.new("ImageLabel");
-    ["Instance39"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance40"] = Instance.new("UIListLayout");
-    ["Instance41"] = Instance.new("TextLabel");
-    ["Instance42"] = Instance.new("Frame");
-    ["Instance43"] = Instance.new("TextButton");
+    ["Instance28"] = Instance.new("Frame");
+    ["Instance29"] = Instance.new("Frame");
+    ["Instance30"] = Instance.new("ScrollingFrame");
+    ["Instance31"] = Instance.new("TextButton");
+    ["Instance32"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance33"] = Instance.new("Frame");
+    ["Instance34"] = Instance.new("UIListLayout");
+    ["Instance35"] = Instance.new("ImageLabel");
+    ["Instance36"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance37"] = Instance.new("UICorner");
+    ["Instance38"] = Instance.new("TextLabel");
+    ["Instance39"] = Instance.new("Frame");
+    ["Instance40"] = Instance.new("Frame");
+    ["Instance41"] = Instance.new("UICorner");
+    ["Instance42"] = Instance.new("ImageLabel");
+    ["Instance43"] = Instance.new("UIListLayout");
     ["Instance44"] = Instance.new("Frame");
-    ["Instance45"] = Instance.new("UIListLayout");
-    ["Instance46"] = Instance.new("TextLabel");
-    ["Instance47"] = Instance.new("ImageLabel");
-    ["Instance48"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance49"] = Instance.new("UIStroke");
-    ["Instance50"] = Instance.new("UIGradient");
-    ["Instance51"] = Instance.new("Frame");
-    ["Instance52"] = Instance.new("TextButton");
-    ["Instance53"] = Instance.new("Frame");
-    ["Instance54"] = Instance.new("TextLabel");
-    ["Instance55"] = Instance.new("Frame");
-    ["Instance56"] = Instance.new("Frame");
-    ["Instance57"] = Instance.new("TextLabel");
-    ["Instance58"] = Instance.new("UIPadding");
-    ["Instance59"] = Instance.new("UIStroke");
-    ["Instance60"] = Instance.new("Frame");
-    ["Instance61"] = Instance.new("Frame");
-    ["Instance62"] = Instance.new("UIGradient");
-    ["Instance63"] = Instance.new("Frame");
-    ["Instance64"] = Instance.new("UIGradient");
-    ["Instance65"] = Instance.new("TextBox");
-    ["Instance66"] = Instance.new("UIPadding");
-    ["Instance67"] = Instance.new("Frame");
-    ["Instance68"] = Instance.new("TextButton");
-    ["Instance69"] = Instance.new("Frame");
-    ["Instance70"] = Instance.new("TextLabel");
-    ["Instance71"] = Instance.new("TextBox");
-    ["Instance72"] = Instance.new("UIStroke");
-    ["Instance73"] = Instance.new("UIPadding");
+    ["Instance45"] = Instance.new("Frame");
+    ["Instance46"] = Instance.new("Frame");
+    ["Instance47"] = Instance.new("Frame");
+    ["Instance48"] = Instance.new("ImageLabel");
+    ["Instance49"] = Instance.new("UICorner");
+    ["Instance50"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance51"] = Instance.new("TextLabel");
+    ["Instance52"] = Instance.new("Frame");
+    ["Instance53"] = Instance.new("ScrollingFrame");
+    ["Instance54"] = Instance.new("Frame");
+    ["Instance55"] = Instance.new("UIListLayout");
+    ["Instance56"] = Instance.new("TextButton");
+    ["Instance57"] = Instance.new("Frame");
+    ["Instance58"] = Instance.new("ImageLabel");
+    ["Instance59"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance60"] = Instance.new("UIListLayout");
+    ["Instance61"] = Instance.new("TextLabel");
+    ["Instance62"] = Instance.new("Frame");
+    ["Instance63"] = Instance.new("TextButton");
+    ["Instance64"] = Instance.new("Frame");
+    ["Instance65"] = Instance.new("UIListLayout");
+    ["Instance66"] = Instance.new("TextLabel");
+    ["Instance67"] = Instance.new("ImageLabel");
+    ["Instance68"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance69"] = Instance.new("UIStroke");
+    ["Instance70"] = Instance.new("UIGradient");
+    ["Instance71"] = Instance.new("Frame");
+    ["Instance72"] = Instance.new("TextButton");
+    ["Instance73"] = Instance.new("Frame");
     ["Instance74"] = Instance.new("TextLabel");
-    ["Instance75"] = Instance.new("UIPadding");
+    ["Instance75"] = Instance.new("CanvasGroup");
     ["Instance76"] = Instance.new("TextLabel");
-    ["Instance77"] = Instance.new("Frame");
-    ["Instance78"] = Instance.new("TextButton");
+    ["Instance77"] = Instance.new("UIPadding");
+    ["Instance78"] = Instance.new("UIStroke");
     ["Instance79"] = Instance.new("Frame");
     ["Instance80"] = Instance.new("Frame");
-    ["Instance81"] = Instance.new("UIStroke");
+    ["Instance81"] = Instance.new("UIGradient");
     ["Instance82"] = Instance.new("Frame");
-    ["Instance83"] = Instance.new("TextLabel");
-    ["Instance84"] = Instance.new("UIPadding");
-    ["Instance85"] = Instance.new("Frame");
-    ["Instance86"] = Instance.new("UIGradient");
-    ["Instance87"] = Instance.new("Frame");
-    ["Instance88"] = Instance.new("TextButton");
-    ["Instance89"] = Instance.new("UIListLayout");
-    ["Instance90"] = Instance.new("TextLabel");
-    ["Instance91"] = Instance.new("UIPadding");
+    ["Instance83"] = Instance.new("UIGradient");
+    ["Instance84"] = Instance.new("TextBox");
+    ["Instance85"] = Instance.new("UIPadding");
+    ["Instance86"] = Instance.new("UICorner");
+    ["Instance87"] = Instance.new("CanvasGroup");
+    ["Instance88"] = Instance.new("UICorner");
+    ["Instance89"] = Instance.new("Frame");
+    ["Instance90"] = Instance.new("Frame");
+    ["Instance91"] = Instance.new("TextButton");
     ["Instance92"] = Instance.new("Frame");
-    ["Instance93"] = Instance.new("ImageLabel");
-    ["Instance94"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance95"] = Instance.new("ImageLabel");
-    ["Instance96"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance97"] = Instance.new("UIListLayout");
-    ["Instance98"] = Instance.new("TextLabel");
-    ["Instance99"] = Instance.new("Frame");
+    ["Instance93"] = Instance.new("TextLabel");
+    ["Instance94"] = Instance.new("TextBox");
+    ["Instance95"] = Instance.new("UIStroke");
+    ["Instance96"] = Instance.new("UIPadding");
+    ["Instance97"] = Instance.new("TextLabel");
+    ["Instance98"] = Instance.new("UIPadding");
+    ["Instance99"] = Instance.new("TextLabel");
     ["Instance100"] = Instance.new("Frame");
-    ["Instance101"] = Instance.new("Frame");
+    ["Instance101"] = Instance.new("TextButton");
     ["Instance102"] = Instance.new("Frame");
     ["Instance103"] = Instance.new("Frame");
-    ["Instance104"] = Instance.new("Frame");
-    ["Instance105"] = Instance.new("TextLabel");
-    ["Instance106"] = Instance.new("Frame");
-    ["Instance107"] = Instance.new("TextButton");
-    ["Instance108"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance109"] = Instance.new("Frame");
-    ["Instance110"] = Instance.new("UIStroke");
-    ["Instance111"] = Instance.new("Frame");
+    ["Instance104"] = Instance.new("UIStroke");
+    ["Instance105"] = Instance.new("Frame");
+    ["Instance106"] = Instance.new("TextLabel");
+    ["Instance107"] = Instance.new("UIPadding");
+    ["Instance108"] = Instance.new("Frame");
+    ["Instance109"] = Instance.new("UIGradient");
+    ["Instance110"] = Instance.new("Frame");
+    ["Instance111"] = Instance.new("TextButton");
     ["Instance112"] = Instance.new("UIListLayout");
-    ["Instance113"] = Instance.new("TextButton");
-    ["Instance114"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance115"] = Instance.new("TextLabel");
-    ["Instance116"] = Instance.new("UIStroke");
-    ["Instance117"] = Instance.new("UIPadding");
-    ["Instance118"] = Instance.new("TextButton");
-    ["Instance119"] = Instance.new("Frame");
+    ["Instance113"] = Instance.new("TextLabel");
+    ["Instance114"] = Instance.new("UIPadding");
+    ["Instance115"] = Instance.new("Frame");
+    ["Instance116"] = Instance.new("ImageLabel");
+    ["Instance117"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance118"] = Instance.new("ImageLabel");
+    ["Instance119"] = Instance.new("UIAspectRatioConstraint");
     ["Instance120"] = Instance.new("UIListLayout");
     ["Instance121"] = Instance.new("TextLabel");
-    ["Instance122"] = Instance.new("TextLabel");
-    ["Instance123"] = Instance.new("UIStroke");
-    ["Instance124"] = Instance.new("UIPadding");
-    ["Instance125"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance122"] = Instance.new("Frame");
+    ["Instance123"] = Instance.new("Frame");
+    ["Instance124"] = Instance.new("Frame");
+    ["Instance125"] = Instance.new("Frame");
     ["Instance126"] = Instance.new("Frame");
-    ["Instance127"] = Instance.new("UIListLayout");
-    ["Instance128"] = Instance.new("Frame");
+    ["Instance127"] = Instance.new("Frame");
+    ["Instance128"] = Instance.new("TextLabel");
     ["Instance129"] = Instance.new("Frame");
-    ["Instance130"] = Instance.new("UIListLayout");
-    ["Instance131"] = Instance.new("Frame");
+    ["Instance130"] = Instance.new("TextButton");
+    ["Instance131"] = Instance.new("UIAspectRatioConstraint");
     ["Instance132"] = Instance.new("Frame");
     ["Instance133"] = Instance.new("UIStroke");
     ["Instance134"] = Instance.new("Frame");
-    ["Instance135"] = Instance.new("TextLabel");
-    ["Instance136"] = Instance.new("UIPadding");
-    ["Instance137"] = Instance.new("Frame");
-    ["Instance138"] = Instance.new("UIListLayout");
-    ["Instance139"] = Instance.new("Frame");
-    ["Instance140"] = Instance.new("UIListLayout");
-    ["Instance141"] = Instance.new("CanvasGroup");
+    ["Instance135"] = Instance.new("UIListLayout");
+    ["Instance136"] = Instance.new("TextButton");
+    ["Instance137"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance138"] = Instance.new("TextLabel");
+    ["Instance139"] = Instance.new("UIStroke");
+    ["Instance140"] = Instance.new("UIPadding");
+    ["Instance141"] = Instance.new("TextButton");
     ["Instance142"] = Instance.new("Frame");
-    ["Instance143"] = Instance.new("TextButton");
-    ["Instance144"] = Instance.new("Frame");
-    ["Instance145"] = Instance.new("Frame");
-    ["Instance146"] = Instance.new("ImageLabel");
-    ["Instance147"] = Instance.new("UICorner");
-    ["Instance148"] = Instance.new("UICorner");
+    ["Instance143"] = Instance.new("UIListLayout");
+    ["Instance144"] = Instance.new("TextLabel");
+    ["Instance145"] = Instance.new("TextLabel");
+    ["Instance146"] = Instance.new("UIStroke");
+    ["Instance147"] = Instance.new("UIPadding");
+    ["Instance148"] = Instance.new("UIAspectRatioConstraint");
     ["Instance149"] = Instance.new("Frame");
-    ["Instance150"] = Instance.new("UICorner");
+    ["Instance150"] = Instance.new("UIListLayout");
     ["Instance151"] = Instance.new("Frame");
     ["Instance152"] = Instance.new("Frame");
-    ["Instance153"] = Instance.new("TextLabel");
-    ["Instance154"] = Instance.new("UIPadding");
+    ["Instance153"] = Instance.new("UIListLayout");
+    ["Instance154"] = Instance.new("Frame");
     ["Instance155"] = Instance.new("Frame");
-    ["Instance156"] = Instance.new("Frame");
-    ["Instance157"] = Instance.new("UIListLayout");
-    ["Instance158"] = Instance.new("ImageLabel");
-    ["Instance159"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance160"] = Instance.new("UICorner");
-    ["Instance161"] = Instance.new("TextLabel");
+    ["Instance156"] = Instance.new("UIStroke");
+    ["Instance157"] = Instance.new("Frame");
+    ["Instance158"] = Instance.new("TextLabel");
+    ["Instance159"] = Instance.new("UIPadding");
+    ["Instance160"] = Instance.new("Frame");
+    ["Instance161"] = Instance.new("UIListLayout");
     ["Instance162"] = Instance.new("Frame");
     ["Instance163"] = Instance.new("UIListLayout");
-    ["Instance164"] = Instance.new("TextButton");
-    ["Instance165"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance166"] = Instance.new("ImageLabel");
+    ["Instance164"] = Instance.new("Frame");
+    ["Instance165"] = Instance.new("CanvasGroup");
+    ["Instance166"] = Instance.new("Frame");
     ["Instance167"] = Instance.new("TextButton");
-    ["Instance168"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance169"] = Instance.new("ImageLabel");
-    ["Instance170"] = Instance.new("TextButton");
-    ["Instance171"] = Instance.new("UIGradient");
-    ["Instance172"] = Instance.new("Frame");
-    ["Instance173"] = Instance.new("TextButton");
+    ["Instance168"] = Instance.new("Frame");
+    ["Instance169"] = Instance.new("Frame");
+    ["Instance170"] = Instance.new("ImageLabel");
+    ["Instance171"] = Instance.new("UICorner");
+    ["Instance172"] = Instance.new("UICorner");
+    ["Instance173"] = Instance.new("Frame");
     ["Instance174"] = Instance.new("UICorner");
-    ["Instance175"] = Instance.new("UICorner");
-    ["Instance176"] = Instance.new("SoundGroup");
-    ["Instance177"] = Instance.new("Frame");
-    ["Instance178"] = Instance.new("Folder");
-    ["Instance179"] = Instance.new("TextButton");
-    ["Instance180"] = Instance.new("UIStroke");
-    ["Instance181"] = Instance.new("Frame");
-    ["Instance182"] = Instance.new("Frame");
-    ["Instance183"] = Instance.new("Frame");
-    ["Instance184"] = Instance.new("TextButton");
-    ["Instance185"] = Instance.new("Frame");
-    ["Instance186"] = Instance.new("UIGradient");
-    ["Instance187"] = Instance.new("UIStroke");
-    ["Instance188"] = Instance.new("Frame");
-    ["Instance189"] = Instance.new("UIGradient");
-    ["Instance190"] = Instance.new("Frame");
-    ["Instance191"] = Instance.new("UIStroke");
-    ["Instance192"] = Instance.new("UICorner");
-    ["Instance193"] = Instance.new("TextButton");
-    ["Instance194"] = Instance.new("UIGradient");
-    ["Instance195"] = Instance.new("Frame");
-    ["Instance196"] = Instance.new("UIStroke");
-    ["Instance197"] = Instance.new("UIStroke");
-    ["Instance198"] = Instance.new("Frame");
-    ["Instance199"] = Instance.new("UIStroke");
-    ["Instance200"] = Instance.new("Frame");
-    ["Instance201"] = Instance.new("Folder");
-    ["Instance202"] = Instance.new("UIListLayout");
+    ["Instance175"] = Instance.new("Frame");
+    ["Instance176"] = Instance.new("Frame");
+    ["Instance177"] = Instance.new("TextLabel");
+    ["Instance178"] = Instance.new("UIPadding");
+    ["Instance179"] = Instance.new("Frame");
+    ["Instance180"] = Instance.new("Frame");
+    ["Instance181"] = Instance.new("UIListLayout");
+    ["Instance182"] = Instance.new("ImageLabel");
+    ["Instance183"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance184"] = Instance.new("UICorner");
+    ["Instance185"] = Instance.new("TextLabel");
+    ["Instance186"] = Instance.new("Frame");
+    ["Instance187"] = Instance.new("UIListLayout");
+    ["Instance188"] = Instance.new("TextButton");
+    ["Instance189"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance190"] = Instance.new("ImageLabel");
+    ["Instance191"] = Instance.new("TextButton");
+    ["Instance192"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance193"] = Instance.new("ImageLabel");
+    ["Instance194"] = Instance.new("TextButton");
+    ["Instance195"] = Instance.new("UIGradient");
+    ["Instance196"] = Instance.new("Frame");
+    ["Instance197"] = Instance.new("TextButton");
+    ["Instance198"] = Instance.new("UICorner");
+    ["Instance199"] = Instance.new("UICorner");
+    ["Instance200"] = Instance.new("SoundGroup");
+    ["Instance201"] = Instance.new("Frame");
+    ["Instance202"] = Instance.new("Folder");
     ["Instance203"] = Instance.new("TextButton");
-    ["Instance204"] = Instance.new("TextLabel");
-    ["Instance205"] = Instance.new("UIPadding");
-    ["Instance206"] = Instance.new("TextBox");
-    ["Instance207"] = Instance.new("UIPadding");
-    ["Instance208"] = Instance.new("UIStroke");
-    ["Instance209"] = Instance.new("TextButton");
-    ["Instance210"] = Instance.new("TextLabel");
-    ["Instance211"] = Instance.new("UIPadding");
-    ["Instance212"] = Instance.new("TextBox");
-    ["Instance213"] = Instance.new("UIPadding");
-    ["Instance214"] = Instance.new("UIStroke");
-    ["Instance215"] = Instance.new("TextButton");
-    ["Instance216"] = Instance.new("TextLabel");
-    ["Instance217"] = Instance.new("UIPadding");
-    ["Instance218"] = Instance.new("TextBox");
-    ["Instance219"] = Instance.new("UIPadding");
+    ["Instance204"] = Instance.new("UIStroke");
+    ["Instance205"] = Instance.new("Frame");
+    ["Instance206"] = Instance.new("Frame");
+    ["Instance207"] = Instance.new("Frame");
+    ["Instance208"] = Instance.new("TextButton");
+    ["Instance209"] = Instance.new("Frame");
+    ["Instance210"] = Instance.new("UIGradient");
+    ["Instance211"] = Instance.new("UIStroke");
+    ["Instance212"] = Instance.new("Frame");
+    ["Instance213"] = Instance.new("UIGradient");
+    ["Instance214"] = Instance.new("Frame");
+    ["Instance215"] = Instance.new("UIStroke");
+    ["Instance216"] = Instance.new("UICorner");
+    ["Instance217"] = Instance.new("TextButton");
+    ["Instance218"] = Instance.new("UIGradient");
+    ["Instance219"] = Instance.new("Frame");
     ["Instance220"] = Instance.new("UIStroke");
-    ["Instance221"] = Instance.new("TextButton");
-    ["Instance222"] = Instance.new("UIPadding");
+    ["Instance221"] = Instance.new("UIStroke");
+    ["Instance222"] = Instance.new("Frame");
     ["Instance223"] = Instance.new("UIStroke");
     ["Instance224"] = Instance.new("Frame");
-    ["Instance225"] = Instance.new("Frame");
+    ["Instance225"] = Instance.new("Folder");
     ["Instance226"] = Instance.new("UIListLayout");
     ["Instance227"] = Instance.new("TextButton");
-    ["Instance228"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance229"] = Instance.new("ImageLabel");
-    ["Instance230"] = Instance.new("TextLabel");
-    ["Instance231"] = Instance.new("Frame");
-    ["Instance232"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance233"] = Instance.new("Folder");
-    ["Instance234"] = Instance.new("TextButton");
-    ["Instance235"] = Instance.new("CanvasGroup");
-    ["Instance236"] = Instance.new("UIStroke");
-    ["Instance237"] = Instance.new("ImageLabel");
-    ["Instance238"] = Instance.new("UICorner");
-    ["Instance239"] = Instance.new("TextLabel");
-    ["Instance240"] = Instance.new("UICorner");
-    ["Instance241"] = Instance.new("UIStroke");
-    ["Instance242"] = Instance.new("Frame");
-    ["Instance243"] = Instance.new("UIStroke");
-    ["Instance244"] = Instance.new("TextLabel");
-    ["Instance245"] = Instance.new("UIPadding");
-    ["Instance246"] = Instance.new("TextLabel");
-    ["Instance247"] = Instance.new("Folder");
+    ["Instance228"] = Instance.new("TextLabel");
+    ["Instance229"] = Instance.new("UIPadding");
+    ["Instance230"] = Instance.new("TextBox");
+    ["Instance231"] = Instance.new("UIPadding");
+    ["Instance232"] = Instance.new("UIStroke");
+    ["Instance233"] = Instance.new("TextButton");
+    ["Instance234"] = Instance.new("TextLabel");
+    ["Instance235"] = Instance.new("UIPadding");
+    ["Instance236"] = Instance.new("TextBox");
+    ["Instance237"] = Instance.new("UIPadding");
+    ["Instance238"] = Instance.new("UIStroke");
+    ["Instance239"] = Instance.new("TextButton");
+    ["Instance240"] = Instance.new("TextLabel");
+    ["Instance241"] = Instance.new("UIPadding");
+    ["Instance242"] = Instance.new("TextBox");
+    ["Instance243"] = Instance.new("UIPadding");
+    ["Instance244"] = Instance.new("UIStroke");
+    ["Instance245"] = Instance.new("TextButton");
+    ["Instance246"] = Instance.new("UIPadding");
+    ["Instance247"] = Instance.new("UIStroke");
     ["Instance248"] = Instance.new("Frame");
-    ["Instance249"] = Instance.new("UIListLayout");
-    ["Instance250"] = Instance.new("Frame");
-    ["Instance251"] = Instance.new("UIPadding");
-    ["Instance252"] = Instance.new("Frame");
-    ["Instance253"] = Instance.new("UIStroke");
-    ["Instance254"] = Instance.new("Frame");
-    ["Instance255"] = Instance.new("TextLabel");
-    ["Instance256"] = Instance.new("UIPadding");
-    ["Instance257"] = Instance.new("Frame");
-    ["Instance258"] = Instance.new("TextLabel");
-    ["Instance259"] = Instance.new("UIPadding");
-    ["Instance260"] = Instance.new("Frame");
-    ["Instance261"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance262"] = Instance.new("ImageButton");
-    ["Instance263"] = Instance.new("ImageButton");
-    ["Instance264"] = Instance.new("Frame");
-    ["Instance265"] = Instance.new("Frame");
+    ["Instance249"] = Instance.new("Frame");
+    ["Instance250"] = Instance.new("UIListLayout");
+    ["Instance251"] = Instance.new("TextButton");
+    ["Instance252"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance253"] = Instance.new("ImageLabel");
+    ["Instance254"] = Instance.new("TextLabel");
+    ["Instance255"] = Instance.new("Frame");
+    ["Instance256"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance257"] = Instance.new("Folder");
+    ["Instance258"] = Instance.new("TextButton");
+    ["Instance259"] = Instance.new("CanvasGroup");
+    ["Instance260"] = Instance.new("UIStroke");
+    ["Instance261"] = Instance.new("ImageLabel");
+    ["Instance262"] = Instance.new("UICorner");
+    ["Instance263"] = Instance.new("TextLabel");
+    ["Instance264"] = Instance.new("UICorner");
+    ["Instance265"] = Instance.new("UIStroke");
     ["Instance266"] = Instance.new("Frame");
-    ["Instance267"] = Instance.new("UIListLayout");
-    ["Instance268"] = Instance.new("TextButton");
-    ["Instance269"] = Instance.new("UIStroke");
-    ["Instance270"] = Instance.new("Frame");
-    ["Instance271"] = Instance.new("Frame");
-    ["Instance272"] = Instance.new("TextLabel");
-    ["Instance273"] = Instance.new("ImageLabel");
-    ["Instance274"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance275"] = Instance.new("TextLabel");
-    ["Instance276"] = Instance.new("Folder");
-    ["Instance277"] = Instance.new("Folder");
+    ["Instance267"] = Instance.new("UIStroke");
+    ["Instance268"] = Instance.new("TextLabel");
+    ["Instance269"] = Instance.new("UIPadding");
+    ["Instance270"] = Instance.new("TextLabel");
+    ["Instance271"] = Instance.new("Folder");
+    ["Instance272"] = Instance.new("Frame");
+    ["Instance273"] = Instance.new("UIListLayout");
+    ["Instance274"] = Instance.new("Frame");
+    ["Instance275"] = Instance.new("UIPadding");
+    ["Instance276"] = Instance.new("Frame");
+    ["Instance277"] = Instance.new("UIStroke");
     ["Instance278"] = Instance.new("Frame");
-    ["Instance279"] = Instance.new("ModuleScript");
-    ["Instance280"] = Instance.new("ModuleScript");
-    ["Instance281"] = Instance.new("ModuleScript");
-    ["Instance282"] = Instance.new("ModuleScript");
-    ["Instance283"] = Instance.new("ModuleScript");
-    ["Instance284"] = Instance.new("ModuleScript");
-    ["Instance285"] = Instance.new("ModuleScript");
-    ["Instance286"] = Instance.new("ModuleScript");
-    ["Instance287"] = Instance.new("ModuleScript");
-    ["Instance288"] = Instance.new("ModuleScript");
-    ["Instance289"] = Instance.new("ModuleScript");
-    ["Instance290"] = Instance.new("ModuleScript");
-    ["Instance291"] = Instance.new("Configuration");
-    ["Instance292"] = Instance.new("Folder");
-    ["Instance293"] = Instance.new("Sound");
-    ["Instance294"] = Instance.new("Sound");
-    ["Instance295"] = Instance.new("Sound");
-    ["Instance296"] = Instance.new("Sound");
+    ["Instance279"] = Instance.new("TextLabel");
+    ["Instance280"] = Instance.new("UIPadding");
+    ["Instance281"] = Instance.new("Frame");
+    ["Instance282"] = Instance.new("TextLabel");
+    ["Instance283"] = Instance.new("UIPadding");
+    ["Instance284"] = Instance.new("Frame");
+    ["Instance285"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance286"] = Instance.new("ImageButton");
+    ["Instance287"] = Instance.new("ImageButton");
+    ["Instance288"] = Instance.new("Frame");
+    ["Instance289"] = Instance.new("Frame");
+    ["Instance290"] = Instance.new("Frame");
+    ["Instance291"] = Instance.new("UIListLayout");
+    ["Instance292"] = Instance.new("TextButton");
+    ["Instance293"] = Instance.new("UIStroke");
+    ["Instance294"] = Instance.new("Frame");
+    ["Instance295"] = Instance.new("Frame");
+    ["Instance296"] = Instance.new("TextLabel");
+    ["Instance297"] = Instance.new("ImageLabel");
+    ["Instance298"] = Instance.new("UIAspectRatioConstraint");
+    ["Instance299"] = Instance.new("TextLabel");
+    ["Instance300"] = Instance.new("Folder");
+    ["Instance301"] = Instance.new("Folder");
+    ["Instance302"] = Instance.new("Frame");
 };
 
 do -- Set properties
@@ -319,1257 +325,1114 @@ do -- Set properties
     objects["Instance0"]["ResetOnSpawn"] = false;
 
     objects["Instance1"]["Parent"] = objects["Instance0"];
-    objects["Instance1"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance1"]["BackgroundTransparency"] = 1;
-    objects["Instance1"]["Name"] = "Holder";
-    objects["Instance1"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance1"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance1"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance1"]["BorderSizePixel"] = 0;
-    objects["Instance1"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance1"]["Name"] = "Main";
 
     objects["Instance2"]["Parent"] = objects["Instance1"];
+    objects["Instance2"]["Name"] = "Icons";
 
-    objects["Instance3"]["TextTransparency"] = 1;
-    objects["Instance3"]["Selectable"] = false;
-    objects["Instance3"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance3"]["BackgroundTransparency"] = 1;
-    objects["Instance3"]["AutoButtonColor"] = false;
-    objects["Instance3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
     objects["Instance3"]["Parent"] = objects["Instance1"];
-    objects["Instance3"]["Name"] = "Window";
-    objects["Instance3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance3"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance3"]["ZIndex"] = 0;
-    objects["Instance3"]["BorderSizePixel"] = 0;
-    objects["Instance3"]["Size"] = UDim2.new(0.8999999761581421, 0, 0.5, 0);
+    objects["Instance3"]["Name"] = "Languages";
 
-    objects["Instance4"]["ImageColor3"] = Color3.new(0, 0, 0);
-    objects["Instance4"]["ImageTransparency"] = 0.20000000298023224;
-    objects["Instance4"]["Parent"] = objects["Instance3"];
-    objects["Instance4"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance4"]["Image"] = "rbxassetid://8774493213";
-    objects["Instance4"]["ImageContent"] = Content.fromUri("rbxassetid://8774493213");
-    objects["Instance4"]["ZIndex"] = 0;
-    objects["Instance4"]["BorderSizePixel"] = 0;
-    objects["Instance4"]["SliceCenter"] = Rect.new(135, 135, 889, 512);
-    objects["Instance4"]["Localize"] = false;
-    objects["Instance4"]["ScaleType"] = Enum.ScaleType.Slice;
-    objects["Instance4"]["AutoLocalize"] = false;
-    objects["Instance4"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance4"]["Name"] = "Shadow";
-    objects["Instance4"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance4"]["BackgroundTransparency"] = 1;
-    objects["Instance4"]["Size"] = UDim2.new(1, 80, 1, 80);
-    objects["Instance4"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance4"]["Parent"] = objects["Instance1"];
+    objects["Instance4"]["Name"] = "Event";
 
-    objects["Instance5"]["ScaleType"] = Enum.ScaleType.Crop;
-    objects["Instance5"]["ImageTransparency"] = 0.8500000238418579;
-    objects["Instance5"]["Parent"] = objects["Instance3"];
-    objects["Instance5"]["Image"] = "rbxassetid://12727588434";
-    objects["Instance5"]["Name"] = "RealWindow";
-    objects["Instance5"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance5"]["ImageContent"] = Content.fromUri("rbxassetid://12727588434");
-    objects["Instance5"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance5"]["BorderSizePixel"] = 0;
-    objects["Instance5"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance5"]["Parent"] = objects["Instance1"];
+    objects["Instance5"]["Name"] = "Backgrounds";
 
-    objects["Instance6"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance6"]["Name"] = "InsideStroke";
-    objects["Instance6"]["Color"] = Color3.new(1, 0, 0.498039);
-    objects["Instance6"]["ZIndex"] = 999;
-    objects["Instance6"]["Parent"] = objects["Instance5"];
-    objects["Instance6"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
+    objects["Instance6"]["Parent"] = objects["Instance1"];
+    objects["Instance6"]["Name"] = "Config";
 
-    objects["Instance7"]["Thickness"] = 1.2000000476837158;
-    objects["Instance7"]["Name"] = "OutsideStroke";
-    objects["Instance7"]["Parent"] = objects["Instance5"];
-    objects["Instance7"]["ZIndex"] = 999;
-    objects["Instance7"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance7"]["Parent"] = objects["Instance1"];
+    objects["Instance7"]["Name"] = "Example";
 
-    objects["Instance8"]["ClipsDescendants"] = true;
-    objects["Instance8"]["Parent"] = objects["Instance5"];
-    objects["Instance8"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance8"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance8"]["BackgroundTransparency"] = 1;
-    objects["Instance8"]["Name"] = "Contents";
-    objects["Instance8"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance8"]["Size"] = UDim2.new(1, -2, 1, -2);
-    objects["Instance8"]["ZIndex"] = 2;
-    objects["Instance8"]["BorderSizePixel"] = 0;
-    objects["Instance8"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance8"]["Parent"] = objects["Instance1"];
+    objects["Instance8"]["Name"] = "Compressor";
 
-    objects["Instance9"]["BackgroundTransparency"] = 1;
-    objects["Instance9"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance9"]["Name"] = "Display";
-    objects["Instance9"]["Size"] = UDim2.new(1, 0, 1, -15);
-    objects["Instance9"]["Parent"] = objects["Instance8"];
-    objects["Instance9"]["ZIndex"] = 2;
-    objects["Instance9"]["BorderSizePixel"] = 0;
-    objects["Instance9"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance9"]["Parent"] = objects["Instance1"];
+    objects["Instance9"]["Name"] = "Base64";
 
-    objects["Instance10"]["Parent"] = objects["Instance9"];
-    objects["Instance10"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance10"]["BackgroundTransparency"] = 1;
-    objects["Instance10"]["Name"] = "PageButtons";
-    objects["Instance10"]["Position"] = UDim2.new(0, 0, 0, 40);
-    objects["Instance10"]["Size"] = UDim2.new(0, 145, 1, -40);
-    objects["Instance10"]["ZIndex"] = 3;
-    objects["Instance10"]["BorderSizePixel"] = 0;
-    objects["Instance10"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance10"]["Parent"] = objects["Instance1"];
+    objects["Instance10"]["Name"] = "LucideIcons";
 
-    objects["Instance11"]["Parent"] = objects["Instance10"];
-    objects["Instance11"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance11"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance11"]["Name"] = "SeparatorLeft";
-    objects["Instance11"]["Position"] = UDim2.new(1, 0, 0, 0);
-    objects["Instance11"]["Size"] = UDim2.new(0, 1, 1, 0);
-    objects["Instance11"]["ZIndex"] = 4;
-    objects["Instance11"]["BorderSizePixel"] = 0;
-    objects["Instance11"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance11"]["Parent"] = objects["Instance1"];
+    objects["Instance11"]["Name"] = "DefaultThemes";
 
-    objects["Instance12"]["ScrollBarImageColor3"] = Color3.new(0, 0, 0);
-    objects["Instance12"]["Active"] = true;
-    objects["Instance12"]["Parent"] = objects["Instance10"];
-    objects["Instance12"]["ScrollBarThickness"] = 0;
-    objects["Instance12"]["BackgroundTransparency"] = 1;
-    objects["Instance12"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance12"]["Size"] = UDim2.new(1, 0, 1, -45);
-    objects["Instance12"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-    objects["Instance12"]["Name"] = "List";
-    objects["Instance12"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
-    objects["Instance12"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance12"]["ZIndex"] = 4;
-    objects["Instance12"]["BorderSizePixel"] = 0;
-    objects["Instance12"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
+    objects["Instance12"]["Parent"] = objects["Instance1"];
+    objects["Instance12"]["Name"] = "UIBlur";
 
-    objects["Instance13"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance13"]["ClipsDescendants"] = true;
-    objects["Instance13"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance13"]["Text"] = "";
-    objects["Instance13"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
-    objects["Instance13"]["BackgroundTransparency"] = 1;
-    objects["Instance13"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance13"]["TextSize"] = 14;
-    objects["Instance13"]["Name"] = "PageButton";
-    objects["Instance13"]["Parent"] = objects["Instance12"];
-    objects["Instance13"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance13"]["ZIndex"] = 5;
-    objects["Instance13"]["BorderSizePixel"] = 0;
-    objects["Instance13"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance13"]["Name"] = "Placeholders";
+    objects["Instance13"]["Parent"] = objects["Instance1"];
 
-    objects["Instance14"]["Parent"] = objects["Instance13"];
-    objects["Instance14"]["AspectRatio"] = 4;
+    objects["Instance14"]["Name"] = "Sounds";
+    objects["Instance14"]["Parent"] = objects["Instance1"];
 
-    objects["Instance15"]["Parent"] = objects["Instance13"];
-    objects["Instance15"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance15"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance15"]["BackgroundTransparency"] = 1;
-    objects["Instance15"]["Name"] = "ButtonItself";
-    objects["Instance15"]["Position"] = UDim2.new(0.07500000298023224, 0, 0.5, 0);
-    objects["Instance15"]["Size"] = UDim2.new(100, 0, 0.5, 0);
-    objects["Instance15"]["ZIndex"] = 5;
-    objects["Instance15"]["BorderSizePixel"] = 0;
-    objects["Instance15"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance15"]["Parent"] = objects["Instance14"];
+    objects["Instance15"]["SoundId"] = "rbxassetid://98797174600699";
+    objects["Instance15"]["Name"] = "Notification";
+    objects["Instance15"]["AudioContent"] = Content.fromUri("rbxassetid://98797174600699");
 
-    objects["Instance16"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance16"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance16"]["Parent"] = objects["Instance15"];
-    objects["Instance16"]["Padding"] = UDim.new(0, 7);
-    objects["Instance16"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance16"]["Parent"] = objects["Instance14"];
+    objects["Instance16"]["SoundId"] = "rbxassetid://99955064134003";
+    objects["Instance16"]["Name"] = "Click";
+    objects["Instance16"]["AudioContent"] = Content.fromUri("rbxassetid://99955064134003");
 
-    objects["Instance17"]["ScaleType"] = Enum.ScaleType.Fit;
-    objects["Instance17"]["ImageTransparency"] = 0.25;
-    objects["Instance17"]["Parent"] = objects["Instance15"];
-    objects["Instance17"]["BackgroundTransparency"] = 1;
-    objects["Instance17"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance17"]["Image"] = "rbxassetid://14456045412";
-    objects["Instance17"]["Name"] = "Icon";
-    objects["Instance17"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance17"]["ImageContent"] = Content.fromUri("rbxassetid://14456045412");
-    objects["Instance17"]["ZIndex"] = 6;
-    objects["Instance17"]["BorderSizePixel"] = 0;
-    objects["Instance17"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance17"]["Parent"] = objects["Instance14"];
+    objects["Instance17"]["SoundId"] = "rbxassetid://107511012621133";
+    objects["Instance17"]["Name"] = "Hover";
+    objects["Instance17"]["AudioContent"] = Content.fromUri("rbxassetid://107511012621133");
 
-    objects["Instance18"]["Parent"] = objects["Instance17"];
+    objects["Instance18"]["Parent"] = objects["Instance14"];
+    objects["Instance18"]["SoundId"] = "rbxassetid://112788871431898";
+    objects["Instance18"]["Name"] = "Test";
+    objects["Instance18"]["AudioContent"] = Content.fromUri("rbxassetid://112788871431898");
 
-    objects["Instance19"]["TopLeftRadius"] = UDim.new(0, 4);
-    objects["Instance19"]["CornerRadius"] = UDim.new(0, 4);
-    objects["Instance19"]["Parent"] = objects["Instance17"];
-    objects["Instance19"]["BottomRightRadius"] = UDim.new(0, 4);
-    objects["Instance19"]["TopRightRadius"] = UDim.new(0, 4);
-    objects["Instance19"]["BottomLeftRadius"] = UDim.new(0, 4);
+    objects["Instance19"]["Parent"] = objects["Instance0"];
+    objects["Instance19"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance19"]["BackgroundTransparency"] = 1;
+    objects["Instance19"]["Name"] = "Holder";
+    objects["Instance19"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance19"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance19"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance19"]["BorderSizePixel"] = 0;
+    objects["Instance19"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance20"]["LayoutOrder"] = 1;
-    objects["Instance20"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance20"]["Parent"] = objects["Instance15"];
-    objects["Instance20"]["ZIndex"] = 6;
-    objects["Instance20"]["BorderSizePixel"] = 0;
-    objects["Instance20"]["Size"] = UDim2.new(1, 0, 1.25, 0);
-    objects["Instance20"]["RichText"] = true;
-    objects["Instance20"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance20"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance20"]["Text"] = "Home";
-    objects["Instance20"]["Name"] = "Title";
-    objects["Instance20"]["TextWrap"] = true;
-    objects["Instance20"]["TextWrapped"] = true;
-    objects["Instance20"]["TextSize"] = 14;
-    objects["Instance20"]["BackgroundTransparency"] = 1;
-    objects["Instance20"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance20"]["TextTransparency"] = 0.25;
-    objects["Instance20"]["FontFace"] = Font.new("rbxasset://fonts/families/TitilliumWeb.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance20"]["TextScaled"] = true;
-    objects["Instance20"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance20"]["Parent"] = objects["Instance19"];
 
-    objects["Instance21"]["Parent"] = objects["Instance13"];
-    objects["Instance21"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance21"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance21"]["BackgroundTransparency"] = 0.925000011920929;
-    objects["Instance21"]["Name"] = "Filler";
-    objects["Instance21"]["Position"] = UDim2.new(0.5, 0, 0, 0);
-    objects["Instance21"]["Size"] = UDim2.new(0.8999999761581421, 0, 0, 1);
-    objects["Instance21"]["ZIndex"] = 5;
-    objects["Instance21"]["BorderSizePixel"] = 0;
+    objects["Instance21"]["TextTransparency"] = 1;
+    objects["Instance21"]["Selectable"] = false;
     objects["Instance21"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance21"]["BackgroundTransparency"] = 1;
+    objects["Instance21"]["AutoButtonColor"] = false;
+    objects["Instance21"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance21"]["Parent"] = objects["Instance19"];
+    objects["Instance21"]["Name"] = "Window";
+    objects["Instance21"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance21"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance21"]["ZIndex"] = 0;
+    objects["Instance21"]["BorderSizePixel"] = 0;
+    objects["Instance21"]["Size"] = UDim2.new(0.8999999761581421, 0, 0.5, 0);
 
+    objects["Instance22"]["ImageColor3"] = Color3.new(0, 0, 0);
+    objects["Instance22"]["ImageTransparency"] = 0.20000000298023224;
+    objects["Instance22"]["Parent"] = objects["Instance21"];
     objects["Instance22"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance22"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance22"]["Name"] = "Indicator";
-    objects["Instance22"]["Position"] = UDim2.new(0, -2, 0.5, 0);
-    objects["Instance22"]["Parent"] = objects["Instance13"];
-    objects["Instance22"]["Size"] = UDim2.new(0, 4, 0.5, 0);
+    objects["Instance22"]["Image"] = "rbxassetid://8774493213";
+    objects["Instance22"]["ImageContent"] = Content.fromUri("rbxassetid://8774493213");
+    objects["Instance22"]["ZIndex"] = 0;
     objects["Instance22"]["BorderSizePixel"] = 0;
-    objects["Instance22"]["BackgroundColor3"] = Color3.new(1, 0, 0.494118);
+    objects["Instance22"]["SliceCenter"] = Rect.new(135, 135, 889, 512);
+    objects["Instance22"]["Localize"] = false;
+    objects["Instance22"]["ScaleType"] = Enum.ScaleType.Slice;
+    objects["Instance22"]["AutoLocalize"] = false;
+    objects["Instance22"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance22"]["Name"] = "Shadow";
+    objects["Instance22"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance22"]["BackgroundTransparency"] = 1;
+    objects["Instance22"]["Size"] = UDim2.new(1, 80, 1, 80);
+    objects["Instance22"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance23"]["TopLeftRadius"] = UDim.new(1, 0);
-    objects["Instance23"]["CornerRadius"] = UDim.new(1, 0);
-    objects["Instance23"]["Parent"] = objects["Instance22"];
-    objects["Instance23"]["BottomRightRadius"] = UDim.new(1, 0);
-    objects["Instance23"]["TopRightRadius"] = UDim.new(1, 0);
-    objects["Instance23"]["BottomLeftRadius"] = UDim.new(1, 0);
+    objects["Instance23"]["ScaleType"] = Enum.ScaleType.Crop;
+    objects["Instance23"]["ImageTransparency"] = 0.8500000238418579;
+    objects["Instance23"]["Parent"] = objects["Instance21"];
+    objects["Instance23"]["Image"] = "rbxassetid://12727588434";
+    objects["Instance23"]["Name"] = "RealWindow";
+    objects["Instance23"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance23"]["ImageContent"] = Content.fromUri("rbxassetid://12727588434");
+    objects["Instance23"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance23"]["BorderSizePixel"] = 0;
+    objects["Instance23"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
 
-    objects["Instance24"]["Parent"] = objects["Instance12"];
-    objects["Instance24"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance24"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance24"]["Name"] = "InsideStroke";
+    objects["Instance24"]["Color"] = Color3.new(1, 0, 0.498039);
+    objects["Instance24"]["ZIndex"] = 999;
+    objects["Instance24"]["Parent"] = objects["Instance23"];
+    objects["Instance24"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance25"]["Parent"] = objects["Instance10"];
-    objects["Instance25"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance25"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance25"]["BackgroundTransparency"] = 0.925000011920929;
-    objects["Instance25"]["Name"] = "Filler";
-    objects["Instance25"]["Position"] = UDim2.new(0.5, 0, 1, -5);
-    objects["Instance25"]["Size"] = UDim2.new(0.8999999761581421, 0, 0, 1);
-    objects["Instance25"]["ZIndex"] = 4;
-    objects["Instance25"]["BorderSizePixel"] = 0;
-    objects["Instance25"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance25"]["Thickness"] = 1.2000000476837158;
+    objects["Instance25"]["Name"] = "OutsideStroke";
+    objects["Instance25"]["Parent"] = objects["Instance23"];
+    objects["Instance25"]["ZIndex"] = 999;
+    objects["Instance25"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 
-    objects["Instance26"]["Parent"] = objects["Instance10"];
+    objects["Instance26"]["ClipsDescendants"] = true;
+    objects["Instance26"]["Parent"] = objects["Instance23"];
     objects["Instance26"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance26"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance26"]["Name"] = "SeparatorTop";
-    objects["Instance26"]["Position"] = UDim2.new(1, 1, 0, 0);
-    objects["Instance26"]["Size"] = UDim2.new(10, 0, 0, 1);
-    objects["Instance26"]["ZIndex"] = 4;
+    objects["Instance26"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance26"]["BackgroundTransparency"] = 1;
+    objects["Instance26"]["Name"] = "Contents";
+    objects["Instance26"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance26"]["Size"] = UDim2.new(1, -2, 1, -2);
+    objects["Instance26"]["ZIndex"] = 2;
     objects["Instance26"]["BorderSizePixel"] = 0;
     objects["Instance26"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance27"]["ClipsDescendants"] = true;
-    objects["Instance27"]["Parent"] = objects["Instance10"];
-    objects["Instance27"]["AnchorPoint"] = Vector2.new(0, 1);
     objects["Instance27"]["BackgroundTransparency"] = 1;
-    objects["Instance27"]["Name"] = "UserProfile";
-    objects["Instance27"]["Position"] = UDim2.new(0, 0, 1, -5);
     objects["Instance27"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance27"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance27"]["Name"] = "Display";
+    objects["Instance27"]["Size"] = UDim2.new(1, 0, 1, -15);
+    objects["Instance27"]["Parent"] = objects["Instance26"];
+    objects["Instance27"]["ZIndex"] = 2;
     objects["Instance27"]["BorderSizePixel"] = 0;
     objects["Instance27"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance28"]["Parent"] = objects["Instance27"];
     objects["Instance28"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance28"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance28"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance28"]["Image"] = "rbxthumb://type=AvatarHeadShot&id=3287524975&w=420&h=420";
-    objects["Instance28"]["Name"] = "User";
-    objects["Instance28"]["Position"] = UDim2.new(0, 5, 0.5, 0);
-    objects["Instance28"]["ImageContent"] = Content.fromUri("rbxthumb://type=AvatarHeadShot&id=3287524975&w=420&h=420");
-    objects["Instance28"]["Size"] = UDim2.new(0.800000011920929, 0, 0.800000011920929, 0);
+    objects["Instance28"]["BackgroundTransparency"] = 1;
+    objects["Instance28"]["Name"] = "PageButtons";
+    objects["Instance28"]["Position"] = UDim2.new(0, 0, 0, 40);
+    objects["Instance28"]["Size"] = UDim2.new(0, 145, 1, -40);
+    objects["Instance28"]["ZIndex"] = 3;
     objects["Instance28"]["BorderSizePixel"] = 0;
-    objects["Instance28"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance28"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance29"]["Parent"] = objects["Instance28"];
+    objects["Instance29"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance29"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance29"]["Name"] = "SeparatorLeft";
+    objects["Instance29"]["Position"] = UDim2.new(1, 0, 0, 0);
+    objects["Instance29"]["Size"] = UDim2.new(0, 1, 1, 0);
+    objects["Instance29"]["ZIndex"] = 4;
+    objects["Instance29"]["BorderSizePixel"] = 0;
+    objects["Instance29"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
+    objects["Instance30"]["ScrollBarImageColor3"] = Color3.new(0, 0, 0);
+    objects["Instance30"]["Active"] = true;
     objects["Instance30"]["Parent"] = objects["Instance28"];
+    objects["Instance30"]["ScrollBarThickness"] = 0;
+    objects["Instance30"]["BackgroundTransparency"] = 1;
+    objects["Instance30"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance30"]["Size"] = UDim2.new(1, 0, 1, -45);
+    objects["Instance30"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+    objects["Instance30"]["Name"] = "List";
+    objects["Instance30"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+    objects["Instance30"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance30"]["ZIndex"] = 4;
+    objects["Instance30"]["BorderSizePixel"] = 0;
+    objects["Instance30"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
 
-    objects["Instance31"]["FontSize"] = Enum.FontSize.Size18;
-    objects["Instance31"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance31"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance31"]["ClipsDescendants"] = true;
     objects["Instance31"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance31"]["Text"] = "Cherry\n<font size=\"10\" transparency=\"0.25\">NEVER</font>";
-    objects["Instance31"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance31"]["TextSize"] = 16;
-    objects["Instance31"]["Parent"] = objects["Instance28"];
-    objects["Instance31"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance31"]["Text"] = "";
+    objects["Instance31"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
     objects["Instance31"]["BackgroundTransparency"] = 1;
-    objects["Instance31"]["Position"] = UDim2.new(1, 5, 0, 0);
-    objects["Instance31"]["RichText"] = true;
-    objects["Instance31"]["Size"] = UDim2.new(0, 10000, 1, 0);
+    objects["Instance31"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance31"]["TextSize"] = 14;
+    objects["Instance31"]["Name"] = "PageButton";
+    objects["Instance31"]["Parent"] = objects["Instance30"];
+    objects["Instance31"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance31"]["ZIndex"] = 5;
     objects["Instance31"]["BorderSizePixel"] = 0;
-    objects["Instance31"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance31"]["Size"] = UDim2.new(1, 0, 1, 0);
 
-    objects["Instance32"]["Parent"] = objects["Instance9"];
-    objects["Instance32"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance32"]["BackgroundTransparency"] = 1;
-    objects["Instance32"]["Name"] = "Pages";
-    objects["Instance32"]["Position"] = UDim2.new(0, 146, 0, 41);
-    objects["Instance32"]["Size"] = UDim2.new(1, -146, 1, -41);
-    objects["Instance32"]["ZIndex"] = 3;
-    objects["Instance32"]["BorderSizePixel"] = 0;
-    objects["Instance32"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance32"]["Parent"] = objects["Instance31"];
+    objects["Instance32"]["AspectRatio"] = 4;
 
-    objects["Instance33"]["Active"] = true;
-    objects["Instance33"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
-    objects["Instance33"]["ZIndex"] = 4;
-    objects["Instance33"]["BorderSizePixel"] = 0;
-    objects["Instance33"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
-    objects["Instance33"]["ScrollBarImageColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance33"]["Parent"] = objects["Instance31"];
     objects["Instance33"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance33"]["ScrollBarThickness"] = 4;
-    objects["Instance33"]["Parent"] = objects["Instance32"];
-    objects["Instance33"]["TopImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
-    objects["Instance33"]["Name"] = "Page";
-    objects["Instance33"]["TopImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
-    objects["Instance33"]["BottomImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
+    objects["Instance33"]["AnchorPoint"] = Vector2.new(0, 0.5);
     objects["Instance33"]["BackgroundTransparency"] = 1;
-    objects["Instance33"]["BottomImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
-    objects["Instance33"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance33"]["Name"] = "ButtonItself";
+    objects["Instance33"]["Position"] = UDim2.new(0.07500000298023224, 0, 0.5, 0);
+    objects["Instance33"]["Size"] = UDim2.new(100, 0, 0.5, 0);
+    objects["Instance33"]["ZIndex"] = 5;
+    objects["Instance33"]["BorderSizePixel"] = 0;
     objects["Instance33"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance34"]["ClipsDescendants"] = true;
+    objects["Instance34"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance34"]["FillDirection"] = Enum.FillDirection.Horizontal;
     objects["Instance34"]["Parent"] = objects["Instance33"];
-    objects["Instance34"]["BackgroundTransparency"] = 1;
-    objects["Instance34"]["Name"] = "NormalZone";
-    objects["Instance34"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance34"]["Size"] = UDim2.new(1, 0, 0, 360);
-    objects["Instance34"]["ZIndex"] = 5;
-    objects["Instance34"]["BorderSizePixel"] = 0;
-    objects["Instance34"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance34"]["Padding"] = UDim.new(0, 7);
+    objects["Instance34"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance35"]["Parent"] = objects["Instance34"];
-    objects["Instance35"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance35"]["ScaleType"] = Enum.ScaleType.Fit;
+    objects["Instance35"]["ImageTransparency"] = 0.25;
+    objects["Instance35"]["Parent"] = objects["Instance33"];
+    objects["Instance35"]["BackgroundTransparency"] = 1;
+    objects["Instance35"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance35"]["Image"] = "rbxassetid://14456045412";
+    objects["Instance35"]["Name"] = "Icon";
+    objects["Instance35"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance35"]["ImageContent"] = Content.fromUri("rbxassetid://14456045412");
+    objects["Instance35"]["ZIndex"] = 6;
+    objects["Instance35"]["BorderSizePixel"] = 0;
+    objects["Instance35"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance36"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance36"]["ClipsDescendants"] = true;
-    objects["Instance36"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance36"]["Text"] = "";
-    objects["Instance36"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance36"]["BackgroundTransparency"] = 1;
-    objects["Instance36"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance36"]["TextSize"] = 14;
-    objects["Instance36"]["Name"] = "Button";
-    objects["Instance36"]["Parent"] = objects["Instance34"];
-    objects["Instance36"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance36"]["ZIndex"] = 50;
-    objects["Instance36"]["BorderSizePixel"] = 0;
-    objects["Instance36"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance36"]["Parent"] = objects["Instance35"];
 
-    objects["Instance37"]["Parent"] = objects["Instance36"];
-    objects["Instance37"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance37"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance37"]["BackgroundTransparency"] = 1;
-    objects["Instance37"]["Name"] = "View";
-    objects["Instance37"]["Position"] = UDim2.new(0, 17, 0.5, 0);
-    objects["Instance37"]["Size"] = UDim2.new(100, 0, 0, 16);
-    objects["Instance37"]["ZIndex"] = 51;
-    objects["Instance37"]["BorderSizePixel"] = 0;
-    objects["Instance37"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance37"]["TopLeftRadius"] = UDim.new(0, 4);
+    objects["Instance37"]["CornerRadius"] = UDim.new(0, 4);
+    objects["Instance37"]["Parent"] = objects["Instance35"];
+    objects["Instance37"]["BottomRightRadius"] = UDim.new(0, 4);
+    objects["Instance37"]["TopRightRadius"] = UDim.new(0, 4);
+    objects["Instance37"]["BottomLeftRadius"] = UDim.new(0, 4);
 
-    objects["Instance38"]["Parent"] = objects["Instance37"];
-    objects["Instance38"]["BackgroundTransparency"] = 1;
-    objects["Instance38"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance38"]["Image"] = "rbxassetid://14913216473";
-    objects["Instance38"]["Name"] = "Icon";
-    objects["Instance38"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance38"]["ImageContent"] = Content.fromUri("rbxassetid://14913216473");
-    objects["Instance38"]["ZIndex"] = 52;
+    objects["Instance38"]["LayoutOrder"] = 1;
+    objects["Instance38"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance38"]["Parent"] = objects["Instance33"];
+    objects["Instance38"]["ZIndex"] = 6;
     objects["Instance38"]["BorderSizePixel"] = 0;
+    objects["Instance38"]["Size"] = UDim2.new(1, 0, 1.25, 0);
+    objects["Instance38"]["RichText"] = true;
+    objects["Instance38"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance38"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance38"]["Text"] = "Home";
+    objects["Instance38"]["Name"] = "Title";
+    objects["Instance38"]["TextWrap"] = true;
+    objects["Instance38"]["TextWrapped"] = true;
+    objects["Instance38"]["TextSize"] = 14;
+    objects["Instance38"]["BackgroundTransparency"] = 1;
+    objects["Instance38"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance38"]["TextTransparency"] = 0.25;
+    objects["Instance38"]["FontFace"] = Font.new("rbxasset://fonts/families/TitilliumWeb.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance38"]["TextScaled"] = true;
     objects["Instance38"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance39"]["Parent"] = objects["Instance38"];
-    objects["Instance39"]["AspectRatio"] = 0.9750000238418579;
+    objects["Instance39"]["Parent"] = objects["Instance31"];
+    objects["Instance39"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance39"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance39"]["BackgroundTransparency"] = 0.925000011920929;
+    objects["Instance39"]["Name"] = "Filler";
+    objects["Instance39"]["Position"] = UDim2.new(0.5, 0, 0, 0);
+    objects["Instance39"]["Size"] = UDim2.new(0.8999999761581421, 0, 0, 1);
+    objects["Instance39"]["ZIndex"] = 5;
+    objects["Instance39"]["BorderSizePixel"] = 0;
+    objects["Instance39"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance40"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance40"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance40"]["Parent"] = objects["Instance37"];
-    objects["Instance40"]["Padding"] = UDim.new(0, 9);
-    objects["Instance40"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance40"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance40"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance40"]["Name"] = "Indicator";
+    objects["Instance40"]["Position"] = UDim2.new(0, -2, 0.5, 0);
+    objects["Instance40"]["Parent"] = objects["Instance31"];
+    objects["Instance40"]["Size"] = UDim2.new(0, 4, 0.5, 0);
+    objects["Instance40"]["BorderSizePixel"] = 0;
+    objects["Instance40"]["BackgroundColor3"] = Color3.new(1, 0, 0.494118);
 
-    objects["Instance41"]["LayoutOrder"] = 1;
-    objects["Instance41"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance41"]["Parent"] = objects["Instance37"];
-    objects["Instance41"]["ZIndex"] = 52;
-    objects["Instance41"]["BorderSizePixel"] = 0;
-    objects["Instance41"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance41"]["RichText"] = true;
-    objects["Instance41"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance41"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance41"]["Text"] = "Button";
-    objects["Instance41"]["TextSize"] = 14;
-    objects["Instance41"]["TextWrap"] = true;
-    objects["Instance41"]["TextWrapped"] = true;
-    objects["Instance41"]["BackgroundTransparency"] = 1;
-    objects["Instance41"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance41"]["Name"] = "Label";
-    objects["Instance41"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance41"]["TextScaled"] = true;
-    objects["Instance41"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance41"]["TopLeftRadius"] = UDim.new(1, 0);
+    objects["Instance41"]["CornerRadius"] = UDim.new(1, 0);
+    objects["Instance41"]["Parent"] = objects["Instance40"];
+    objects["Instance41"]["BottomRightRadius"] = UDim.new(1, 0);
+    objects["Instance41"]["TopRightRadius"] = UDim.new(1, 0);
+    objects["Instance41"]["BottomLeftRadius"] = UDim.new(1, 0);
 
-    objects["Instance42"]["Parent"] = objects["Instance36"];
+    objects["Instance42"]["ScaleType"] = Enum.ScaleType.Crop;
+    objects["Instance42"]["ImageTransparency"] = 0.875;
+    objects["Instance42"]["Parent"] = objects["Instance31"];
+    objects["Instance42"]["Image"] = "rbxassetid://103841351698732";
+    objects["Instance42"]["BackgroundTransparency"] = 1;
     objects["Instance42"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance42"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance42"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance42"]["Name"] = "Separator";
-    objects["Instance42"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance42"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance42"]["ZIndex"] = 51;
+    objects["Instance42"]["ImageContent"] = Content.fromUri("rbxassetid://103841351698732");
+    objects["Instance42"]["Size"] = UDim2.new(1, 0, 1, 0);
     objects["Instance42"]["BorderSizePixel"] = 0;
     objects["Instance42"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance43"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance43"]["ClipsDescendants"] = true;
-    objects["Instance43"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance43"]["Text"] = "";
-    objects["Instance43"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance43"]["BackgroundTransparency"] = 1;
-    objects["Instance43"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance43"]["TextSize"] = 14;
-    objects["Instance43"]["Name"] = "Toggle";
-    objects["Instance43"]["Parent"] = objects["Instance34"];
-    objects["Instance43"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance43"]["ZIndex"] = 50;
-    objects["Instance43"]["BorderSizePixel"] = 0;
-    objects["Instance43"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance43"]["Parent"] = objects["Instance30"];
+    objects["Instance43"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance44"]["Parent"] = objects["Instance43"];
-    objects["Instance44"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance44"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance44"]["LayoutOrder"] = 2147483647;
     objects["Instance44"]["BackgroundTransparency"] = 1;
-    objects["Instance44"]["Name"] = "View";
-    objects["Instance44"]["Position"] = UDim2.new(0, 15, 0.5, 0);
-    objects["Instance44"]["Size"] = UDim2.new(100, 0, 0, 16);
-    objects["Instance44"]["ZIndex"] = 51;
+    objects["Instance44"]["Name"] = "MobileSizeFix";
+    objects["Instance44"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance44"]["Parent"] = objects["Instance30"];
+    objects["Instance44"]["Size"] = UDim2.new(1, 0, 0, 1);
     objects["Instance44"]["BorderSizePixel"] = 0;
     objects["Instance44"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance45"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance45"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance45"]["Parent"] = objects["Instance44"];
-    objects["Instance45"]["Padding"] = UDim.new(0, 7);
-    objects["Instance45"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance45"]["Parent"] = objects["Instance28"];
+    objects["Instance45"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance45"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance45"]["BackgroundTransparency"] = 0.925000011920929;
+    objects["Instance45"]["Name"] = "Filler";
+    objects["Instance45"]["Position"] = UDim2.new(0.5, 0, 1, -5);
+    objects["Instance45"]["Size"] = UDim2.new(0.8999999761581421, 0, 0, 1);
+    objects["Instance45"]["ZIndex"] = 4;
+    objects["Instance45"]["BorderSizePixel"] = 0;
+    objects["Instance45"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance46"]["LayoutOrder"] = 1;
-    objects["Instance46"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance46"]["Parent"] = objects["Instance44"];
-    objects["Instance46"]["ZIndex"] = 52;
-    objects["Instance46"]["BorderSizePixel"] = 0;
-    objects["Instance46"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance46"]["RichText"] = true;
-    objects["Instance46"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance46"]["Parent"] = objects["Instance28"];
     objects["Instance46"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance46"]["Text"] = "Checkbox / toggle";
-    objects["Instance46"]["TextSize"] = 14;
-    objects["Instance46"]["TextWrap"] = true;
-    objects["Instance46"]["TextWrapped"] = true;
-    objects["Instance46"]["BackgroundTransparency"] = 1;
-    objects["Instance46"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance46"]["Name"] = "Label";
-    objects["Instance46"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance46"]["TextScaled"] = true;
+    objects["Instance46"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance46"]["Name"] = "SeparatorTop";
+    objects["Instance46"]["Position"] = UDim2.new(1, 1, 0, 0);
+    objects["Instance46"]["Size"] = UDim2.new(10, 0, 0, 1);
+    objects["Instance46"]["ZIndex"] = 4;
+    objects["Instance46"]["BorderSizePixel"] = 0;
     objects["Instance46"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance47"]["ImageColor3"] = Color3.new(1, 0, 0.498039);
-    objects["Instance47"]["Parent"] = objects["Instance44"];
+    objects["Instance47"]["ClipsDescendants"] = true;
+    objects["Instance47"]["Parent"] = objects["Instance28"];
+    objects["Instance47"]["AnchorPoint"] = Vector2.new(0, 1);
     objects["Instance47"]["BackgroundTransparency"] = 1;
+    objects["Instance47"]["Name"] = "UserProfile";
+    objects["Instance47"]["Position"] = UDim2.new(0, 0, 1, -5);
     objects["Instance47"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance47"]["Image"] = "rbxassetid://130396712201457";
-    objects["Instance47"]["Name"] = "Icon";
-    objects["Instance47"]["Size"] = UDim2.new(1.2000000476837158, 0, 1.2000000476837158, 0);
-    objects["Instance47"]["ImageContent"] = Content.fromUri("rbxassetid://130396712201457");
-    objects["Instance47"]["ZIndex"] = 52;
+    objects["Instance47"]["Size"] = UDim2.new(1, 0, 0, 40);
     objects["Instance47"]["BorderSizePixel"] = 0;
-    objects["Instance47"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance47"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance48"]["Parent"] = objects["Instance47"];
-    objects["Instance48"]["AspectRatio"] = 0.9750000238418579;
+    objects["Instance48"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance48"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance48"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance48"]["Image"] = "rbxthumb://type=AvatarHeadShot&id=3287524975&w=420&h=420";
+    objects["Instance48"]["Name"] = "User";
+    objects["Instance48"]["Position"] = UDim2.new(0, 5, 0.5, 0);
+    objects["Instance48"]["ImageContent"] = Content.fromUri("rbxthumb://type=AvatarHeadShot&id=3287524975&w=420&h=420");
+    objects["Instance48"]["Size"] = UDim2.new(0.800000011920929, 0, 0.800000011920929, 0);
+    objects["Instance48"]["BorderSizePixel"] = 0;
+    objects["Instance48"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
-    objects["Instance49"]["Parent"] = objects["Instance47"];
+    objects["Instance49"]["Parent"] = objects["Instance48"];
 
-    objects["Instance50"]["Rotation"] = 90;
-    objects["Instance50"]["Parent"] = objects["Instance47"];
-    objects["Instance50"]["Color"] = ColorSequence.new({
+    objects["Instance50"]["Parent"] = objects["Instance48"];
+
+    objects["Instance51"]["FontSize"] = Enum.FontSize.Size18;
+    objects["Instance51"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance51"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance51"]["Text"] = "Cherry\n<font size=\"10\" transparency=\"0.25\">NEVER</font>";
+    objects["Instance51"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance51"]["TextSize"] = 16;
+    objects["Instance51"]["Parent"] = objects["Instance48"];
+    objects["Instance51"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance51"]["BackgroundTransparency"] = 1;
+    objects["Instance51"]["Position"] = UDim2.new(1, 5, 0, 0);
+    objects["Instance51"]["RichText"] = true;
+    objects["Instance51"]["Size"] = UDim2.new(0, 10000, 1, 0);
+    objects["Instance51"]["BorderSizePixel"] = 0;
+    objects["Instance51"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance52"]["Parent"] = objects["Instance27"];
+    objects["Instance52"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance52"]["BackgroundTransparency"] = 1;
+    objects["Instance52"]["Name"] = "Pages";
+    objects["Instance52"]["Position"] = UDim2.new(0, 146, 0, 41);
+    objects["Instance52"]["Size"] = UDim2.new(1, -146, 1, -41);
+    objects["Instance52"]["ZIndex"] = 3;
+    objects["Instance52"]["BorderSizePixel"] = 0;
+    objects["Instance52"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+
+    objects["Instance53"]["Active"] = true;
+    objects["Instance53"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+    objects["Instance53"]["ZIndex"] = 4;
+    objects["Instance53"]["BorderSizePixel"] = 0;
+    objects["Instance53"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
+    objects["Instance53"]["ScrollBarImageColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance53"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance53"]["ScrollBarThickness"] = 4;
+    objects["Instance53"]["Parent"] = objects["Instance52"];
+    objects["Instance53"]["TopImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
+    objects["Instance53"]["Name"] = "Page";
+    objects["Instance53"]["TopImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
+    objects["Instance53"]["BottomImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
+    objects["Instance53"]["BackgroundTransparency"] = 1;
+    objects["Instance53"]["BottomImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
+    objects["Instance53"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance53"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance54"]["ClipsDescendants"] = true;
+    objects["Instance54"]["Parent"] = objects["Instance53"];
+    objects["Instance54"]["BackgroundTransparency"] = 1;
+    objects["Instance54"]["Name"] = "NormalZone";
+    objects["Instance54"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance54"]["Size"] = UDim2.new(1, 0, 0, 360);
+    objects["Instance54"]["ZIndex"] = 5;
+    objects["Instance54"]["BorderSizePixel"] = 0;
+    objects["Instance54"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance55"]["Parent"] = objects["Instance54"];
+    objects["Instance55"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+    objects["Instance56"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance56"]["ClipsDescendants"] = true;
+    objects["Instance56"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance56"]["Text"] = "";
+    objects["Instance56"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance56"]["BackgroundTransparency"] = 1;
+    objects["Instance56"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance56"]["TextSize"] = 14;
+    objects["Instance56"]["Name"] = "Button";
+    objects["Instance56"]["Parent"] = objects["Instance54"];
+    objects["Instance56"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance56"]["ZIndex"] = 50;
+    objects["Instance56"]["BorderSizePixel"] = 0;
+    objects["Instance56"]["Size"] = UDim2.new(1, 0, 0, 40);
+
+    objects["Instance57"]["Parent"] = objects["Instance56"];
+    objects["Instance57"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance57"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance57"]["BackgroundTransparency"] = 1;
+    objects["Instance57"]["Name"] = "View";
+    objects["Instance57"]["Position"] = UDim2.new(0, 17, 0.5, 0);
+    objects["Instance57"]["Size"] = UDim2.new(100, 0, 0, 16);
+    objects["Instance57"]["ZIndex"] = 51;
+    objects["Instance57"]["BorderSizePixel"] = 0;
+    objects["Instance57"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance58"]["Parent"] = objects["Instance57"];
+    objects["Instance58"]["BackgroundTransparency"] = 1;
+    objects["Instance58"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance58"]["Image"] = "rbxassetid://14913216473";
+    objects["Instance58"]["Name"] = "Icon";
+    objects["Instance58"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance58"]["ImageContent"] = Content.fromUri("rbxassetid://14913216473");
+    objects["Instance58"]["ZIndex"] = 52;
+    objects["Instance58"]["BorderSizePixel"] = 0;
+    objects["Instance58"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance59"]["Parent"] = objects["Instance58"];
+    objects["Instance59"]["AspectRatio"] = 0.9750000238418579;
+
+    objects["Instance60"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance60"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance60"]["Parent"] = objects["Instance57"];
+    objects["Instance60"]["Padding"] = UDim.new(0, 9);
+    objects["Instance60"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+    objects["Instance61"]["LayoutOrder"] = 1;
+    objects["Instance61"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance61"]["Parent"] = objects["Instance57"];
+    objects["Instance61"]["ZIndex"] = 52;
+    objects["Instance61"]["BorderSizePixel"] = 0;
+    objects["Instance61"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance61"]["RichText"] = true;
+    objects["Instance61"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance61"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance61"]["Text"] = "Button";
+    objects["Instance61"]["TextSize"] = 14;
+    objects["Instance61"]["TextWrap"] = true;
+    objects["Instance61"]["TextWrapped"] = true;
+    objects["Instance61"]["BackgroundTransparency"] = 1;
+    objects["Instance61"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance61"]["Name"] = "Label";
+    objects["Instance61"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance61"]["TextScaled"] = true;
+    objects["Instance61"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance62"]["Parent"] = objects["Instance56"];
+    objects["Instance62"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance62"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance62"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance62"]["Name"] = "Separator";
+    objects["Instance62"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance62"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance62"]["ZIndex"] = 51;
+    objects["Instance62"]["BorderSizePixel"] = 0;
+    objects["Instance62"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance63"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance63"]["ClipsDescendants"] = true;
+    objects["Instance63"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance63"]["Text"] = "";
+    objects["Instance63"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance63"]["BackgroundTransparency"] = 1;
+    objects["Instance63"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance63"]["TextSize"] = 14;
+    objects["Instance63"]["Name"] = "Toggle";
+    objects["Instance63"]["Parent"] = objects["Instance54"];
+    objects["Instance63"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance63"]["ZIndex"] = 50;
+    objects["Instance63"]["BorderSizePixel"] = 0;
+    objects["Instance63"]["Size"] = UDim2.new(1, 0, 0, 40);
+
+    objects["Instance64"]["Parent"] = objects["Instance63"];
+    objects["Instance64"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance64"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance64"]["BackgroundTransparency"] = 1;
+    objects["Instance64"]["Name"] = "View";
+    objects["Instance64"]["Position"] = UDim2.new(0, 15, 0.5, 0);
+    objects["Instance64"]["Size"] = UDim2.new(100, 0, 0, 16);
+    objects["Instance64"]["ZIndex"] = 51;
+    objects["Instance64"]["BorderSizePixel"] = 0;
+    objects["Instance64"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance65"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance65"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance65"]["Parent"] = objects["Instance64"];
+    objects["Instance65"]["Padding"] = UDim.new(0, 7);
+    objects["Instance65"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+    objects["Instance66"]["LayoutOrder"] = 1;
+    objects["Instance66"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance66"]["Parent"] = objects["Instance64"];
+    objects["Instance66"]["ZIndex"] = 52;
+    objects["Instance66"]["BorderSizePixel"] = 0;
+    objects["Instance66"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance66"]["RichText"] = true;
+    objects["Instance66"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance66"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance66"]["Text"] = "Checkbox / toggle";
+    objects["Instance66"]["TextSize"] = 14;
+    objects["Instance66"]["TextWrap"] = true;
+    objects["Instance66"]["TextWrapped"] = true;
+    objects["Instance66"]["BackgroundTransparency"] = 1;
+    objects["Instance66"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance66"]["Name"] = "Label";
+    objects["Instance66"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance66"]["TextScaled"] = true;
+    objects["Instance66"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance67"]["ImageColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance67"]["Parent"] = objects["Instance64"];
+    objects["Instance67"]["BackgroundTransparency"] = 1;
+    objects["Instance67"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance67"]["Image"] = "rbxassetid://130396712201457";
+    objects["Instance67"]["Name"] = "Icon";
+    objects["Instance67"]["Size"] = UDim2.new(1.2000000476837158, 0, 1.2000000476837158, 0);
+    objects["Instance67"]["ImageContent"] = Content.fromUri("rbxassetid://130396712201457");
+    objects["Instance67"]["ZIndex"] = 52;
+    objects["Instance67"]["BorderSizePixel"] = 0;
+    objects["Instance67"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+
+    objects["Instance68"]["Parent"] = objects["Instance67"];
+    objects["Instance68"]["AspectRatio"] = 0.9750000238418579;
+
+    objects["Instance69"]["Parent"] = objects["Instance67"];
+
+    objects["Instance70"]["Rotation"] = 90;
+    objects["Instance70"]["Parent"] = objects["Instance67"];
+    objects["Instance70"]["Color"] = ColorSequence.new({
     [1] = ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
     [2] = ColorSequenceKeypoint.new(0.5, Color3.new(1, 1, 1)),
     [3] = ColorSequenceKeypoint.new(1, Color3.new(0.784314, 0.784314, 0.784314))
 });
 
-    objects["Instance51"]["Parent"] = objects["Instance43"];
-    objects["Instance51"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance51"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance51"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance51"]["Name"] = "Separator";
-    objects["Instance51"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance51"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance51"]["ZIndex"] = 51;
-    objects["Instance51"]["BorderSizePixel"] = 0;
-    objects["Instance51"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance52"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance52"]["ClipsDescendants"] = true;
-    objects["Instance52"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance52"]["Text"] = "";
-    objects["Instance52"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance52"]["BackgroundTransparency"] = 1;
-    objects["Instance52"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance52"]["TextSize"] = 14;
-    objects["Instance52"]["Name"] = "Slider";
-    objects["Instance52"]["Parent"] = objects["Instance34"];
-    objects["Instance52"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance52"]["ZIndex"] = 50;
-    objects["Instance52"]["BorderSizePixel"] = 0;
-    objects["Instance52"]["Size"] = UDim2.new(1, 0, 0, 50);
-
-    objects["Instance53"]["Parent"] = objects["Instance52"];
-    objects["Instance53"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance53"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance53"]["BackgroundTransparency"] = 1;
-    objects["Instance53"]["Name"] = "View";
-    objects["Instance53"]["Position"] = UDim2.new(0, 15, 0.30000001192092896, 0);
-    objects["Instance53"]["Size"] = UDim2.new(1, -30, 0, 16);
-    objects["Instance53"]["ZIndex"] = 51;
-    objects["Instance53"]["BorderSizePixel"] = 0;
-    objects["Instance53"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance54"]["LayoutOrder"] = 1;
-    objects["Instance54"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance54"]["Parent"] = objects["Instance53"];
-    objects["Instance54"]["ZIndex"] = 52;
-    objects["Instance54"]["BorderSizePixel"] = 0;
-    objects["Instance54"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance54"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance54"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance54"]["Text"] = "Slider / progress bar";
-    objects["Instance54"]["TextSize"] = 14;
-    objects["Instance54"]["TextWrap"] = true;
-    objects["Instance54"]["TextWrapped"] = true;
-    objects["Instance54"]["BackgroundTransparency"] = 1;
-    objects["Instance54"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance54"]["Name"] = "Label";
-    objects["Instance54"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance54"]["TextScaled"] = true;
-    objects["Instance54"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance55"]["Parent"] = objects["Instance53"];
-    objects["Instance55"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance55"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance55"]["BackgroundTransparency"] = 0.75;
-    objects["Instance55"]["Name"] = "Bar";
-    objects["Instance55"]["Position"] = UDim2.new(0.5, 0, 1.649999976158142, 0);
-    objects["Instance55"]["Size"] = UDim2.new(1, 0, 0.8999999761581421, 0);
-    objects["Instance55"]["ZIndex"] = 52;
-    objects["Instance55"]["BorderSizePixel"] = 0;
-    objects["Instance55"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-
-    objects["Instance56"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance56"]["Name"] = "Fill";
-    objects["Instance56"]["Size"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance56"]["Parent"] = objects["Instance55"];
-    objects["Instance56"]["ZIndex"] = 53;
-    objects["Instance56"]["BorderSizePixel"] = 0;
-    objects["Instance56"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
-
-    objects["Instance57"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance57"]["Parent"] = objects["Instance55"];
-    objects["Instance57"]["TextStrokeTransparency"] = 0;
-    objects["Instance57"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance57"]["ZIndex"] = 54;
-    objects["Instance57"]["BorderSizePixel"] = 0;
-    objects["Instance57"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance57"]["RichText"] = true;
-    objects["Instance57"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance57"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance57"]["Text"] = "50 / 100";
-    objects["Instance57"]["TextWrap"] = true;
-    objects["Instance57"]["TextSize"] = 14;
-    objects["Instance57"]["Name"] = "Progress";
-    objects["Instance57"]["BackgroundTransparency"] = 1;
-    objects["Instance57"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance57"]["TextWrapped"] = true;
-    objects["Instance57"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance57"]["TextScaled"] = true;
-    objects["Instance57"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance58"]["PaddingTop"] = UDim.new(0.0399999991, 1);
-    objects["Instance58"]["PaddingBottom"] = UDim.new(0.0500000007, 1);
-    objects["Instance58"]["PaddingRight"] = UDim.new(0, 5);
-    objects["Instance58"]["PaddingLeft"] = UDim.new(0, 5);
-    objects["Instance58"]["Parent"] = objects["Instance57"];
-
-    objects["Instance59"]["Parent"] = objects["Instance55"];
-    objects["Instance59"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-
-    objects["Instance60"]["Visible"] = false;
-    objects["Instance60"]["Parent"] = objects["Instance55"];
-    objects["Instance60"]["BackgroundTransparency"] = 1;
-    objects["Instance60"]["Name"] = "Style";
-    objects["Instance60"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance60"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance60"]["ZIndex"] = 53;
-    objects["Instance60"]["BorderSizePixel"] = 0;
-    objects["Instance60"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance61"]["BackgroundTransparency"] = 0.800000011920929;
-    objects["Instance61"]["Name"] = "Shine";
-    objects["Instance61"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance61"]["Parent"] = objects["Instance60"];
-    objects["Instance61"]["Size"] = UDim2.new(1, 0, 0.5, 0);
-    objects["Instance61"]["BorderSizePixel"] = 0;
-    objects["Instance61"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance62"]["Rotation"] = 90;
-    objects["Instance62"]["Transparency"] = NumberSequence.new({
-    [1] = NumberSequenceKeypoint.new(0, 1, 0),
-    [2] = NumberSequenceKeypoint.new(1, 0, 0)
-});
-    objects["Instance62"]["Parent"] = objects["Instance61"];
-
-    objects["Instance63"]["Parent"] = objects["Instance60"];
-    objects["Instance63"]["AnchorPoint"] = Vector2.new(0, 1);
-    objects["Instance63"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance63"]["Name"] = "Shadow";
-    objects["Instance63"]["Position"] = UDim2.new(0, 0, 1, 0);
-    objects["Instance63"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance63"]["Size"] = UDim2.new(1, 0, 0.5, 0);
-    objects["Instance63"]["BorderSizePixel"] = 0;
-    objects["Instance63"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-
-    objects["Instance64"]["Rotation"] = -90;
-    objects["Instance64"]["Transparency"] = NumberSequence.new({
-    [1] = NumberSequenceKeypoint.new(0, 1, 0),
-    [2] = NumberSequenceKeypoint.new(1, 0, 0)
-});
-    objects["Instance64"]["Parent"] = objects["Instance63"];
-
-    objects["Instance65"]["Visible"] = false;
-    objects["Instance65"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance65"]["Active"] = false;
-    objects["Instance65"]["Parent"] = objects["Instance55"];
-    objects["Instance65"]["TextStrokeTransparency"] = 0;
-    objects["Instance65"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance65"]["ZIndex"] = 54;
-    objects["Instance65"]["BorderSizePixel"] = 0;
-    objects["Instance65"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance65"]["RichText"] = true;
-    objects["Instance65"]["TextSize"] = 14;
-    objects["Instance65"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance65"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance65"]["Text"] = "1488";
-    objects["Instance65"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance65"]["Selectable"] = false;
-    objects["Instance65"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance65"]["TextWrapped"] = true;
-    objects["Instance65"]["BackgroundTransparency"] = 1;
-    objects["Instance65"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance65"]["Name"] = "InputProgress";
-    objects["Instance65"]["ClearTextOnFocus"] = false;
-    objects["Instance65"]["TextScaled"] = true;
-    objects["Instance65"]["TextWrap"] = true;
-
-    objects["Instance66"]["PaddingTop"] = UDim.new(0.0399999991, 1);
-    objects["Instance66"]["PaddingBottom"] = UDim.new(0.0500000007, 1);
-    objects["Instance66"]["PaddingRight"] = UDim.new(0, 5);
-    objects["Instance66"]["PaddingLeft"] = UDim.new(0, 5);
-    objects["Instance66"]["Parent"] = objects["Instance65"];
-
-    objects["Instance67"]["Parent"] = objects["Instance52"];
-    objects["Instance67"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance67"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance67"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance67"]["Name"] = "Separator";
-    objects["Instance67"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance67"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance67"]["ZIndex"] = 51;
-    objects["Instance67"]["BorderSizePixel"] = 0;
-    objects["Instance67"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance68"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance68"]["ClipsDescendants"] = true;
-    objects["Instance68"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance68"]["Text"] = "";
-    objects["Instance68"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance68"]["BackgroundTransparency"] = 1;
-    objects["Instance68"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance68"]["TextSize"] = 14;
-    objects["Instance68"]["Name"] = "TextBox";
-    objects["Instance68"]["Parent"] = objects["Instance34"];
-    objects["Instance68"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance68"]["ZIndex"] = 50;
-    objects["Instance68"]["BorderSizePixel"] = 0;
-    objects["Instance68"]["Size"] = UDim2.new(1, 0, 0, 50);
-
-    objects["Instance69"]["Parent"] = objects["Instance68"];
-    objects["Instance69"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance69"]["BackgroundTransparency"] = 1;
-    objects["Instance69"]["Name"] = "View";
-    objects["Instance69"]["Position"] = UDim2.new(0, 15, 0, 8);
-    objects["Instance69"]["Size"] = UDim2.new(1, -30, 0, 16);
-    objects["Instance69"]["ZIndex"] = 51;
-    objects["Instance69"]["BorderSizePixel"] = 0;
-    objects["Instance69"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance70"]["LayoutOrder"] = 1;
-    objects["Instance70"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance70"]["Parent"] = objects["Instance69"];
-    objects["Instance70"]["ZIndex"] = 53;
-    objects["Instance70"]["BorderSizePixel"] = 0;
-    objects["Instance70"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance70"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance70"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance70"]["Text"] = "TextBox";
-    objects["Instance70"]["TextSize"] = 14;
-    objects["Instance70"]["TextWrap"] = true;
-    objects["Instance70"]["TextWrapped"] = true;
-    objects["Instance70"]["BackgroundTransparency"] = 1;
-    objects["Instance70"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance70"]["Name"] = "Label";
-    objects["Instance70"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance70"]["TextScaled"] = true;
-    objects["Instance70"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance71"]["FontFace"] = Font.new("rbxasset://fonts/families/LegacyArial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance71"]["Active"] = false;
-    objects["Instance71"]["Parent"] = objects["Instance69"];
-    objects["Instance71"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance71"]["PlaceholderColor3"] = Color3.new(1, 1, 1);
-    objects["Instance71"]["ZIndex"] = 53;
-    objects["Instance71"]["BorderSizePixel"] = 0;
-    objects["Instance71"]["Size"] = UDim2.new(1, 0, 0, 14);
-    objects["Instance71"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance71"]["Parent"] = objects["Instance63"];
     objects["Instance71"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance71"]["Text"] = "";
-    objects["Instance71"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance71"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance71"]["Selectable"] = false;
-    objects["Instance71"]["TextWrapped"] = true;
-    objects["Instance71"]["BackgroundTransparency"] = 0.75;
-    objects["Instance71"]["Position"] = UDim2.new(0.5, 0, 0, 20);
-    objects["Instance71"]["ClearTextOnFocus"] = false;
-    objects["Instance71"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance71"]["Name"] = "Bar";
-    objects["Instance71"]["TextWrap"] = true;
+    objects["Instance71"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance71"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance71"]["Name"] = "Separator";
+    objects["Instance71"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance71"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance71"]["ZIndex"] = 51;
+    objects["Instance71"]["BorderSizePixel"] = 0;
+    objects["Instance71"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance72"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance72"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-    objects["Instance72"]["Parent"] = objects["Instance71"];
+    objects["Instance72"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance72"]["ClipsDescendants"] = true;
+    objects["Instance72"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance72"]["Text"] = "";
+    objects["Instance72"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance72"]["BackgroundTransparency"] = 1;
+    objects["Instance72"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance72"]["TextSize"] = 14;
+    objects["Instance72"]["Name"] = "Slider";
+    objects["Instance72"]["Parent"] = objects["Instance54"];
+    objects["Instance72"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance72"]["ZIndex"] = 50;
+    objects["Instance72"]["BorderSizePixel"] = 0;
+    objects["Instance72"]["Size"] = UDim2.new(1, 0, 0, 50);
 
-    objects["Instance73"]["Parent"] = objects["Instance71"];
-    objects["Instance73"]["PaddingTop"] = UDim.new(0, 1);
-    objects["Instance73"]["PaddingLeft"] = UDim.new(0, 10);
-    objects["Instance73"]["PaddingRight"] = UDim.new(0, 10);
+    objects["Instance73"]["Parent"] = objects["Instance72"];
+    objects["Instance73"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance73"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance73"]["BackgroundTransparency"] = 1;
+    objects["Instance73"]["Name"] = "View";
+    objects["Instance73"]["Position"] = UDim2.new(0, 15, 0.30000001192092896, 0);
+    objects["Instance73"]["Size"] = UDim2.new(1, -30, 0, 16);
+    objects["Instance73"]["ZIndex"] = 51;
+    objects["Instance73"]["BorderSizePixel"] = 0;
+    objects["Instance73"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
+    objects["Instance74"]["LayoutOrder"] = 1;
     objects["Instance74"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance74"]["Parent"] = objects["Instance71"];
-    objects["Instance74"]["ZIndex"] = 54;
+    objects["Instance74"]["Parent"] = objects["Instance73"];
+    objects["Instance74"]["ZIndex"] = 52;
     objects["Instance74"]["BorderSizePixel"] = 0;
     objects["Instance74"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance74"]["RichText"] = true;
     objects["Instance74"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance74"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance74"]["Text"] = "Placeholder text...";
+    objects["Instance74"]["Text"] = "Slider / progress bar";
     objects["Instance74"]["TextSize"] = 14;
     objects["Instance74"]["TextWrap"] = true;
-    objects["Instance74"]["Name"] = "Placeholder";
     objects["Instance74"]["TextWrapped"] = true;
     objects["Instance74"]["BackgroundTransparency"] = 1;
     objects["Instance74"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance74"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance74"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance74"]["Name"] = "Label";
+    objects["Instance74"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
     objects["Instance74"]["TextScaled"] = true;
     objects["Instance74"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance75"]["Parent"] = objects["Instance74"];
-    objects["Instance75"]["PaddingBottom"] = UDim.new(0, 1);
+    objects["Instance75"]["Parent"] = objects["Instance73"];
+    objects["Instance75"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance75"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance75"]["BackgroundTransparency"] = 0.75;
+    objects["Instance75"]["Name"] = "Bar";
+    objects["Instance75"]["Position"] = UDim2.new(0.5, 0, 1.649999976158142, 0);
+    objects["Instance75"]["Size"] = UDim2.new(1, 0, 0.8999999761581421, 0);
+    objects["Instance75"]["ZIndex"] = 52;
+    objects["Instance75"]["BorderSizePixel"] = 0;
+    objects["Instance75"]["BackgroundColor3"] = Color3.new(0.0666667, 0.0666667, 0.0666667);
 
-    objects["Instance76"]["FontSize"] = Enum.FontSize.Size12;
-    objects["Instance76"]["Parent"] = objects["Instance69"];
-    objects["Instance76"]["ZIndex"] = 53;
+    objects["Instance76"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance76"]["Parent"] = objects["Instance75"];
+    objects["Instance76"]["TextStrokeTransparency"] = 0;
+    objects["Instance76"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance76"]["ZIndex"] = 55;
     objects["Instance76"]["BorderSizePixel"] = 0;
-    objects["Instance76"]["Size"] = UDim2.new(1, 0, 100, 0);
+    objects["Instance76"]["Size"] = UDim2.new(1, 0, 1, 0);
     objects["Instance76"]["RichText"] = true;
     objects["Instance76"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance76"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance76"]["Text"] = "";
-    objects["Instance76"]["TextSize"] = 12;
+    objects["Instance76"]["Text"] = "50 / 100";
     objects["Instance76"]["TextWrap"] = true;
-    objects["Instance76"]["Name"] = "BarInvisible";
-    objects["Instance76"]["TextWrapped"] = true;
+    objects["Instance76"]["TextSize"] = 14;
+    objects["Instance76"]["Name"] = "Progress";
     objects["Instance76"]["BackgroundTransparency"] = 1;
-    objects["Instance76"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance76"]["TextTransparency"] = 1;
-    objects["Instance76"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance76"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance76"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance76"]["TextWrapped"] = true;
+    objects["Instance76"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance76"]["TextScaled"] = true;
     objects["Instance76"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance77"]["Parent"] = objects["Instance68"];
-    objects["Instance77"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance77"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance77"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance77"]["Name"] = "Separator";
-    objects["Instance77"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance77"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance77"]["ZIndex"] = 51;
-    objects["Instance77"]["BorderSizePixel"] = 0;
-    objects["Instance77"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance77"]["PaddingTop"] = UDim.new(0.0399999991, 1);
+    objects["Instance77"]["PaddingBottom"] = UDim.new(0.0500000007, 1);
+    objects["Instance77"]["PaddingRight"] = UDim.new(0, 5);
+    objects["Instance77"]["PaddingLeft"] = UDim.new(0, 5);
+    objects["Instance77"]["Parent"] = objects["Instance76"];
 
-    objects["Instance78"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance78"]["ClipsDescendants"] = true;
-    objects["Instance78"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance78"]["Text"] = "";
-    objects["Instance78"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance78"]["BackgroundTransparency"] = 1;
-    objects["Instance78"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance78"]["TextSize"] = 14;
-    objects["Instance78"]["Name"] = "Dropdown";
-    objects["Instance78"]["Parent"] = objects["Instance34"];
-    objects["Instance78"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance78"]["ZIndex"] = 50;
-    objects["Instance78"]["BorderSizePixel"] = 0;
-    objects["Instance78"]["Size"] = UDim2.new(1, 0, 0, 50);
+    objects["Instance78"]["Parent"] = objects["Instance75"];
 
-    objects["Instance79"]["Parent"] = objects["Instance78"];
-    objects["Instance79"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance79"]["Visible"] = false;
+    objects["Instance79"]["Parent"] = objects["Instance75"];
     objects["Instance79"]["BackgroundTransparency"] = 1;
-    objects["Instance79"]["Name"] = "View";
-    objects["Instance79"]["Position"] = UDim2.new(0, 15, 0, 8);
-    objects["Instance79"]["Size"] = UDim2.new(1, -30, 0, 16);
-    objects["Instance79"]["ZIndex"] = 51;
+    objects["Instance79"]["Name"] = "Style";
+    objects["Instance79"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance79"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance79"]["ZIndex"] = 54;
     objects["Instance79"]["BorderSizePixel"] = 0;
     objects["Instance79"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance80"]["ClipsDescendants"] = true;
-    objects["Instance80"]["Parent"] = objects["Instance79"];
+    objects["Instance80"]["BackgroundTransparency"] = 0.800000011920929;
+    objects["Instance80"]["Name"] = "Shine";
     objects["Instance80"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance80"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance80"]["BackgroundTransparency"] = 0.75;
-    objects["Instance80"]["Name"] = "List";
-    objects["Instance80"]["Position"] = UDim2.new(0.5, 0, 0, 20);
-    objects["Instance80"]["Size"] = UDim2.new(1, 0, 0, 14);
-    objects["Instance80"]["ZIndex"] = 52;
+    objects["Instance80"]["Parent"] = objects["Instance79"];
+    objects["Instance80"]["Size"] = UDim2.new(1, 0, 0.5, 0);
     objects["Instance80"]["BorderSizePixel"] = 0;
-    objects["Instance80"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance80"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance81"]["Parent"] = objects["Instance80"];
-    objects["Instance81"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-
-    objects["Instance82"]["BackgroundTransparency"] = 1;
-    objects["Instance82"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance82"]["Name"] = "Selected";
-    objects["Instance82"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance82"]["Parent"] = objects["Instance80"];
-    objects["Instance82"]["ZIndex"] = 53;
-    objects["Instance82"]["BorderSizePixel"] = 0;
-    objects["Instance82"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance83"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance83"]["TextTransparency"] = 0.3499999940395355;
-    objects["Instance83"]["TextStrokeTransparency"] = 0;
-    objects["Instance83"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance83"]["ZIndex"] = 55;
-    objects["Instance83"]["BorderSizePixel"] = 0;
-    objects["Instance83"]["Size"] = UDim2.new(100, 0, 0.8999999761581421, 0);
-    objects["Instance83"]["TextColor3"] = Color3.new(1, 0, 0.498039);
-    objects["Instance83"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance83"]["Text"] = "DEFAULT VALUE";
-    objects["Instance83"]["TextWrap"] = true;
-    objects["Instance83"]["TextSize"] = 14;
-    objects["Instance83"]["Name"] = "Value";
-    objects["Instance83"]["TextWrapped"] = true;
-    objects["Instance83"]["BackgroundTransparency"] = 1;
-    objects["Instance83"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance83"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance83"]["Parent"] = objects["Instance82"];
-    objects["Instance83"]["TextScaled"] = true;
-    objects["Instance83"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance84"]["Parent"] = objects["Instance83"];
-    objects["Instance84"]["PaddingTop"] = UDim.new(0, 1);
-
-    objects["Instance85"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance85"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance85"]["Name"] = "Gradient";
-    objects["Instance85"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance85"]["Parent"] = objects["Instance82"];
-    objects["Instance85"]["ZIndex"] = 54;
-    objects["Instance85"]["BorderSizePixel"] = 0;
-    objects["Instance85"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance86"]["Rotation"] = 90;
-    objects["Instance86"]["Transparency"] = NumberSequence.new({
+    objects["Instance81"]["Rotation"] = 90;
+    objects["Instance81"]["Transparency"] = NumberSequence.new({
     [1] = NumberSequenceKeypoint.new(0, 1, 0),
     [2] = NumberSequenceKeypoint.new(1, 0, 0)
 });
-    objects["Instance86"]["Parent"] = objects["Instance85"];
+    objects["Instance81"]["Parent"] = objects["Instance80"];
 
-    objects["Instance87"]["Visible"] = false;
-    objects["Instance87"]["Parent"] = objects["Instance80"];
-    objects["Instance87"]["BackgroundTransparency"] = 1;
-    objects["Instance87"]["Name"] = "List";
+    objects["Instance82"]["Parent"] = objects["Instance79"];
+    objects["Instance82"]["AnchorPoint"] = Vector2.new(0, 1);
+    objects["Instance82"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance82"]["Name"] = "Shadow";
+    objects["Instance82"]["Position"] = UDim2.new(0, 0, 1, 0);
+    objects["Instance82"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance82"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance82"]["BorderSizePixel"] = 0;
+    objects["Instance82"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+
+    objects["Instance83"]["Rotation"] = -90;
+    objects["Instance83"]["Transparency"] = NumberSequence.new({
+    [1] = NumberSequenceKeypoint.new(0, 1, 0),
+    [2] = NumberSequenceKeypoint.new(1, 0, 0)
+});
+    objects["Instance83"]["Parent"] = objects["Instance82"];
+
+    objects["Instance84"]["Visible"] = false;
+    objects["Instance84"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance84"]["Active"] = false;
+    objects["Instance84"]["Parent"] = objects["Instance75"];
+    objects["Instance84"]["TextStrokeTransparency"] = 0;
+    objects["Instance84"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance84"]["ZIndex"] = 55;
+    objects["Instance84"]["BorderSizePixel"] = 0;
+    objects["Instance84"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance84"]["RichText"] = true;
+    objects["Instance84"]["TextSize"] = 14;
+    objects["Instance84"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance84"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance84"]["Text"] = "1488";
+    objects["Instance84"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance84"]["Selectable"] = false;
+    objects["Instance84"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance84"]["TextWrapped"] = true;
+    objects["Instance84"]["BackgroundTransparency"] = 1;
+    objects["Instance84"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance84"]["Name"] = "InputProgress";
+    objects["Instance84"]["ClearTextOnFocus"] = false;
+    objects["Instance84"]["TextScaled"] = true;
+    objects["Instance84"]["TextWrap"] = true;
+
+    objects["Instance85"]["PaddingTop"] = UDim.new(0.0399999991, 1);
+    objects["Instance85"]["PaddingBottom"] = UDim.new(0.0500000007, 1);
+    objects["Instance85"]["PaddingRight"] = UDim.new(0, 5);
+    objects["Instance85"]["PaddingLeft"] = UDim.new(0, 5);
+    objects["Instance85"]["Parent"] = objects["Instance84"];
+
+    objects["Instance86"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance86"]["CornerRadius"] = UDim.new(0, 0);
+    objects["Instance86"]["Parent"] = objects["Instance75"];
+    objects["Instance86"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance86"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance86"]["BottomLeftRadius"] = UDim.new(0, 0);
+
     objects["Instance87"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance87"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance87"]["Name"] = "Fill";
+    objects["Instance87"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance87"]["Parent"] = objects["Instance75"];
     objects["Instance87"]["ZIndex"] = 53;
     objects["Instance87"]["BorderSizePixel"] = 0;
-    objects["Instance87"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance87"]["BackgroundColor3"] = Color3.new(1, 0, 0.490196);
 
-    objects["Instance88"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance88"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance88"]["CornerRadius"] = UDim.new(0, 0);
     objects["Instance88"]["Parent"] = objects["Instance87"];
-    objects["Instance88"]["TextStrokeTransparency"] = 0;
-    objects["Instance88"]["ZIndex"] = 64;
-    objects["Instance88"]["BorderSizePixel"] = 0;
-    objects["Instance88"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance88"]["ClipsDescendants"] = true;
-    objects["Instance88"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance88"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance88"]["BackgroundTransparency"] = 1;
-    objects["Instance88"]["TextWrapped"] = true;
-    objects["Instance88"]["Name"] = "Row";
-    objects["Instance88"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance88"]["TextSize"] = 14;
-    objects["Instance88"]["FontFace"] = Font.new("rbxasset://fonts/families/TitilliumWeb.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance88"]["TextScaled"] = true;
-    objects["Instance88"]["TextWrap"] = true;
+    objects["Instance88"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance88"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance88"]["BottomLeftRadius"] = UDim.new(0, 0);
 
+    objects["Instance89"]["BorderColor3"] = Color3.new(0, 0, 0);
     objects["Instance89"]["Parent"] = objects["Instance87"];
-    objects["Instance89"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance89"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance89"]["BorderSizePixel"] = 0;
+    objects["Instance89"]["BackgroundColor3"] = Color3.new(1, 0, 0.490196);
 
-    objects["Instance90"]["Visible"] = false;
-    objects["Instance90"]["TextWrapped"] = true;
-    objects["Instance90"]["TextWrap"] = true;
-    objects["Instance90"]["TextColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance90"]["Parent"] = objects["Instance72"];
     objects["Instance90"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance90"]["Text"] = "NO ELEMENTS";
-    objects["Instance90"]["Name"] = "NoContents";
-    objects["Instance90"]["TextStrokeTransparency"] = 0;
-    objects["Instance90"]["Parent"] = objects["Instance80"];
-    objects["Instance90"]["FontFace"] = Font.new("rbxasset://fonts/families/LegacyArial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance90"]["BackgroundTransparency"] = 1;
-    objects["Instance90"]["TextScaled"] = true;
-    objects["Instance90"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance90"]["ZIndex"] = 53;
+    objects["Instance90"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance90"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance90"]["Name"] = "Separator";
+    objects["Instance90"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance90"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance90"]["ZIndex"] = 51;
     objects["Instance90"]["BorderSizePixel"] = 0;
-    objects["Instance90"]["BackgroundColor3"] = Color3.new(0.972549, 0.972549, 0.972549);
+    objects["Instance90"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance91"]["Parent"] = objects["Instance90"];
-    objects["Instance91"]["PaddingTop"] = UDim.new(0, 1);
-    objects["Instance91"]["PaddingBottom"] = UDim.new(0, 1);
+    objects["Instance91"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance91"]["ClipsDescendants"] = true;
+    objects["Instance91"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance91"]["Text"] = "";
+    objects["Instance91"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance91"]["BackgroundTransparency"] = 1;
+    objects["Instance91"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance91"]["TextSize"] = 14;
+    objects["Instance91"]["Name"] = "TextBox";
+    objects["Instance91"]["Parent"] = objects["Instance54"];
+    objects["Instance91"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance91"]["ZIndex"] = 50;
+    objects["Instance91"]["BorderSizePixel"] = 0;
+    objects["Instance91"]["Size"] = UDim2.new(1, 0, 0, 50);
 
-    objects["Instance92"]["Parent"] = objects["Instance79"];
+    objects["Instance92"]["Parent"] = objects["Instance91"];
     objects["Instance92"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance92"]["AnchorPoint"] = Vector2.new(0.5, 0);
     objects["Instance92"]["BackgroundTransparency"] = 1;
-    objects["Instance92"]["Name"] = "Label";
-    objects["Instance92"]["Position"] = UDim2.new(0.5, 0, 0, 0);
-    objects["Instance92"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance92"]["ZIndex"] = 52;
+    objects["Instance92"]["Name"] = "View";
+    objects["Instance92"]["Position"] = UDim2.new(0, 15, 0, 8);
+    objects["Instance92"]["Size"] = UDim2.new(1, -30, 0, 16);
+    objects["Instance92"]["ZIndex"] = 51;
     objects["Instance92"]["BorderSizePixel"] = 0;
     objects["Instance92"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
+    objects["Instance93"]["LayoutOrder"] = 1;
+    objects["Instance93"]["FontSize"] = Enum.FontSize.Size14;
     objects["Instance93"]["Parent"] = objects["Instance92"];
-    objects["Instance93"]["BackgroundTransparency"] = 1;
-    objects["Instance93"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance93"]["Image"] = "rbxassetid://12338895277";
-    objects["Instance93"]["Name"] = "Icon";
-    objects["Instance93"]["Size"] = UDim2.new(1, 0, 0.8999999761581421, 0);
-    objects["Instance93"]["ImageContent"] = Content.fromUri("rbxassetid://12338895277");
     objects["Instance93"]["ZIndex"] = 53;
     objects["Instance93"]["BorderSizePixel"] = 0;
+    objects["Instance93"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance93"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance93"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance93"]["Text"] = "TextBox";
+    objects["Instance93"]["TextSize"] = 14;
+    objects["Instance93"]["TextWrap"] = true;
+    objects["Instance93"]["TextWrapped"] = true;
+    objects["Instance93"]["BackgroundTransparency"] = 1;
+    objects["Instance93"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance93"]["Name"] = "Label";
+    objects["Instance93"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance93"]["TextScaled"] = true;
     objects["Instance93"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance94"]["Parent"] = objects["Instance93"];
-    objects["Instance94"]["AspectRatio"] = 0.9750000238418579;
+    objects["Instance94"]["FontFace"] = Font.new("rbxasset://fonts/families/LegacyArial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance94"]["Active"] = false;
+    objects["Instance94"]["Parent"] = objects["Instance92"];
+    objects["Instance94"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance94"]["PlaceholderColor3"] = Color3.new(1, 1, 1);
+    objects["Instance94"]["ZIndex"] = 53;
+    objects["Instance94"]["BorderSizePixel"] = 0;
+    objects["Instance94"]["Size"] = UDim2.new(1, 0, 0, 14);
+    objects["Instance94"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance94"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance94"]["Text"] = "";
+    objects["Instance94"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance94"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance94"]["Selectable"] = false;
+    objects["Instance94"]["TextWrapped"] = true;
+    objects["Instance94"]["BackgroundTransparency"] = 0.75;
+    objects["Instance94"]["Position"] = UDim2.new(0.5, 0, 0, 20);
+    objects["Instance94"]["ClearTextOnFocus"] = false;
+    objects["Instance94"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance94"]["Name"] = "Bar";
+    objects["Instance94"]["TextWrap"] = true;
 
-    objects["Instance95"]["Visible"] = false;
-    objects["Instance95"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance95"]["Parent"] = objects["Instance93"];
-    objects["Instance95"]["BackgroundTransparency"] = 1;
-    objects["Instance95"]["Rotation"] = 90;
-    objects["Instance95"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance95"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance95"]["Image"] = "rbxassetid://12338895277";
-    objects["Instance95"]["Name"] = "Opened";
-    objects["Instance95"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance95"]["ImageContent"] = Content.fromUri("rbxassetid://12338895277");
-    objects["Instance95"]["ZIndex"] = 54;
-    objects["Instance95"]["BorderSizePixel"] = 0;
-    objects["Instance95"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance95"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance95"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance95"]["Parent"] = objects["Instance94"];
 
-    objects["Instance96"]["Parent"] = objects["Instance95"];
-    objects["Instance96"]["AspectRatio"] = 0.9750000238418579;
+    objects["Instance96"]["Parent"] = objects["Instance94"];
+    objects["Instance96"]["PaddingTop"] = UDim.new(0, 1);
+    objects["Instance96"]["PaddingLeft"] = UDim.new(0, 10);
+    objects["Instance96"]["PaddingRight"] = UDim.new(0, 10);
 
-    objects["Instance97"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance97"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance97"]["Parent"] = objects["Instance92"];
-    objects["Instance97"]["Padding"] = UDim.new(0, 5);
-    objects["Instance97"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance97"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance97"]["Parent"] = objects["Instance94"];
+    objects["Instance97"]["ZIndex"] = 54;
+    objects["Instance97"]["BorderSizePixel"] = 0;
+    objects["Instance97"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance97"]["RichText"] = true;
+    objects["Instance97"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance97"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance97"]["Text"] = "Placeholder text...";
+    objects["Instance97"]["TextSize"] = 14;
+    objects["Instance97"]["TextWrap"] = true;
+    objects["Instance97"]["Name"] = "Placeholder";
+    objects["Instance97"]["TextWrapped"] = true;
+    objects["Instance97"]["BackgroundTransparency"] = 1;
+    objects["Instance97"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance97"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance97"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance97"]["TextScaled"] = true;
+    objects["Instance97"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance98"]["LayoutOrder"] = 1;
-    objects["Instance98"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance98"]["Parent"] = objects["Instance92"];
-    objects["Instance98"]["ZIndex"] = 53;
-    objects["Instance98"]["BorderSizePixel"] = 0;
-    objects["Instance98"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance98"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance98"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance98"]["Text"] = "Dropdown";
-    objects["Instance98"]["TextSize"] = 14;
-    objects["Instance98"]["TextWrap"] = true;
-    objects["Instance98"]["TextWrapped"] = true;
-    objects["Instance98"]["BackgroundTransparency"] = 1;
-    objects["Instance98"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance98"]["Name"] = "Label";
-    objects["Instance98"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance98"]["TextScaled"] = true;
-    objects["Instance98"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance98"]["Parent"] = objects["Instance97"];
+    objects["Instance98"]["PaddingBottom"] = UDim.new(0, 1);
 
-    objects["Instance99"]["Parent"] = objects["Instance78"];
-    objects["Instance99"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance99"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance99"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance99"]["Name"] = "Separator";
-    objects["Instance99"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance99"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance99"]["ZIndex"] = 51;
+    objects["Instance99"]["FontSize"] = Enum.FontSize.Size12;
+    objects["Instance99"]["Parent"] = objects["Instance92"];
+    objects["Instance99"]["ZIndex"] = 53;
     objects["Instance99"]["BorderSizePixel"] = 0;
+    objects["Instance99"]["Size"] = UDim2.new(1, 0, 100, 0);
+    objects["Instance99"]["RichText"] = true;
+    objects["Instance99"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance99"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance99"]["Text"] = "";
+    objects["Instance99"]["TextSize"] = 12;
+    objects["Instance99"]["TextWrap"] = true;
+    objects["Instance99"]["Name"] = "BarInvisible";
+    objects["Instance99"]["TextWrapped"] = true;
+    objects["Instance99"]["BackgroundTransparency"] = 1;
+    objects["Instance99"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance99"]["TextTransparency"] = 1;
+    objects["Instance99"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance99"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
     objects["Instance99"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance100"]["ClipsDescendants"] = true;
-    objects["Instance100"]["Parent"] = objects["Instance34"];
-    objects["Instance100"]["BackgroundTransparency"] = 1;
-    objects["Instance100"]["Name"] = "Separator";
+    objects["Instance100"]["Parent"] = objects["Instance91"];
     objects["Instance100"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance100"]["Size"] = UDim2.new(1, 0, 0, 10);
-    objects["Instance100"]["ZIndex"] = 50;
+    objects["Instance100"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance100"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance100"]["Name"] = "Separator";
+    objects["Instance100"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance100"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance100"]["ZIndex"] = 51;
     objects["Instance100"]["BorderSizePixel"] = 0;
     objects["Instance100"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance101"]["Parent"] = objects["Instance100"];
+    objects["Instance101"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance101"]["ClipsDescendants"] = true;
     objects["Instance101"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance101"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance101"]["BackgroundTransparency"] = 0.75;
-    objects["Instance101"]["Name"] = "SeparatorMiddle";
-    objects["Instance101"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance101"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance101"]["ZIndex"] = 51;
-    objects["Instance101"]["BorderSizePixel"] = 0;
+    objects["Instance101"]["Text"] = "";
     objects["Instance101"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance101"]["BackgroundTransparency"] = 1;
+    objects["Instance101"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance101"]["TextSize"] = 14;
+    objects["Instance101"]["Name"] = "Dropdown";
+    objects["Instance101"]["Parent"] = objects["Instance54"];
+    objects["Instance101"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance101"]["ZIndex"] = 50;
+    objects["Instance101"]["BorderSizePixel"] = 0;
+    objects["Instance101"]["Size"] = UDim2.new(1, 0, 0, 50);
 
-    objects["Instance102"]["Parent"] = objects["Instance100"];
+    objects["Instance102"]["Parent"] = objects["Instance101"];
     objects["Instance102"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance102"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance102"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance102"]["Name"] = "Separator";
-    objects["Instance102"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance102"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance102"]["BackgroundTransparency"] = 1;
+    objects["Instance102"]["Name"] = "View";
+    objects["Instance102"]["Position"] = UDim2.new(0, 15, 0, 8);
+    objects["Instance102"]["Size"] = UDim2.new(1, -30, 0, 16);
     objects["Instance102"]["ZIndex"] = 51;
     objects["Instance102"]["BorderSizePixel"] = 0;
     objects["Instance102"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance103"]["Active"] = true;
-    objects["Instance103"]["Selectable"] = true;
-    objects["Instance103"]["BackgroundTransparency"] = 1;
-    objects["Instance103"]["BorderColor3"] = Color3.new(0, 0, 0);
     objects["Instance103"]["ClipsDescendants"] = true;
-    objects["Instance103"]["Name"] = "Label";
-    objects["Instance103"]["Size"] = UDim2.new(1, 0, 0, 40);
-    objects["Instance103"]["Parent"] = objects["Instance34"];
-    objects["Instance103"]["ZIndex"] = 50;
+    objects["Instance103"]["Parent"] = objects["Instance102"];
+    objects["Instance103"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance103"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance103"]["BackgroundTransparency"] = 0.75;
+    objects["Instance103"]["Name"] = "List";
+    objects["Instance103"]["Position"] = UDim2.new(0.5, 0, 0, 20);
+    objects["Instance103"]["Size"] = UDim2.new(1, 0, 0, 14);
+    objects["Instance103"]["ZIndex"] = 52;
     objects["Instance103"]["BorderSizePixel"] = 0;
-    objects["Instance103"]["BackgroundColor3"] = Color3.new(0.972549, 0.972549, 0.972549);
+    objects["Instance103"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
     objects["Instance104"]["Parent"] = objects["Instance103"];
-    objects["Instance104"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance104"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance104"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance104"]["Name"] = "Separator";
-    objects["Instance104"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance104"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance104"]["ZIndex"] = 51;
-    objects["Instance104"]["BorderSizePixel"] = 0;
-    objects["Instance104"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance104"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
 
-    objects["Instance105"]["LayoutOrder"] = 1;
-    objects["Instance105"]["FontSize"] = Enum.FontSize.Size18;
-    objects["Instance105"]["Parent"] = objects["Instance103"];
-    objects["Instance105"]["ZIndex"] = 51;
-    objects["Instance105"]["BorderSizePixel"] = 0;
-    objects["Instance105"]["Size"] = UDim2.new(1, -30, 0, 16);
-    objects["Instance105"]["RichText"] = true;
-    objects["Instance105"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance105"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance105"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance105"]["TextWrap"] = true;
-    objects["Instance105"]["TextWrapped"] = true;
-    objects["Instance105"]["TextSize"] = 16;
     objects["Instance105"]["BackgroundTransparency"] = 1;
-    objects["Instance105"]["Position"] = UDim2.new(0, 15, 0, 12);
-    objects["Instance105"]["Name"] = "Label";
-    objects["Instance105"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance105"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance105"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance105"]["Name"] = "Selected";
+    objects["Instance105"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance105"]["Parent"] = objects["Instance103"];
+    objects["Instance105"]["ZIndex"] = 53;
+    objects["Instance105"]["BorderSizePixel"] = 0;
     objects["Instance105"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance106"]["Parent"] = objects["Instance103"];
-    objects["Instance106"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance106"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance106"]["BackgroundTransparency"] = 1;
-    objects["Instance106"]["Name"] = "ColorPickers";
-    objects["Instance106"]["Position"] = UDim2.new(1, -10, 0, 0);
-    objects["Instance106"]["Size"] = UDim2.new(1, -20, 1, 0);
-    objects["Instance106"]["ZIndex"] = 51;
+    objects["Instance106"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance106"]["TextTransparency"] = 0.3499999940395355;
+    objects["Instance106"]["TextStrokeTransparency"] = 0;
+    objects["Instance106"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance106"]["ZIndex"] = 55;
     objects["Instance106"]["BorderSizePixel"] = 0;
+    objects["Instance106"]["Size"] = UDim2.new(100, 0, 0.8999999761581421, 0);
+    objects["Instance106"]["TextColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance106"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance106"]["Text"] = "DEFAULT VALUE";
+    objects["Instance106"]["TextWrap"] = true;
+    objects["Instance106"]["TextSize"] = 14;
+    objects["Instance106"]["Name"] = "Value";
+    objects["Instance106"]["TextWrapped"] = true;
+    objects["Instance106"]["BackgroundTransparency"] = 1;
+    objects["Instance106"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance106"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance106"]["Parent"] = objects["Instance105"];
+    objects["Instance106"]["TextScaled"] = true;
     objects["Instance106"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance107"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance107"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance107"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance107"]["Text"] = "";
-    objects["Instance107"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance107"]["BackgroundTransparency"] = 1;
-    objects["Instance107"]["TextSize"] = 14;
-    objects["Instance107"]["Name"] = "Picker";
     objects["Instance107"]["Parent"] = objects["Instance106"];
-    objects["Instance107"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance107"]["ZIndex"] = 52;
-    objects["Instance107"]["BorderSizePixel"] = 0;
-    objects["Instance107"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance107"]["PaddingTop"] = UDim.new(0, 1);
 
-    objects["Instance108"]["Parent"] = objects["Instance107"];
-    objects["Instance108"]["AspectRatio"] = 0.5;
+    objects["Instance108"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance108"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance108"]["Name"] = "Gradient";
+    objects["Instance108"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance108"]["Parent"] = objects["Instance105"];
+    objects["Instance108"]["ZIndex"] = 54;
+    objects["Instance108"]["BorderSizePixel"] = 0;
+    objects["Instance108"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance109"]["LayoutOrder"] = 1;
-    objects["Instance109"]["Parent"] = objects["Instance107"];
-    objects["Instance109"]["AnchorPoint"] = Vector2.new(1, 0.5);
-    objects["Instance109"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance109"]["Name"] = "Display";
-    objects["Instance109"]["Position"] = UDim2.new(1, -1, 0.5, 0);
-    objects["Instance109"]["Size"] = UDim2.new(1, 0, 0.3499999940395355, 0);
-    objects["Instance109"]["ZIndex"] = 53;
-    objects["Instance109"]["BorderSizePixel"] = 0;
-    objects["Instance109"]["BackgroundColor3"] = Color3.new(1, 0, 0.494118);
+    objects["Instance109"]["Rotation"] = 90;
+    objects["Instance109"]["Transparency"] = NumberSequence.new({
+    [1] = NumberSequenceKeypoint.new(0, 1, 0),
+    [2] = NumberSequenceKeypoint.new(1, 0, 0)
+});
+    objects["Instance109"]["Parent"] = objects["Instance108"];
 
-    objects["Instance110"]["Thickness"] = 2;
-    objects["Instance110"]["Transparency"] = 0.5;
-    objects["Instance110"]["Parent"] = objects["Instance109"];
-    objects["Instance110"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance110"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Center;
+    objects["Instance110"]["Visible"] = false;
+    objects["Instance110"]["Parent"] = objects["Instance103"];
+    objects["Instance110"]["BackgroundTransparency"] = 1;
+    objects["Instance110"]["Name"] = "List";
+    objects["Instance110"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance110"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance110"]["ZIndex"] = 53;
+    objects["Instance110"]["BorderSizePixel"] = 0;
+    objects["Instance110"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance111"]["Visible"] = false;
-    objects["Instance111"]["Parent"] = objects["Instance109"];
-    objects["Instance111"]["BackgroundTransparency"] = 0.5;
-    objects["Instance111"]["Name"] = "Darker";
-    objects["Instance111"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance111"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance111"]["ZIndex"] = 54;
+    objects["Instance111"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance111"]["Parent"] = objects["Instance110"];
+    objects["Instance111"]["TextStrokeTransparency"] = 0;
+    objects["Instance111"]["ZIndex"] = 64;
     objects["Instance111"]["BorderSizePixel"] = 0;
-    objects["Instance111"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance111"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance111"]["ClipsDescendants"] = true;
+    objects["Instance111"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance111"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance111"]["BackgroundTransparency"] = 1;
+    objects["Instance111"]["TextWrapped"] = true;
+    objects["Instance111"]["Name"] = "Row";
+    objects["Instance111"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance111"]["TextSize"] = 14;
+    objects["Instance111"]["FontFace"] = Font.new("rbxasset://fonts/families/TitilliumWeb.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance111"]["TextScaled"] = true;
+    objects["Instance111"]["TextWrap"] = true;
 
-    objects["Instance112"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance112"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance112"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
-    objects["Instance112"]["Parent"] = objects["Instance106"];
-    objects["Instance112"]["Padding"] = UDim.new(0, 4);
+    objects["Instance112"]["Parent"] = objects["Instance110"];
     objects["Instance112"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance113"]["LayoutOrder"] = 1;
-    objects["Instance113"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance113"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance113"]["Visible"] = false;
+    objects["Instance113"]["TextWrapped"] = true;
+    objects["Instance113"]["TextWrap"] = true;
+    objects["Instance113"]["TextColor3"] = Color3.new(1, 0, 0.498039);
     objects["Instance113"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance113"]["Text"] = "";
-    objects["Instance113"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance113"]["Text"] = "NO ELEMENTS";
+    objects["Instance113"]["Name"] = "NoContents";
+    objects["Instance113"]["TextStrokeTransparency"] = 0;
+    objects["Instance113"]["Parent"] = objects["Instance103"];
+    objects["Instance113"]["FontFace"] = Font.new("rbxasset://fonts/families/LegacyArial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
     objects["Instance113"]["BackgroundTransparency"] = 1;
-    objects["Instance113"]["TextSize"] = 14;
-    objects["Instance113"]["Name"] = "KeybindPicker";
-    objects["Instance113"]["Parent"] = objects["Instance106"];
-    objects["Instance113"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance113"]["ZIndex"] = 52;
+    objects["Instance113"]["TextScaled"] = true;
+    objects["Instance113"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance113"]["ZIndex"] = 53;
     objects["Instance113"]["BorderSizePixel"] = 0;
-    objects["Instance113"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance113"]["BackgroundColor3"] = Color3.new(0.972549, 0.972549, 0.972549);
 
     objects["Instance114"]["Parent"] = objects["Instance113"];
-    objects["Instance114"]["AspectRatio"] = 1.649999976158142;
+    objects["Instance114"]["PaddingTop"] = UDim.new(0, 1);
+    objects["Instance114"]["PaddingBottom"] = UDim.new(0, 1);
 
-    objects["Instance115"]["LayoutOrder"] = 1;
-    objects["Instance115"]["TextWrapped"] = true;
-    objects["Instance115"]["TextWrap"] = true;
-    objects["Instance115"]["TextColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance115"]["Parent"] = objects["Instance102"];
     objects["Instance115"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance115"]["Text"] = "LShift";
-    objects["Instance115"]["Name"] = "Display";
-    objects["Instance115"]["Parent"] = objects["Instance113"];
-    objects["Instance115"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance115"]["TextScaled"] = true;
+    objects["Instance115"]["AnchorPoint"] = Vector2.new(0.5, 0);
     objects["Instance115"]["BackgroundTransparency"] = 1;
-    objects["Instance115"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance115"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance115"]["Name"] = "Label";
+    objects["Instance115"]["Position"] = UDim2.new(0.5, 0, 0, 0);
+    objects["Instance115"]["Size"] = UDim2.new(1, 0, 1, 0);
     objects["Instance115"]["ZIndex"] = 52;
     objects["Instance115"]["BorderSizePixel"] = 0;
-    objects["Instance115"]["BackgroundColor3"] = Color3.new(1, 0, 0.74902);
+    objects["Instance115"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance116"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
     objects["Instance116"]["Parent"] = objects["Instance115"];
+    objects["Instance116"]["BackgroundTransparency"] = 1;
+    objects["Instance116"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance116"]["Image"] = "rbxassetid://12338895277";
+    objects["Instance116"]["Name"] = "Icon";
+    objects["Instance116"]["Size"] = UDim2.new(1, 0, 0.8999999761581421, 0);
+    objects["Instance116"]["ImageContent"] = Content.fromUri("rbxassetid://12338895277");
+    objects["Instance116"]["ZIndex"] = 53;
+    objects["Instance116"]["BorderSizePixel"] = 0;
+    objects["Instance116"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance117"]["PaddingTop"] = UDim.new(0, 3);
-    objects["Instance117"]["PaddingBottom"] = UDim.new(0, 3);
-    objects["Instance117"]["PaddingRight"] = UDim.new(0, 3);
-    objects["Instance117"]["PaddingLeft"] = UDim.new(0, 3);
-    objects["Instance117"]["Parent"] = objects["Instance115"];
+    objects["Instance117"]["Parent"] = objects["Instance116"];
+    objects["Instance117"]["AspectRatio"] = 0.9750000238418579;
 
-    objects["Instance118"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance118"]["ClipsDescendants"] = true;
-    objects["Instance118"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance118"]["Text"] = "";
-    objects["Instance118"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance118"]["Visible"] = false;
+    objects["Instance118"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance118"]["Parent"] = objects["Instance116"];
     objects["Instance118"]["BackgroundTransparency"] = 1;
-    objects["Instance118"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance118"]["TextSize"] = 14;
-    objects["Instance118"]["Name"] = "Input";
-    objects["Instance118"]["Parent"] = objects["Instance34"];
-    objects["Instance118"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance118"]["ZIndex"] = 50;
+    objects["Instance118"]["Rotation"] = 90;
+    objects["Instance118"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance118"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance118"]["Image"] = "rbxassetid://12338895277";
+    objects["Instance118"]["Name"] = "Opened";
+    objects["Instance118"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance118"]["ImageContent"] = Content.fromUri("rbxassetid://12338895277");
+    objects["Instance118"]["ZIndex"] = 54;
     objects["Instance118"]["BorderSizePixel"] = 0;
-    objects["Instance118"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance118"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance119"]["Parent"] = objects["Instance118"];
-    objects["Instance119"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance119"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance119"]["BackgroundTransparency"] = 1;
-    objects["Instance119"]["Name"] = "View";
-    objects["Instance119"]["Position"] = UDim2.new(0, 15, 0.5, 0);
-    objects["Instance119"]["Size"] = UDim2.new(100, 0, 0, 16);
-    objects["Instance119"]["ZIndex"] = 51;
-    objects["Instance119"]["BorderSizePixel"] = 0;
-    objects["Instance119"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance119"]["AspectRatio"] = 0.9750000238418579;
 
     objects["Instance120"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
     objects["Instance120"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance120"]["Parent"] = objects["Instance119"];
-    objects["Instance120"]["Padding"] = UDim.new(0, 7);
+    objects["Instance120"]["Parent"] = objects["Instance115"];
+    objects["Instance120"]["Padding"] = UDim.new(0, 5);
     objects["Instance120"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
     objects["Instance121"]["LayoutOrder"] = 1;
     objects["Instance121"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance121"]["Parent"] = objects["Instance119"];
-    objects["Instance121"]["ZIndex"] = 52;
+    objects["Instance121"]["Parent"] = objects["Instance115"];
+    objects["Instance121"]["ZIndex"] = 53;
     objects["Instance121"]["BorderSizePixel"] = 0;
     objects["Instance121"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance121"]["RichText"] = true;
     objects["Instance121"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance121"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance121"]["Text"] = "InputBox";
+    objects["Instance121"]["Text"] = "Dropdown";
     objects["Instance121"]["TextSize"] = 14;
     objects["Instance121"]["TextWrap"] = true;
     objects["Instance121"]["TextWrapped"] = true;
@@ -1580,661 +1443,914 @@ do -- Set properties
     objects["Instance121"]["TextScaled"] = true;
     objects["Instance121"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance122"]["TextWrapped"] = true;
-    objects["Instance122"]["TextColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance122"]["Parent"] = objects["Instance101"];
     objects["Instance122"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance122"]["Text"] = "LShift";
-    objects["Instance122"]["TextWrap"] = true;
-    objects["Instance122"]["Name"] = "Display";
-    objects["Instance122"]["Parent"] = objects["Instance119"];
-    objects["Instance122"]["BackgroundTransparency"] = 1;
-    objects["Instance122"]["TextScaled"] = true;
-    objects["Instance122"]["Size"] = UDim2.new(1.2000000476837158, 0, 1.2000000476837158, 0);
-    objects["Instance122"]["ZIndex"] = 52;
+    objects["Instance122"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance122"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance122"]["Name"] = "Separator";
+    objects["Instance122"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance122"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance122"]["ZIndex"] = 51;
     objects["Instance122"]["BorderSizePixel"] = 0;
-    objects["Instance122"]["BackgroundColor3"] = Color3.new(1, 0, 0.74902);
+    objects["Instance122"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance123"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance123"]["Parent"] = objects["Instance122"];
+    objects["Instance123"]["ClipsDescendants"] = true;
+    objects["Instance123"]["Parent"] = objects["Instance54"];
+    objects["Instance123"]["BackgroundTransparency"] = 1;
+    objects["Instance123"]["Name"] = "Separator";
+    objects["Instance123"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance123"]["Size"] = UDim2.new(1, 0, 0, 10);
+    objects["Instance123"]["ZIndex"] = 50;
+    objects["Instance123"]["BorderSizePixel"] = 0;
+    objects["Instance123"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance124"]["PaddingTop"] = UDim.new(0, 3);
-    objects["Instance124"]["PaddingBottom"] = UDim.new(0, 3);
-    objects["Instance124"]["PaddingRight"] = UDim.new(0, 3);
-    objects["Instance124"]["PaddingLeft"] = UDim.new(0, 3);
-    objects["Instance124"]["Parent"] = objects["Instance122"];
+    objects["Instance124"]["Parent"] = objects["Instance123"];
+    objects["Instance124"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance124"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance124"]["BackgroundTransparency"] = 0.75;
+    objects["Instance124"]["Name"] = "SeparatorMiddle";
+    objects["Instance124"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance124"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance124"]["ZIndex"] = 51;
+    objects["Instance124"]["BorderSizePixel"] = 0;
+    objects["Instance124"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance125"]["Parent"] = objects["Instance122"];
-    objects["Instance125"]["AspectRatio"] = 3;
+    objects["Instance125"]["Parent"] = objects["Instance123"];
+    objects["Instance125"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance125"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance125"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance125"]["Name"] = "Separator";
+    objects["Instance125"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance125"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance125"]["ZIndex"] = 51;
+    objects["Instance125"]["BorderSizePixel"] = 0;
+    objects["Instance125"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance126"]["Parent"] = objects["Instance118"];
+    objects["Instance126"]["Active"] = true;
+    objects["Instance126"]["Selectable"] = true;
+    objects["Instance126"]["BackgroundTransparency"] = 1;
     objects["Instance126"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance126"]["AnchorPoint"] = Vector2.new(0.5, 1);
-    objects["Instance126"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance126"]["Name"] = "Separator";
-    objects["Instance126"]["Position"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance126"]["Size"] = UDim2.new(1, -20, 0, 1);
-    objects["Instance126"]["ZIndex"] = 51;
+    objects["Instance126"]["ClipsDescendants"] = true;
+    objects["Instance126"]["Name"] = "Label";
+    objects["Instance126"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance126"]["Parent"] = objects["Instance54"];
+    objects["Instance126"]["ZIndex"] = 50;
     objects["Instance126"]["BorderSizePixel"] = 0;
-    objects["Instance126"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance126"]["BackgroundColor3"] = Color3.new(0.972549, 0.972549, 0.972549);
 
-    objects["Instance127"]["Parent"] = objects["Instance33"];
-    objects["Instance127"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance127"]["Parent"] = objects["Instance126"];
+    objects["Instance127"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance127"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance127"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance127"]["Name"] = "Separator";
+    objects["Instance127"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance127"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance127"]["ZIndex"] = 51;
+    objects["Instance127"]["BorderSizePixel"] = 0;
+    objects["Instance127"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance128"]["LayoutOrder"] = 1;
-    objects["Instance128"]["Parent"] = objects["Instance33"];
-    objects["Instance128"]["BackgroundTransparency"] = 1;
-    objects["Instance128"]["Name"] = "GroupboxZone";
-    objects["Instance128"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance128"]["Size"] = UDim2.new(1, 0, 0, 75);
-    objects["Instance128"]["ZIndex"] = 5;
+    objects["Instance128"]["FontSize"] = Enum.FontSize.Size18;
+    objects["Instance128"]["Parent"] = objects["Instance126"];
+    objects["Instance128"]["ZIndex"] = 51;
     objects["Instance128"]["BorderSizePixel"] = 0;
+    objects["Instance128"]["Size"] = UDim2.new(1, -30, 0, 16);
+    objects["Instance128"]["RichText"] = true;
+    objects["Instance128"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance128"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance128"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance128"]["TextWrap"] = true;
+    objects["Instance128"]["TextWrapped"] = true;
+    objects["Instance128"]["TextSize"] = 16;
+    objects["Instance128"]["BackgroundTransparency"] = 1;
+    objects["Instance128"]["Position"] = UDim2.new(0, 15, 0, 12);
+    objects["Instance128"]["Name"] = "Label";
+    objects["Instance128"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance128"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
     objects["Instance128"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance129"]["BackgroundTransparency"] = 1;
+    objects["Instance129"]["Parent"] = objects["Instance126"];
     objects["Instance129"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance129"]["Name"] = "LeftGroupboxZone";
-    objects["Instance129"]["Size"] = UDim2.new(0.5, 0, 0, 75);
-    objects["Instance129"]["Parent"] = objects["Instance128"];
-    objects["Instance129"]["ZIndex"] = 6;
+    objects["Instance129"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance129"]["BackgroundTransparency"] = 1;
+    objects["Instance129"]["Name"] = "ColorPickers";
+    objects["Instance129"]["Position"] = UDim2.new(1, -10, 0, 0);
+    objects["Instance129"]["Size"] = UDim2.new(1, -20, 1, 0);
+    objects["Instance129"]["ZIndex"] = 51;
     objects["Instance129"]["BorderSizePixel"] = 0;
     objects["Instance129"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
+    objects["Instance130"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance130"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance130"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance130"]["Text"] = "";
+    objects["Instance130"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance130"]["BackgroundTransparency"] = 1;
+    objects["Instance130"]["TextSize"] = 14;
+    objects["Instance130"]["Name"] = "Picker";
     objects["Instance130"]["Parent"] = objects["Instance129"];
-    objects["Instance130"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance130"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance130"]["ZIndex"] = 52;
+    objects["Instance130"]["BorderSizePixel"] = 0;
+    objects["Instance130"]["Size"] = UDim2.new(1, 0, 1, 0);
 
-    objects["Instance131"]["BackgroundTransparency"] = 1;
-    objects["Instance131"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance131"]["Name"] = "Groupbox";
-    objects["Instance131"]["Size"] = UDim2.new(1, 0, 0, 75);
-    objects["Instance131"]["Parent"] = objects["Instance129"];
-    objects["Instance131"]["ZIndex"] = 7;
-    objects["Instance131"]["BorderSizePixel"] = 0;
-    objects["Instance131"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance131"]["Parent"] = objects["Instance130"];
+    objects["Instance131"]["AspectRatio"] = 0.5;
 
-    objects["Instance132"]["Parent"] = objects["Instance131"];
+    objects["Instance132"]["LayoutOrder"] = 1;
+    objects["Instance132"]["Parent"] = objects["Instance130"];
+    objects["Instance132"]["AnchorPoint"] = Vector2.new(1, 0.5);
     objects["Instance132"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance132"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance132"]["BackgroundTransparency"] = 0.9750000238418579;
-    objects["Instance132"]["Name"] = "Holder";
-    objects["Instance132"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance132"]["Size"] = UDim2.new(1, -10, 1, -10);
-    objects["Instance132"]["ZIndex"] = 8;
+    objects["Instance132"]["Name"] = "Display";
+    objects["Instance132"]["Position"] = UDim2.new(1, -1, 0.5, 0);
+    objects["Instance132"]["Size"] = UDim2.new(1, 0, 0.3499999940395355, 0);
+    objects["Instance132"]["ZIndex"] = 53;
     objects["Instance132"]["BorderSizePixel"] = 0;
-    objects["Instance132"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance132"]["BackgroundColor3"] = Color3.new(1, 0, 0.494118);
 
-    objects["Instance133"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance133"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance133"]["Thickness"] = 2;
+    objects["Instance133"]["Transparency"] = 0.5;
     objects["Instance133"]["Parent"] = objects["Instance132"];
+    objects["Instance133"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance133"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Center;
 
-    objects["Instance134"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance134"]["Size"] = UDim2.new(1, 0, 0, 2);
+    objects["Instance134"]["Visible"] = false;
     objects["Instance134"]["Parent"] = objects["Instance132"];
-    objects["Instance134"]["ZIndex"] = 9;
+    objects["Instance134"]["BackgroundTransparency"] = 0.5;
+    objects["Instance134"]["Name"] = "Darker";
+    objects["Instance134"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance134"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance134"]["ZIndex"] = 54;
     objects["Instance134"]["BorderSizePixel"] = 0;
-    objects["Instance134"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance134"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
-    objects["Instance135"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance135"]["Parent"] = objects["Instance132"];
-    objects["Instance135"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance135"]["ZIndex"] = 9;
-    objects["Instance135"]["BorderSizePixel"] = 0;
-    objects["Instance135"]["Size"] = UDim2.new(1, 0, 0, 20);
-    objects["Instance135"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance135"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance135"]["Text"] = "LeftGroupbox";
-    objects["Instance135"]["TextWrap"] = true;
-    objects["Instance135"]["Name"] = "Title";
-    objects["Instance135"]["TextWrapped"] = true;
-    objects["Instance135"]["BackgroundTransparency"] = 1;
-    objects["Instance135"]["Position"] = UDim2.new(0.5, 0, 0, 2);
-    objects["Instance135"]["TextSize"] = 14;
-    objects["Instance135"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance135"]["TextScaled"] = true;
-    objects["Instance135"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance135"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance135"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance135"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+    objects["Instance135"]["Parent"] = objects["Instance129"];
+    objects["Instance135"]["Padding"] = UDim.new(0, 4);
+    objects["Instance135"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance136"]["Parent"] = objects["Instance135"];
-    objects["Instance136"]["PaddingTop"] = UDim.new(0.100000001, 0);
-    objects["Instance136"]["PaddingBottom"] = UDim.new(0.200000003, 0);
+    objects["Instance136"]["LayoutOrder"] = 1;
+    objects["Instance136"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance136"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance136"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance136"]["Text"] = "";
+    objects["Instance136"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance136"]["BackgroundTransparency"] = 1;
+    objects["Instance136"]["TextSize"] = 14;
+    objects["Instance136"]["Name"] = "KeybindPicker";
+    objects["Instance136"]["Parent"] = objects["Instance129"];
+    objects["Instance136"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance136"]["ZIndex"] = 52;
+    objects["Instance136"]["BorderSizePixel"] = 0;
+    objects["Instance136"]["Size"] = UDim2.new(0.5, 0, 1, 0);
 
-    objects["Instance137"]["ClipsDescendants"] = true;
-    objects["Instance137"]["Parent"] = objects["Instance132"];
-    objects["Instance137"]["Size"] = UDim2.new(1, -10, 1, -25);
-    objects["Instance137"]["BackgroundTransparency"] = 0.75;
-    objects["Instance137"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance137"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance137"]["Name"] = "Contents";
-    objects["Instance137"]["Position"] = UDim2.new(0.5, 0, 0, 20);
-    objects["Instance137"]["SelectionGroup"] = true;
-    objects["Instance137"]["ZIndex"] = 9;
-    objects["Instance137"]["BorderSizePixel"] = 0;
-    objects["Instance137"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance137"]["Parent"] = objects["Instance136"];
+    objects["Instance137"]["AspectRatio"] = 1.649999976158142;
 
-    objects["Instance138"]["Parent"] = objects["Instance137"];
-    objects["Instance138"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance138"]["LayoutOrder"] = 1;
+    objects["Instance138"]["TextWrapped"] = true;
+    objects["Instance138"]["TextWrap"] = true;
+    objects["Instance138"]["TextColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance138"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance138"]["Text"] = "LShift";
+    objects["Instance138"]["Name"] = "Display";
+    objects["Instance138"]["Parent"] = objects["Instance136"];
+    objects["Instance138"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance138"]["TextScaled"] = true;
+    objects["Instance138"]["BackgroundTransparency"] = 1;
+    objects["Instance138"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance138"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance138"]["ZIndex"] = 52;
+    objects["Instance138"]["BorderSizePixel"] = 0;
+    objects["Instance138"]["BackgroundColor3"] = Color3.new(1, 0, 0.74902);
 
-    objects["Instance139"]["Parent"] = objects["Instance128"];
-    objects["Instance139"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance139"]["BackgroundTransparency"] = 1;
-    objects["Instance139"]["Name"] = "RightGroupboxZone";
-    objects["Instance139"]["Position"] = UDim2.new(0.5, 0, 0, 0);
-    objects["Instance139"]["Size"] = UDim2.new(0.5, 0, 0, 240);
-    objects["Instance139"]["ZIndex"] = 6;
-    objects["Instance139"]["BorderSizePixel"] = 0;
-    objects["Instance139"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance139"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance139"]["Parent"] = objects["Instance138"];
 
-    objects["Instance140"]["Parent"] = objects["Instance139"];
-    objects["Instance140"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance140"]["PaddingTop"] = UDim.new(0, 3);
+    objects["Instance140"]["PaddingBottom"] = UDim.new(0, 3);
+    objects["Instance140"]["PaddingRight"] = UDim.new(0, 3);
+    objects["Instance140"]["PaddingLeft"] = UDim.new(0, 3);
+    objects["Instance140"]["Parent"] = objects["Instance138"];
 
-    objects["Instance141"]["BackgroundTransparency"] = 1;
+    objects["Instance141"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance141"]["ClipsDescendants"] = true;
     objects["Instance141"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance141"]["Name"] = "CustomPage";
-    objects["Instance141"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance141"]["Parent"] = objects["Instance32"];
-    objects["Instance141"]["ZIndex"] = 5;
-    objects["Instance141"]["BorderSizePixel"] = 0;
+    objects["Instance141"]["Text"] = "";
     objects["Instance141"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance141"]["BackgroundTransparency"] = 1;
+    objects["Instance141"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance141"]["TextSize"] = 14;
+    objects["Instance141"]["Name"] = "Input";
+    objects["Instance141"]["Parent"] = objects["Instance54"];
+    objects["Instance141"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance141"]["ZIndex"] = 50;
+    objects["Instance141"]["BorderSizePixel"] = 0;
+    objects["Instance141"]["Size"] = UDim2.new(1, 0, 0, 40);
 
-    objects["Instance142"]["Parent"] = objects["Instance9"];
+    objects["Instance142"]["Parent"] = objects["Instance141"];
     objects["Instance142"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance142"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance142"]["Name"] = "PagesDark";
-    objects["Instance142"]["Position"] = UDim2.new(0, 146, 0, 41);
-    objects["Instance142"]["Size"] = UDim2.new(1, -146, 1, -31);
-    objects["Instance142"]["ZIndex"] = 2;
+    objects["Instance142"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance142"]["BackgroundTransparency"] = 1;
+    objects["Instance142"]["Name"] = "View";
+    objects["Instance142"]["Position"] = UDim2.new(0, 15, 0.5, 0);
+    objects["Instance142"]["Size"] = UDim2.new(100, 0, 0, 16);
+    objects["Instance142"]["ZIndex"] = 51;
     objects["Instance142"]["BorderSizePixel"] = 0;
-    objects["Instance142"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance142"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance143"]["Visible"] = false;
-    objects["Instance143"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance143"]["Parent"] = objects["Instance8"];
-    objects["Instance143"]["ZIndex"] = 39;
-    objects["Instance143"]["BorderSizePixel"] = 0;
-    objects["Instance143"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance143"]["Modal"] = true;
-    objects["Instance143"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance143"]["Text"] = "";
-    objects["Instance143"]["TextTransparency"] = 1;
-    objects["Instance143"]["AutoButtonColor"] = false;
-    objects["Instance143"]["Selected"] = true;
-    objects["Instance143"]["BackgroundTransparency"] = 0.5;
-    objects["Instance143"]["Name"] = "SettingsOverlay";
-    objects["Instance143"]["SelectionOrder"] = 1;
-    objects["Instance143"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance143"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance143"]["TextSize"] = 14;
-    objects["Instance143"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance143"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance143"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance143"]["Parent"] = objects["Instance142"];
+    objects["Instance143"]["Padding"] = UDim.new(0, 7);
+    objects["Instance143"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance144"]["ClipsDescendants"] = true;
-    objects["Instance144"]["Parent"] = objects["Instance143"];
-    objects["Instance144"]["AnchorPoint"] = Vector2.new(0, 1);
-    objects["Instance144"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance144"]["Name"] = "SettingsHub";
-    objects["Instance144"]["Position"] = UDim2.new(0, 0, 1, 0);
-    objects["Instance144"]["Size"] = UDim2.new(1, 0, 1, -75);
-    objects["Instance144"]["ZIndex"] = 40;
+    objects["Instance144"]["LayoutOrder"] = 1;
+    objects["Instance144"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance144"]["Parent"] = objects["Instance142"];
+    objects["Instance144"]["ZIndex"] = 52;
     objects["Instance144"]["BorderSizePixel"] = 0;
-    objects["Instance144"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance144"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance144"]["RichText"] = true;
+    objects["Instance144"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance144"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance144"]["Text"] = "InputBox";
+    objects["Instance144"]["TextSize"] = 14;
+    objects["Instance144"]["TextWrap"] = true;
+    objects["Instance144"]["TextWrapped"] = true;
+    objects["Instance144"]["BackgroundTransparency"] = 1;
+    objects["Instance144"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance144"]["Name"] = "Label";
+    objects["Instance144"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance144"]["TextScaled"] = true;
+    objects["Instance144"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance145"]["Parent"] = objects["Instance144"];
+    objects["Instance145"]["TextWrapped"] = true;
+    objects["Instance145"]["TextColor3"] = Color3.new(1, 0, 0.498039);
     objects["Instance145"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance145"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance145"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance145"]["Name"] = "Separator";
-    objects["Instance145"]["Position"] = UDim2.new(0.5, 0, 0, 0);
-    objects["Instance145"]["Size"] = UDim2.new(1, -28, 0, 1);
-    objects["Instance145"]["ZIndex"] = 43;
+    objects["Instance145"]["Text"] = "LShift";
+    objects["Instance145"]["TextWrap"] = true;
+    objects["Instance145"]["Name"] = "Display";
+    objects["Instance145"]["Parent"] = objects["Instance142"];
+    objects["Instance145"]["BackgroundTransparency"] = 1;
+    objects["Instance145"]["TextScaled"] = true;
+    objects["Instance145"]["Size"] = UDim2.new(1.2000000476837158, 0, 1.2000000476837158, 0);
+    objects["Instance145"]["ZIndex"] = 52;
     objects["Instance145"]["BorderSizePixel"] = 0;
-    objects["Instance145"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance145"]["BackgroundColor3"] = Color3.new(1, 0, 0.74902);
 
-    objects["Instance146"]["ScaleType"] = Enum.ScaleType.Crop;
-    objects["Instance146"]["ImageTransparency"] = 0.8500000238418579;
-    objects["Instance146"]["Parent"] = objects["Instance144"];
-    objects["Instance146"]["Size"] = UDim2.new(1, 0, 1, 75);
-    objects["Instance146"]["BackgroundTransparency"] = 1;
-    objects["Instance146"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance146"]["AnchorPoint"] = Vector2.new(0, 1);
-    objects["Instance146"]["Image"] = "rbxassetid://8942361465";
-    objects["Instance146"]["Name"] = "Image";
-    objects["Instance146"]["Position"] = UDim2.new(0, 0, 1, 0);
-    objects["Instance146"]["ImageContent"] = Content.fromUri("rbxassetid://8942361465");
-    objects["Instance146"]["ZIndex"] = 42;
-    objects["Instance146"]["BorderSizePixel"] = 0;
-    objects["Instance146"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance146"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance146"]["Parent"] = objects["Instance145"];
 
-    objects["Instance147"]["TopLeftRadius"] = UDim.new(0, 0);
-    objects["Instance147"]["CornerRadius"] = UDim.new(0, 0);
-    objects["Instance147"]["Parent"] = objects["Instance146"];
-    objects["Instance147"]["BottomRightRadius"] = UDim.new(0, 0);
-    objects["Instance147"]["TopRightRadius"] = UDim.new(0, 0);
-    objects["Instance147"]["BottomLeftRadius"] = UDim.new(0, 0);
+    objects["Instance147"]["PaddingTop"] = UDim.new(0, 3);
+    objects["Instance147"]["PaddingBottom"] = UDim.new(0, 3);
+    objects["Instance147"]["PaddingRight"] = UDim.new(0, 3);
+    objects["Instance147"]["PaddingLeft"] = UDim.new(0, 3);
+    objects["Instance147"]["Parent"] = objects["Instance145"];
 
-    objects["Instance148"]["TopLeftRadius"] = UDim.new(0, 0);
-    objects["Instance148"]["CornerRadius"] = UDim.new(0, 0);
-    objects["Instance148"]["Parent"] = objects["Instance144"];
-    objects["Instance148"]["BottomRightRadius"] = UDim.new(0, 0);
-    objects["Instance148"]["TopRightRadius"] = UDim.new(0, 0);
-    objects["Instance148"]["BottomLeftRadius"] = UDim.new(0, 0);
+    objects["Instance148"]["Parent"] = objects["Instance145"];
+    objects["Instance148"]["AspectRatio"] = 3;
 
+    objects["Instance149"]["Parent"] = objects["Instance141"];
     objects["Instance149"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance149"]["Name"] = "AntiCorner";
-    objects["Instance149"]["Size"] = UDim2.new(1, 0, 0.5, 0);
-    objects["Instance149"]["Parent"] = objects["Instance144"];
-    objects["Instance149"]["ZIndex"] = 41;
+    objects["Instance149"]["AnchorPoint"] = Vector2.new(0.5, 1);
+    objects["Instance149"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance149"]["Name"] = "Separator";
+    objects["Instance149"]["Position"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance149"]["Size"] = UDim2.new(1, -20, 0, 1);
+    objects["Instance149"]["ZIndex"] = 51;
     objects["Instance149"]["BorderSizePixel"] = 0;
-    objects["Instance149"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance149"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance150"]["TopLeftRadius"] = UDim.new(0, 0);
-    objects["Instance150"]["CornerRadius"] = UDim.new(0, 0);
-    objects["Instance150"]["Parent"] = objects["Instance143"];
-    objects["Instance150"]["BottomRightRadius"] = UDim.new(0, 0);
-    objects["Instance150"]["TopRightRadius"] = UDim.new(0, 0);
-    objects["Instance150"]["BottomLeftRadius"] = UDim.new(0, 0);
+    objects["Instance150"]["Parent"] = objects["Instance53"];
+    objects["Instance150"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance151"]["Parent"] = objects["Instance8"];
-    objects["Instance151"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance151"]["AnchorPoint"] = Vector2.new(0, 1);
+    objects["Instance151"]["LayoutOrder"] = 1;
+    objects["Instance151"]["Parent"] = objects["Instance53"];
     objects["Instance151"]["BackgroundTransparency"] = 1;
-    objects["Instance151"]["Name"] = "Footer";
-    objects["Instance151"]["Position"] = UDim2.new(0, 0, 1, 0);
-    objects["Instance151"]["Size"] = UDim2.new(1, 0, 0, 15);
-    objects["Instance151"]["ZIndex"] = 3;
+    objects["Instance151"]["Name"] = "GroupboxZone";
+    objects["Instance151"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance151"]["Size"] = UDim2.new(1, 0, 0, 75);
+    objects["Instance151"]["ZIndex"] = 5;
     objects["Instance151"]["BorderSizePixel"] = 0;
     objects["Instance151"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance152"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance152"]["BackgroundTransparency"] = 1;
     objects["Instance152"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance152"]["Name"] = "SeparatorTop";
-    objects["Instance152"]["Size"] = UDim2.new(1, 0, 0, 1);
+    objects["Instance152"]["Name"] = "LeftGroupboxZone";
+    objects["Instance152"]["Size"] = UDim2.new(0.5, 0, 0, 75);
     objects["Instance152"]["Parent"] = objects["Instance151"];
-    objects["Instance152"]["ZIndex"] = 4;
+    objects["Instance152"]["ZIndex"] = 6;
     objects["Instance152"]["BorderSizePixel"] = 0;
     objects["Instance152"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance153"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance153"]["TextTransparency"] = 0.25;
-    objects["Instance153"]["ZIndex"] = 4;
-    objects["Instance153"]["BorderSizePixel"] = 0;
-    objects["Instance153"]["Size"] = UDim2.new(1, 0, 1, -1);
-    objects["Instance153"]["RichText"] = true;
-    objects["Instance153"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance153"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance153"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance153"]["Text"] = "© 2026 NullFire, 4.0.2";
-    objects["Instance153"]["TextWrap"] = true;
-    objects["Instance153"]["TextSize"] = 14;
-    objects["Instance153"]["TextWrapped"] = true;
-    objects["Instance153"]["Name"] = "Label";
-    objects["Instance153"]["BackgroundTransparency"] = 1;
-    objects["Instance153"]["Position"] = UDim2.new(0, 0, 0, 1);
-    objects["Instance153"]["Parent"] = objects["Instance151"];
-    objects["Instance153"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance153"]["TextScaled"] = true;
-    objects["Instance153"]["BackgroundColor3"] = Color3.new(0.972549, 0.972549, 0.972549);
+    objects["Instance153"]["Parent"] = objects["Instance152"];
+    objects["Instance153"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance154"]["Parent"] = objects["Instance153"];
-    objects["Instance154"]["PaddingTop"] = UDim.new(0, 2);
-    objects["Instance154"]["PaddingLeft"] = UDim.new(0, 5);
-    objects["Instance154"]["PaddingBottom"] = UDim.new(0, 1);
+    objects["Instance154"]["BackgroundTransparency"] = 1;
+    objects["Instance154"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance154"]["Name"] = "Groupbox";
+    objects["Instance154"]["Size"] = UDim2.new(1, 0, 0, 75);
+    objects["Instance154"]["Parent"] = objects["Instance152"];
+    objects["Instance154"]["ZIndex"] = 7;
+    objects["Instance154"]["BorderSizePixel"] = 0;
+    objects["Instance154"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance155"]["BackgroundTransparency"] = 1;
+    objects["Instance155"]["Parent"] = objects["Instance154"];
     objects["Instance155"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance155"]["Name"] = "TopbarZone";
-    objects["Instance155"]["Size"] = UDim2.new(1, 0, 0, 40);
-    objects["Instance155"]["Parent"] = objects["Instance8"];
-    objects["Instance155"]["ZIndex"] = 70;
+    objects["Instance155"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance155"]["BackgroundTransparency"] = 0.9750000238418579;
+    objects["Instance155"]["Name"] = "Holder";
+    objects["Instance155"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance155"]["Size"] = UDim2.new(1, -10, 1, -10);
+    objects["Instance155"]["ZIndex"] = 8;
     objects["Instance155"]["BorderSizePixel"] = 0;
     objects["Instance155"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance156"]["ClipsDescendants"] = true;
+    objects["Instance156"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance156"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
     objects["Instance156"]["Parent"] = objects["Instance155"];
-    objects["Instance156"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance156"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance156"]["BackgroundTransparency"] = 1;
-    objects["Instance156"]["Name"] = "TitleZone";
-    objects["Instance156"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance156"]["Size"] = UDim2.new(100, 0, 1, -16);
-    objects["Instance156"]["ZIndex"] = 100;
-    objects["Instance156"]["BorderSizePixel"] = 0;
-    objects["Instance156"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance157"]["Wraps"] = true;
-    objects["Instance157"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
-    objects["Instance157"]["Parent"] = objects["Instance156"];
-    objects["Instance157"]["Padding"] = UDim.new(0, 7);
-    objects["Instance157"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-    objects["Instance157"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance157"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance157"]["Size"] = UDim2.new(1, 0, 0, 2);
+    objects["Instance157"]["Parent"] = objects["Instance155"];
+    objects["Instance157"]["ZIndex"] = 9;
+    objects["Instance157"]["BorderSizePixel"] = 0;
+    objects["Instance157"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance158"]["ScaleType"] = Enum.ScaleType.Crop;
-    objects["Instance158"]["Parent"] = objects["Instance156"];
-    objects["Instance158"]["BackgroundTransparency"] = 1;
-    objects["Instance158"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance158"]["Image"] = "rbxassetid://103841351698732";
-    objects["Instance158"]["Name"] = "Icon";
-    objects["Instance158"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance158"]["ImageContent"] = Content.fromUri("rbxassetid://103841351698732");
-    objects["Instance158"]["ZIndex"] = 101;
+    objects["Instance158"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance158"]["Parent"] = objects["Instance155"];
+    objects["Instance158"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance158"]["ZIndex"] = 9;
     objects["Instance158"]["BorderSizePixel"] = 0;
+    objects["Instance158"]["Size"] = UDim2.new(1, 0, 0, 20);
+    objects["Instance158"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance158"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance158"]["Text"] = "LeftGroupbox";
+    objects["Instance158"]["TextWrap"] = true;
+    objects["Instance158"]["Name"] = "Title";
+    objects["Instance158"]["TextWrapped"] = true;
+    objects["Instance158"]["BackgroundTransparency"] = 1;
+    objects["Instance158"]["Position"] = UDim2.new(0.5, 0, 0, 2);
+    objects["Instance158"]["TextSize"] = 14;
+    objects["Instance158"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance158"]["TextScaled"] = true;
     objects["Instance158"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance159"]["Parent"] = objects["Instance158"];
-    objects["Instance159"]["AspectRatio"] = 0.9750000238418579;
+    objects["Instance159"]["PaddingTop"] = UDim.new(0.100000001, 0);
+    objects["Instance159"]["PaddingBottom"] = UDim.new(0.200000003, 0);
 
-    objects["Instance160"]["TopLeftRadius"] = UDim.new(0, 6);
-    objects["Instance160"]["CornerRadius"] = UDim.new(0, 6);
-    objects["Instance160"]["Parent"] = objects["Instance158"];
-    objects["Instance160"]["BottomRightRadius"] = UDim.new(0, 6);
-    objects["Instance160"]["TopRightRadius"] = UDim.new(0, 6);
-    objects["Instance160"]["BottomLeftRadius"] = UDim.new(0, 6);
+    objects["Instance160"]["ClipsDescendants"] = true;
+    objects["Instance160"]["Parent"] = objects["Instance155"];
+    objects["Instance160"]["Size"] = UDim2.new(1, -10, 1, -25);
+    objects["Instance160"]["BackgroundTransparency"] = 0.75;
+    objects["Instance160"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance160"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance160"]["Name"] = "Contents";
+    objects["Instance160"]["Position"] = UDim2.new(0.5, 0, 0, 20);
+    objects["Instance160"]["SelectionGroup"] = true;
+    objects["Instance160"]["ZIndex"] = 9;
+    objects["Instance160"]["BorderSizePixel"] = 0;
+    objects["Instance160"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
-    objects["Instance161"]["LayoutOrder"] = 1;
-    objects["Instance161"]["FontSize"] = Enum.FontSize.Size24;
-    objects["Instance161"]["RichText"] = true;
-    objects["Instance161"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance161"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance161"]["Text"] = "NullFire";
-    objects["Instance161"]["TextSize"] = 24;
-    objects["Instance161"]["Name"] = "Title";
-    objects["Instance161"]["Parent"] = objects["Instance156"];
-    objects["Instance161"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance161"]["BackgroundTransparency"] = 1;
-    objects["Instance161"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance161"]["Size"] = UDim2.new(0, 76, 1, 0);
-    objects["Instance161"]["ZIndex"] = 101;
-    objects["Instance161"]["BorderSizePixel"] = 0;
-    objects["Instance161"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance161"]["Parent"] = objects["Instance160"];
+    objects["Instance161"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance162"]["BackgroundTransparency"] = 1;
+    objects["Instance162"]["Parent"] = objects["Instance151"];
     objects["Instance162"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance162"]["Name"] = "Right";
-    objects["Instance162"]["Size"] = UDim2.new(1, -5, 1, 0);
-    objects["Instance162"]["Parent"] = objects["Instance155"];
-    objects["Instance162"]["ZIndex"] = 80;
+    objects["Instance162"]["BackgroundTransparency"] = 1;
+    objects["Instance162"]["Name"] = "RightGroupboxZone";
+    objects["Instance162"]["Position"] = UDim2.new(0.5, 0, 0, 0);
+    objects["Instance162"]["Size"] = UDim2.new(0.5, 0, 0, 240);
+    objects["Instance162"]["ZIndex"] = 6;
     objects["Instance162"]["BorderSizePixel"] = 0;
     objects["Instance162"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance163"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance163"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance163"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
     objects["Instance163"]["Parent"] = objects["Instance162"];
-    objects["Instance163"]["Padding"] = UDim.new(0, 5);
     objects["Instance163"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance164"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance164"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance164"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance164"]["Text"] = "";
-    objects["Instance164"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance164"]["LayoutOrder"] = 2147483647;
     objects["Instance164"]["BackgroundTransparency"] = 1;
-    objects["Instance164"]["TextSize"] = 14;
-    objects["Instance164"]["Name"] = "ToggleUI";
-    objects["Instance164"]["Parent"] = objects["Instance162"];
-    objects["Instance164"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance164"]["ZIndex"] = 90;
+    objects["Instance164"]["Name"] = "MobileSizeFix";
+    objects["Instance164"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance164"]["Parent"] = objects["Instance53"];
+    objects["Instance164"]["Size"] = UDim2.new(1, 0, 0, 1);
     objects["Instance164"]["BorderSizePixel"] = 0;
-    objects["Instance164"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance164"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance165"]["Parent"] = objects["Instance164"];
-    objects["Instance165"]["AspectRatio"] = 0.699999988079071;
+    objects["Instance165"]["BackgroundTransparency"] = 1;
+    objects["Instance165"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance165"]["Name"] = "CustomPage";
+    objects["Instance165"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance165"]["Parent"] = objects["Instance52"];
+    objects["Instance165"]["ZIndex"] = 5;
+    objects["Instance165"]["BorderSizePixel"] = 0;
+    objects["Instance165"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance166"]["ScaleType"] = Enum.ScaleType.Fit;
-    objects["Instance166"]["ImageTransparency"] = 0.25;
-    objects["Instance166"]["Parent"] = objects["Instance164"];
-    objects["Instance166"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance166"]["Parent"] = objects["Instance27"];
     objects["Instance166"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance166"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance166"]["Image"] = "rbxassetid://9405925508";
-    objects["Instance166"]["BackgroundTransparency"] = 1;
-    objects["Instance166"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance166"]["ImageContent"] = Content.fromUri("rbxassetid://9405925508");
-    objects["Instance166"]["ZIndex"] = 95;
+    objects["Instance166"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance166"]["Name"] = "PagesDark";
+    objects["Instance166"]["Position"] = UDim2.new(0, 146, 0, 41);
+    objects["Instance166"]["Size"] = UDim2.new(1, -146, 1, -31);
+    objects["Instance166"]["ZIndex"] = 2;
     objects["Instance166"]["BorderSizePixel"] = 0;
-    objects["Instance166"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance166"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
-    objects["Instance167"]["LayoutOrder"] = 1;
+    objects["Instance167"]["Visible"] = false;
     objects["Instance167"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance167"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance167"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance167"]["Text"] = "";
-    objects["Instance167"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance167"]["BackgroundTransparency"] = 1;
-    objects["Instance167"]["TextSize"] = 14;
-    objects["Instance167"]["Name"] = "Settings";
-    objects["Instance167"]["Parent"] = objects["Instance162"];
-    objects["Instance167"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance167"]["ZIndex"] = 90;
+    objects["Instance167"]["Parent"] = objects["Instance26"];
+    objects["Instance167"]["ZIndex"] = 39;
     objects["Instance167"]["BorderSizePixel"] = 0;
     objects["Instance167"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance167"]["Modal"] = true;
+    objects["Instance167"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance167"]["Text"] = "";
+    objects["Instance167"]["TextTransparency"] = 1;
+    objects["Instance167"]["AutoButtonColor"] = false;
+    objects["Instance167"]["Selected"] = true;
+    objects["Instance167"]["BackgroundTransparency"] = 0.5;
+    objects["Instance167"]["Name"] = "SettingsOverlay";
+    objects["Instance167"]["SelectionOrder"] = 1;
+    objects["Instance167"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance167"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance167"]["TextSize"] = 14;
+    objects["Instance167"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
+    objects["Instance168"]["ClipsDescendants"] = true;
     objects["Instance168"]["Parent"] = objects["Instance167"];
-    objects["Instance168"]["AspectRatio"] = 0.699999988079071;
+    objects["Instance168"]["AnchorPoint"] = Vector2.new(0, 1);
+    objects["Instance168"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance168"]["Name"] = "SettingsHub";
+    objects["Instance168"]["Position"] = UDim2.new(0, 0, 1, 0);
+    objects["Instance168"]["Size"] = UDim2.new(1, 0, 1, -75);
+    objects["Instance168"]["ZIndex"] = 40;
+    objects["Instance168"]["BorderSizePixel"] = 0;
+    objects["Instance168"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
 
-    objects["Instance169"]["ScaleType"] = Enum.ScaleType.Fit;
-    objects["Instance169"]["ImageTransparency"] = 0.25;
-    objects["Instance169"]["Parent"] = objects["Instance167"];
-    objects["Instance169"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance169"]["Parent"] = objects["Instance168"];
     objects["Instance169"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance169"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance169"]["Image"] = "rbxassetid://4492476121";
-    objects["Instance169"]["BackgroundTransparency"] = 1;
-    objects["Instance169"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance169"]["ImageContent"] = Content.fromUri("rbxassetid://4492476121");
-    objects["Instance169"]["ZIndex"] = 95;
+    objects["Instance169"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance169"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance169"]["Name"] = "Separator";
+    objects["Instance169"]["Position"] = UDim2.new(0.5, 0, 0, 0);
+    objects["Instance169"]["Size"] = UDim2.new(1, -28, 0, 1);
+    objects["Instance169"]["ZIndex"] = 43;
     objects["Instance169"]["BorderSizePixel"] = 0;
     objects["Instance169"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance170"]["Active"] = false;
-    objects["Instance170"]["Selectable"] = false;
-    objects["Instance170"]["Text"] = "";
-    objects["Instance170"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
-    objects["Instance170"]["AutoButtonColor"] = false;
-    objects["Instance170"]["AnchorPoint"] = Vector2.new(1, 1);
-    objects["Instance170"]["Parent"] = objects["Instance5"];
-    objects["Instance170"]["Name"] = "Resize";
-    objects["Instance170"]["Position"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance170"]["ScaleType"] = Enum.ScaleType.Crop;
+    objects["Instance170"]["ImageTransparency"] = 0.8500000238418579;
+    objects["Instance170"]["Parent"] = objects["Instance168"];
+    objects["Instance170"]["Size"] = UDim2.new(1, 0, 1, 75);
+    objects["Instance170"]["BackgroundTransparency"] = 1;
     objects["Instance170"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance170"]["ZIndex"] = 50;
+    objects["Instance170"]["AnchorPoint"] = Vector2.new(0, 1);
+    objects["Instance170"]["Image"] = "rbxassetid://8942361465";
+    objects["Instance170"]["Name"] = "Image";
+    objects["Instance170"]["Position"] = UDim2.new(0, 0, 1, 0);
+    objects["Instance170"]["ImageContent"] = Content.fromUri("rbxassetid://8942361465");
+    objects["Instance170"]["ZIndex"] = 42;
     objects["Instance170"]["BorderSizePixel"] = 0;
-    objects["Instance170"]["Size"] = UDim2.new(0, 20, 0, 20);
+    objects["Instance170"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance171"]["Rotation"] = 45;
-    objects["Instance171"]["Transparency"] = NumberSequence.new({
+    objects["Instance171"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance171"]["CornerRadius"] = UDim.new(0, 0);
+    objects["Instance171"]["Parent"] = objects["Instance170"];
+    objects["Instance171"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance171"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance171"]["BottomLeftRadius"] = UDim.new(0, 0);
+
+    objects["Instance172"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance172"]["CornerRadius"] = UDim.new(0, 0);
+    objects["Instance172"]["Parent"] = objects["Instance168"];
+    objects["Instance172"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance172"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance172"]["BottomLeftRadius"] = UDim.new(0, 0);
+
+    objects["Instance173"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance173"]["Name"] = "AntiCorner";
+    objects["Instance173"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance173"]["Parent"] = objects["Instance168"];
+    objects["Instance173"]["ZIndex"] = 41;
+    objects["Instance173"]["BorderSizePixel"] = 0;
+    objects["Instance173"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+
+    objects["Instance174"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance174"]["CornerRadius"] = UDim.new(0, 0);
+    objects["Instance174"]["Parent"] = objects["Instance167"];
+    objects["Instance174"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance174"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance174"]["BottomLeftRadius"] = UDim.new(0, 0);
+
+    objects["Instance175"]["Parent"] = objects["Instance26"];
+    objects["Instance175"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance175"]["AnchorPoint"] = Vector2.new(0, 1);
+    objects["Instance175"]["BackgroundTransparency"] = 1;
+    objects["Instance175"]["Name"] = "Footer";
+    objects["Instance175"]["Position"] = UDim2.new(0, 0, 1, 0);
+    objects["Instance175"]["Size"] = UDim2.new(1, 0, 0, 15);
+    objects["Instance175"]["ZIndex"] = 3;
+    objects["Instance175"]["BorderSizePixel"] = 0;
+    objects["Instance175"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance176"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance176"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance176"]["Name"] = "SeparatorTop";
+    objects["Instance176"]["Size"] = UDim2.new(1, 0, 0, 1);
+    objects["Instance176"]["Parent"] = objects["Instance175"];
+    objects["Instance176"]["ZIndex"] = 4;
+    objects["Instance176"]["BorderSizePixel"] = 0;
+    objects["Instance176"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance177"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance177"]["TextTransparency"] = 0.25;
+    objects["Instance177"]["ZIndex"] = 4;
+    objects["Instance177"]["BorderSizePixel"] = 0;
+    objects["Instance177"]["Size"] = UDim2.new(1, 0, 1, -1);
+    objects["Instance177"]["RichText"] = true;
+    objects["Instance177"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance177"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance177"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance177"]["Text"] = "© 2026 NullFire, 4.0.2";
+    objects["Instance177"]["TextWrap"] = true;
+    objects["Instance177"]["TextSize"] = 14;
+    objects["Instance177"]["TextWrapped"] = true;
+    objects["Instance177"]["Name"] = "Label";
+    objects["Instance177"]["BackgroundTransparency"] = 1;
+    objects["Instance177"]["Position"] = UDim2.new(0, 0, 0, 1);
+    objects["Instance177"]["Parent"] = objects["Instance175"];
+    objects["Instance177"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance177"]["TextScaled"] = true;
+    objects["Instance177"]["BackgroundColor3"] = Color3.new(0.972549, 0.972549, 0.972549);
+
+    objects["Instance178"]["Parent"] = objects["Instance177"];
+    objects["Instance178"]["PaddingTop"] = UDim.new(0, 2);
+    objects["Instance178"]["PaddingLeft"] = UDim.new(0, 5);
+    objects["Instance178"]["PaddingBottom"] = UDim.new(0, 1);
+
+    objects["Instance179"]["BackgroundTransparency"] = 1;
+    objects["Instance179"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance179"]["Name"] = "TopbarZone";
+    objects["Instance179"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance179"]["Parent"] = objects["Instance26"];
+    objects["Instance179"]["ZIndex"] = 70;
+    objects["Instance179"]["BorderSizePixel"] = 0;
+    objects["Instance179"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance180"]["ClipsDescendants"] = true;
+    objects["Instance180"]["Parent"] = objects["Instance179"];
+    objects["Instance180"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance180"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance180"]["BackgroundTransparency"] = 1;
+    objects["Instance180"]["Name"] = "TitleZone";
+    objects["Instance180"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance180"]["Size"] = UDim2.new(100, 0, 1, -16);
+    objects["Instance180"]["ZIndex"] = 100;
+    objects["Instance180"]["BorderSizePixel"] = 0;
+    objects["Instance180"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance181"]["Wraps"] = true;
+    objects["Instance181"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
+    objects["Instance181"]["Parent"] = objects["Instance180"];
+    objects["Instance181"]["Padding"] = UDim.new(0, 7);
+    objects["Instance181"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance181"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+    objects["Instance182"]["ScaleType"] = Enum.ScaleType.Crop;
+    objects["Instance182"]["Parent"] = objects["Instance180"];
+    objects["Instance182"]["BackgroundTransparency"] = 1;
+    objects["Instance182"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance182"]["Image"] = "rbxassetid://103841351698732";
+    objects["Instance182"]["Name"] = "Icon";
+    objects["Instance182"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance182"]["ImageContent"] = Content.fromUri("rbxassetid://103841351698732");
+    objects["Instance182"]["ZIndex"] = 101;
+    objects["Instance182"]["BorderSizePixel"] = 0;
+    objects["Instance182"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance183"]["Parent"] = objects["Instance182"];
+    objects["Instance183"]["AspectRatio"] = 0.9750000238418579;
+
+    objects["Instance184"]["TopLeftRadius"] = UDim.new(0, 6);
+    objects["Instance184"]["CornerRadius"] = UDim.new(0, 6);
+    objects["Instance184"]["Parent"] = objects["Instance182"];
+    objects["Instance184"]["BottomRightRadius"] = UDim.new(0, 6);
+    objects["Instance184"]["TopRightRadius"] = UDim.new(0, 6);
+    objects["Instance184"]["BottomLeftRadius"] = UDim.new(0, 6);
+
+    objects["Instance185"]["LayoutOrder"] = 1;
+    objects["Instance185"]["FontSize"] = Enum.FontSize.Size24;
+    objects["Instance185"]["RichText"] = true;
+    objects["Instance185"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance185"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance185"]["Text"] = "NullFire";
+    objects["Instance185"]["TextSize"] = 24;
+    objects["Instance185"]["Name"] = "Title";
+    objects["Instance185"]["Parent"] = objects["Instance180"];
+    objects["Instance185"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance185"]["BackgroundTransparency"] = 1;
+    objects["Instance185"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance185"]["Size"] = UDim2.new(0, 76, 1, 0);
+    objects["Instance185"]["ZIndex"] = 101;
+    objects["Instance185"]["BorderSizePixel"] = 0;
+    objects["Instance185"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance186"]["BackgroundTransparency"] = 1;
+    objects["Instance186"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance186"]["Name"] = "Right";
+    objects["Instance186"]["Size"] = UDim2.new(1, -5, 1, 0);
+    objects["Instance186"]["Parent"] = objects["Instance179"];
+    objects["Instance186"]["ZIndex"] = 80;
+    objects["Instance186"]["BorderSizePixel"] = 0;
+    objects["Instance186"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance187"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance187"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance187"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+    objects["Instance187"]["Parent"] = objects["Instance186"];
+    objects["Instance187"]["Padding"] = UDim.new(0, 5);
+    objects["Instance187"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+    objects["Instance188"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance188"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance188"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance188"]["Text"] = "";
+    objects["Instance188"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance188"]["BackgroundTransparency"] = 1;
+    objects["Instance188"]["TextSize"] = 14;
+    objects["Instance188"]["Name"] = "ToggleUI";
+    objects["Instance188"]["Parent"] = objects["Instance186"];
+    objects["Instance188"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance188"]["ZIndex"] = 90;
+    objects["Instance188"]["BorderSizePixel"] = 0;
+    objects["Instance188"]["Size"] = UDim2.new(1, 0, 1, 0);
+
+    objects["Instance189"]["Parent"] = objects["Instance188"];
+    objects["Instance189"]["AspectRatio"] = 0.699999988079071;
+
+    objects["Instance190"]["ScaleType"] = Enum.ScaleType.Fit;
+    objects["Instance190"]["ImageTransparency"] = 0.25;
+    objects["Instance190"]["Parent"] = objects["Instance188"];
+    objects["Instance190"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance190"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance190"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance190"]["Image"] = "rbxassetid://9405925508";
+    objects["Instance190"]["BackgroundTransparency"] = 1;
+    objects["Instance190"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance190"]["ImageContent"] = Content.fromUri("rbxassetid://9405925508");
+    objects["Instance190"]["ZIndex"] = 95;
+    objects["Instance190"]["BorderSizePixel"] = 0;
+    objects["Instance190"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance191"]["LayoutOrder"] = 1;
+    objects["Instance191"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance191"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance191"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance191"]["Text"] = "";
+    objects["Instance191"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance191"]["BackgroundTransparency"] = 1;
+    objects["Instance191"]["TextSize"] = 14;
+    objects["Instance191"]["Name"] = "Settings";
+    objects["Instance191"]["Parent"] = objects["Instance186"];
+    objects["Instance191"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance191"]["ZIndex"] = 90;
+    objects["Instance191"]["BorderSizePixel"] = 0;
+    objects["Instance191"]["Size"] = UDim2.new(1, 0, 1, 0);
+
+    objects["Instance192"]["Parent"] = objects["Instance191"];
+    objects["Instance192"]["AspectRatio"] = 0.699999988079071;
+
+    objects["Instance193"]["ScaleType"] = Enum.ScaleType.Fit;
+    objects["Instance193"]["ImageTransparency"] = 0.25;
+    objects["Instance193"]["Parent"] = objects["Instance191"];
+    objects["Instance193"]["Size"] = UDim2.new(1, 0, 0.5, 0);
+    objects["Instance193"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance193"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance193"]["Image"] = "rbxassetid://4492476121";
+    objects["Instance193"]["BackgroundTransparency"] = 1;
+    objects["Instance193"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance193"]["ImageContent"] = Content.fromUri("rbxassetid://4492476121");
+    objects["Instance193"]["ZIndex"] = 95;
+    objects["Instance193"]["BorderSizePixel"] = 0;
+    objects["Instance193"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance194"]["Active"] = false;
+    objects["Instance194"]["Selectable"] = false;
+    objects["Instance194"]["Text"] = "";
+    objects["Instance194"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance194"]["AutoButtonColor"] = false;
+    objects["Instance194"]["AnchorPoint"] = Vector2.new(1, 1);
+    objects["Instance194"]["Parent"] = objects["Instance23"];
+    objects["Instance194"]["Name"] = "Resize";
+    objects["Instance194"]["Position"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance194"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance194"]["ZIndex"] = 50;
+    objects["Instance194"]["BorderSizePixel"] = 0;
+    objects["Instance194"]["Size"] = UDim2.new(0, 20, 0, 20);
+
+    objects["Instance195"]["Rotation"] = 45;
+    objects["Instance195"]["Transparency"] = NumberSequence.new({
     [1] = NumberSequenceKeypoint.new(0, 1, 0),
     [2] = NumberSequenceKeypoint.new(0.5, 1, 0),
     [3] = NumberSequenceKeypoint.new(0.5009999871253967, 0, 0),
     [4] = NumberSequenceKeypoint.new(1, 0, 0)
 });
-    objects["Instance171"]["Parent"] = objects["Instance170"];
+    objects["Instance195"]["Parent"] = objects["Instance194"];
 
-    objects["Instance172"]["Visible"] = false;
-    objects["Instance172"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance172"]["Name"] = "TopNeon";
-    objects["Instance172"]["Size"] = UDim2.new(1, 0, 0, 1);
-    objects["Instance172"]["Parent"] = objects["Instance5"];
-    objects["Instance172"]["ZIndex"] = 3;
-    objects["Instance172"]["BorderSizePixel"] = 0;
-    objects["Instance172"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance196"]["Visible"] = false;
+    objects["Instance196"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance196"]["Name"] = "TopNeon";
+    objects["Instance196"]["Size"] = UDim2.new(1, 0, 0, 1);
+    objects["Instance196"]["Parent"] = objects["Instance23"];
+    objects["Instance196"]["ZIndex"] = 3;
+    objects["Instance196"]["BorderSizePixel"] = 0;
+    objects["Instance196"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance173"]["Visible"] = false;
-    objects["Instance173"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
-    objects["Instance173"]["Active"] = false;
-    objects["Instance173"]["Selectable"] = false;
-    objects["Instance173"]["Text"] = "";
-    objects["Instance173"]["BackgroundTransparency"] = 1;
-    objects["Instance173"]["AutoButtonColor"] = false;
-    objects["Instance173"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance173"]["Parent"] = objects["Instance5"];
-    objects["Instance173"]["Name"] = "Overlay";
-    objects["Instance173"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance173"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance173"]["ZIndex"] = 99;
-    objects["Instance173"]["BorderSizePixel"] = 0;
-    objects["Instance173"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance197"]["Visible"] = false;
+    objects["Instance197"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance197"]["Active"] = false;
+    objects["Instance197"]["Selectable"] = false;
+    objects["Instance197"]["Text"] = "";
+    objects["Instance197"]["BackgroundTransparency"] = 1;
+    objects["Instance197"]["AutoButtonColor"] = false;
+    objects["Instance197"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance197"]["Parent"] = objects["Instance23"];
+    objects["Instance197"]["Name"] = "Overlay";
+    objects["Instance197"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance197"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance197"]["ZIndex"] = 99;
+    objects["Instance197"]["BorderSizePixel"] = 0;
+    objects["Instance197"]["Size"] = UDim2.new(1, 0, 1, 0);
 
-    objects["Instance174"]["TopLeftRadius"] = UDim.new(0, 0);
-    objects["Instance174"]["CornerRadius"] = UDim.new(0, 0);
-    objects["Instance174"]["Parent"] = objects["Instance173"];
-    objects["Instance174"]["BottomRightRadius"] = UDim.new(0, 0);
-    objects["Instance174"]["TopRightRadius"] = UDim.new(0, 0);
-    objects["Instance174"]["BottomLeftRadius"] = UDim.new(0, 0);
+    objects["Instance198"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance198"]["CornerRadius"] = UDim.new(0, 0);
+    objects["Instance198"]["Parent"] = objects["Instance197"];
+    objects["Instance198"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance198"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance198"]["BottomLeftRadius"] = UDim.new(0, 0);
 
-    objects["Instance175"]["TopLeftRadius"] = UDim.new(0, 0);
-    objects["Instance175"]["CornerRadius"] = UDim.new(0, 0);
-    objects["Instance175"]["Parent"] = objects["Instance5"];
-    objects["Instance175"]["BottomRightRadius"] = UDim.new(0, 0);
-    objects["Instance175"]["TopRightRadius"] = UDim.new(0, 0);
-    objects["Instance175"]["BottomLeftRadius"] = UDim.new(0, 0);
+    objects["Instance199"]["TopLeftRadius"] = UDim.new(0, 0);
+    objects["Instance199"]["CornerRadius"] = UDim.new(0, 0);
+    objects["Instance199"]["Parent"] = objects["Instance23"];
+    objects["Instance199"]["BottomRightRadius"] = UDim.new(0, 0);
+    objects["Instance199"]["TopRightRadius"] = UDim.new(0, 0);
+    objects["Instance199"]["BottomLeftRadius"] = UDim.new(0, 0);
 
-    objects["Instance176"]["Name"] = "SoundCache";
-    objects["Instance176"]["Parent"] = objects["Instance3"];
+    objects["Instance200"]["Name"] = "SoundCache";
+    objects["Instance200"]["Parent"] = objects["Instance21"];
 
-    objects["Instance177"]["Visible"] = false;
-    objects["Instance177"]["Parent"] = objects["Instance3"];
-    objects["Instance177"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance177"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance177"]["BackgroundTransparency"] = 1;
-    objects["Instance177"]["Name"] = "Blur";
-    objects["Instance177"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance177"]["Size"] = UDim2.new(1, -22, 1, -12);
-    objects["Instance177"]["ZIndex"] = -1;
-    objects["Instance177"]["BorderSizePixel"] = 0;
-    objects["Instance177"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance201"]["Visible"] = false;
+    objects["Instance201"]["Parent"] = objects["Instance21"];
+    objects["Instance201"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance201"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance201"]["BackgroundTransparency"] = 1;
+    objects["Instance201"]["Name"] = "Blur";
+    objects["Instance201"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance201"]["Size"] = UDim2.new(1, -22, 1, -12);
+    objects["Instance201"]["ZIndex"] = -1;
+    objects["Instance201"]["BorderSizePixel"] = 0;
+    objects["Instance201"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance178"]["Name"] = "Windows";
-    objects["Instance178"]["Parent"] = objects["Instance1"];
+    objects["Instance202"]["Name"] = "Windows";
+    objects["Instance202"]["Parent"] = objects["Instance19"];
 
-    objects["Instance179"]["Visible"] = false;
-    objects["Instance179"]["Selectable"] = false;
-    objects["Instance179"]["TextTransparency"] = 1;
-    objects["Instance179"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
-    objects["Instance179"]["AutoButtonColor"] = false;
-    objects["Instance179"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance179"]["Parent"] = objects["Instance1"];
-    objects["Instance179"]["Name"] = "ColorPickerWindow";
-    objects["Instance179"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance179"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance179"]["ZIndex"] = 202;
-    objects["Instance179"]["BorderSizePixel"] = 0;
-    objects["Instance179"]["Size"] = UDim2.new(0.20000000298023224, 350, 0.20000000298023224, 250);
+    objects["Instance203"]["Visible"] = false;
+    objects["Instance203"]["Selectable"] = false;
+    objects["Instance203"]["TextTransparency"] = 1;
+    objects["Instance203"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance203"]["AutoButtonColor"] = false;
+    objects["Instance203"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance203"]["Parent"] = objects["Instance19"];
+    objects["Instance203"]["Name"] = "ColorPickerWindow";
+    objects["Instance203"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance203"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance203"]["ZIndex"] = 202;
+    objects["Instance203"]["BorderSizePixel"] = 0;
+    objects["Instance203"]["Size"] = UDim2.new(0.20000000298023224, 350, 0.20000000298023224, 250);
 
-    objects["Instance180"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance180"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-    objects["Instance180"]["Name"] = "OutsideStroke";
-    objects["Instance180"]["Parent"] = objects["Instance179"];
-    objects["Instance180"]["Thickness"] = 1.2000000476837158;
+    objects["Instance204"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance204"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance204"]["Name"] = "OutsideStroke";
+    objects["Instance204"]["Parent"] = objects["Instance203"];
+    objects["Instance204"]["Thickness"] = 1.2000000476837158;
 
-    objects["Instance181"]["ClipsDescendants"] = true;
-    objects["Instance181"]["Parent"] = objects["Instance179"];
-    objects["Instance181"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance181"]["BackgroundTransparency"] = 1;
-    objects["Instance181"]["Name"] = "Contents";
-    objects["Instance181"]["Position"] = UDim2.new(0, 0, 0, 1);
-    objects["Instance181"]["Size"] = UDim2.new(1, -2, 1, -2);
-    objects["Instance181"]["ZIndex"] = 203;
-    objects["Instance181"]["BorderSizePixel"] = 0;
-    objects["Instance181"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance205"]["ClipsDescendants"] = true;
+    objects["Instance205"]["Parent"] = objects["Instance203"];
+    objects["Instance205"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance205"]["BackgroundTransparency"] = 1;
+    objects["Instance205"]["Name"] = "Contents";
+    objects["Instance205"]["Position"] = UDim2.new(0, 0, 0, 1);
+    objects["Instance205"]["Size"] = UDim2.new(1, -2, 1, -2);
+    objects["Instance205"]["ZIndex"] = 203;
+    objects["Instance205"]["BorderSizePixel"] = 0;
+    objects["Instance205"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance182"]["Parent"] = objects["Instance181"];
-    objects["Instance182"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance182"]["BackgroundTransparency"] = 1;
-    objects["Instance182"]["Name"] = "Display";
-    objects["Instance182"]["Position"] = UDim2.new(0, 5, 0, 45);
-    objects["Instance182"]["Size"] = UDim2.new(1, -10, 1, -50);
-    objects["Instance182"]["ZIndex"] = 204;
-    objects["Instance182"]["BorderSizePixel"] = 0;
-    objects["Instance182"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance206"]["Parent"] = objects["Instance205"];
+    objects["Instance206"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance206"]["BackgroundTransparency"] = 1;
+    objects["Instance206"]["Name"] = "Display";
+    objects["Instance206"]["Position"] = UDim2.new(0, 5, 0, 45);
+    objects["Instance206"]["Size"] = UDim2.new(1, -10, 1, -50);
+    objects["Instance206"]["ZIndex"] = 204;
+    objects["Instance206"]["BorderSizePixel"] = 0;
+    objects["Instance206"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance183"]["BackgroundTransparency"] = 1;
-    objects["Instance183"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance183"]["Name"] = "ColorZone";
-    objects["Instance183"]["Size"] = UDim2.new(1, 0, 1, -30);
-    objects["Instance183"]["Parent"] = objects["Instance182"];
-    objects["Instance183"]["ZIndex"] = 205;
-    objects["Instance183"]["BorderSizePixel"] = 0;
-    objects["Instance183"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance207"]["BackgroundTransparency"] = 1;
+    objects["Instance207"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance207"]["Name"] = "ColorZone";
+    objects["Instance207"]["Size"] = UDim2.new(1, 0, 1, -30);
+    objects["Instance207"]["Parent"] = objects["Instance206"];
+    objects["Instance207"]["ZIndex"] = 205;
+    objects["Instance207"]["BorderSizePixel"] = 0;
+    objects["Instance207"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance184"]["ClipsDescendants"] = true;
-    objects["Instance184"]["Selectable"] = false;
-    objects["Instance184"]["Text"] = "";
-    objects["Instance184"]["AutoButtonColor"] = false;
-    objects["Instance184"]["BackgroundColor3"] = Color3.new(1, 0, 0);
-    objects["Instance184"]["Active"] = false;
-    objects["Instance184"]["Name"] = "PickerZone";
-    objects["Instance184"]["Parent"] = objects["Instance183"];
-    objects["Instance184"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance184"]["ZIndex"] = 206;
-    objects["Instance184"]["BorderSizePixel"] = 0;
-    objects["Instance184"]["Size"] = UDim2.new(1, -30, 1, 0);
+    objects["Instance208"]["ClipsDescendants"] = true;
+    objects["Instance208"]["Selectable"] = false;
+    objects["Instance208"]["Text"] = "";
+    objects["Instance208"]["AutoButtonColor"] = false;
+    objects["Instance208"]["BackgroundColor3"] = Color3.new(1, 0, 0);
+    objects["Instance208"]["Active"] = false;
+    objects["Instance208"]["Name"] = "PickerZone";
+    objects["Instance208"]["Parent"] = objects["Instance207"];
+    objects["Instance208"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance208"]["ZIndex"] = 206;
+    objects["Instance208"]["BorderSizePixel"] = 0;
+    objects["Instance208"]["Size"] = UDim2.new(1, -30, 1, 0);
 
-    objects["Instance185"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance185"]["Name"] = "White";
-    objects["Instance185"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance185"]["Parent"] = objects["Instance184"];
-    objects["Instance185"]["ZIndex"] = 207;
-    objects["Instance185"]["BorderSizePixel"] = 0;
-    objects["Instance185"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance209"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance209"]["Name"] = "White";
+    objects["Instance209"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance209"]["Parent"] = objects["Instance208"];
+    objects["Instance209"]["ZIndex"] = 207;
+    objects["Instance209"]["BorderSizePixel"] = 0;
+    objects["Instance209"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance186"]["Parent"] = objects["Instance185"];
-    objects["Instance186"]["Transparency"] = NumberSequence.new({
+    objects["Instance210"]["Parent"] = objects["Instance209"];
+    objects["Instance210"]["Transparency"] = NumberSequence.new({
     [1] = NumberSequenceKeypoint.new(0, 0, 0),
     [2] = NumberSequenceKeypoint.new(1, 1, 0)
 });
 
-    objects["Instance187"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance187"]["ZIndex"] = 211;
-    objects["Instance187"]["Parent"] = objects["Instance185"];
-    objects["Instance187"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
+    objects["Instance211"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance211"]["ZIndex"] = 211;
+    objects["Instance211"]["Parent"] = objects["Instance209"];
+    objects["Instance211"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance188"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance188"]["Name"] = "Black";
-    objects["Instance188"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance188"]["Parent"] = objects["Instance184"];
-    objects["Instance188"]["ZIndex"] = 208;
-    objects["Instance188"]["BorderSizePixel"] = 0;
-    objects["Instance188"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance212"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance212"]["Name"] = "Black";
+    objects["Instance212"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance212"]["Parent"] = objects["Instance208"];
+    objects["Instance212"]["ZIndex"] = 208;
+    objects["Instance212"]["BorderSizePixel"] = 0;
+    objects["Instance212"]["BackgroundColor3"] = Color3.new(0, 0, 0);
 
-    objects["Instance189"]["Rotation"] = -90;
-    objects["Instance189"]["Transparency"] = NumberSequence.new({
+    objects["Instance213"]["Rotation"] = -90;
+    objects["Instance213"]["Transparency"] = NumberSequence.new({
     [1] = NumberSequenceKeypoint.new(0, 0, 0),
     [2] = NumberSequenceKeypoint.new(1, 1, 0)
 });
-    objects["Instance189"]["Parent"] = objects["Instance188"];
+    objects["Instance213"]["Parent"] = objects["Instance212"];
 
-    objects["Instance190"]["Parent"] = objects["Instance184"];
-    objects["Instance190"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance190"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance190"]["BackgroundTransparency"] = 0.25;
-    objects["Instance190"]["Name"] = "Cursor";
-    objects["Instance190"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance190"]["Size"] = UDim2.new(0, 5, 0, 5);
-    objects["Instance190"]["ZIndex"] = 209;
-    objects["Instance190"]["BorderSizePixel"] = 0;
-    objects["Instance190"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance214"]["Parent"] = objects["Instance208"];
+    objects["Instance214"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance214"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance214"]["BackgroundTransparency"] = 0.25;
+    objects["Instance214"]["Name"] = "Cursor";
+    objects["Instance214"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance214"]["Size"] = UDim2.new(0, 5, 0, 5);
+    objects["Instance214"]["ZIndex"] = 209;
+    objects["Instance214"]["BorderSizePixel"] = 0;
+    objects["Instance214"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance191"]["Thickness"] = 2;
-    objects["Instance191"]["ZIndex"] = 210;
-    objects["Instance191"]["Parent"] = objects["Instance190"];
-    objects["Instance191"]["Transparency"] = 0.5;
+    objects["Instance215"]["Thickness"] = 2;
+    objects["Instance215"]["ZIndex"] = 210;
+    objects["Instance215"]["Parent"] = objects["Instance214"];
+    objects["Instance215"]["Transparency"] = 0.5;
 
-    objects["Instance192"]["Parent"] = objects["Instance190"];
+    objects["Instance216"]["Parent"] = objects["Instance214"];
 
-    objects["Instance193"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance193"]["ClipsDescendants"] = true;
-    objects["Instance193"]["Selectable"] = false;
-    objects["Instance193"]["Text"] = "";
-    objects["Instance193"]["Active"] = false;
-    objects["Instance193"]["AutoButtonColor"] = false;
-    objects["Instance193"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance193"]["Parent"] = objects["Instance183"];
-    objects["Instance193"]["Name"] = "HUEZone";
-    objects["Instance193"]["Position"] = UDim2.new(1, 0, 0, 30);
-    objects["Instance193"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance193"]["ZIndex"] = 206;
-    objects["Instance193"]["BorderSizePixel"] = 0;
-    objects["Instance193"]["Size"] = UDim2.new(0, 25, 1, -30);
+    objects["Instance217"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance217"]["ClipsDescendants"] = true;
+    objects["Instance217"]["Selectable"] = false;
+    objects["Instance217"]["Text"] = "";
+    objects["Instance217"]["Active"] = false;
+    objects["Instance217"]["AutoButtonColor"] = false;
+    objects["Instance217"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance217"]["Parent"] = objects["Instance207"];
+    objects["Instance217"]["Name"] = "HUEZone";
+    objects["Instance217"]["Position"] = UDim2.new(1, 0, 0, 30);
+    objects["Instance217"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance217"]["ZIndex"] = 206;
+    objects["Instance217"]["BorderSizePixel"] = 0;
+    objects["Instance217"]["Size"] = UDim2.new(0, 25, 1, -30);
 
-    objects["Instance194"]["Rotation"] = 90;
-    objects["Instance194"]["Parent"] = objects["Instance193"];
-    objects["Instance194"]["Color"] = ColorSequence.new({
+    objects["Instance218"]["Rotation"] = 90;
+    objects["Instance218"]["Parent"] = objects["Instance217"];
+    objects["Instance218"]["Color"] = ColorSequence.new({
     [1] = ColorSequenceKeypoint.new(0, Color3.new(1, 0, 0)),
     [2] = ColorSequenceKeypoint.new(0.17499999701976776, Color3.new(1, 1, 0)),
     [3] = ColorSequenceKeypoint.new(0.3499999940395355, Color3.new(0.333333, 1, 0)),
@@ -2244,834 +2360,772 @@ do -- Set properties
     [7] = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
 });
 
-    objects["Instance195"]["Parent"] = objects["Instance193"];
-    objects["Instance195"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance195"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance195"]["BackgroundTransparency"] = 0.25;
-    objects["Instance195"]["Name"] = "Cursor";
-    objects["Instance195"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance195"]["Size"] = UDim2.new(1, 2, 0, 2);
-    objects["Instance195"]["ZIndex"] = 207;
-    objects["Instance195"]["BorderSizePixel"] = 0;
-    objects["Instance195"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance219"]["Parent"] = objects["Instance217"];
+    objects["Instance219"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance219"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance219"]["BackgroundTransparency"] = 0.25;
+    objects["Instance219"]["Name"] = "Cursor";
+    objects["Instance219"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance219"]["Size"] = UDim2.new(1, 2, 0, 2);
+    objects["Instance219"]["ZIndex"] = 207;
+    objects["Instance219"]["BorderSizePixel"] = 0;
+    objects["Instance219"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance196"]["Thickness"] = 2;
-    objects["Instance196"]["Transparency"] = 0.5;
-    objects["Instance196"]["Parent"] = objects["Instance195"];
-
-    objects["Instance197"]["Parent"] = objects["Instance193"];
-    objects["Instance197"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance197"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
-
-    objects["Instance198"]["Parent"] = objects["Instance183"];
-    objects["Instance198"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance198"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance198"]["Name"] = "Preview";
-    objects["Instance198"]["Position"] = UDim2.new(1, 0, 0, 0);
-    objects["Instance198"]["Size"] = UDim2.new(0, 25, 0, 25);
-    objects["Instance198"]["ZIndex"] = 206;
-    objects["Instance198"]["BorderSizePixel"] = 0;
-    objects["Instance198"]["BackgroundColor3"] = Color3.new(0.501961, 0.25098, 0.25098);
-
-    objects["Instance199"]["Parent"] = objects["Instance198"];
-    objects["Instance199"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance199"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
-
-    objects["Instance200"]["Parent"] = objects["Instance182"];
-    objects["Instance200"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance200"]["AnchorPoint"] = Vector2.new(0, 1);
-    objects["Instance200"]["BackgroundTransparency"] = 1;
-    objects["Instance200"]["Name"] = "BottomZone";
-    objects["Instance200"]["Position"] = UDim2.new(0, 0, 1, 0);
-    objects["Instance200"]["Size"] = UDim2.new(1, 0, 0, 25);
-    objects["Instance200"]["ZIndex"] = 205;
-    objects["Instance200"]["BorderSizePixel"] = 0;
-    objects["Instance200"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance201"]["Name"] = "TextBoxes";
-    objects["Instance201"]["Parent"] = objects["Instance200"];
-
-    objects["Instance202"]["Parent"] = objects["Instance201"];
-    objects["Instance202"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance202"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-    objects["Instance202"]["Padding"] = UDim.new(0, 5);
-
-    objects["Instance203"]["LayoutOrder"] = 2;
-    objects["Instance203"]["Active"] = false;
-    objects["Instance203"]["Selectable"] = false;
-    objects["Instance203"]["TextTransparency"] = 1;
-    objects["Instance203"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance203"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance203"]["Name"] = "B";
-    objects["Instance203"]["Parent"] = objects["Instance201"];
-    objects["Instance203"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance203"]["ZIndex"] = 207;
-    objects["Instance203"]["BorderSizePixel"] = 0;
-    objects["Instance203"]["Size"] = UDim2.new(0, 75, 1, 0);
-
-    objects["Instance204"]["TextWrapped"] = true;
-    objects["Instance204"]["TextWrap"] = true;
-    objects["Instance204"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance204"]["TextTransparency"] = 0.5;
-    objects["Instance204"]["Text"] = "B:";
-    objects["Instance204"]["TextSize"] = 14;
-    objects["Instance204"]["Parent"] = objects["Instance203"];
-    objects["Instance204"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance204"]["TextScaled"] = true;
-    objects["Instance204"]["BackgroundTransparency"] = 1;
-    objects["Instance204"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance204"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance204"]["Size"] = UDim2.new(0, 20, 1, 0);
-    objects["Instance204"]["BorderSizePixel"] = 0;
-    objects["Instance204"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance205"]["Parent"] = objects["Instance204"];
-    objects["Instance205"]["PaddingTop"] = UDim.new(0.200000003, 0);
-    objects["Instance205"]["PaddingLeft"] = UDim.new(0.200000003, 0);
-    objects["Instance205"]["PaddingBottom"] = UDim.new(0.200000003, 0);
-
-    objects["Instance206"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance206"]["Parent"] = objects["Instance203"];
-    objects["Instance206"]["PlaceholderColor3"] = Color3.new(0.698039, 0.698039, 0.698039);
-    objects["Instance206"]["BorderSizePixel"] = 0;
-    objects["Instance206"]["Size"] = UDim2.new(1, -25, 1, 0);
-    objects["Instance206"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance206"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance206"]["Text"] = "255";
-    objects["Instance206"]["TextSize"] = 14;
-    objects["Instance206"]["TextWrapped"] = true;
-    objects["Instance206"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance206"]["BackgroundTransparency"] = 1;
-    objects["Instance206"]["Position"] = UDim2.new(0, 25, 0, 0);
-    objects["Instance206"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance206"]["ClearTextOnFocus"] = false;
-    objects["Instance206"]["TextScaled"] = true;
-    objects["Instance206"]["TextWrap"] = true;
-
-    objects["Instance207"]["PaddingTop"] = UDim.new(0.150000006, 0);
-    objects["Instance207"]["PaddingBottom"] = UDim.new(0.150000006, 0);
-    objects["Instance207"]["PaddingRight"] = UDim.new(0.100000001, 0);
-    objects["Instance207"]["PaddingLeft"] = UDim.new(0.100000001, 0);
-    objects["Instance207"]["Parent"] = objects["Instance206"];
-
-    objects["Instance208"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance208"]["Transparency"] = 0.5;
-    objects["Instance208"]["Parent"] = objects["Instance203"];
-    objects["Instance208"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
-
-    objects["Instance209"]["Active"] = false;
-    objects["Instance209"]["Selectable"] = false;
-    objects["Instance209"]["TextTransparency"] = 1;
-    objects["Instance209"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance209"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance209"]["Name"] = "R";
-    objects["Instance209"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance209"]["Parent"] = objects["Instance201"];
-    objects["Instance209"]["ZIndex"] = 207;
-    objects["Instance209"]["BorderSizePixel"] = 0;
-    objects["Instance209"]["Size"] = UDim2.new(0, 75, 1, 0);
-
-    objects["Instance210"]["TextWrapped"] = true;
-    objects["Instance210"]["TextWrap"] = true;
-    objects["Instance210"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance210"]["TextTransparency"] = 0.5;
-    objects["Instance210"]["Text"] = "R:";
-    objects["Instance210"]["TextSize"] = 14;
-    objects["Instance210"]["Parent"] = objects["Instance209"];
-    objects["Instance210"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance210"]["TextScaled"] = true;
-    objects["Instance210"]["BackgroundTransparency"] = 1;
-    objects["Instance210"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance210"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance210"]["Size"] = UDim2.new(0, 20, 1, 0);
-    objects["Instance210"]["BorderSizePixel"] = 0;
-    objects["Instance210"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance211"]["Parent"] = objects["Instance210"];
-    objects["Instance211"]["PaddingTop"] = UDim.new(0.200000003, 0);
-    objects["Instance211"]["PaddingLeft"] = UDim.new(0.200000003, 0);
-    objects["Instance211"]["PaddingBottom"] = UDim.new(0.200000003, 0);
-
-    objects["Instance212"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance212"]["Parent"] = objects["Instance209"];
-    objects["Instance212"]["PlaceholderColor3"] = Color3.new(0.698039, 0.698039, 0.698039);
-    objects["Instance212"]["BorderSizePixel"] = 0;
-    objects["Instance212"]["Size"] = UDim2.new(1, -25, 1, 0);
-    objects["Instance212"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance212"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance212"]["Text"] = "255";
-    objects["Instance212"]["TextSize"] = 14;
-    objects["Instance212"]["TextWrapped"] = true;
-    objects["Instance212"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance212"]["BackgroundTransparency"] = 1;
-    objects["Instance212"]["Position"] = UDim2.new(0, 25, 0, 0);
-    objects["Instance212"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance212"]["ClearTextOnFocus"] = false;
-    objects["Instance212"]["TextScaled"] = true;
-    objects["Instance212"]["TextWrap"] = true;
-
-    objects["Instance213"]["PaddingTop"] = UDim.new(0.150000006, 0);
-    objects["Instance213"]["PaddingBottom"] = UDim.new(0.150000006, 0);
-    objects["Instance213"]["PaddingRight"] = UDim.new(0.100000001, 0);
-    objects["Instance213"]["PaddingLeft"] = UDim.new(0.100000001, 0);
-    objects["Instance213"]["Parent"] = objects["Instance212"];
-
-    objects["Instance214"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance214"]["Transparency"] = 0.5;
-    objects["Instance214"]["Parent"] = objects["Instance209"];
-    objects["Instance214"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
-
-    objects["Instance215"]["LayoutOrder"] = 1;
-    objects["Instance215"]["Active"] = false;
-    objects["Instance215"]["Selectable"] = false;
-    objects["Instance215"]["TextTransparency"] = 1;
-    objects["Instance215"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance215"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance215"]["Name"] = "G";
-    objects["Instance215"]["Parent"] = objects["Instance201"];
-    objects["Instance215"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance215"]["ZIndex"] = 207;
-    objects["Instance215"]["BorderSizePixel"] = 0;
-    objects["Instance215"]["Size"] = UDim2.new(0, 75, 1, 0);
-
-    objects["Instance216"]["TextWrapped"] = true;
-    objects["Instance216"]["TextWrap"] = true;
-    objects["Instance216"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance216"]["TextTransparency"] = 0.5;
-    objects["Instance216"]["Text"] = "G:";
-    objects["Instance216"]["TextSize"] = 14;
-    objects["Instance216"]["Parent"] = objects["Instance215"];
-    objects["Instance216"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance216"]["TextScaled"] = true;
-    objects["Instance216"]["BackgroundTransparency"] = 1;
-    objects["Instance216"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance216"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance216"]["Size"] = UDim2.new(0, 20, 1, 0);
-    objects["Instance216"]["BorderSizePixel"] = 0;
-    objects["Instance216"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-
-    objects["Instance217"]["Parent"] = objects["Instance216"];
-    objects["Instance217"]["PaddingTop"] = UDim.new(0.200000003, 0);
-    objects["Instance217"]["PaddingLeft"] = UDim.new(0.200000003, 0);
-    objects["Instance217"]["PaddingBottom"] = UDim.new(0.200000003, 0);
-
-    objects["Instance218"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance218"]["Parent"] = objects["Instance215"];
-    objects["Instance218"]["PlaceholderColor3"] = Color3.new(0.698039, 0.698039, 0.698039);
-    objects["Instance218"]["BorderSizePixel"] = 0;
-    objects["Instance218"]["Size"] = UDim2.new(1, -25, 1, 0);
-    objects["Instance218"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance218"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance218"]["Text"] = "255";
-    objects["Instance218"]["TextSize"] = 14;
-    objects["Instance218"]["TextWrapped"] = true;
-    objects["Instance218"]["BackgroundColor3"] = Color3.new(0, 0, 0);
-    objects["Instance218"]["BackgroundTransparency"] = 1;
-    objects["Instance218"]["Position"] = UDim2.new(0, 25, 0, 0);
-    objects["Instance218"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance218"]["ClearTextOnFocus"] = false;
-    objects["Instance218"]["TextScaled"] = true;
-    objects["Instance218"]["TextWrap"] = true;
-
-    objects["Instance219"]["PaddingTop"] = UDim.new(0.150000006, 0);
-    objects["Instance219"]["PaddingBottom"] = UDim.new(0.150000006, 0);
-    objects["Instance219"]["PaddingRight"] = UDim.new(0.100000001, 0);
-    objects["Instance219"]["PaddingLeft"] = UDim.new(0.100000001, 0);
-    objects["Instance219"]["Parent"] = objects["Instance218"];
-
-    objects["Instance220"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance220"]["Thickness"] = 2;
     objects["Instance220"]["Transparency"] = 0.5;
-    objects["Instance220"]["Parent"] = objects["Instance215"];
-    objects["Instance220"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
+    objects["Instance220"]["Parent"] = objects["Instance219"];
 
-    objects["Instance221"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance221"]["Parent"] = objects["Instance200"];
-    objects["Instance221"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance221"]["ZIndex"] = 206;
-    objects["Instance221"]["BorderSizePixel"] = 0;
-    objects["Instance221"]["Size"] = UDim2.new(0, 100, 1, 0);
-    objects["Instance221"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance221"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance221"]["Text"] = "Accept";
-    objects["Instance221"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance221"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance221"]["BackgroundTransparency"] = 0.8999999761581421;
-    objects["Instance221"]["Position"] = UDim2.new(1, 0, 0, 0);
-    objects["Instance221"]["TextWrapped"] = true;
-    objects["Instance221"]["TextSize"] = 14;
-    objects["Instance221"]["TextScaled"] = true;
-    objects["Instance221"]["TextWrap"] = true;
+    objects["Instance221"]["Parent"] = objects["Instance217"];
+    objects["Instance221"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance221"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance222"]["PaddingTop"] = UDim.new(0.150000006, 0);
-    objects["Instance222"]["PaddingBottom"] = UDim.new(0.150000006, 0);
-    objects["Instance222"]["PaddingRight"] = UDim.new(0.100000001, 0);
-    objects["Instance222"]["PaddingLeft"] = UDim.new(0.100000001, 0);
-    objects["Instance222"]["Parent"] = objects["Instance221"];
+    objects["Instance222"]["Parent"] = objects["Instance207"];
+    objects["Instance222"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance222"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance222"]["Name"] = "Preview";
+    objects["Instance222"]["Position"] = UDim2.new(1, 0, 0, 0);
+    objects["Instance222"]["Size"] = UDim2.new(0, 25, 0, 25);
+    objects["Instance222"]["ZIndex"] = 206;
+    objects["Instance222"]["BorderSizePixel"] = 0;
+    objects["Instance222"]["BackgroundColor3"] = Color3.new(0.501961, 0.25098, 0.25098);
 
+    objects["Instance223"]["Parent"] = objects["Instance222"];
     objects["Instance223"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance223"]["Transparency"] = 0.25;
-    objects["Instance223"]["Parent"] = objects["Instance221"];
     objects["Instance223"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance224"]["BackgroundTransparency"] = 1;
+    objects["Instance224"]["Parent"] = objects["Instance206"];
     objects["Instance224"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance224"]["Name"] = "TopbarZone";
-    objects["Instance224"]["Size"] = UDim2.new(1, 0, 0, 40);
-    objects["Instance224"]["Parent"] = objects["Instance181"];
+    objects["Instance224"]["AnchorPoint"] = Vector2.new(0, 1);
+    objects["Instance224"]["BackgroundTransparency"] = 1;
+    objects["Instance224"]["Name"] = "BottomZone";
+    objects["Instance224"]["Position"] = UDim2.new(0, 0, 1, 0);
+    objects["Instance224"]["Size"] = UDim2.new(1, 0, 0, 25);
     objects["Instance224"]["ZIndex"] = 205;
     objects["Instance224"]["BorderSizePixel"] = 0;
     objects["Instance224"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
+    objects["Instance225"]["Name"] = "TextBoxes";
     objects["Instance225"]["Parent"] = objects["Instance224"];
-    objects["Instance225"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance225"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance225"]["BackgroundTransparency"] = 1;
-    objects["Instance225"]["Name"] = "Right";
-    objects["Instance225"]["Position"] = UDim2.new(1, 0, 0, 0);
-    objects["Instance225"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance225"]["ZIndex"] = 206;
-    objects["Instance225"]["BorderSizePixel"] = 0;
-    objects["Instance225"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance226"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-    objects["Instance226"]["FillDirection"] = Enum.FillDirection.Horizontal;
-    objects["Instance226"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
     objects["Instance226"]["Parent"] = objects["Instance225"];
-    objects["Instance226"]["Padding"] = UDim.new(0, 5);
+    objects["Instance226"]["FillDirection"] = Enum.FillDirection.Horizontal;
     objects["Instance226"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance226"]["Padding"] = UDim.new(0, 5);
 
-    objects["Instance227"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance227"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance227"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance227"]["Text"] = "";
-    objects["Instance227"]["BackgroundColor3"] = Color3.new(1, 1, 1);
-    objects["Instance227"]["BackgroundTransparency"] = 1;
-    objects["Instance227"]["TextSize"] = 14;
-    objects["Instance227"]["Name"] = "Close";
+    objects["Instance227"]["LayoutOrder"] = 2;
+    objects["Instance227"]["Active"] = false;
+    objects["Instance227"]["Selectable"] = false;
+    objects["Instance227"]["TextTransparency"] = 1;
+    objects["Instance227"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance227"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance227"]["Name"] = "B";
     objects["Instance227"]["Parent"] = objects["Instance225"];
-    objects["Instance227"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance227"]["ZIndex"] = 208;
+    objects["Instance227"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance227"]["ZIndex"] = 207;
     objects["Instance227"]["BorderSizePixel"] = 0;
-    objects["Instance227"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance227"]["Size"] = UDim2.new(0, 75, 1, 0);
 
+    objects["Instance228"]["TextWrapped"] = true;
+    objects["Instance228"]["TextWrap"] = true;
+    objects["Instance228"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance228"]["TextTransparency"] = 0.5;
+    objects["Instance228"]["Text"] = "B:";
+    objects["Instance228"]["TextSize"] = 14;
     objects["Instance228"]["Parent"] = objects["Instance227"];
-    objects["Instance228"]["AspectRatio"] = 0.9750000238418579;
+    objects["Instance228"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance228"]["TextScaled"] = true;
+    objects["Instance228"]["BackgroundTransparency"] = 1;
+    objects["Instance228"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance228"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance228"]["Size"] = UDim2.new(0, 20, 1, 0);
+    objects["Instance228"]["BorderSizePixel"] = 0;
+    objects["Instance228"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance229"]["ScaleType"] = Enum.ScaleType.Fit;
-    objects["Instance229"]["ImageTransparency"] = 0.25;
-    objects["Instance229"]["Parent"] = objects["Instance227"];
-    objects["Instance229"]["Size"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance229"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance229"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance229"]["Image"] = "rbxassetid://10152135063";
-    objects["Instance229"]["BackgroundTransparency"] = 1;
-    objects["Instance229"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance229"]["ImageContent"] = Content.fromUri("rbxassetid://10152135063");
-    objects["Instance229"]["ZIndex"] = 209;
-    objects["Instance229"]["BorderSizePixel"] = 0;
-    objects["Instance229"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance229"]["Parent"] = objects["Instance228"];
+    objects["Instance229"]["PaddingTop"] = UDim.new(0.200000003, 0);
+    objects["Instance229"]["PaddingLeft"] = UDim.new(0.200000003, 0);
+    objects["Instance229"]["PaddingBottom"] = UDim.new(0.200000003, 0);
 
-    objects["Instance230"]["LayoutOrder"] = 1;
     objects["Instance230"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance230"]["Parent"] = objects["Instance224"];
-    objects["Instance230"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance230"]["ZIndex"] = 207;
+    objects["Instance230"]["Parent"] = objects["Instance227"];
+    objects["Instance230"]["PlaceholderColor3"] = Color3.new(0.698039, 0.698039, 0.698039);
     objects["Instance230"]["BorderSizePixel"] = 0;
-    objects["Instance230"]["Size"] = UDim2.new(1, 0, 1, -16);
-    objects["Instance230"]["RichText"] = true;
+    objects["Instance230"]["Size"] = UDim2.new(1, -25, 1, 0);
     objects["Instance230"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance230"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance230"]["Text"] = "Color picker";
-    objects["Instance230"]["TextWrap"] = true;
+    objects["Instance230"]["Text"] = "255";
     objects["Instance230"]["TextSize"] = 14;
     objects["Instance230"]["TextWrapped"] = true;
+    objects["Instance230"]["BackgroundColor3"] = Color3.new(0, 0, 0);
     objects["Instance230"]["BackgroundTransparency"] = 1;
-    objects["Instance230"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance230"]["Name"] = "Title";
+    objects["Instance230"]["Position"] = UDim2.new(0, 25, 0, 0);
     objects["Instance230"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance230"]["ClearTextOnFocus"] = false;
     objects["Instance230"]["TextScaled"] = true;
-    objects["Instance230"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance230"]["TextWrap"] = true;
 
-    objects["Instance231"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance231"]["Name"] = "TopNeon";
-    objects["Instance231"]["Size"] = UDim2.new(1, 0, 0, 1);
-    objects["Instance231"]["Parent"] = objects["Instance179"];
-    objects["Instance231"]["ZIndex"] = 203;
-    objects["Instance231"]["BorderSizePixel"] = 0;
-    objects["Instance231"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance231"]["PaddingTop"] = UDim.new(0.150000006, 0);
+    objects["Instance231"]["PaddingBottom"] = UDim.new(0.150000006, 0);
+    objects["Instance231"]["PaddingRight"] = UDim.new(0.100000001, 0);
+    objects["Instance231"]["PaddingLeft"] = UDim.new(0.100000001, 0);
+    objects["Instance231"]["Parent"] = objects["Instance230"];
 
-    objects["Instance232"]["Parent"] = objects["Instance179"];
-    objects["Instance232"]["AspectRatio"] = 1.399999976158142;
+    objects["Instance232"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance232"]["Transparency"] = 0.5;
+    objects["Instance232"]["Parent"] = objects["Instance227"];
+    objects["Instance232"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance233"]["Name"] = "ColorPickerWindows";
-    objects["Instance233"]["Parent"] = objects["Instance1"];
+    objects["Instance233"]["Active"] = false;
+    objects["Instance233"]["Selectable"] = false;
+    objects["Instance233"]["TextTransparency"] = 1;
+    objects["Instance233"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance233"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance233"]["Name"] = "R";
+    objects["Instance233"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance233"]["Parent"] = objects["Instance225"];
+    objects["Instance233"]["ZIndex"] = 207;
+    objects["Instance233"]["BorderSizePixel"] = 0;
+    objects["Instance233"]["Size"] = UDim2.new(0, 75, 1, 0);
 
-    objects["Instance234"]["Visible"] = false;
-    objects["Instance234"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance234"]["TextColor3"] = Color3.new(0, 0, 0);
-    objects["Instance234"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance234"]["Text"] = "";
-    objects["Instance234"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance234"]["TextWrapped"] = true;
+    objects["Instance234"]["TextWrap"] = true;
+    objects["Instance234"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance234"]["TextTransparency"] = 0.5;
+    objects["Instance234"]["Text"] = "R:";
     objects["Instance234"]["TextSize"] = 14;
-    objects["Instance234"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance234"]["Parent"] = objects["Instance1"];
-    objects["Instance234"]["Name"] = "MobileButton";
-    objects["Instance234"]["Position"] = UDim2.new(0.5, 0, 0, 50);
+    objects["Instance234"]["Parent"] = objects["Instance233"];
+    objects["Instance234"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance234"]["TextScaled"] = true;
+    objects["Instance234"]["BackgroundTransparency"] = 1;
     objects["Instance234"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance234"]["ZIndex"] = 2047483646;
+    objects["Instance234"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance234"]["Size"] = UDim2.new(0, 20, 1, 0);
     objects["Instance234"]["BorderSizePixel"] = 0;
-    objects["Instance234"]["Size"] = UDim2.new(0, 50, 0, 50);
+    objects["Instance234"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance235"]["Parent"] = objects["Instance234"];
-    objects["Instance235"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance235"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance235"]["BackgroundTransparency"] = 1;
-    objects["Instance235"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance235"]["Size"] = UDim2.new(1, -2, 1, -2);
-    objects["Instance235"]["ZIndex"] = 2047483647;
-    objects["Instance235"]["BorderSizePixel"] = 0;
-    objects["Instance235"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance235"]["PaddingTop"] = UDim.new(0.200000003, 0);
+    objects["Instance235"]["PaddingLeft"] = UDim.new(0.200000003, 0);
+    objects["Instance235"]["PaddingBottom"] = UDim.new(0.200000003, 0);
 
-    objects["Instance236"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance236"]["Parent"] = objects["Instance235"];
+    objects["Instance236"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance236"]["Parent"] = objects["Instance233"];
+    objects["Instance236"]["PlaceholderColor3"] = Color3.new(0.698039, 0.698039, 0.698039);
+    objects["Instance236"]["BorderSizePixel"] = 0;
+    objects["Instance236"]["Size"] = UDim2.new(1, -25, 1, 0);
+    objects["Instance236"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance236"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance236"]["Text"] = "255";
+    objects["Instance236"]["TextSize"] = 14;
+    objects["Instance236"]["TextWrapped"] = true;
+    objects["Instance236"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance236"]["BackgroundTransparency"] = 1;
+    objects["Instance236"]["Position"] = UDim2.new(0, 25, 0, 0);
+    objects["Instance236"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance236"]["ClearTextOnFocus"] = false;
+    objects["Instance236"]["TextScaled"] = true;
+    objects["Instance236"]["TextWrap"] = true;
 
-    objects["Instance237"]["Visible"] = false;
-    objects["Instance237"]["ImageTransparency"] = 0.20000000298023224;
-    objects["Instance237"]["Parent"] = objects["Instance235"];
-    objects["Instance237"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance237"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance237"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance237"]["Image"] = "rbxassetid://8508980527";
-    objects["Instance237"]["BackgroundTransparency"] = 1;
-    objects["Instance237"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance237"]["ImageContent"] = Content.fromUri("rbxassetid://8508980527");
-    objects["Instance237"]["ZIndex"] = 2047483649;
-    objects["Instance237"]["BorderSizePixel"] = 0;
-    objects["Instance237"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance237"]["PaddingTop"] = UDim.new(0.150000006, 0);
+    objects["Instance237"]["PaddingBottom"] = UDim.new(0.150000006, 0);
+    objects["Instance237"]["PaddingRight"] = UDim.new(0.100000001, 0);
+    objects["Instance237"]["PaddingLeft"] = UDim.new(0.100000001, 0);
+    objects["Instance237"]["Parent"] = objects["Instance236"];
 
-    objects["Instance238"]["Parent"] = objects["Instance235"];
+    objects["Instance238"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance238"]["Transparency"] = 0.5;
+    objects["Instance238"]["Parent"] = objects["Instance233"];
+    objects["Instance238"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance239"]["Visible"] = false;
-    objects["Instance239"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance239"]["Parent"] = objects["Instance235"];
-    objects["Instance239"]["TextStrokeTransparency"] = 0;
-    objects["Instance239"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
-    objects["Instance239"]["ZIndex"] = 2047483648;
-    objects["Instance239"]["BorderSizePixel"] = 0;
-    objects["Instance239"]["Size"] = UDim2.new(0.8999999761581421, 0, 0.8999999761581421, 0);
-    objects["Instance239"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance239"]["LayoutOrder"] = 1;
+    objects["Instance239"]["Active"] = false;
+    objects["Instance239"]["Selectable"] = false;
+    objects["Instance239"]["TextTransparency"] = 1;
+    objects["Instance239"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance239"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance239"]["Name"] = "G";
+    objects["Instance239"]["Parent"] = objects["Instance225"];
     objects["Instance239"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance239"]["Text"] = "N";
-    objects["Instance239"]["TextWrap"] = true;
-    objects["Instance239"]["TextWrapped"] = true;
-    objects["Instance239"]["BackgroundTransparency"] = 1;
-    objects["Instance239"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
-    objects["Instance239"]["TextSize"] = 14;
-    objects["Instance239"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
-    objects["Instance239"]["TextScaled"] = true;
-    objects["Instance239"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance239"]["ZIndex"] = 207;
+    objects["Instance239"]["BorderSizePixel"] = 0;
+    objects["Instance239"]["Size"] = UDim2.new(0, 75, 1, 0);
 
-    objects["Instance240"]["Parent"] = objects["Instance234"];
+    objects["Instance240"]["TextWrapped"] = true;
+    objects["Instance240"]["TextWrap"] = true;
+    objects["Instance240"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance240"]["TextTransparency"] = 0.5;
+    objects["Instance240"]["Text"] = "G:";
+    objects["Instance240"]["TextSize"] = 14;
+    objects["Instance240"]["Parent"] = objects["Instance239"];
+    objects["Instance240"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance240"]["TextScaled"] = true;
+    objects["Instance240"]["BackgroundTransparency"] = 1;
+    objects["Instance240"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance240"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance240"]["Size"] = UDim2.new(0, 20, 1, 0);
+    objects["Instance240"]["BorderSizePixel"] = 0;
+    objects["Instance240"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance241"]["Thickness"] = 2;
-    objects["Instance241"]["Parent"] = objects["Instance234"];
-    objects["Instance241"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance241"]["Parent"] = objects["Instance240"];
+    objects["Instance241"]["PaddingTop"] = UDim.new(0.200000003, 0);
+    objects["Instance241"]["PaddingLeft"] = UDim.new(0.200000003, 0);
+    objects["Instance241"]["PaddingBottom"] = UDim.new(0.200000003, 0);
 
-    objects["Instance242"]["Visible"] = false;
-    objects["Instance242"]["Parent"] = objects["Instance0"];
-    objects["Instance242"]["AnchorPoint"] = Vector2.new(0, 1);
-    objects["Instance242"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance242"]["Name"] = "Tooltip";
-    objects["Instance242"]["Position"] = UDim2.new(0, 710, 0, 576);
-    objects["Instance242"]["Size"] = UDim2.new(0, 180, 0, 30);
-    objects["Instance242"]["ZIndex"] = 2147483646;
+    objects["Instance242"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance242"]["Parent"] = objects["Instance239"];
+    objects["Instance242"]["PlaceholderColor3"] = Color3.new(0.698039, 0.698039, 0.698039);
     objects["Instance242"]["BorderSizePixel"] = 0;
-    objects["Instance242"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance242"]["Size"] = UDim2.new(1, -25, 1, 0);
+    objects["Instance242"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance242"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance242"]["Text"] = "255";
+    objects["Instance242"]["TextSize"] = 14;
+    objects["Instance242"]["TextWrapped"] = true;
+    objects["Instance242"]["BackgroundColor3"] = Color3.new(0, 0, 0);
+    objects["Instance242"]["BackgroundTransparency"] = 1;
+    objects["Instance242"]["Position"] = UDim2.new(0, 25, 0, 0);
+    objects["Instance242"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance242"]["ClearTextOnFocus"] = false;
+    objects["Instance242"]["TextScaled"] = true;
+    objects["Instance242"]["TextWrap"] = true;
 
-    objects["Instance243"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance243"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-    objects["Instance243"]["Name"] = "OutsideStroke";
+    objects["Instance243"]["PaddingTop"] = UDim.new(0.150000006, 0);
+    objects["Instance243"]["PaddingBottom"] = UDim.new(0.150000006, 0);
+    objects["Instance243"]["PaddingRight"] = UDim.new(0.100000001, 0);
+    objects["Instance243"]["PaddingLeft"] = UDim.new(0.100000001, 0);
     objects["Instance243"]["Parent"] = objects["Instance242"];
-    objects["Instance243"]["Thickness"] = 1.2000000476837158;
 
-    objects["Instance244"]["FontSize"] = Enum.FontSize.Size18;
-    objects["Instance244"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance244"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance244"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance244"]["Text"] = "Just a regular checkbox!";
-    objects["Instance244"]["TextSize"] = 16;
-    objects["Instance244"]["Parent"] = objects["Instance242"];
-    objects["Instance244"]["FontFace"] = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance244"]["RichText"] = true;
-    objects["Instance244"]["BackgroundTransparency"] = 1;
-    objects["Instance244"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance244"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance244"]["ZIndex"] = 2147483647;
-    objects["Instance244"]["BorderSizePixel"] = 0;
-    objects["Instance244"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance244"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance244"]["Transparency"] = 0.5;
+    objects["Instance244"]["Parent"] = objects["Instance239"];
+    objects["Instance244"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance245"]["Parent"] = objects["Instance242"];
-    objects["Instance245"]["PaddingTop"] = UDim.new(0, 6);
-    objects["Instance245"]["PaddingLeft"] = UDim.new(0, 7);
+    objects["Instance245"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance245"]["Parent"] = objects["Instance224"];
+    objects["Instance245"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance245"]["ZIndex"] = 206;
+    objects["Instance245"]["BorderSizePixel"] = 0;
+    objects["Instance245"]["Size"] = UDim2.new(0, 100, 1, 0);
+    objects["Instance245"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance245"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance245"]["Text"] = "Accept";
+    objects["Instance245"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance245"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance245"]["BackgroundTransparency"] = 0.8999999761581421;
+    objects["Instance245"]["Position"] = UDim2.new(1, 0, 0, 0);
+    objects["Instance245"]["TextWrapped"] = true;
+    objects["Instance245"]["TextSize"] = 14;
+    objects["Instance245"]["TextScaled"] = true;
+    objects["Instance245"]["TextWrap"] = true;
 
-    objects["Instance246"]["FontFace"] = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance246"]["Parent"] = objects["Instance242"];
-    objects["Instance246"]["ZIndex"] = 2147483647;
-    objects["Instance246"]["BorderSizePixel"] = 0;
-    objects["Instance246"]["Size"] = UDim2.new(1, 0, 0, 10000);
-    objects["Instance246"]["RichText"] = true;
-    objects["Instance246"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance246"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance246"]["Text"] = "Just a regular checkbox!";
-    objects["Instance246"]["FontSize"] = Enum.FontSize.Size18;
-    objects["Instance246"]["Name"] = "TextLabelInvisible";
-    objects["Instance246"]["BackgroundTransparency"] = 1;
-    objects["Instance246"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance246"]["TextSize"] = 16;
-    objects["Instance246"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance246"]["TextTransparency"] = 1;
-    objects["Instance246"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance246"]["PaddingTop"] = UDim.new(0.150000006, 0);
+    objects["Instance246"]["PaddingBottom"] = UDim.new(0.150000006, 0);
+    objects["Instance246"]["PaddingRight"] = UDim.new(0.100000001, 0);
+    objects["Instance246"]["PaddingLeft"] = UDim.new(0.100000001, 0);
+    objects["Instance246"]["Parent"] = objects["Instance245"];
 
-    objects["Instance247"]["Name"] = "Notifications";
-    objects["Instance247"]["Parent"] = objects["Instance0"];
+    objects["Instance247"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance247"]["Transparency"] = 0.25;
+    objects["Instance247"]["Parent"] = objects["Instance245"];
+    objects["Instance247"]["BorderStrokePosition"] = Enum.BorderStrokePosition.Inner;
 
-    objects["Instance248"]["ClipsDescendants"] = true;
-    objects["Instance248"]["Parent"] = objects["Instance247"];
     objects["Instance248"]["BackgroundTransparency"] = 1;
-    objects["Instance248"]["Name"] = "NotificationsLeft";
     objects["Instance248"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance248"]["Size"] = UDim2.new(0, 250, 1, 0);
-    objects["Instance248"]["ZIndex"] = 214748364;
+    objects["Instance248"]["Name"] = "TopbarZone";
+    objects["Instance248"]["Size"] = UDim2.new(1, 0, 0, 40);
+    objects["Instance248"]["Parent"] = objects["Instance205"];
+    objects["Instance248"]["ZIndex"] = 205;
     objects["Instance248"]["BorderSizePixel"] = 0;
     objects["Instance248"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance249"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
-    objects["Instance249"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
     objects["Instance249"]["Parent"] = objects["Instance248"];
+    objects["Instance249"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance249"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance249"]["BackgroundTransparency"] = 1;
+    objects["Instance249"]["Name"] = "Right";
+    objects["Instance249"]["Position"] = UDim2.new(1, 0, 0, 0);
+    objects["Instance249"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance249"]["ZIndex"] = 206;
+    objects["Instance249"]["BorderSizePixel"] = 0;
+    objects["Instance249"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance250"]["BackgroundTransparency"] = 1;
-    objects["Instance250"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance250"]["Name"] = "Holder";
-    objects["Instance250"]["Size"] = UDim2.new(1, 0, 0, 47);
-    objects["Instance250"]["Parent"] = objects["Instance248"];
-    objects["Instance250"]["ZIndex"] = 2147483641;
-    objects["Instance250"]["BorderSizePixel"] = 0;
-    objects["Instance250"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance250"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+    objects["Instance250"]["FillDirection"] = Enum.FillDirection.Horizontal;
+    objects["Instance250"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+    objects["Instance250"]["Parent"] = objects["Instance249"];
+    objects["Instance250"]["Padding"] = UDim.new(0, 5);
+    objects["Instance250"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
-    objects["Instance251"]["Parent"] = objects["Instance250"];
-    objects["Instance251"]["PaddingTop"] = UDim.new(0, 1);
-    objects["Instance251"]["PaddingRight"] = UDim.new(0, 1);
-    objects["Instance251"]["PaddingBottom"] = UDim.new(0, 2);
+    objects["Instance251"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance251"]["TextColor3"] = Color3.new(0, 0, 0);
+    objects["Instance251"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance251"]["Text"] = "";
+    objects["Instance251"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance251"]["BackgroundTransparency"] = 1;
+    objects["Instance251"]["TextSize"] = 14;
+    objects["Instance251"]["Name"] = "Close";
+    objects["Instance251"]["Parent"] = objects["Instance249"];
+    objects["Instance251"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance251"]["ZIndex"] = 208;
+    objects["Instance251"]["BorderSizePixel"] = 0;
+    objects["Instance251"]["Size"] = UDim2.new(1, 0, 1, 0);
 
-    objects["Instance252"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance252"]["Name"] = "Background";
-    objects["Instance252"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance252"]["Parent"] = objects["Instance250"];
-    objects["Instance252"]["ZIndex"] = 2147483642;
-    objects["Instance252"]["BorderSizePixel"] = 0;
-    objects["Instance252"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance252"]["Parent"] = objects["Instance251"];
+    objects["Instance252"]["AspectRatio"] = 0.9750000238418579;
 
-    objects["Instance253"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance253"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-    objects["Instance253"]["Name"] = "OutsideStroke";
-    objects["Instance253"]["Parent"] = objects["Instance252"];
-    objects["Instance253"]["Thickness"] = 1.2000000476837158;
+    objects["Instance253"]["ScaleType"] = Enum.ScaleType.Fit;
+    objects["Instance253"]["ImageTransparency"] = 0.25;
+    objects["Instance253"]["Parent"] = objects["Instance251"];
+    objects["Instance253"]["Size"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance253"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance253"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance253"]["Image"] = "rbxassetid://10152135063";
+    objects["Instance253"]["BackgroundTransparency"] = 1;
+    objects["Instance253"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance253"]["ImageContent"] = Content.fromUri("rbxassetid://10152135063");
+    objects["Instance253"]["ZIndex"] = 209;
+    objects["Instance253"]["BorderSizePixel"] = 0;
+    objects["Instance253"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance254"]["Size"] = UDim2.new(1, -8, 1, -8);
-    objects["Instance254"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance254"]["Name"] = "Holder";
-    objects["Instance254"]["Position"] = UDim2.new(0, 0, 0, 3);
-    objects["Instance254"]["Parent"] = objects["Instance252"];
-    objects["Instance254"]["ZIndex"] = 2147483644;
+    objects["Instance254"]["LayoutOrder"] = 1;
+    objects["Instance254"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance254"]["Parent"] = objects["Instance248"];
+    objects["Instance254"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance254"]["ZIndex"] = 207;
     objects["Instance254"]["BorderSizePixel"] = 0;
-    objects["Instance254"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance254"]["Size"] = UDim2.new(1, 0, 1, -16);
+    objects["Instance254"]["RichText"] = true;
+    objects["Instance254"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance254"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance254"]["Text"] = "Color picker";
+    objects["Instance254"]["TextWrap"] = true;
+    objects["Instance254"]["TextSize"] = 14;
+    objects["Instance254"]["TextWrapped"] = true;
+    objects["Instance254"]["BackgroundTransparency"] = 1;
+    objects["Instance254"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance254"]["Name"] = "Title";
+    objects["Instance254"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance254"]["TextScaled"] = true;
+    objects["Instance254"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance255"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance255"]["Parent"] = objects["Instance254"];
-    objects["Instance255"]["ZIndex"] = 2147483645;
-    objects["Instance255"]["BorderSizePixel"] = 0;
-    objects["Instance255"]["Size"] = UDim2.new(1, 0, 0, 16);
-    objects["Instance255"]["RichText"] = true;
-    objects["Instance255"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance255"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance255"]["Text"] = "A notification!";
-    objects["Instance255"]["TextWrap"] = true;
-    objects["Instance255"]["Name"] = "Title";
-    objects["Instance255"]["BackgroundTransparency"] = 1;
-    objects["Instance255"]["TextWrapped"] = true;
-    objects["Instance255"]["TextSize"] = 14;
-    objects["Instance255"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance255"]["TextScaled"] = true;
-    objects["Instance255"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance255"]["Name"] = "TopNeon";
+    objects["Instance255"]["Size"] = UDim2.new(1, 0, 0, 1);
+    objects["Instance255"]["Parent"] = objects["Instance203"];
+    objects["Instance255"]["ZIndex"] = 203;
+    objects["Instance255"]["BorderSizePixel"] = 0;
+    objects["Instance255"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance256"]["Parent"] = objects["Instance255"];
-    objects["Instance256"]["PaddingTop"] = UDim.new(0, 2);
-    objects["Instance256"]["PaddingBottom"] = UDim.new(0, 1);
+    objects["Instance256"]["Parent"] = objects["Instance203"];
+    objects["Instance256"]["AspectRatio"] = 1.399999976158142;
 
-    objects["Instance257"]["Parent"] = objects["Instance254"];
-    objects["Instance257"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance257"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance257"]["BackgroundTransparency"] = 0.949999988079071;
-    objects["Instance257"]["Position"] = UDim2.new(0.5, 0, 0, 17);
-    objects["Instance257"]["Size"] = UDim2.new(0.949999988079071, 0, 0, 1);
-    objects["Instance257"]["ZIndex"] = 2147483645;
-    objects["Instance257"]["BorderSizePixel"] = 0;
-    objects["Instance257"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance257"]["Name"] = "ColorPickerWindows";
+    objects["Instance257"]["Parent"] = objects["Instance19"];
 
-    objects["Instance258"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance258"]["Parent"] = objects["Instance254"];
-    objects["Instance258"]["ZIndex"] = 2147483645;
-    objects["Instance258"]["BorderSizePixel"] = 0;
-    objects["Instance258"]["Size"] = UDim2.new(1, 0, 1, -18);
-    objects["Instance258"]["RichText"] = true;
-    objects["Instance258"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance258"]["Visible"] = false;
+    objects["Instance258"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance258"]["TextColor3"] = Color3.new(0, 0, 0);
     objects["Instance258"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance258"]["Text"] = "Notification text should be here.";
-    objects["Instance258"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance258"]["TextWrap"] = true;
-    objects["Instance258"]["Name"] = "Text";
-    objects["Instance258"]["TextWrapped"] = true;
-    objects["Instance258"]["BackgroundTransparency"] = 1;
-    objects["Instance258"]["Position"] = UDim2.new(0, 0, 0, 18);
+    objects["Instance258"]["Text"] = "";
+    objects["Instance258"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
     objects["Instance258"]["TextSize"] = 14;
-    objects["Instance258"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance258"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance258"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance258"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance258"]["Parent"] = objects["Instance19"];
+    objects["Instance258"]["Name"] = "MobileButton";
+    objects["Instance258"]["Position"] = UDim2.new(0.5, 0, 0, 50);
+    objects["Instance258"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance258"]["ZIndex"] = 2047483646;
+    objects["Instance258"]["BorderSizePixel"] = 0;
+    objects["Instance258"]["Size"] = UDim2.new(0, 50, 0, 50);
 
-    objects["Instance259"]["PaddingTop"] = UDim.new(0, 1);
-    objects["Instance259"]["PaddingBottom"] = UDim.new(0, 1);
-    objects["Instance259"]["PaddingRight"] = UDim.new(0, 3);
-    objects["Instance259"]["PaddingLeft"] = UDim.new(0, 3);
     objects["Instance259"]["Parent"] = objects["Instance258"];
+    objects["Instance259"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance259"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance259"]["BackgroundTransparency"] = 1;
+    objects["Instance259"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance259"]["Size"] = UDim2.new(1, -2, 1, -2);
+    objects["Instance259"]["ZIndex"] = 2047483647;
+    objects["Instance259"]["BorderSizePixel"] = 0;
+    objects["Instance259"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance260"]["Parent"] = objects["Instance254"];
-    objects["Instance260"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance260"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance260"]["Name"] = "Buttons";
-    objects["Instance260"]["Position"] = UDim2.new(1, -1, 0, 0);
-    objects["Instance260"]["Size"] = UDim2.new(1, 0, 0, 17);
-    objects["Instance260"]["ZIndex"] = 2147483645;
-    objects["Instance260"]["BorderSizePixel"] = 0;
-    objects["Instance260"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance260"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance260"]["Parent"] = objects["Instance259"];
 
-    objects["Instance261"]["Parent"] = objects["Instance260"];
-    objects["Instance261"]["AspectRatio"] = 2;
+    objects["Instance261"]["Visible"] = false;
+    objects["Instance261"]["ImageTransparency"] = 0.20000000298023224;
+    objects["Instance261"]["Parent"] = objects["Instance259"];
+    objects["Instance261"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance261"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance261"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance261"]["Image"] = "rbxassetid://8508980527";
+    objects["Instance261"]["BackgroundTransparency"] = 1;
+    objects["Instance261"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance261"]["ImageContent"] = Content.fromUri("rbxassetid://8508980527");
+    objects["Instance261"]["ZIndex"] = 2047483649;
+    objects["Instance261"]["BorderSizePixel"] = 0;
+    objects["Instance261"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance262"]["Parent"] = objects["Instance260"];
-    objects["Instance262"]["BackgroundTransparency"] = 1;
-    objects["Instance262"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance262"]["Image"] = "rbxassetid://130396712201457";
-    objects["Instance262"]["Name"] = "Yes";
-    objects["Instance262"]["Size"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance262"]["ImageContent"] = Content.fromUri("rbxassetid://130396712201457");
-    objects["Instance262"]["ZIndex"] = 2147483646;
-    objects["Instance262"]["BorderSizePixel"] = 0;
-    objects["Instance262"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance262"]["Parent"] = objects["Instance259"];
 
-    objects["Instance263"]["Parent"] = objects["Instance260"];
-    objects["Instance263"]["BackgroundTransparency"] = 1;
-    objects["Instance263"]["Size"] = UDim2.new(0.5, 0, 1, 0);
-    objects["Instance263"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance263"]["Image"] = "rbxassetid://10152135063";
-    objects["Instance263"]["Name"] = "No";
-    objects["Instance263"]["Position"] = UDim2.new(0.5, 0, 0, 0);
-    objects["Instance263"]["ImageContent"] = Content.fromUri("rbxassetid://10152135063");
-    objects["Instance263"]["ZIndex"] = 2147483646;
+    objects["Instance263"]["Visible"] = false;
+    objects["Instance263"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance263"]["Parent"] = objects["Instance259"];
+    objects["Instance263"]["TextStrokeTransparency"] = 0;
+    objects["Instance263"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+    objects["Instance263"]["ZIndex"] = 2047483648;
     objects["Instance263"]["BorderSizePixel"] = 0;
+    objects["Instance263"]["Size"] = UDim2.new(0.8999999761581421, 0, 0.8999999761581421, 0);
+    objects["Instance263"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance263"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance263"]["Text"] = "N";
+    objects["Instance263"]["TextWrap"] = true;
+    objects["Instance263"]["TextWrapped"] = true;
+    objects["Instance263"]["BackgroundTransparency"] = 1;
+    objects["Instance263"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+    objects["Instance263"]["TextSize"] = 14;
+    objects["Instance263"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance263"]["TextScaled"] = true;
     objects["Instance263"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance264"]["BackgroundTransparency"] = 0.5;
-    objects["Instance264"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance264"]["Name"] = "Progress";
-    objects["Instance264"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance264"]["Parent"] = objects["Instance252"];
-    objects["Instance264"]["ZIndex"] = 2147483643;
-    objects["Instance264"]["BorderSizePixel"] = 0;
-    objects["Instance264"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance264"]["Parent"] = objects["Instance258"];
 
-    objects["Instance265"]["Name"] = "Fill";
-    objects["Instance265"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance265"]["Parent"] = objects["Instance264"];
-    objects["Instance265"]["Size"] = UDim2.new(0.75, 0, 1, 0);
-    objects["Instance265"]["BorderSizePixel"] = 0;
-    objects["Instance265"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance265"]["Thickness"] = 2;
+    objects["Instance265"]["Parent"] = objects["Instance258"];
+    objects["Instance265"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 
-    objects["Instance266"]["ClipsDescendants"] = true;
-    objects["Instance266"]["Parent"] = objects["Instance247"];
+    objects["Instance266"]["Visible"] = false;
+    objects["Instance266"]["Parent"] = objects["Instance0"];
+    objects["Instance266"]["AnchorPoint"] = Vector2.new(0, 1);
     objects["Instance266"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance266"]["AnchorPoint"] = Vector2.new(1, 0);
-    objects["Instance266"]["BackgroundTransparency"] = 1;
-    objects["Instance266"]["Name"] = "NotificationsRight";
-    objects["Instance266"]["Position"] = UDim2.new(1, 0, 0, 50);
-    objects["Instance266"]["Size"] = UDim2.new(0, 250, 1, -50);
-    objects["Instance266"]["ZIndex"] = 214748364;
+    objects["Instance266"]["Name"] = "Tooltip";
+    objects["Instance266"]["Position"] = UDim2.new(0, 710, 0, 576);
+    objects["Instance266"]["Size"] = UDim2.new(0, 180, 0, 30);
+    objects["Instance266"]["ZIndex"] = 2147483646;
     objects["Instance266"]["BorderSizePixel"] = 0;
-    objects["Instance266"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance266"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
 
+    objects["Instance267"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance267"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance267"]["Name"] = "OutsideStroke";
     objects["Instance267"]["Parent"] = objects["Instance266"];
-    objects["Instance267"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-    objects["Instance267"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+    objects["Instance267"]["Thickness"] = 1.2000000476837158;
 
-    objects["Instance268"]["Active"] = false;
-    objects["Instance268"]["Selectable"] = false;
-    objects["Instance268"]["Text"] = "";
-    objects["Instance268"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
-    objects["Instance268"]["AutoButtonColor"] = false;
-    objects["Instance268"]["AnchorPoint"] = Vector2.new(0, 0.5);
-    objects["Instance268"]["Parent"] = objects["Instance0"];
-    objects["Instance268"]["Name"] = "FloatingLabel";
-    objects["Instance268"]["Position"] = UDim2.new(0.05000000074505806, 0, 0.5, 0);
+    objects["Instance268"]["FontSize"] = Enum.FontSize.Size18;
+    objects["Instance268"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance268"]["TextColor3"] = Color3.new(1, 1, 1);
     objects["Instance268"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance268"]["ZIndex"] = 147483646;
+    objects["Instance268"]["Text"] = "Just a regular checkbox!";
+    objects["Instance268"]["TextSize"] = 16;
+    objects["Instance268"]["Parent"] = objects["Instance266"];
+    objects["Instance268"]["FontFace"] = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance268"]["RichText"] = true;
+    objects["Instance268"]["BackgroundTransparency"] = 1;
+    objects["Instance268"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance268"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance268"]["ZIndex"] = 2147483647;
     objects["Instance268"]["BorderSizePixel"] = 0;
-    objects["Instance268"]["Size"] = UDim2.new(0, 113, 0, 37);
+    objects["Instance268"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance269"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-    objects["Instance269"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
-    objects["Instance269"]["Name"] = "OutsideStroke";
-    objects["Instance269"]["Parent"] = objects["Instance268"];
-    objects["Instance269"]["Thickness"] = 1.2000000476837158;
+    objects["Instance269"]["Parent"] = objects["Instance266"];
+    objects["Instance269"]["PaddingTop"] = UDim.new(0, 6);
+    objects["Instance269"]["PaddingLeft"] = UDim.new(0, 7);
 
-    objects["Instance270"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance270"]["Name"] = "TopNeon";
-    objects["Instance270"]["Size"] = UDim2.new(1, 0, 0, 1);
-    objects["Instance270"]["Parent"] = objects["Instance268"];
-    objects["Instance270"]["ZIndex"] = 147483647;
+    objects["Instance270"]["FontFace"] = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance270"]["Parent"] = objects["Instance266"];
+    objects["Instance270"]["ZIndex"] = 2147483647;
     objects["Instance270"]["BorderSizePixel"] = 0;
-    objects["Instance270"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
+    objects["Instance270"]["Size"] = UDim2.new(1, 0, 0, 10000);
+    objects["Instance270"]["RichText"] = true;
+    objects["Instance270"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance270"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance270"]["Text"] = "Just a regular checkbox!";
+    objects["Instance270"]["FontSize"] = Enum.FontSize.Size18;
+    objects["Instance270"]["Name"] = "TextLabelInvisible";
+    objects["Instance270"]["BackgroundTransparency"] = 1;
+    objects["Instance270"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance270"]["TextSize"] = 16;
+    objects["Instance270"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance270"]["TextTransparency"] = 1;
+    objects["Instance270"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance271"]["Parent"] = objects["Instance268"];
-    objects["Instance271"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance271"]["AnchorPoint"] = Vector2.new(0.5, 0);
-    objects["Instance271"]["BackgroundTransparency"] = 1;
-    objects["Instance271"]["Name"] = "Contents";
-    objects["Instance271"]["Position"] = UDim2.new(0.5, 0, 0, 3);
-    objects["Instance271"]["Size"] = UDim2.new(1, -8, 1, -3);
-    objects["Instance271"]["ZIndex"] = 147483647;
-    objects["Instance271"]["BorderSizePixel"] = 0;
-    objects["Instance271"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance271"]["Name"] = "Notifications";
+    objects["Instance271"]["Parent"] = objects["Instance0"];
 
-    objects["Instance272"]["FontSize"] = Enum.FontSize.Size18;
-    objects["Instance272"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance272"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance272"]["Text"] = "Keybinds";
-    objects["Instance272"]["TextSize"] = 16;
-    objects["Instance272"]["Name"] = "Title";
+    objects["Instance272"]["ClipsDescendants"] = true;
     objects["Instance272"]["Parent"] = objects["Instance271"];
-    objects["Instance272"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
     objects["Instance272"]["BackgroundTransparency"] = 1;
-    objects["Instance272"]["RichText"] = true;
-    objects["Instance272"]["Size"] = UDim2.new(1, 0, 0, 16);
-    objects["Instance272"]["ZIndex"] = 147483648;
+    objects["Instance272"]["Name"] = "NotificationsLeft";
+    objects["Instance272"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance272"]["Size"] = UDim2.new(0, 250, 1, 0);
+    objects["Instance272"]["ZIndex"] = 214748364;
     objects["Instance272"]["BorderSizePixel"] = 0;
     objects["Instance272"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance273"]["Visible"] = false;
+    objects["Instance273"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
+    objects["Instance273"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
     objects["Instance273"]["Parent"] = objects["Instance272"];
-    objects["Instance273"]["Image"] = "rbxasset://textures/ui/GuiImagePlaceholder.png";
-    objects["Instance273"]["BackgroundTransparency"] = 1;
-    objects["Instance273"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance273"]["ImageContent"] = Content.fromUri("rbxasset://textures/ui/GuiImagePlaceholder.png");
-    objects["Instance273"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance273"]["BorderSizePixel"] = 0;
-    objects["Instance273"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance274"]["Parent"] = objects["Instance273"];
+    objects["Instance274"]["BackgroundTransparency"] = 1;
+    objects["Instance274"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance274"]["Name"] = "Holder";
+    objects["Instance274"]["Size"] = UDim2.new(1, 0, 0, 47);
+    objects["Instance274"]["Parent"] = objects["Instance272"];
+    objects["Instance274"]["ZIndex"] = 2147483641;
+    objects["Instance274"]["BorderSizePixel"] = 0;
+    objects["Instance274"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance275"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
-    objects["Instance275"]["Parent"] = objects["Instance271"];
-    objects["Instance275"]["ZIndex"] = 147483648;
-    objects["Instance275"]["BorderSizePixel"] = 0;
-    objects["Instance275"]["Size"] = UDim2.new(1, 0, 1, -16);
-    objects["Instance275"]["RichText"] = true;
-    objects["Instance275"]["TextColor3"] = Color3.new(1, 1, 1);
-    objects["Instance275"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance275"]["Text"] = "Keybinds";
-    objects["Instance275"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-    objects["Instance275"]["Name"] = "Text";
-    objects["Instance275"]["BackgroundTransparency"] = 1;
-    objects["Instance275"]["Position"] = UDim2.new(0, 0, 0, 16);
-    objects["Instance275"]["FontSize"] = Enum.FontSize.Size14;
-    objects["Instance275"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-    objects["Instance275"]["TextSize"] = 14;
-    objects["Instance275"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance275"]["Parent"] = objects["Instance274"];
+    objects["Instance275"]["PaddingTop"] = UDim.new(0, 1);
+    objects["Instance275"]["PaddingRight"] = UDim.new(0, 1);
+    objects["Instance275"]["PaddingBottom"] = UDim.new(0, 2);
 
-    objects["Instance276"]["Name"] = "MobileButtons";
-    objects["Instance276"]["Parent"] = objects["Instance0"];
+    objects["Instance276"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance276"]["Name"] = "Background";
+    objects["Instance276"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance276"]["Parent"] = objects["Instance274"];
+    objects["Instance276"]["ZIndex"] = 2147483642;
+    objects["Instance276"]["BorderSizePixel"] = 0;
+    objects["Instance276"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
 
-    objects["Instance277"]["Name"] = "FloatingLabels";
-    objects["Instance277"]["Parent"] = objects["Instance0"];
+    objects["Instance277"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance277"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance277"]["Name"] = "OutsideStroke";
+    objects["Instance277"]["Parent"] = objects["Instance276"];
+    objects["Instance277"]["Thickness"] = 1.2000000476837158;
 
-    objects["Instance278"]["BackgroundTransparency"] = 1;
+    objects["Instance278"]["Size"] = UDim2.new(1, -8, 1, -8);
     objects["Instance278"]["BorderColor3"] = Color3.new(0, 0, 0);
-    objects["Instance278"]["Name"] = "FullScreen";
-    objects["Instance278"]["Size"] = UDim2.new(1, 0, 1, 0);
-    objects["Instance278"]["Parent"] = objects["Instance0"];
-    objects["Instance278"]["ZIndex"] = -1;
+    objects["Instance278"]["Name"] = "Holder";
+    objects["Instance278"]["Position"] = UDim2.new(0, 0, 0, 3);
+    objects["Instance278"]["Parent"] = objects["Instance276"];
+    objects["Instance278"]["ZIndex"] = 2147483644;
     objects["Instance278"]["BorderSizePixel"] = 0;
-    objects["Instance278"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+    objects["Instance278"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
 
-    objects["Instance279"]["Parent"] = objects["Instance0"];
-    objects["Instance279"]["Name"] = "Main";
+    objects["Instance279"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance279"]["Parent"] = objects["Instance278"];
+    objects["Instance279"]["ZIndex"] = 2147483645;
+    objects["Instance279"]["BorderSizePixel"] = 0;
+    objects["Instance279"]["Size"] = UDim2.new(1, 0, 0, 16);
+    objects["Instance279"]["RichText"] = true;
+    objects["Instance279"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance279"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance279"]["Text"] = "A notification!";
+    objects["Instance279"]["TextWrap"] = true;
+    objects["Instance279"]["Name"] = "Title";
+    objects["Instance279"]["BackgroundTransparency"] = 1;
+    objects["Instance279"]["TextWrapped"] = true;
+    objects["Instance279"]["TextSize"] = 14;
+    objects["Instance279"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance279"]["TextScaled"] = true;
+    objects["Instance279"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance280"]["Parent"] = objects["Instance279"];
-    objects["Instance280"]["Name"] = "Icons";
+    objects["Instance280"]["PaddingTop"] = UDim.new(0, 2);
+    objects["Instance280"]["PaddingBottom"] = UDim.new(0, 1);
 
-    objects["Instance281"]["Parent"] = objects["Instance279"];
-    objects["Instance281"]["Name"] = "Languages";
+    objects["Instance281"]["Parent"] = objects["Instance278"];
+    objects["Instance281"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance281"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance281"]["BackgroundTransparency"] = 0.949999988079071;
+    objects["Instance281"]["Position"] = UDim2.new(0.5, 0, 0, 17);
+    objects["Instance281"]["Size"] = UDim2.new(0.949999988079071, 0, 0, 1);
+    objects["Instance281"]["ZIndex"] = 2147483645;
+    objects["Instance281"]["BorderSizePixel"] = 0;
+    objects["Instance281"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance282"]["Parent"] = objects["Instance279"];
-    objects["Instance282"]["Name"] = "Event";
+    objects["Instance282"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance282"]["Parent"] = objects["Instance278"];
+    objects["Instance282"]["ZIndex"] = 2147483645;
+    objects["Instance282"]["BorderSizePixel"] = 0;
+    objects["Instance282"]["Size"] = UDim2.new(1, 0, 1, -18);
+    objects["Instance282"]["RichText"] = true;
+    objects["Instance282"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance282"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance282"]["Text"] = "Notification text should be here.";
+    objects["Instance282"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance282"]["TextWrap"] = true;
+    objects["Instance282"]["Name"] = "Text";
+    objects["Instance282"]["TextWrapped"] = true;
+    objects["Instance282"]["BackgroundTransparency"] = 1;
+    objects["Instance282"]["Position"] = UDim2.new(0, 0, 0, 18);
+    objects["Instance282"]["TextSize"] = 14;
+    objects["Instance282"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance282"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance282"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance283"]["Parent"] = objects["Instance279"];
-    objects["Instance283"]["Name"] = "Backgrounds";
+    objects["Instance283"]["PaddingTop"] = UDim.new(0, 1);
+    objects["Instance283"]["PaddingBottom"] = UDim.new(0, 1);
+    objects["Instance283"]["PaddingRight"] = UDim.new(0, 3);
+    objects["Instance283"]["PaddingLeft"] = UDim.new(0, 3);
+    objects["Instance283"]["Parent"] = objects["Instance282"];
 
-    objects["Instance284"]["Parent"] = objects["Instance279"];
-    objects["Instance284"]["Name"] = "Config";
+    objects["Instance284"]["Parent"] = objects["Instance278"];
+    objects["Instance284"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance284"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance284"]["Name"] = "Buttons";
+    objects["Instance284"]["Position"] = UDim2.new(1, -1, 0, 0);
+    objects["Instance284"]["Size"] = UDim2.new(1, 0, 0, 17);
+    objects["Instance284"]["ZIndex"] = 2147483645;
+    objects["Instance284"]["BorderSizePixel"] = 0;
+    objects["Instance284"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
 
-    objects["Instance285"]["Parent"] = objects["Instance279"];
-    objects["Instance285"]["Name"] = "Example";
+    objects["Instance285"]["Parent"] = objects["Instance284"];
+    objects["Instance285"]["AspectRatio"] = 2;
 
-    objects["Instance286"]["Parent"] = objects["Instance279"];
-    objects["Instance286"]["Name"] = "Compressor";
+    objects["Instance286"]["Parent"] = objects["Instance284"];
+    objects["Instance286"]["BackgroundTransparency"] = 1;
+    objects["Instance286"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance286"]["Image"] = "rbxassetid://130396712201457";
+    objects["Instance286"]["Name"] = "Yes";
+    objects["Instance286"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance286"]["ImageContent"] = Content.fromUri("rbxassetid://130396712201457");
+    objects["Instance286"]["ZIndex"] = 2147483646;
+    objects["Instance286"]["BorderSizePixel"] = 0;
+    objects["Instance286"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance287"]["Parent"] = objects["Instance279"];
-    objects["Instance287"]["Name"] = "Base64";
+    objects["Instance287"]["Parent"] = objects["Instance284"];
+    objects["Instance287"]["BackgroundTransparency"] = 1;
+    objects["Instance287"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+    objects["Instance287"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance287"]["Image"] = "rbxassetid://10152135063";
+    objects["Instance287"]["Name"] = "No";
+    objects["Instance287"]["Position"] = UDim2.new(0.5, 0, 0, 0);
+    objects["Instance287"]["ImageContent"] = Content.fromUri("rbxassetid://10152135063");
+    objects["Instance287"]["ZIndex"] = 2147483646;
+    objects["Instance287"]["BorderSizePixel"] = 0;
+    objects["Instance287"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance288"]["Parent"] = objects["Instance279"];
-    objects["Instance288"]["Name"] = "LucideIcons";
+    objects["Instance288"]["BackgroundTransparency"] = 0.5;
+    objects["Instance288"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance288"]["Name"] = "Progress";
+    objects["Instance288"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance288"]["Parent"] = objects["Instance276"];
+    objects["Instance288"]["ZIndex"] = 2147483643;
+    objects["Instance288"]["BorderSizePixel"] = 0;
+    objects["Instance288"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance289"]["Parent"] = objects["Instance279"];
-    objects["Instance289"]["Name"] = "DefaultThemes";
+    objects["Instance289"]["Name"] = "Fill";
+    objects["Instance289"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance289"]["Parent"] = objects["Instance288"];
+    objects["Instance289"]["Size"] = UDim2.new(0.75, 0, 1, 0);
+    objects["Instance289"]["BorderSizePixel"] = 0;
+    objects["Instance289"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
-    objects["Instance290"]["Parent"] = objects["Instance279"];
-    objects["Instance290"]["Name"] = "UIBlur";
+    objects["Instance290"]["ClipsDescendants"] = true;
+    objects["Instance290"]["Parent"] = objects["Instance271"];
+    objects["Instance290"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance290"]["AnchorPoint"] = Vector2.new(1, 0);
+    objects["Instance290"]["BackgroundTransparency"] = 1;
+    objects["Instance290"]["Name"] = "NotificationsRight";
+    objects["Instance290"]["Position"] = UDim2.new(1, 0, 0, 50);
+    objects["Instance290"]["Size"] = UDim2.new(0, 250, 1, -50);
+    objects["Instance290"]["ZIndex"] = 214748364;
+    objects["Instance290"]["BorderSizePixel"] = 0;
+    objects["Instance290"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance291"]["Name"] = "Placeholders";
-    objects["Instance291"]["Parent"] = objects["Instance279"];
+    objects["Instance291"]["Parent"] = objects["Instance290"];
+    objects["Instance291"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+    objects["Instance291"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
 
-    objects["Instance292"]["Name"] = "Sounds";
-    objects["Instance292"]["Parent"] = objects["Instance279"];
+    objects["Instance292"]["Active"] = false;
+    objects["Instance292"]["Selectable"] = false;
+    objects["Instance292"]["Text"] = "";
+    objects["Instance292"]["BackgroundColor3"] = Color3.new(0.0784314, 0.0784314, 0.0784314);
+    objects["Instance292"]["AutoButtonColor"] = false;
+    objects["Instance292"]["AnchorPoint"] = Vector2.new(0, 0.5);
+    objects["Instance292"]["Parent"] = objects["Instance0"];
+    objects["Instance292"]["Name"] = "FloatingLabel";
+    objects["Instance292"]["Position"] = UDim2.new(0.05000000074505806, 0, 0.5, 0);
+    objects["Instance292"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance292"]["ZIndex"] = 147483646;
+    objects["Instance292"]["BorderSizePixel"] = 0;
+    objects["Instance292"]["Size"] = UDim2.new(0, 113, 0, 37);
 
+    objects["Instance293"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+    objects["Instance293"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+    objects["Instance293"]["Name"] = "OutsideStroke";
     objects["Instance293"]["Parent"] = objects["Instance292"];
-    objects["Instance293"]["SoundId"] = "rbxassetid://98797174600699";
-    objects["Instance293"]["Name"] = "Notification";
-    objects["Instance293"]["AudioContent"] = Content.fromUri("rbxassetid://98797174600699");
+    objects["Instance293"]["Thickness"] = 1.2000000476837158;
 
+    objects["Instance294"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance294"]["Name"] = "TopNeon";
+    objects["Instance294"]["Size"] = UDim2.new(1, 0, 0, 1);
     objects["Instance294"]["Parent"] = objects["Instance292"];
-    objects["Instance294"]["SoundId"] = "rbxassetid://99955064134003";
-    objects["Instance294"]["Name"] = "Click";
-    objects["Instance294"]["AudioContent"] = Content.fromUri("rbxassetid://99955064134003");
+    objects["Instance294"]["ZIndex"] = 147483647;
+    objects["Instance294"]["BorderSizePixel"] = 0;
+    objects["Instance294"]["BackgroundColor3"] = Color3.new(1, 0, 0.498039);
 
     objects["Instance295"]["Parent"] = objects["Instance292"];
-    objects["Instance295"]["SoundId"] = "rbxassetid://107511012621133";
-    objects["Instance295"]["Name"] = "Hover";
-    objects["Instance295"]["AudioContent"] = Content.fromUri("rbxassetid://107511012621133");
+    objects["Instance295"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance295"]["AnchorPoint"] = Vector2.new(0.5, 0);
+    objects["Instance295"]["BackgroundTransparency"] = 1;
+    objects["Instance295"]["Name"] = "Contents";
+    objects["Instance295"]["Position"] = UDim2.new(0.5, 0, 0, 3);
+    objects["Instance295"]["Size"] = UDim2.new(1, -8, 1, -3);
+    objects["Instance295"]["ZIndex"] = 147483647;
+    objects["Instance295"]["BorderSizePixel"] = 0;
+    objects["Instance295"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
-    objects["Instance296"]["Parent"] = objects["Instance292"];
-    objects["Instance296"]["SoundId"] = "rbxassetid://112788871431898";
-    objects["Instance296"]["Name"] = "Test";
-    objects["Instance296"]["AudioContent"] = Content.fromUri("rbxassetid://112788871431898");
+    objects["Instance296"]["FontSize"] = Enum.FontSize.Size18;
+    objects["Instance296"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance296"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance296"]["Text"] = "Keybinds";
+    objects["Instance296"]["TextSize"] = 16;
+    objects["Instance296"]["Name"] = "Title";
+    objects["Instance296"]["Parent"] = objects["Instance295"];
+    objects["Instance296"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal, true);
+    objects["Instance296"]["BackgroundTransparency"] = 1;
+    objects["Instance296"]["RichText"] = true;
+    objects["Instance296"]["Size"] = UDim2.new(1, 0, 0, 16);
+    objects["Instance296"]["ZIndex"] = 147483648;
+    objects["Instance296"]["BorderSizePixel"] = 0;
+    objects["Instance296"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance297"]["Visible"] = false;
+    objects["Instance297"]["Parent"] = objects["Instance296"];
+    objects["Instance297"]["Image"] = "rbxasset://textures/ui/GuiImagePlaceholder.png";
+    objects["Instance297"]["BackgroundTransparency"] = 1;
+    objects["Instance297"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance297"]["ImageContent"] = Content.fromUri("rbxasset://textures/ui/GuiImagePlaceholder.png");
+    objects["Instance297"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance297"]["BorderSizePixel"] = 0;
+    objects["Instance297"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance298"]["Parent"] = objects["Instance297"];
+
+    objects["Instance299"]["FontFace"] = Font.new("rbxasset://fonts/families/Arial.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal, false);
+    objects["Instance299"]["Parent"] = objects["Instance295"];
+    objects["Instance299"]["ZIndex"] = 147483648;
+    objects["Instance299"]["BorderSizePixel"] = 0;
+    objects["Instance299"]["Size"] = UDim2.new(1, 0, 1, -16);
+    objects["Instance299"]["RichText"] = true;
+    objects["Instance299"]["TextColor3"] = Color3.new(1, 1, 1);
+    objects["Instance299"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance299"]["Text"] = "Keybinds";
+    objects["Instance299"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+    objects["Instance299"]["Name"] = "Text";
+    objects["Instance299"]["BackgroundTransparency"] = 1;
+    objects["Instance299"]["Position"] = UDim2.new(0, 0, 0, 16);
+    objects["Instance299"]["FontSize"] = Enum.FontSize.Size14;
+    objects["Instance299"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+    objects["Instance299"]["TextSize"] = 14;
+    objects["Instance299"]["BackgroundColor3"] = Color3.new(1, 1, 1);
+
+    objects["Instance300"]["Name"] = "MobileButtons";
+    objects["Instance300"]["Parent"] = objects["Instance0"];
+
+    objects["Instance301"]["Name"] = "FloatingLabels";
+    objects["Instance301"]["Parent"] = objects["Instance0"];
+
+    objects["Instance302"]["BackgroundTransparency"] = 1;
+    objects["Instance302"]["BorderColor3"] = Color3.new(0, 0, 0);
+    objects["Instance302"]["Name"] = "FullScreen";
+    objects["Instance302"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance302"]["Parent"] = objects["Instance0"];
+    objects["Instance302"]["ZIndex"] = -1;
+    objects["Instance302"]["BorderSizePixel"] = 0;
+    objects["Instance302"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 end;
 local ___args = table.pack(...); local ___up = unpack;
 
@@ -3090,17 +3144,336 @@ local modules do
 
     getfenv().require = require;
 
-    modules[objects["Instance284"]] = function(...)
-        local script = objects["Instance284"];
+    modules[objects["Instance8"]] = function(...)
+        local script = objects["Instance8"];
+local ecs = game:GetService("EncodingService")
+local clamp = math.clamp
+local tostr, fromstr = buffer.tostring, buffer.fromstring
+local zstd = Enum.CompressionAlgorithm.Zstd
+
 return {
-    Name = "FireLibrary",
-    Version = "5.1.0",
-    Author = "@kawaii_kebodo"
+    Compress = function(self, str, lvl)
+        return tostr(ecs:CompressBuffer(fromstr(str), zstd, clamp(tonumber(lvl) or 22, -7, 22)))
+    end,
+    Decompress = function(self, str)
+        return tostr(ecs:DecompressBuffer(fromstr(str), zstd))
+    end
 }
     end;
 
-    modules[objects["Instance279"]] = function(...)
-        local script = objects["Instance279"];
+    modules[objects["Instance12"]] = function(...)
+        local script = objects["Instance12"];
+local pack, concat = table.pack, table.concat
+local function memoize(fn)
+    local cache = setmetatable({ }, { __mode = "k" })
+
+    return function(...)
+        local args = pack(...)
+        local key = args.n ~= 0 and concat(args, "\0") or ""
+
+        local result = cache[key]
+        if result then
+            return unpack(result, 1, result.n)
+        end
+
+        result = pack(fn(...))
+        cache[key] = result
+
+        return unpack(result, 1, result.n)
+    end
+end
+
+local Inew = Instance.new
+
+local pc = Inew("Part")
+pc["FormFactor"] = "Custom"
+pc.TopSurface = 0
+pc.BottomSurface = 0
+pc.Anchored = true
+pc.CanCollide = false
+pc.Material = "Glass"
+pc.Transparency = 0.98
+pc.Name = "BlurPart"
+
+local mesh = Inew("SpecialMesh", pc)
+mesh.MeshType = 2
+mesh.Name = "WedgeMesh"
+
+local CFn = CFrame.new
+local CFa = CFrame.Angles
+local V3n = Vector3.new
+local V2n = Vector2.new
+local pcall = pcall
+
+local game, workspace = game, workspace
+local rs = game:GetService("RunService").RenderStepped
+
+local acos, max, pi, sqrt, sin, cos, rad = memoize(math.acos), memoize(math.max), math.pi, memoize(math.sqrt), memoize(math.sin), memoize(math.cos), memoize(math.rad)
+local drawQuad do
+    local sz = 0.2
+    local halfPi = pi / 2
+    
+    local function drawTriangle(v1, v2, v3, p0, p1)
+        local s1 = (v1 - v2).Magnitude
+        local s2 = (v2 - v3).Magnitude
+        local s3 = (v3 - v1).Magnitude
+        
+        local smax = max(s1, s2, s3)
+        local A, B, C
+        if s1 == smax then
+            A, B, C = v1, v2, v3
+        elseif s2 == smax then
+            A, B, C = v2, v3, v1
+        elseif s3 == smax then
+            A, B, C = v3, v1, v2
+        end
+    
+        local para = ((B - A).X * (C - A).X + (B - A).Y * (C - A).Y + (B - A).Z * (C - A).Z ) / (A - B).Magnitude
+        local perp = sqrt((C - A).Magnitude ^ 2 - para * para)
+        local difPara = (A - B).Magnitude - para
+        local halfPerp = perp / 2
+    
+        local st = CFn(B, A)
+        local za = CFa(halfPi, 0, 0)
+    
+        local cf0 = st
+    
+        local topLook = (cf0 * za).LookVector
+        local neededLook = CFn(A + CFn(A, B).LookVector * para, C).LookVector
+        local dot = topLook.X * neededLook.X + topLook.Y * neededLook.Y + topLook.Z * neededLook.Z
+    
+        local ac = CFa(0, 0, acos(dot))
+    
+        cf0 *= ac
+        if ((cf0 * za).LookVector - neededLook).Magnitude > 0.01 then
+            cf0 *= CFa(0, 0, -2 * acos(dot))
+        end
+        
+        cf0 *= CFn(0, halfPerp, -(difPara + para / 2))
+    
+        local cf1 = st * ac * CFa(0, pi, 0)
+        if ((cf1 * za).LookVector - neededLook).Magnitude > 0.01 then
+            cf1 *= CFa(0, 0, 2 * acos(dot))
+        end
+        
+        cf1 *= CFn(0, halfPerp, difPara / 2)
+    
+        if not p0 then
+            p0 = pc:Clone()
+            p0.Size = V3n(sz, sz, sz)
+        end
+        
+        local w0 = p0:FindFirstChild("WedgeMesh")
+        if not w0 then
+            w0 = mesh:Clone()
+            w0.Parent = p0
+        end
+        
+        w0.Scale = V3n(0, perp / sz, para / sz)
+        p0.CFrame = cf0
+        
+        if not p1 then
+            p1 = p0:Clone()
+        end
+
+        local w1 = p1:FindFirstChild("WedgeMesh")
+        if not w1 then
+            w1 = mesh:Clone()
+            w1.Parent = p1
+        end
+        
+        w1.Scale = V3n(0, perp / sz, difPara / sz)
+        p1.CFrame = cf1
+        
+        return p0, p1
+    end
+
+    function drawQuad(v1, v2, v3, v4, parts)
+        parts[1], parts[2] = drawTriangle(v1, v2, v3, parts[1], parts[2])
+        parts[3], parts[4] = drawTriangle(v3, v2, v4, parts[3], parts[4])
+    end
+end
+
+local camera = workspace.CurrentCamera
+
+local binds = { }
+local coreFolder = Inew("Folder")
+
+local function count(t)
+    local n = 0
+    for i in t do
+        n += 1
+        
+    end
+    
+    return n
+end
+
+local function parent(a, b)
+    if a.Parent ~= b then
+        a.Parent = b
+    end
+end
+
+local dof = Inew("DepthOfFieldEffect")
+local light = game:GetService("Lighting")
+
+dof.Name = "UIBlurEffect"
+dof.Enabled = true
+dof.FarIntensity = 0
+dof.InFocusRadius = 50
+dof.NearIntensity = 0.4
+dof.FocusDistance = 51.6
+
+local lib
+local function f()
+    camera = workspace.CurrentCamera or camera
+
+    local enabled = count(binds) ~= 0
+    if enabled then
+        enabled = false
+        for i, v in binds do
+            if v[1].Visible then
+                enabled = true
+                break
+            end
+        end
+    end
+    
+    local par = enabled and camera or nil
+    if not pcall(parent, coreFolder, par) then
+        coreFolder = Inew("Folder")
+        pcall(parent, coreFolder, par)
+    end
+    
+    coreFolder.Name = "UIBlur"
+    
+    for i, v in binds do
+        pcall(parent, v[2], coreFolder)
+    end
+    
+    par = enabled and light or nil
+    if not pcall(parent, dof, par) then
+        dof = Inew("DepthOfFieldEffect")
+        pcall(parent, dof, par)
+    end
+
+    dof.Name = "UIBlurEffect"
+    dof.Enabled = true
+    dof.FarIntensity = 0
+    dof.InFocusRadius = 50
+    dof.NearIntensity = lib.BlurSize * 0.4
+    dof.FocusDistance = 51.6
+end
+
+workspace.Changed:Connect(f)
+rs:Connect(f)
+
+local function updateOrientation(frame, parts)
+    if not camera then return end
+    
+    local zIndex = 1 - 0.05 * frame.ZIndex
+    local tl, br = frame.AbsolutePosition, frame.AbsolutePosition + frame.AbsoluteSize
+    local tr, bl = V2n(br.X, tl.Y), V2n(tl.X, br.Y)
+    
+    do
+        local rot = frame.AbsoluteRotation
+        if rot % 180 ~= 0 then
+            local mid = tl:Lerp(br, 0.5)
+            local s, c = sin(rad(rot)), cos(rad(rot))
+            local vec = tl
+            
+            tl = V2n(c * (tl.X - mid.X) - s * (tl.Y - mid.Y), s * (tl.X - mid.X) + c * (tl.Y - mid.Y)) + mid
+            tr = V2n(c * (tr.X - mid.X) - s * (tr.Y - mid.Y), s * (tr.X - mid.X) + c * (tr.Y - mid.Y)) + mid
+            bl = V2n(c * (bl.X - mid.X) - s * (bl.Y - mid.Y), s * (bl.X - mid.X) + c * (bl.Y - mid.Y)) + mid
+            br = V2n(c * (br.X - mid.X) - s * (br.Y - mid.Y), s * (br.X - mid.X) + c * (br.Y - mid.Y)) + mid
+        end
+    end
+    
+    drawQuad(
+        camera:ScreenPointToRay(tl.X, tl.Y, zIndex).Origin, 
+        camera:ScreenPointToRay(tr.X, tr.Y, zIndex).Origin, 
+        camera:ScreenPointToRay(bl.X, bl.Y, zIndex).Origin, 
+        camera:ScreenPointToRay(br.X, br.Y, zIndex).Origin, 
+        parts
+    )
+end
+
+lib = {
+    Bind = function(self, frame)
+        if self:IsBinded(frame) then return end
+        
+        local parts = { }
+        local holderFolder = Inew("Folder", coreFolder)
+        local binding = { frame, holderFolder, parts }
+        
+        local function refresh()
+            if not pcall(parent, holderFolder, coreFolder) then
+                holderFolder = Inew("Folder", coreFolder)
+                binding[2] = holderFolder
+            end
+            
+            if not frame.Visible then
+                for i, v in parts do
+                    pcall(parent, v, nil)
+                end
+                
+                return
+            end
+            
+            for i, v in parts do
+                if not pcall(parent, v, holderFolder) then
+                    parts[i] = nil
+                end
+            end
+            
+            updateOrientation(frame, parts)
+
+            for i, v in parts do
+                if not pcall(parent, v, holderFolder) then
+                    parts[i] = nil
+                end
+            end
+            
+            holderFolder.Name = "UIBlurHolder"
+        end
+        
+        binding[4] = frame.Changed:Connect(refresh)
+        binding[5] = rs:Connect(refresh)
+        binds[frame] = binding
+        
+        refresh()
+    end,
+    IsBinded = function(self, frame)
+        return frame ~= nil and binds[frame] ~= nil
+    end,
+    Unbind = function(self, frame)
+        if not self:IsBinded(frame) then return end
+        
+        local binding = binds[frame]
+
+        binding[1]:Destroy()
+        binding[2]:Destroy()
+        for i, v in binding[3] do
+            v:Destroy()
+        end
+        
+        binding[4]:Disconnect()
+        binding[5]:Disconnect()
+        
+        binds[frame] = nil
+    end,
+    UnBind = function(self, frame)
+        return self:Unbind(frame)
+    end,
+    BlurSize = 1
+}
+
+return lib
+    end;
+
+    modules[objects["Instance1"]] = function(...)
+        local script = objects["Instance1"];
 local tfind = table.find
 local game = game
 local workspace = workspace
@@ -6829,7 +7202,8 @@ local tabFuncs = {
         Tooltip = "",
         RecolorIcon = true,
         Translations = tfreeze({ }),
-        Order = 0
+        Order = 0,
+        Image = ""
     },
     Init = function(self, options)
         local tabButton = getPlaceholder("TabButton")
@@ -6898,6 +7272,7 @@ local tabFuncs = {
                 cons[#cons + 1] = child:GetPropertyChangedSignal("Visible"):Connect(function()
                     object.Proxy:Refresh()
                 end)
+                
                 cons[#cons + 1] = child:GetPropertyChangedSignal("Size"):Connect(function()
                     object.Proxy:Refresh()
                 end)
@@ -6908,6 +7283,9 @@ local tabFuncs = {
         cons[#cons + 1] = tab.GroupboxZone.LeftGroupboxZone.ChildRemoved:Connect(gbc2)
         cons[#cons + 1] = tab.GroupboxZone.RightGroupboxZone.ChildAdded:Connect(gbc)
         cons[#cons + 1] = tab.GroupboxZone.RightGroupboxZone.ChildRemoved:Connect(gbc2)
+        cons[#cons + 1] = rs.RenderStepped:Connect(function()
+            tab.MobileSizeFix.Size = U2n(mrandom(), 0, 0, 1)
+        end)
 
         defer(function()
             if not object.Parent.CurrentTab then
@@ -6951,13 +7329,14 @@ local tabFuncs = {
             safeReparent(holder, self.Parent.Window.RealWindow.Contents.Display.Pages)
         end
 
-        setIcon(options.Icon, icons, self, bi.Icon)
+        setIcon(options.Icon, icons, self.Proxy, bi.Icon)
         bi.Title.Text = translate(self, "Text")
         bi.Visible = options.Visible
 
         tb.BackgroundColor3 = window.Theme.Main
         tb.Indicator.BackgroundColor3 = window.Theme.Main
         tb.Filler.BackgroundColor3 = window.Theme.Text
+        setIcon(options.Image, backgrounds, self.Proxy, tb.ImageLabel)
         orderUpdate(tb, tonumber(options.Order) or 0)
         bi.Icon.ImageColor3 = self.Options.RecolorIcon and window.Theme.Text or C3n(1, 1, 1)
         bi.Title.TextColor3 = window.Theme.Text
@@ -8127,7 +8506,10 @@ local windowFuncs; windowFuncs = {
             object.Proxy:RefreshAll()
         end)
 
+        local msf = window.RealWindow.Contents.Display.PageButtons.List.MobileSizeFix
         cons[#cons + 1] = rs.RenderStepped:Connect(function()
+            msf.Size = U2n(mrandom(), 0, 0, 1)
+            
             for i, v in object.Options._PrevTheme do
                 if object.Options.Theme[i] ~= v then
                     object.Options._PrevTheme = tclone(object.Options.Theme)
@@ -8896,419 +9278,17 @@ global.flready = nil
 return library
     end;
 
-    modules[objects["Instance286"]] = function(...)
-        local script = objects["Instance286"];
-local ecs = game:GetService("EncodingService")
-local clamp = math.clamp
-local tostr, fromstr = buffer.tostring, buffer.fromstring
-local zstd = Enum.CompressionAlgorithm.Zstd
-
+    modules[objects["Instance6"]] = function(...)
+        local script = objects["Instance6"];
 return {
-    Compress = function(self, str, lvl)
-        return tostr(ecs:CompressBuffer(fromstr(str), zstd, clamp(tonumber(lvl) or 22, -7, 22)))
-    end,
-    Decompress = function(self, str)
-        return tostr(ecs:DecompressBuffer(fromstr(str), zstd))
-    end
+    Name = "FireLibrary",
+    Version = "5.1.0",
+    Author = "@kawaii_kebodo"
 }
     end;
 
-    modules[objects["Instance290"]] = function(...)
-        local script = objects["Instance290"];
-local pack, concat = table.pack, table.concat
-local function memoize(fn)
-    local cache = setmetatable({ }, { __mode = "k" })
-
-    return function(...)
-        local args = pack(...)
-        local key = args.n ~= 0 and concat(args, "\0") or ""
-
-        local result = cache[key]
-        if result then
-            return unpack(result, 1, result.n)
-        end
-
-        result = pack(fn(...))
-        cache[key] = result
-
-        return unpack(result, 1, result.n)
-    end
-end
-
-local Inew = Instance.new
-
-local pc = Inew("Part")
-pc["FormFactor"] = "Custom"
-pc.TopSurface = 0
-pc.BottomSurface = 0
-pc.Anchored = true
-pc.CanCollide = false
-pc.Material = "Glass"
-pc.Transparency = 0.98
-pc.Name = "BlurPart"
-
-local mesh = Inew("SpecialMesh", pc)
-mesh.MeshType = 2
-mesh.Name = "WedgeMesh"
-
-local CFn = CFrame.new
-local CFa = CFrame.Angles
-local V3n = Vector3.new
-local V2n = Vector2.new
-local pcall = pcall
-
-local game, workspace = game, workspace
-local rs = game:GetService("RunService").RenderStepped
-
-local acos, max, pi, sqrt, sin, cos, rad = memoize(math.acos), memoize(math.max), math.pi, memoize(math.sqrt), memoize(math.sin), memoize(math.cos), memoize(math.rad)
-local drawQuad do
-    local sz = 0.2
-    local halfPi = pi / 2
-    
-    local function drawTriangle(v1, v2, v3, p0, p1)
-        local s1 = (v1 - v2).Magnitude
-        local s2 = (v2 - v3).Magnitude
-        local s3 = (v3 - v1).Magnitude
-        
-        local smax = max(s1, s2, s3)
-        local A, B, C
-        if s1 == smax then
-            A, B, C = v1, v2, v3
-        elseif s2 == smax then
-            A, B, C = v2, v3, v1
-        elseif s3 == smax then
-            A, B, C = v3, v1, v2
-        end
-    
-        local para = ((B - A).X * (C - A).X + (B - A).Y * (C - A).Y + (B - A).Z * (C - A).Z ) / (A - B).Magnitude
-        local perp = sqrt((C - A).Magnitude ^ 2 - para * para)
-        local difPara = (A - B).Magnitude - para
-        local halfPerp = perp / 2
-    
-        local st = CFn(B, A)
-        local za = CFa(halfPi, 0, 0)
-    
-        local cf0 = st
-    
-        local topLook = (cf0 * za).LookVector
-        local neededLook = CFn(A + CFn(A, B).LookVector * para, C).LookVector
-        local dot = topLook.X * neededLook.X + topLook.Y * neededLook.Y + topLook.Z * neededLook.Z
-    
-        local ac = CFa(0, 0, acos(dot))
-    
-        cf0 *= ac
-        if ((cf0 * za).LookVector - neededLook).Magnitude > 0.01 then
-            cf0 *= CFa(0, 0, -2 * acos(dot))
-        end
-        
-        cf0 *= CFn(0, halfPerp, -(difPara + para / 2))
-    
-        local cf1 = st * ac * CFa(0, pi, 0)
-        if ((cf1 * za).LookVector - neededLook).Magnitude > 0.01 then
-            cf1 *= CFa(0, 0, 2 * acos(dot))
-        end
-        
-        cf1 *= CFn(0, halfPerp, difPara / 2)
-    
-        if not p0 then
-            p0 = pc:Clone()
-            p0.Size = V3n(sz, sz, sz)
-        end
-        
-        local w0 = p0:FindFirstChild("WedgeMesh")
-        if not w0 then
-            w0 = mesh:Clone()
-            w0.Parent = p0
-        end
-        
-        w0.Scale = V3n(0, perp / sz, para / sz)
-        p0.CFrame = cf0
-        
-        if not p1 then
-            p1 = p0:Clone()
-        end
-
-        local w1 = p1:FindFirstChild("WedgeMesh")
-        if not w1 then
-            w1 = mesh:Clone()
-            w1.Parent = p1
-        end
-        
-        w1.Scale = V3n(0, perp / sz, difPara / sz)
-        p1.CFrame = cf1
-        
-        return p0, p1
-    end
-
-    function drawQuad(v1, v2, v3, v4, parts)
-        parts[1], parts[2] = drawTriangle(v1, v2, v3, parts[1], parts[2])
-        parts[3], parts[4] = drawTriangle(v3, v2, v4, parts[3], parts[4])
-    end
-end
-
-local camera = workspace.CurrentCamera
-
-local binds = { }
-local coreFolder = Inew("Folder")
-
-local function count(t)
-    local n = 0
-    for i in t do
-        n += 1
-        
-    end
-    
-    return n
-end
-
-local function parent(a, b)
-    if a.Parent ~= b then
-        a.Parent = b
-    end
-end
-
-local dof = Inew("DepthOfFieldEffect")
-local light = game:GetService("Lighting")
-
-dof.Name = "UIBlurEffect"
-dof.Enabled = true
-dof.FarIntensity = 0
-dof.InFocusRadius = 50
-dof.NearIntensity = 0.4
-dof.FocusDistance = 51.6
-
-local lib
-local function f()
-    camera = workspace.CurrentCamera or camera
-
-    local enabled = count(binds) ~= 0
-    if enabled then
-        enabled = false
-        for i, v in binds do
-            if v[1].Visible then
-                enabled = true
-                break
-            end
-        end
-    end
-    
-    local par = enabled and camera or nil
-    if not pcall(parent, coreFolder, par) then
-        coreFolder = Inew("Folder")
-        pcall(parent, coreFolder, par)
-    end
-    
-    coreFolder.Name = "UIBlur"
-    
-    for i, v in binds do
-        pcall(parent, v[2], coreFolder)
-    end
-    
-    par = enabled and light or nil
-    if not pcall(parent, dof, par) then
-        dof = Inew("DepthOfFieldEffect")
-        pcall(parent, dof, par)
-    end
-
-    dof.Name = "UIBlurEffect"
-    dof.Enabled = true
-    dof.FarIntensity = 0
-    dof.InFocusRadius = 50
-    dof.NearIntensity = lib.BlurSize * 0.4
-    dof.FocusDistance = 51.6
-end
-
-workspace.Changed:Connect(f)
-rs:Connect(f)
-
-local function updateOrientation(frame, parts)
-    if not camera then return end
-    
-    local zIndex = 1 - 0.05 * frame.ZIndex
-    local tl, br = frame.AbsolutePosition, frame.AbsolutePosition + frame.AbsoluteSize
-    local tr, bl = V2n(br.X, tl.Y), V2n(tl.X, br.Y)
-    
-    do
-        local rot = frame.AbsoluteRotation
-        if rot % 180 ~= 0 then
-            local mid = tl:Lerp(br, 0.5)
-            local s, c = sin(rad(rot)), cos(rad(rot))
-            local vec = tl
-            
-            tl = V2n(c * (tl.X - mid.X) - s * (tl.Y - mid.Y), s * (tl.X - mid.X) + c * (tl.Y - mid.Y)) + mid
-            tr = V2n(c * (tr.X - mid.X) - s * (tr.Y - mid.Y), s * (tr.X - mid.X) + c * (tr.Y - mid.Y)) + mid
-            bl = V2n(c * (bl.X - mid.X) - s * (bl.Y - mid.Y), s * (bl.X - mid.X) + c * (bl.Y - mid.Y)) + mid
-            br = V2n(c * (br.X - mid.X) - s * (br.Y - mid.Y), s * (br.X - mid.X) + c * (br.Y - mid.Y)) + mid
-        end
-    end
-    
-    drawQuad(
-        camera:ScreenPointToRay(tl.X, tl.Y, zIndex).Origin, 
-        camera:ScreenPointToRay(tr.X, tr.Y, zIndex).Origin, 
-        camera:ScreenPointToRay(bl.X, bl.Y, zIndex).Origin, 
-        camera:ScreenPointToRay(br.X, br.Y, zIndex).Origin, 
-        parts
-    )
-end
-
-lib = {
-    Bind = function(self, frame)
-        if self:IsBinded(frame) then return end
-        
-        local parts = { }
-        local holderFolder = Inew("Folder", coreFolder)
-        local binding = { frame, holderFolder, parts }
-        
-        local function refresh()
-            if not pcall(parent, holderFolder, coreFolder) then
-                holderFolder = Inew("Folder", coreFolder)
-                binding[2] = holderFolder
-            end
-            
-            if not frame.Visible then
-                for i, v in parts do
-                    pcall(parent, v, nil)
-                end
-                
-                return
-            end
-            
-            for i, v in parts do
-                if not pcall(parent, v, holderFolder) then
-                    parts[i] = nil
-                end
-            end
-            
-            updateOrientation(frame, parts)
-
-            for i, v in parts do
-                if not pcall(parent, v, holderFolder) then
-                    parts[i] = nil
-                end
-            end
-            
-            holderFolder.Name = "UIBlurHolder"
-        end
-        
-        binding[4] = frame.Changed:Connect(refresh)
-        binding[5] = rs:Connect(refresh)
-        binds[frame] = binding
-        
-        refresh()
-    end,
-    IsBinded = function(self, frame)
-        return frame ~= nil and binds[frame] ~= nil
-    end,
-    Unbind = function(self, frame)
-        if not self:IsBinded(frame) then return end
-        
-        local binding = binds[frame]
-
-        binding[1]:Destroy()
-        binding[2]:Destroy()
-        for i, v in binding[3] do
-            v:Destroy()
-        end
-        
-        binding[4]:Disconnect()
-        binding[5]:Disconnect()
-        
-        binds[frame] = nil
-    end,
-    UnBind = function(self, frame)
-        return self:Unbind(frame)
-    end,
-    BlurSize = 1
-}
-
-return lib
-    end;
-
-    modules[objects["Instance283"]] = function(...)
-        local script = objects["Instance283"];
-return {
-    Diamonds = 82443989458069,
-    Diamonds2 = 140557430121570,
-    Diamonds3 = 118040930519315,
-    Anime = 1523757323,
-    Anime2 = 6541436826,
-    Anime3 = 13737759127,
-    Anime4 = 4597457883,
-    Anime5 = 14210882753,
-    Anime6 = 130644346538217,
-    Anime7 = 98743068907468,
-    Anime8 = 1293887210,
-    Anime9 = 10899663828,
-    Ambient = 195225054,
-    Ambient2 = 259554878,
-    Ambient3 = 12727588434
-}
-    end;
-
-    modules[objects["Instance289"]] = function(...)
-        local script = objects["Instance289"];
-return {
-    ["Ambience"] = "ZzZZzZAK1QqQSXxXgMdpEAgEK1hHglmmOMxotK2ijaxXxXHDMXxXPAZOa3stbiQkdaUEEEwFKc5OZoQAEW2VdQqQ294speco5YfnF8gOb7BpQkdPRndiEMYdasNoTUZfSIilistTnbYgFILCSMbrOXxXASDASOOHRyBFEw60hKFaX8sqUqFT5sn9O7endhADIAukeAI8hhQqQQDwGwBd8rcAOBKCTL4rKOwaRJ",
-    ["Default"] = "oU7L9DixNQAAyf0FaA3STHA8IkmKUgOLgrhq3RsuJkRaqQqQQqQSXxXXxXMEQ2cXCDS0YxmKcdXTCicdKbeRntgHLWuH7D6uQ2JXmUKlhIb709tVuD4QBDO2edPgDGKQscSd5hoV6Yu8y7s5dZkANgAQYG3dqxwPBJceuYxYqAO0LfhvIqGBs4mcgXVagmiS",
-    ["Royalty"] = "ZzZZzZAK1QqQSXxXg0cXEAgwIpRHQVqNdQEknJPq6PdHFrFDLDslvbiY7QqQcJ0YmZ61AAnQXDKKcWuxk7fjN0FJTZmY34VhuJ8oxyNvT1tpuRu4ixYJUdfvuHgRZRDjCOfncXAzBEPf3uP4xRTilXsLmoqty0FvICdjoLGQADA4E45m2VjxQLlNDtZdGQGyKrCAIu5cgwVlZgBFlA",
-    ["Emo"] = "ZzZgStv0PIQXGBAIhic0Bc300BBv2oqGq6rGQqQDC3hDciRp1byatOd5p6XxXDhgwmyVRCAMYZfq7bfpy9Avq8gKZyQqQuYxGxBEsuH7DeTo9x9QZmmDtz7ZjuXQAkAW52q7GQWwIZ709DJFMQj12H6aQEqMp9l3j6Ix0xcv7VK2X5eJEgAAOBPAs2NGG0HaDuUDYGAQoyMwgiSA",
-    ["Anime"] = "ZzZgStv0PIR3HBAIhic0BcJppDgXbIVAFSmi0E8EQqQDfYPnYdTol0offpXxXfGywmyFgFEowhNNuvNXXmu7Wrld5aUH6SU6uoitiFQ44esPo7ywQqQuMpUKDR22p7HMApAj7IQCQgktX3TkkwBDcsNT37KLeoNVXeX6o5Yu8ySxmlLbIoAAAQ0wGGrhcHaDQNgMuyQBPtAAgpy4ygiS",
-    ["(Light) Kawaii"] = "oU7L9Di0FSAACqUHcA3ShpD8BT656nOqYQOG4gCTI9S6l0Wt8U9XxXhQAEPsLBDggDp6DdXxX67cH4IRIWb3BWuXJxjxy67WsaBegh0lUTK30qx7ZyMHXpu2cPhCKSIhuGdHAFFYwirP3DYRDLcQ66zcPECiO59MFDNDhMu39MrQqQs7FRJgAUa1DOFQqQ4RfoAwGykuKMm1BzUhLnFl",
-    ["Galaxy"] = "ZzZgStv0PIU3KBAIlCe4BcLJpDwH0k5QqQ6nNRNQQqQPJAoLU2IEymQ2rWeqQqQXxXQIgDj2lgDEUgUfG3vQqQS3LRJ8kla7iITevDtkhJrvba1C0wCI3SdJvJzBhQ4l1o7VfujI5IhEKMgC8aj7AkUgBLS3DYBDJOA567cT0kO0FtydOF8e3zs6zu3DBsACATRPAhQMrP0g2wEwFAKAKg5SAhKPwcRJ",
-    ["Anime 2"] = "oU7L9DCztRAAypQHdA3NNdQwrNqqhqQqQqhXxXgwd4AnYsYdj20mSXeqQqQXxXQIIspcVkAADW23x9tP19Ql5YS0ucNpTezDqgo9dziNiDIYdRbMvq0QqQcPUKlMXanunN6eBBQCYp2QqQ4uBkFMS2WdXxXQSBD0Yt9huHiHmumUlo5e3rUsvy9SICAAABIMjP0LkcGGDNDWAgpy4ygiSA",
-    ["Ketamine UI"] = "ZzZgStv0PIc3BBAI3BVcBgpmOWO9xOiQc4FB6skWSvk22voOKqPq4zcX8IJLJXjBvp8kJMQiDH3ydLla8mYt5aHECdGWXfufd6OACCGg468uhhCHfQXrYYeK31uGhUbk7tIMBKgJCN2DlVtrZAGwXIFQgCPilO2coUyWTx7WY8QgYSM8BkrF36wVQqQAnKlA",
-    ["Emo 2"] = "oU7L9DS6FSAAymsGbAXSa6A49hrQjQqQHRluYgTwuQNhWSbF89lQqQXxXZIwwWhYckufNRjrdK3lGHXiWNv3oWgFSo4SuL6qLXaOnjxrQqQcZt5QqQhDQYQhdd6OAIGggEXjuHQCFQogirp5SCimjUzzlkKnDRsLvcMq54yGiDIAoZ6dDQUF8FQpQ2RP5ToHQYDDDgLDFcpG0AEq8DEXUC",
-    ["Anime 3"] = "ZzZgStv0PIqXJBAIWSasBcF10BqPDQqQH4XxXWEV6iBewySNhWqRU99lQqQXxXZIAAXOmSvuOf7qW23ZJdQzSZW29EPbCNWcci2G8Uh2HUCVcVstRnHIBCiDc715CQKYIZb15DSYo4wx2Fd2qu1BZ30ZTH6qpc2zendvzGQABCQ5cvaAKqAQqQCoUI2SY9nQYIzhBBTVnhyuGKH057qBgMV2lziS"
-}
-    end;
-
-    modules[objects["Instance281"]] = function(...)
-        local script = objects["Instance281"];
--- hate bad executors, forced to do this
-local function hexEncode(str)
-    local result = ""
-    for i = 1, #str do
-        result ..= ("%02x"):format(str:byte(i))
-    end
-    
-    return result
-end
-
-local function hexDecode(str)
-    local result = ""
-    for i = 1, #str, 2 do
-        result ..= string.char(tonumber(str:sub(i, i + 1), 16))
-    end
-    
-    return result
-end
-
-local origin = "7b224c4f223a5b22e0baa5e0bab2e0baa7222c224c616f222c22f09f87b1f09f87a6225d2c224b4f223a5b22ed959ceab5adec96b4222c224b6f7265616e222c22f09f87b0f09f87b7225d2c224b4b223a5b22d29ad0b0d0b7d0b0d29bd188d0b0222c224b617a616b68222c22f09f87b0f09f87bf225d2c225053223a5b22d9beda9ad8aad988222c2250617368746f222c22f09f87a6f09f87ab225d2c224247223a5b22d091d18ad0bbd0b3d0b0d180d181d0bad0b8222c2242756c67617269616e222c22f09f87a7f09f87ac225d2c22424f223a5b22e0bd96e0bdbce0bd91e0bc8be0bda6e0be90e0bd91e0bc8b222c225469626574616e222c22f09f87a8f09f87b3225d2c22434f223a5b22436f727375222c22436f72736963616e222c224652225d2c225357223a5b224b6973776168696c69222c2253776168696c69222c22f09f87b0f09f87aa225d2c224f43223a5b224f63636974616e222c224f63636974616e222c224652225d2c224947223a5b224967626f222c224967626f222c22f09f87b3f09f87ac225d2c225447223a5b22d0a2d0bed2b7d0b8d0bad3a3222c2254616a696b222c22f09f87b9f09f87af225d2c22594f223a5b22596f72c3b962c3a1222c22596f72756261222c22f09f87b3f09f87ac225d2c224353223a5b22c48c65c5a174696e61222c22437a656368222c22f09f87a8f09f87bf225d2c22574f223a5b22576f6c6f66222c22576f6c6f66222c22534e225d2c224553223a5b2245737061c3b16f6c222c225370616e697368222c22f09f87aaf09f87b8225d2c22544f223a5b224c65612046616b612d546f6e6761222c22546f6e67616e222c22544f225d2c224e4f223a5b224e6f72736b222c224e6f7277656769616e222c22f09f87b3f09f87b4225d2c22554b223a5b22d0a3d0bad180d0b0d197d0bdd181d18cd0bad0b0222c22556b7261696e69616e222c22f09f87baf09f87a6225d2c22544b223a5b2254c3bc726b6d656ec3a765222c225475726b6d656e222c22f09f87b9f09f87b2225d2c225054223a5b22506f7274756775c3aa73222c22506f7274756775657365222c22f09f87b5f09f87b9225d2c224d54223a5b224d616c7469222c224d616c74657365222c22f09f87b2f09f87b9225d2c22454c223a5b22ce95cebbcebbceb7cebdceb9cebaceac222c22477265656b222c22f09f87acf09f87b7225d2c224c54223a5b224c696574757669c5b3222c224c69746875616e69616e222c22f09f87b1f09f87b9225d2c22414c223a5b225368716970222c22416c62616e69616e222c22f09f87a6f09f87b1225d2c224944223a5b2242616861736120496e646f6e65736961222c22496e646f6e657369616e222c22f09f87aef09f87a9225d2c225848223a5b2269736958686f7361222c2258686f7361222c225a41225d2c225344223a5b22d8b3d986da8cd98a222c2253696e646869222c22f09f87b5f09f87b0225d2c225a48223a5b22e4b8ade69687222c224368696e657365222c22f09f87a8f09f87b3225d2c224954223a5b224974616c69616e6f222c224974616c69616e222c22f09f87aef09f87b9225d2c22544c223a5b2246696c6970696e6f222c2246696c6970696e6f222c22f09f87b5f09f87ad225d2c224854223a5b224b726579c3b26c204179697379656e222c224861697469616e204372656f6c65222c224854225d2c225448223a5b22e0b984e0b897e0b8a2222c2254686169222c22f09f87b9f09f87ad225d2c22504c223a5b22506f6c736b69222c22506f6c697368222c22f09f87b5f09f87b1225d2c224d4c223a5b22e0b4aee0b4b2e0b4afe0b4bee0b4b3e0b482222c224d616c6179616c616d222c22f09f87aef09f87b3225d2c224e4c223a5b224e656465726c616e6473222c224475746368222c22f09f87b3f09f87b1225d2c225255223a5b22d0a0d183d181d181d0bad0b8d0b9222c225275737369616e222c22f09f87b7f09f87ba225d2c224849223a5b22e0a4b9e0a4bfe0a4a8e0a58de0a4a6e0a580222c2248696e6469222c22f09f87aef09f87b3225d2c224445223a5b2244657574736368222c224765726d616e222c22f09f87a9f09f87aa225d2c224649223a5b2253756f6d69222c2246696e6e697368222c22f09f87abf09f87ae225d2c224245223a5b22d091d0b5d0bbd0b0d180d183d181d0bad0b0d18f222c2242656c6172757369616e222c22f09f87a7f09f87be225d2c224641223a5b22d981d8a7d8b1d8b3db8c222c225065727369616e222c22f09f87aef09f87b7225d2c224441223a5b2244616e736b222c2244616e697368222c22f09f87a9f09f87b0225d2c224e45223a5b22e0a4a8e0a587e0a4aae0a4bee0a4b2e0a580222c224e6570616c69222c22f09f87b3f09f87b5225d2c224a41223a5b22e697a5e69cace8aa9e222c224a6170616e657365222c22f09f87aff09f87b5225d2c224b59223a5b22d09ad18bd180d0b3d18bd0b7d187d0b0222c224b797267797a222c22f09f87b0f09f87ac225d2c22414d223a5b22e18aa0e1889be188ade18a9b222c22416d6861726963222c22f09f87aaf09f87b9225d2c224845223a5b22d7a2d791d7a8d799d7aa222c22486562726577222c22f09f87aef09f87b1225d2c224c41223a5b224c6174696e61222c224c6174696e222c225641225d2c225341223a5b22e0a4b8e0a482e0a4b8e0a58de0a495e0a583e0a4a4e0a4aee0a58d222c2253616e736b726974222c22494e225d2c225445223a5b22e0b0a4e0b186e0b0b2e0b181e0b097e0b181222c2254656c756775222c22f09f87aef09f87b3225d2c225649223a5b225469e1babf6e67205669e1bb8774222c22566965746e616d657365222c22f09f87bbf09f87b3225d2c225441223a5b22e0aea4e0aeaee0aebfe0aeb4e0af8d222c2254616d696c222c22f09f87aef09f87b3225d2c22454f223a5b224573706572616e746f222c224573706572616e746f222c22f09f8c8d225d2c22524f223a5b22526f6dc3a26ec483222c22526f6d616e69616e222c22f09f87b7f09f87b4225d2c224855223a5b224d6167796172222c2248756e67617269616e222c22f09f87adf09f87ba225d2c224d49223a5b2254652052656f204dc4816f7269222c224dc4816f7269222c224e5a225d2c225a55223a5b226973695a756c75222c225a756c75222c225a41225d2c224555223a5b224575736b617261222c22426173717565222c22f09f87aaf09f87b8225d2c225349223a5b22e0b783e0b792e0b682e0b784e0b6bd222c2253696e68616c61222c22f09f87b1f09f87b0225d2c22534e223a5b2243686953686f6e61222c2253686f6e61222c225a57225d2c22464a223a5b22566f73612056616b6176697469222c2246696a69616e222c22464a225d2c224d52223a5b22e0a4aee0a4b0e0a4bee0a4a0e0a580222c224d617261746869222c22f09f87aef09f87b3225d2c224b4e223a5b22e0b295e0b2a8e0b38de0b2a8e0b2a1222c224b616e6e616461222c22f09f87aef09f87b3225d2c22555a223a5b224f277a62656b636861222c22557a62656b222c22f09f87baf09f87bf225d2c22454e223a5b22456e676c697368222c22456e676c697368222c22f09f87baf09f87b8225d2c224c56223a5b224c6174766965c5a175222c224c61747669616e222c22f09f87b1f09f87bb225d2c224146223a5b22416672696b61616e73222c22416672696b61616e73222c225a41225d2c225352223a5b22d0a1d180d0bfd181d0bad0b8222c225365726269616e222c22f09f87b7f09f87b8225d2c225452223a5b2254c3bc726bc3a765222c225475726b697368222c22f09f87b9f09f87b7225d2c22424e223a5b22e0a6ace0a6bee0a682e0a6b2e0a6be222c2242656e67616c69222c22f09f87a7f09f87a9225d2c225459223a5b2252656f20546168697469222c22546168697469616e222c225046225d2c224841223a5b224861757361222c224861757361222c22f09f87b3f09f87ac225d2c225356223a5b225376656e736b61222c2253776564697368222c22f09f87b8f09f87aa225d2c224d59223a5b22426168617361204d656c617975222c224d616c6179222c22f09f87b2f09f87be225d2c224b4d223a5b22e19e97e19eb6e19e9fe19eb6e19e81e19f92e19e98e19f82e19e9a222c224b686d6572222c22f09f87b0f09f87ad225d2c224d4e223a5b22d09cd0bed0bdd0b3d0bed0bb222c224d6f6e676f6c69616e222c22f09f87b2f09f87b3225d2c224d4b223a5b22d09cd0b0d0bad0b5d0b4d0bed0bdd181d0bad0b8222c224d616365646f6e69616e222c22f09f87b2f09f87b0225d2c224741223a5b22476165696c6765222c224972697368222c22f09f87aef09f87aa225d2c224359223a5b2243796d72616567222c2257656c7368222c22f09f87acf09f87a7225d2c22474c223a5b2247616c65676f222c2247616c696369616e222c22f09f87aaf09f87b8225d2c224341223a5b22436174616cc3a0222c22436174616c616e222c22f09f87aaf09f87b8225d2c224152223a5b22d8a7d984d8b9d8b1d8a8d98ad8a9222c22417261626963222c22f09f87b8f09f87a6225d2c224252223a5b224272657a686f6e6567222c22427265746f6e222c224652225d2c22534b223a5b22536c6f76656ec48d696e61222c22536c6f76616b222c22f09f87b8f09f87b0225d2c224953223a5b22c38d736c656e736b61222c224963656c616e646963222c22f09f87aef09f87b8225d2c224554223a5b224565737469222c224573746f6e69616e222c22f09f87aaf09f87aa225d2c224652223a5b224672616ec3a7616973222c224672656e6368222c22f09f87abf09f87b7225d2c22534c223a5b22536c6f76656ec5a1c48d696e61222c22536c6f76656e69616e222c22f09f87b8f09f87ae225d2c224852223a5b224872766174736b69222c2243726f617469616e222c22f09f87adf09f87b7225d2c225552223a5b22d8a7d8b1d8afd988222c2255726475222c22f09f87b5f09f87b0225d2c225041223a5b22e0a8aae0a9b0e0a89ce0a8bee0a8ace0a980222c2250756e6a616269222c22f09f87aef09f87b3225d2c22415a223a5b22417ac9997262617963616e6361222c22417a65726261696a616e69222c22f09f87a6f09f87bf225d7d"
-return game:GetService("HttpService"):JSONDecode(hexDecode(origin))
-    end;
-
-    modules[objects["Instance288"]] = function(...)
-        local script = objects["Instance288"];
-return {{"align-vertical-distribute-center","chevron-down","list-restart","table-cells-split","gavel","dna-off","refresh-ccw-dot","venus","bean","circle-question-mark","folder-code","bolt","heater","feather","align-horizontal-distribute-center","grip-vertical","pill-bottle","person-standing","badge-swiss-franc","between-horizontal-end","file-braces-corner","rotate-cw","house-plus","bus-front","shield-ellipsis","between-vertical-end","globe-lock","tags","concierge-bell","bookmark-minus","file-down","picture-in-picture","messages-square","scissors","file-check-corner","phone-call","anchor","hand-helping","text-wrap","birdhouse","wifi-off","cloud-alert","message-square","cloud-download","folder-plus","cctv-off","mirror-round","user-round","pointer","between-horizontal-start","chevrons-up-down","brush","message-circle-more","parentheses","book-up-2","flame","chevrons-up","square-dashed","square-mouse-pointer","superscript","signal","wifi-cog","hexagon","navigation-2-off","eye-off","arrows-up-from-line","file-code-corner","square-centerline-dashed-horizontal","panels-right-bottom","scaling","hash","arrow-left-from-line","ship","ticket-percent","calendar-clock","x","non-binary","voicemail","presentation","tree-palm","badge","captions-off","align-vertical-justify-center","download","mouse-right","lens-convex","focus","diamond-percent","arrow-big-up","volume-x","mouse-pointer-click","origami","hard-drive","grid-2x2-x","package-minus","cloud","pipette","corner-left-down","badge-cent","cloud-lightning","user-round-pen","arrow-left-to-line","book-open-text","monitor-cloud","parking-meter","cat","heart-handshake","dam","trees","ham","circle-pause","chess-king","bean-off","rat","separator-horizontal","ambulance","signal-zero","citrus","phone-missed","calendar-off","chart-column","battery-medium","square-minus","decimals-arrow-left","folder-output","menu","image-down","terminal","angry","circle-dot-dashed","medal","cake-slice","git-graph","armchair","tickets","qr-code","copy","goal","trending-down","creative-commons","ev-charger","user-star","road","nfc","align-center-horizontal","car","notebook-tabs","ear","videotape","sun-moon","chart-scatter","toolbox","calendar","calendar-cog","gallery-horizontal","clipboard-x","book-open","circle-pile","rectangle-ellipsis","badge-plus","badge-info","file-headphone","bow-arrow","clipboard-pen-line","user-round-key","folder-search","utensils-crossed","arrow-up","arrow-up-from-dot","align-vertical-justify-start","layers-minus","pause","shrub","flag","biceps-flexed","align-horizontal-distribute-end","donut","calendar-plus-2","move-vertical","file-pen-line","badge-russian-ruble","radius","pilcrow","corner-left-up","georgian-lari","cable","book-user","square-arrow-down","circle-plus","view","cctv","circle-arrow-left","volume","octagon-alert","panel-bottom-dashed","book-a","align-end-vertical","thumbs-up","globe","rabbit","layers-plus","banknote-arrow-down","message-square-off","dice-4","message-circle-x","folder-x","message-circle-warning","map","move","arrow-up-left","award","arrow-down-wide-narrow","unfold-horizontal","lens-concave","motorbike","music-4","shield-x","file-volume","disc-3","file-signal","columns-4","archive-x","square-dashed-kanban","mouse-pointer-2","clock-arrow-up","clock-fading","vegan","message-circle-plus","fast-forward","user-pen","chess-knight","wifi-pen","files","send-to-back","alarm-clock","shopping-basket","send","brush-cleaning","skip-back","book-audio","file-scan","message-square-dashed","chevrons-left","umbrella","skip-forward","clipboard-copy","map-pin-off","arrow-up-from-line","circle-chevron-up","circle-small","align-vertical-space-between","lamp-desk","circle-arrow-up","zap","beaker","paintbrush","move-left","chevron-up","pen-tool","form","pencil-ruler","dna","arrow-big-down-dash","chart-area","bug-off","card-sim","map-pin-search","ellipse","spell-check","popcorn","blocks","washing-machine","microchip","badge-minus","cloud-sun","circle","shield-alert","map-minus","separator-vertical","ampersands","user-search","fence","square-user-round","sunrise","strikethrough","calendar-days","folder-bookmark","banknote-arrow-up","dollar-sign","message-square-quote","list-minus","cloud-hail","eye-closed","app-window-mac","ellipsis","copy-check","history","satellite","bookmark-plus","folder-key","coffee","circle-power","hourglass","tickets-plane","folder-git","bomb","layers-2","battery-full","user-minus","chart-gantt","folder-tree","command","badge-dollar-sign","align-start-vertical","briefcase-conveyor-belt","message-circle-question-mark","bluetooth-off","square-square","cannabis","book","grip-horizontal","circle-minus","audio-waveform","moon-star","arrow-down-narrow-wide","database-backup","wand","receipt-turkish-lira","calendar-minus-2","copy-minus","folder-input","book-image","mouse-left","shirt","server-off","move-up","plug-2","chess-rook","brackets","calendar-heart","list-ordered","mic-off","arrow-big-left","square-split-horizontal","clover","sun-snow","sofa","funnel-x","clock-2","calendar-fold","fish-off","baby","leaf","fold-vertical","hop","paperclip","cigarette","minus","smile-plus","diamond-plus","file-chart-column","triangle-dashed","git-pull-request-closed","badge-check","plug-zap","heading-4","chess-queen","graduation-cap","grid-3x2","zodiac-sagittarius","square-dashed-bottom-code","clock-7","ethernet-port","scan-text","shower-head","equal-not","move-down","clock-arrow-down","ticket-slash","ruler","circle-user-round","list-filter","map-pin-check","egg-off","cog","dog","swords","spotlight","panel-right-dashed","truck-electric","check-line","bubbles","bot","chart-bar-increasing","trash-2","air-vent","dot","file-symlink","clipboard-paste","chevron-last","book-heart","circle-parking","cloud-check","panel-left","circle-chevron-right","squares-unite","arrow-down-up","git-fork","forward","brain-circuit","between-vertical-start","database","panel-right","log-out","git-branch-plus","clipboard-minus","file-text","table-rows-split","milk-off","tv-minimal","cloud-upload","banknote","drumstick","calendar-search","bell-ring","circle-chevron-left","arrow-down","arrow-up-down","folder-dot","whole-word","monitor","disc-2","trending-up-down","tv-minimal-play","circle-stop","align-vertical-space-around","arrow-big-down","circle-parking-off","calendar-x-2","user-plus","move-diagonal-2","bandage","gallery-horizontal-end","panel-top-dashed","zoom-out","zoom-in","tram-front","zodiac-virgo","podcast","locate","audio-lines","fingerprint-pattern","zodiac-pisces","upload","flip-vertical-2","rocket","zodiac-libra","ear-off","zodiac-leo","zodiac-gemini","star","text-cursor","printer","megaphone-off","zodiac-aries","arrow-big-right","section","file-clock","zodiac-aquarius","toy-brick","square-chevron-down","dice-1","drill","app-window","shield-check","hand-metal","send-horizontal","spell-check-2","x-line-top","square-dot","list-plus","worm","rotate-ccw-key","workflow","chart-pie","wine-off","wine","copy-slash","wind","wind-arrow-down","layout-panel-left","receipt-japanese-yen","circle-percent","wifi-sync","circle-arrow-out-down-right","square-x","italic","chart-column-increasing","stamp","step-forward","wifi-high","a-arrow-down","container","sticker","wifi","wheat-off","wheat","weight-tilde","weight","square-bottom-dashed-scissors","import","badge-turkish-lira","square-terminal","file-music","gamepad-directional","beef","route-off","file-user","webcam","square-radical","waypoints","image-upscale","book-type","smile","signpost-big","waves-vertical","cloudy","waves-ladder","square-percent","waves-horizontal","navigation-off","arrow-left","car-taxi-front","spade","waves-arrow-down","chevrons-right-left","watch","iteration-ccw","wand-sparkles","wallpaper","wallet-minimal","wallet-cards","wallet","square-pause","align-end-horizontal","vote","equal","megaphone","calendar-x","volume-off","sliders-vertical","egg","volume-1","volleyball","video","circle-pound-sterling","video-off","japanese-yen","text-cursor-input","vibrate","venus-and-mars","library","file-terminal","circle-chevron-down","accessibility","replace-all","square-library","amphora","chart-bar-stacked","tally-2","vault","badge-x","van","utility-pole","sheet","circle-check-big","utensils","users-round","map-pinned","corner-down-left","circuit-board","users","user-x","user-round-x","user-round-search","folder-open-dot","book-dashed","monitor-speaker","message-square-share","bluetooth","tree-pine","receipt-indian-rupee","user-round-cog","user-round-check","user-lock","user-key","stretch-horizontal","square-chart-gantt","flask-conical","user","funnel","square-star","folder-sync","maximize-2","zodiac-ophiuchus","unplug","square-user","arrow-up-narrow-wide","fishing-hook","unlink","university","ungroup","frame","calendar-arrow-down","clock-12","unfold-vertical","lasso","undo-2","images","lollipop","book-text","undo","lamp-floor","file-plus-corner","image","underline","badge-euro","bike","umbrella-off","type-outline","gauge","file-x","folder-search-2","turntable","turkish-lira","option","truck","scroll-text","table-of-contents","trophy","gift","triangle-alert","toggle-right","triangle","ferris-wheel","camera-off","trending-up","tree-deciduous","shield-cog","transgender","chevrons-down","group","train-front-tunnel","battery","move-down-left","tent-tree","traffic-cone","rectangle-horizontal","tractor","tower-control","package-search","bitcoin","touchpad-off","battery-plus","database-search","touchpad","file-diff","torus","tornado","tool-case","spline-pointer","toilet","axis-3d","toggle-left","timer-reset","binoculars","refresh-cw","timer","timeline","rose","ticket-x","mail-minus","syringe","calculator","panel-bottom","move-up-right","clipboard-pen","bottle-wine","alarm-clock-off","dices","list","thermometer-sun","square-arrow-right","thermometer-snowflake","badge-pound-sterling","bookmark-check","thermometer","theater","message-square-text","a-arrow-up","clock-check","text-quote","piano","vibrate-off","mail-check","zodiac-cancer","joystick","file-code","text-align-justify","chart-column-big","text-align-end","text-align-center","cassette-tape","battery-low","test-tubes","test-tube-diagonal","signpost","bug","calendar-arrow-up","landmark","fish-symbol","tent","loader","bold","dice-2","file-type","clipboard-clock","beer","lectern","telescope","book-plus","tangent","binary","move-diagonal","flashlight-off","door-closed","locate-fixed","layout-template","tally-3","power","tag","bookmark-off","hand-heart","tablets","scan-qr-code","message-square-check","tablet-smartphone","shield-half","table-properties","brain","table-columns-split","table-cells-merge","table-2","key","clock-11","table","ticket-plus","arrow-up-0-1","bell-electric","scan-face","heading","book-open-check","panel-top-close","lasso-select","switch-camera","swiss-franc","square-parking","sunset","bus","sun-medium","bed-single","chart-no-axes-gantt","file-spreadsheet","sun-dim","clipboard-list","signal-medium","contact-round","subscript","keyboard-off","stretch-vertical","file-badge","battery-warning","mail-question-mark","arrow-down-from-line","briefcase","biohazard","rectangle-circle","braces","scale-3d","panel-top-bottom-dashed","mail-x","square-dashed-mouse-pointer","user-cog","lock-open","mouse-off","pizza","list-indent-decrease","arrow-up-wide-narrow","stone","clock-5","sticky-note","rotate-ccw","align-horizontal-justify-center","stethoscope","antenna","memory-stick","scan-eye","step-back","square-check","heart-plus","star-off","map-pin-minus-inside","git-merge","gallery-vertical-end","shield-off","hand-coins","zodiac-capricorn","wifi-low","squirrel","clock","file-pen","git-compare-arrows","cloud-sun-rain","align-horizontal-justify-start","folder-lock","squircle","roller-coaster","calendar-plus","shield-user","arrow-down-z-a","bath","squares-exclude","unlink-2","notepad-text-dashed","square-stack","folder-check","square-split-vertical","book-key","ribbon","microwave","square-slash","gallery-vertical","square-sigma","square-scissors","square-dashed-text","map-pin-pen","move-up-left","square-round-corner","folder-heart","line-squiggle","square-plus","square-play","arrow-up-a-z","square-pilcrow","square-dashed-top-solid","square-pi","navigation-2","lock-keyhole","swatch-book","receipt-cent","spool","folder-archive","folder-symlink","columns-3","ban","message-square-x","paint-roller","router","archive","square-m","square-kanban","building-2","circle-slash-2","bell-off","cake","cloud-rain","chart-bar","square-equal","wrench","square-divide","square-dashed-bottom","square-code","flag-triangle-right","square-chevron-up","quote","bell","square-chevron-left","search-x","music-3","chart-bar-big","user-check","proportions","square-centerline-dashed-vertical","plane","webhook-off","carrot","square-arrow-left","file-cog","circle-dashed","square-asterisk","square-arrow-up-right","sliders-horizontal","mailbox","squares-subtract","square-arrow-right-exit","square-arrow-right-enter","split","square-arrow-out-up-right","square-arrow-out-up-left","forklift","panda","alarm-clock-minus","heart-x","eraser","book-marked","square-arrow-out-down-left","bluetooth-connected","rotate-ccw-square","chart-no-axes-column","cannabis-off","folder-kanban","square-arrow-down-right","mars-stroke","grid-2x2","panel-left-open","square","file-box","sprout","paint-bucket","glass-water","spray-can","glasses","piggy-bank","sport-shoe","cuboid","cloud-off","check-check","activity","axe","plane-takeoff","repeat-off","cloud-rain-wind","speech","speaker","copy-x","file-axis-3d","radical","chart-column-decreasing","sparkles","bug-play","align-vertical-distribute-start","sparkle","waves-arrow-up","tally-5","soup","solar-panel","soap-dispenser-droplet","circle-divide","snowflake","snail","smartphone-nfc","life-buoy","circle-alert","smartphone","volume-2","battery-charging","russian-ruble","square-arrow-up-left","brick-wall-shield","footprints","monitor-stop","building","microscope","skull","siren","signature","book-alert","link-2","astroid","bell-minus","image-up","closed-caption","drum","arrow-up-z-a","sun","signal-low","message-square-diff","file-key","sigma","computer","scissors-line-dashed","file-braces","shrimp","house-plug","ticket-check","combine","popsicle","shopping-bag","mountain","mars","picture-in-picture-2","radio-off","flower-2","ship-wheel","squares-intersect","shield-question-mark","shield-plus","keyboard-music","star-half","heading-3","code-xml","pencil-line","mails","brain-cog","tablet","shield-cog-corner","pi","trash","book-down","hdmi-port","shield-ban","case-upper","circle-fading-arrow-up","shield","croissant","shelving-unit","shell","barcode","globe-x","share","bed","shapes","divide","grape","settings-2","party-popper","file-chart-pie","settings","server-crash","dice-6","server-cog","calendar-range","server","zap-off","square-check-big","search-slash","search-code","external-link","laptop-minimal","search-alert","search","map-pin-minus","scroll","chart-spline","message-square-more","screen-share-off","chart-candlestick","screen-share","arrow-down-a-z","lock-keyhole-open","school","move-horizontal","file-sliders","frown","scan-search","cup-soda","rotate-3d","notepad-text","sword","scan-barcode","scan","earth","slice","dice-3","milk","mouse-pointer-ban","crown","circle-slash","circle-star","rotate-cw-square","atom","package-x","bed-double","save-off","circle-dot","file-exclamation-point","hand-fist","message-circle-code","folder-git-2","message-square-code","info","towel-rack","saudi-riyal","arrow-big-left-dash","satellite-dish","dumbbell","sandwich","salad","sailboat","scale","file-stack","flashlight","panel-top-open","rows-4","rows-3","notebook","redo-2","rows-2","square-menu","route","monitor-smartphone","laptop","scan-line","clock-4","square-arrow-up","book-minus","file-question-mark","panels-left-bottom","rewind","list-video","arrow-down-to-line","reply","refresh-ccw","venetian-mask","calendar-check-2","replace","spline","banknote-x","git-pull-request-create-arrow","repeat-2","circle-check","repeat-1","repeat","remove-formatting","regex","refrigerator","refresh-cw-off","timer-off","arrow-big-right-dash","copyright","redo","clapperboard","backpack","rectangle-vertical","rectangle-goggles","haze","receipt-swiss-franc","receipt-russian-ruble","arrow-down-right","maximize","receipt","wifi-zero","receipt-euro","ratio","rainbow","plus","image-off","radio-receiver","radio","radiation","radar","square-chevron-right","mail-search","pyramid","puzzle","projector","list-music","printer-check","power-off","tally-1","ampersand","pound-sterling","shopping-cart","align-vertical-justify-end","folder-up","alarm-smoke","cloud-sync","file-input","clock-8","hand-grab","cloud-cog","blend","hd","radio-tower","list-tree","droplet","plug","eye","play","plane-landing","banana","gpu","pin-off","currency","circle-equal","pill","monitor-off","pilcrow-left","pickaxe","text-initial","arrow-up-right","circle-arrow-out-down-left","leafy-green","message-square-dot","file-chart-line","columns-3-cog","phone-off","phone-incoming","minimize-2","phone-forwarded","phone","cone","hammer","file-image","percent","palette","barrel","gallery-thumbnails","pentagon","cpu","pencil-off","thumbs-down","merge","hamburger","pen-off","hat-glasses","code","pen-line","heart-pulse","pc-case","nut","file-video-camera","calendar-minus","kanban","bone","apple","rocking-chair","bot-off","panel-top","panel-right-open","panel-right-close","circle-arrow-out-up-left","panel-left-right-dashed","cable-car","arrow-down-left","square-activity","panel-left-dashed","cigarette-off","monitor-play","message-circle","circle-arrow-out-up-right","house-heart","panel-bottom-close","fold-horizontal","shovel","calendar-1","cloud-moon","square-arrow-out-down-right","paintbrush-vertical","clock-plus","save","cloud-snow","anvil","arrow-big-up-dash","package-plus","package-open","diff","package-2","package","orbit","chevrons-down-up","clipboard-plus","circle-x","list-end","omega","circle-ellipsis","chevrons-right","octagon-pause","message-square-reply","corner-down-right","octagon-minus","file-minus-corner","lamp-wall-down","nut-off","paw-print","ellipsis-vertical","globe-off","square-stop","arrow-up-1-0","align-horizontal-justify-end","scan-heart","align-vertical-distribute-end","heart-crack","airplay","lock","map-pin-x-inside","newspaper","monitor-x","bell-check","network","square-pen","navigation","music-2","dice-5","octagon","ticket","move-right","move-down-right","train-front","bookmark","move-3d","album","milestone","chart-bar-decreasing","mouse-pointer","calendar-sync","funnel-plus","store","circle-arrow-down","notebook-pen","egg-fried","circle-play","moon","corner-right-up","monitor-up","ruler-dimension-line","user-round-plus","panel-left-close","monitor-pause","pilcrow-right","user-round-minus","monitor-dot","monitor-cog","mail-plus","monitor-check","map-pin","map-pin-x","mouse-pointer-2-off","drone","slash","mic-vocal","aperture","arrow-right-left","mic","vector-square","circle-gauge","message-square-warning","check","text-search","arrow-down-to-dot","monitor-down","message-square-plus","chef-hat","message-square-lock","message-square-heart","file-archive","signal-high","inbox","flip-horizontal-2","clock-9","image-play","align-horizontal-space-between","message-circle-off","calendar-check","database-zap","droplets","message-circle-heart","message-circle-dashed","message-circle-check","layout-list","file-search","meh","alarm-clock-plus","circle-dollar-sign","usb","house","receipt-pound-sterling","lamp","list-checks","id-card","mouse","minimize","helicopter","map-pin-plus","disc","brick-wall","book-x","mirror-rectangular","layout-grid","bird","mail","headphone-off","asterisk","magnet","octagon-x","languages","logs","alarm-clock-check","guitar","log-in","beer-off","scooter","square-parking-off","notebook-text","arrow-right-to-line","ticket-minus","tally-4","zodiac-taurus","loader-pinwheel","door-open","flag-triangle-left","grid-3x3","file","loader-circle","pocket-knife","book-copy","castle","car-front","clock-alert","reply-all","cloud-moon-rain","clipboard-type","land-plot","list-todo","printer-x","list-indent-increase","list-start","list-collapse","a-large-small","list-chevrons-up-down","list-chevrons-down-up","map-plus","list-check","link-2-off","link","line-style","arrow-right-from-line","flame-kindling","square-power","line-dot-right-horizontal","bring-to-front","candy","lightbulb","bell-plus","ligature","library-big","layout-panel-top","folders","mail-warning","layout-dashboard","layers","laugh","chevrons-left-right","chart-line","file-lock","cast","circle-fading-plus","clock-10","undo-dot","target","list-filter-plus","lamp-wall-up","drama","lamp-ceiling","baseline","martini","contrast","keyboard","candy-off","key-square","book-check","film","book-lock","kayak","briefcase-medical","calendars","text-align-start","iteration-cw","hop-off","warehouse","inspection-panel","drafting-compass","save-all","infinity","indian-rupee","image-plus","image-minus","id-card-lanyard","fishing-rod","book-headphones","credit-card","ice-cream-cone","ice-cream-bowl","house-wifi","shredder","panel-bottom-open","hotel","hospital","highlighter","balloon","map-pin-plus-inside","bookmark-x","badge-question-mark","pen","heart-off","candy-cane","heart-minus","heart","gamepad-2","headset","file-x-corner","heading-6","heading-5","shield-minus","circle-off","dessert","eclipse","church","heading-2","cylinder","badge-japanese-yen","heading-1","receipt-text","hard-hat","hard-drive-upload","hard-drive-download","file-minus","file-output","disc-album","handbag","arrow-down-0-1","captions","hand-platter","hand","philippine-peso","badge-alert","grip","folder-pen","cross","folder","chevron-right","grid-2x2-check","square-arrow-down-left","share-2","git-pull-request-draft","git-pull-request-create","cookie","folder-minus","git-merge-conflict","git-compare","chess-pawn","git-commit-vertical","briefcase-business","git-commit-horizontal","message-circle-reply","git-branch","triangle-right","folder-clock","ghost","gem","type","webhook","gamepad","align-horizontal-distribute-start","fullscreen","fuel","pointer-off","turtle","camera","folder-root","folder-open","git-pull-request","bluetooth-searching","arrow-up-to-line","squircle-dashed","clock-3","badge-percent","shuffle","folder-cog","folder-closed","grid-2x2-plus","flower","box","flask-round","clock-1","file-heart","flask-conical-off","space","flag-off","fish","fire-extinguisher","corner-up-left","clock-6","zodiac-scorpio","key-round","headphones","tv","file-up","file-type-corner","rss","file-search-corner","at-sign","map-pin-check-inside","file-play","music","handshake","file-digit","circle-user","copy-plus","file-check","file-chart-column-increasing","shrink","fan","factory","search-check","clipboard-check","columns-2","expand","euro","align-center-vertical","equal-approximately","earth-lock","droplet-off","cloud-fog","coins","dock","map-pin-house","package-check","chevron-first","pencil","diamond-minus","list-x","diameter","delete","corner-up-right","construction","pin","crosshair","crop","badge-indian-rupee","corner-right-down","redo-dot","copyleft","align-start-horizontal","chart-column-stacked","file-plus","git-pull-request-arrow","contact","decimals-arrow-right","bell-dot","folder-down","component","compass","align-horizontal-space-around","door-closed-locked","club","diamond","blinds","cloud-drizzle","cloud-backup","book-search","git-branch-minus","clipboard","recycle","mountain-snow","luggage","circle-arrow-right","bot-message-square","phone-outgoing","smartphone-charging","chevrons-left-right-ellipsis","train-track","chevron-left","chess-bishop","cherry","chart-network","chart-no-axes-column-increasing","chart-no-axes-column-decreasing","chart-no-axes-combined","metronome","case-sensitive","arrow-down-1-0","case-lower","caravan","arrow-left-right","lightbulb-off","panels-top-left","beef-off","locate-off","annoyed","test-tube","brick-wall-fire","cooking-pot","boxes","boom-box","book-up","laptop-minimal-check","mail-open","square-function","baggage-claim","variable","arrow-right","archive-restore"},{[48]={{1,{24,24},{175,0}},{1,{24,24},{400,225}},{1,{24,24},{800,250}},{1,{24,24},{800,800}},{1,{24,24},{550,375}},{1,{24,24},{650,150}},{1,{24,24},{400,875}},{2,{24,24},{100,75}},{1,{24,24},{125,275}},{1,{24,24},{425,250}},{1,{24,24},{775,125}},{1,{24,24},{150,300}},{1,{24,24},{450,525}},{1,{24,24},{325,500}},{1,{24,24},{50,75}},{1,{24,24},{550,400}},{1,{24,24},{525,700}},{1,{24,24},{975,250}},{1,{24,24},{350,25}},{1,{24,24},{175,250}},{1,{24,24},{150,675}},{1,{24,24},{425,875}},{1,{24,24},{150,825}},{1,{24,24},{125,400}},{1,{24,24},{650,725}},{1,{24,24},{125,300}},{1,{24,24},{925,25}},{1,{24,24},{925,700}},{1,{24,24},{625,125}},{1,{24,24},{425,75}},{1,{24,24},{675,175}},{1,{24,24},{650,575}},{1,{24,24},{325,775}},{1,{24,24},{900,450}},{1,{24,24},{0,825}},{1,{24,24},{925,300}},{1,{24,24},{100,100}},{1,{24,24},{275,675}},{1,{24,24},{675,975}},{1,{24,24},{400,50}},{2,{24,24},{125,150}},{1,{24,24},{25,675}},{1,{24,24},{350,750}},{1,{24,24},{675,50}},{1,{24,24},{375,525}},{1,{24,24},{25,550}},{1,{24,24},{825,300}},{2,{24,24},{0,100}},{1,{24,24},{850,400}},{1,{24,24},{150,275}},{1,{24,24},{75,550}},{1,{24,24},{300,225}},{1,{24,24},{950,150}},{1,{24,24},{600,600}},{1,{24,24},{50,425}},{1,{24,24},{300,575}},{1,{24,24},{50,575}},{1,{24,24},{925,575}},{1,{24,24},{675,825}},{1,{24,24},{625,950}},{1,{24,24},{575,825}},{2,{24,24},{200,75}},{1,{24,24},{400,575}},{1,{24,24},{500,650}},{1,{24,24},{450,375}},{1,{24,24},{225,100}},{1,{24,24},{800,50}},{1,{24,24},{825,650}},{1,{24,24},{675,525}},{1,{24,24},{550,775}},{1,{24,24},{25,925}},{1,{24,24},{75,200}},{1,{24,24},{400,975}},{1,{24,24},{775,900}},{1,{24,24},{400,150}},{2,{24,24},{125,175}},{1,{24,24},{325,825}},{2,{24,24},{150,50}},{1,{24,24},{700,550}},{1,{24,24},{775,975}},{1,{24,24},{275,100}},{1,{24,24},{400,175}},{1,{24,24},{100,75}},{1,{24,24},{400,400}},{1,{24,24},{150,975}},{1,{24,24},{525,500}},{1,{24,24},{50,825}},{1,{24,24},{225,550}},{1,{24,24},{125,125}},{2,{24,24},{25,175}},{1,{24,24},{200,925}},{1,{24,24},{725,450}},{1,{24,24},{75,875}},{1,{24,24},{675,275}},{1,{24,24},{650,525}},{1,{24,24},{300,425}},{1,{24,24},{425,800}},{1,{24,24},{150,600}},{1,{24,24},{275,75}},{1,{24,24},{575,150}},{2,{24,24},{100,0}},{1,{24,24},{25,250}},{1,{24,24},{200,275}},{1,{24,24},{775,350}},{1,{24,24},{575,625}},{1,{24,24},{50,525}},{1,{24,24},{625,350}},{1,{24,24},{500,275}},{1,{24,24},{950,825}},{1,{24,24},{450,500}},{1,{24,24},{600,75}},{1,{24,24},{525,100}},{1,{24,24},{150,250}},{1,{24,24},{925,350}},{1,{24,24},{500,850}},{1,{24,24},{200,0}},{1,{24,24},{600,800}},{1,{24,24},{150,525}},{1,{24,24},{850,375}},{1,{24,24},{225,325}},{1,{24,24},{325,275}},{1,{24,24},{275,125}},{1,{24,24},{700,800}},{1,{24,24},{375,400}},{1,{24,24},{425,475}},{1,{24,24},{200,875}},{1,{24,24},{975,25}},{1,{24,24},{650,975}},{1,{24,24},{75,125}},{1,{24,24},{175,475}},{1,{24,24},{325,750}},{1,{24,24},{25,500}},{1,{24,24},{225,700}},{1,{24,24},{50,175}},{1,{24,24},{925,775}},{1,{24,24},{500,750}},{1,{24,24},{275,475}},{1,{24,24},{825,125}},{1,{24,24},{925,850}},{1,{24,24},{775,0}},{1,{24,24},{550,275}},{2,{24,24},{100,25}},{1,{24,24},{675,625}},{1,{24,24},{350,800}},{1,{24,24},{0,100}},{1,{24,24},{300,275}},{1,{24,24},{275,875}},{1,{24,24},{100,700}},{2,{24,24},{200,0}},{1,{24,24},{750,825}},{1,{24,24},{75,525}},{1,{24,24},{975,750}},{1,{24,24},{25,525}},{1,{24,24},{375,175}},{1,{24,24},{750,175}},{1,{24,24},{575,125}},{1,{24,24},{175,300}},{1,{24,24},{550,125}},{1,{24,24},{600,675}},{1,{24,24},{50,300}},{1,{24,24},{150,200}},{1,{24,24},{625,225}},{1,{24,24},{175,325}},{1,{24,24},{675,25}},{2,{24,24},{25,50}},{1,{24,24},{300,600}},{2,{24,24},{150,0}},{1,{24,24},{250,75}},{1,{24,24},{100,200}},{1,{24,24},{50,125}},{1,{24,24},{850,175}},{1,{24,24},{525,675}},{1,{24,24},{750,650}},{1,{24,24},{350,525}},{1,{24,24},{75,350}},{1,{24,24},{25,100}},{1,{24,24},{525,275}},{1,{24,24},{200,350}},{1,{24,24},{650,500}},{1,{24,24},{375,475}},{1,{24,24},{375,0}},{1,{24,24},{975,300}},{1,{24,24},{550,675}},{1,{24,24},{125,625}},{1,{24,24},{500,425}},{1,{24,24},{50,475}},{1,{24,24},{0,475}},{1,{24,24},{650,800}},{1,{24,24},{500,175}},{2,{24,24},{175,25}},{1,{24,24},{0,575}},{1,{24,24},{575,75}},{2,{24,24},{0,200}},{1,{24,24},{925,250}},{1,{24,24},{325,850}},{1,{24,24},{75,375}},{1,{24,24},{75,50}},{1,{24,24},{850,825}},{1,{24,24},{850,100}},{1,{24,24},{450,800}},{1,{24,24},{825,200}},{1,{24,24},{125,250}},{1,{24,24},{550,550}},{1,{24,24},{75,700}},{1,{24,24},{800,300}},{1,{24,24},{175,725}},{1,{24,24},{825,275}},{1,{24,24},{475,600}},{1,{24,24},{625,525}},{1,{24,24},{50,250}},{1,{24,24},{50,275}},{1,{24,24},{150,125}},{1,{24,24},{975,900}},{1,{24,24},{550,475}},{1,{24,24},{400,725}},{1,{24,24},{550,600}},{1,{24,24},{475,900}},{1,{24,24},{750,125}},{1,{24,24},{750,50}},{1,{24,24},{150,700}},{1,{24,24},{0,725}},{1,{24,24},{100,125}},{1,{24,24},{525,950}},{1,{24,24},{250,875}},{1,{24,24},{175,525}},{1,{24,24},{125,575}},{2,{24,24},{175,0}},{1,{24,24},{900,200}},{1,{24,24},{350,475}},{2,{24,24},{25,25}},{1,{24,24},{500,125}},{2,{24,24},{100,175}},{1,{24,24},{650,225}},{1,{24,24},{550,800}},{1,{24,24},{75,25}},{1,{24,24},{925,475}},{1,{24,24},{525,825}},{1,{24,24},{325,200}},{1,{24,24},{450,950}},{1,{24,24},{25,425}},{1,{24,24},{225,625}},{1,{24,24},{700,400}},{1,{24,24},{150,475}},{1,{24,24},{975,875}},{1,{24,24},{425,975}},{1,{24,24},{50,625}},{1,{24,24},{725,350}},{1,{24,24},{75,225}},{1,{24,24},{275,375}},{1,{24,24},{350,325}},{1,{24,24},{0,175}},{1,{24,24},{250,750}},{1,{24,24},{425,225}},{2,{24,24},{75,225}},{1,{24,24},{175,225}},{1,{24,24},{425,750}},{1,{24,24},{775,375}},{1,{24,24},{275,350}},{1,{24,24},{400,800}},{1,{24,24},{50,850}},{1,{24,24},{300,900}},{1,{24,24},{625,175}},{1,{24,24},{25,200}},{1,{24,24},{600,0}},{1,{24,24},{250,275}},{1,{24,24},{250,325}},{1,{24,24},{625,450}},{1,{24,24},{775,50}},{1,{24,24},{950,500}},{1,{24,24},{825,425}},{1,{24,24},{300,150}},{2,{24,24},{25,200}},{1,{24,24},{200,900}},{1,{24,24},{100,250}},{1,{24,24},{375,350}},{1,{24,24},{200,475}},{1,{24,24},{775,600}},{1,{24,24},{875,200}},{1,{24,24},{475,875}},{1,{24,24},{150,50}},{2,{24,24},{125,0}},{1,{24,24},{300,525}},{1,{24,24},{575,950}},{1,{24,24},{675,900}},{1,{24,24},{850,725}},{1,{24,24},{350,200}},{1,{24,24},{875,25}},{1,{24,24},{100,275}},{1,{24,24},{550,250}},{1,{24,24},{500,600}},{1,{24,24},{900,150}},{1,{24,24},{600,125}},{1,{24,24},{475,350}},{1,{24,24},{200,25}},{1,{24,24},{725,100}},{1,{24,24},{400,350}},{1,{24,24},{350,625}},{1,{24,24},{725,600}},{1,{24,24},{375,125}},{1,{24,24},{550,350}},{1,{24,24},{150,575}},{1,{24,24},{450,225}},{1,{24,24},{225,750}},{1,{24,24},{950,750}},{1,{24,24},{650,250}},{1,{24,24},{125,325}},{1,{24,24},{875,150}},{1,{24,24},{325,75}},{2,{24,24},{50,0}},{1,{24,24},{300,300}},{1,{24,24},{225,675}},{1,{24,24},{725,25}},{1,{24,24},{225,125}},{1,{24,24},{0,150}},{1,{24,24},{425,100}},{1,{24,24},{875,225}},{1,{24,24},{250,200}},{1,{24,24},{700,825}},{1,{24,24},{425,150}},{1,{24,24},{475,25}},{1,{24,24},{575,375}},{1,{24,24},{0,650}},{1,{24,24},{75,250}},{1,{24,24},{450,675}},{1,{24,24},{275,0}},{1,{24,24},{475,300}},{2,{24,24},{75,150}},{1,{24,24},{675,600}},{1,{24,24},{275,275}},{1,{24,24},{375,375}},{1,{24,24},{600,300}},{1,{24,24},{350,125}},{1,{24,24},{325,800}},{1,{24,24},{975,425}},{1,{24,24},{400,950}},{1,{24,24},{675,475}},{1,{24,24},{275,950}},{1,{24,24},{425,200}},{1,{24,24},{75,425}},{1,{24,24},{300,250}},{1,{24,24},{850,200}},{1,{24,24},{275,825}},{1,{24,24},{225,25}},{1,{24,24},{750,775}},{1,{24,24},{250,475}},{1,{24,24},{725,850}},{1,{24,24},{650,775}},{1,{24,24},{825,100}},{1,{24,24},{425,275}},{1,{24,24},{325,225}},{1,{24,24},{550,325}},{1,{24,24},{350,0}},{1,{24,24},{625,400}},{1,{24,24},{0,875}},{1,{24,24},{300,675}},{1,{24,24},{625,575}},{1,{24,24},{650,0}},{1,{24,24},{875,250}},{1,{24,24},{775,650}},{1,{24,24},{200,575}},{1,{24,24},{75,750}},{1,{24,24},{825,950}},{1,{24,24},{125,800}},{1,{24,24},{250,100}},{1,{24,24},{250,975}},{1,{24,24},{825,150}},{1,{24,24},{450,175}},{1,{24,24},{775,175}},{1,{24,24},{625,325}},{2,{24,24},{175,150}},{1,{24,24},{575,900}},{1,{24,24},{300,400}},{1,{24,24},{600,225}},{1,{24,24},{350,975}},{1,{24,24},{850,550}},{1,{24,24},{675,150}},{1,{24,24},{825,325}},{1,{24,24},{200,500}},{1,{24,24},{725,950}},{1,{24,24},{875,450}},{1,{24,24},{275,400}},{1,{24,24},{975,75}},{1,{24,24},{825,250}},{1,{24,24},{825,0}},{1,{24,24},{125,600}},{1,{24,24},{575,225}},{1,{24,24},{900,700}},{1,{24,24},{800,650}},{1,{24,24},{900,300}},{1,{24,24},{925,875}},{1,{24,24},{0,600}},{1,{24,24},{275,250}},{1,{24,24},{225,275}},{1,{24,24},{525,75}},{1,{24,24},{850,900}},{1,{24,24},{0,50}},{1,{24,24},{425,375}},{1,{24,24},{50,800}},{1,{24,24},{700,0}},{1,{24,24},{350,275}},{1,{24,24},{375,100}},{1,{24,24},{625,50}},{1,{24,24},{725,0}},{1,{24,24},{950,250}},{1,{24,24},{300,350}},{1,{24,24},{850,700}},{1,{24,24},{175,100}},{1,{24,24},{250,675}},{1,{24,24},{25,875}},{1,{24,24},{50,450}},{1,{24,24},{100,325}},{1,{24,24},{400,375}},{1,{24,24},{850,350}},{1,{24,24},{350,700}},{1,{24,24},{400,525}},{1,{24,24},{0,675}},{1,{24,24},{0,850}},{1,{24,24},{700,900}},{1,{24,24},{975,150}},{1,{24,24},{950,875}},{1,{24,24},{325,400}},{1,{24,24},{50,325}},{1,{24,24},{175,625}},{1,{24,24},{125,425}},{1,{24,24},{225,200}},{1,{24,24},{325,325}},{1,{24,24},{100,175}},{1,{24,24},{125,175}},{1,{24,24},{725,175}},{2,{24,24},{225,50}},{1,{24,24},{475,650}},{1,{24,24},{775,25}},{1,{24,24},{900,875}},{1,{24,24},{975,850}},{1,{24,24},{300,375}},{1,{24,24},{25,150}},{1,{24,24},{0,225}},{1,{24,24},{650,25}},{1,{24,24},{75,475}},{2,{24,24},{0,50}},{1,{24,24},{925,225}},{1,{24,24},{150,225}},{1,{24,24},{775,150}},{1,{24,24},{775,425}},{2,{24,24},{50,275}},{2,{24,24},{75,250}},{1,{24,24},{900,850}},{2,{24,24},{100,225}},{1,{24,24},{900,350}},{1,{24,24},{500,550}},{1,{24,24},{100,225}},{1,{24,24},{600,275}},{2,{24,24},{200,125}},{1,{24,24},{975,950}},{1,{24,24},{125,750}},{1,{24,24},{650,650}},{2,{24,24},{250,75}},{1,{24,24},{125,675}},{2,{24,24},{275,50}},{2,{24,24},{300,25}},{1,{24,24},{675,875}},{1,{24,24},{775,875}},{1,{24,24},{625,625}},{1,{24,24},{300,775}},{2,{24,24},{25,275}},{1,{24,24},{175,75}},{1,{24,24},{600,750}},{1,{24,24},{825,25}},{2,{24,24},{50,250}},{1,{24,24},{800,925}},{1,{24,24},{700,775}},{1,{24,24},{150,625}},{1,{24,24},{325,475}},{1,{24,24},{175,50}},{1,{24,24},{725,650}},{1,{24,24},{250,700}},{1,{24,24},{575,775}},{1,{24,24},{975,475}},{2,{24,24},{150,150}},{1,{24,24},{875,625}},{1,{24,24},{825,225}},{2,{24,24},{200,100}},{1,{24,24},{525,775}},{2,{24,24},{225,75}},{1,{24,24},{100,500}},{2,{24,24},{275,25}},{2,{24,24},{250,50}},{1,{24,24},{325,425}},{2,{24,24},{300,0}},{2,{24,24},{0,275}},{1,{24,24},{700,325}},{1,{24,24},{800,475}},{1,{24,24},{575,100}},{2,{24,24},{75,200}},{1,{24,24},{525,125}},{1,{24,24},{975,575}},{1,{24,24},{600,400}},{1,{24,24},{375,225}},{1,{24,24},{750,800}},{1,{24,24},{625,925}},{2,{24,24},{175,100}},{1,{24,24},{0,0}},{1,{24,24},{500,250}},{1,{24,24},{575,975}},{2,{24,24},{25,250}},{2,{24,24},{275,0}},{2,{24,24},{250,25}},{2,{24,24},{25,225}},{2,{24,24},{0,250}},{1,{24,24},{850,625}},{1,{24,24},{750,250}},{1,{24,24},{325,50}},{1,{24,24},{600,925}},{1,{24,24},{425,425}},{1,{24,24},{625,300}},{1,{24,24},{0,400}},{1,{24,24},{400,900}},{1,{24,24},{800,75}},{2,{24,24},{100,150}},{1,{24,24},{875,650}},{2,{24,24},{125,125}},{1,{24,24},{825,175}},{1,{24,24},{75,400}},{1,{24,24},{750,675}},{1,{24,24},{525,875}},{2,{24,24},{150,100}},{1,{24,24},{275,450}},{2,{24,24},{175,75}},{1,{24,24},{550,950}},{2,{24,24},{200,50}},{1,{24,24},{450,700}},{1,{24,24},{0,275}},{1,{24,24},{325,250}},{1,{24,24},{550,875}},{2,{24,24},{250,0}},{1,{24,24},{125,500}},{2,{24,24},{0,225}},{1,{24,24},{575,425}},{2,{24,24},{100,125}},{2,{24,24},{125,100}},{2,{24,24},{175,50}},{2,{24,24},{200,25}},{2,{24,24},{150,75}},{1,{24,24},{600,900}},{1,{24,24},{100,25}},{2,{24,24},{225,0}},{1,{24,24},{650,175}},{1,{24,24},{275,800}},{1,{24,24},{50,500}},{2,{24,24},{50,150}},{1,{24,24},{875,550}},{1,{24,24},{800,25}},{2,{24,24},{100,100}},{2,{24,24},{125,75}},{2,{24,24},{0,175}},{1,{24,24},{475,200}},{2,{24,24},{25,150}},{1,{24,24},{525,475}},{1,{24,24},{800,850}},{2,{24,24},{50,125}},{2,{24,24},{125,50}},{1,{24,24},{475,550}},{1,{24,24},{25,825}},{1,{24,24},{350,300}},{1,{24,24},{50,0}},{1,{24,24},{825,475}},{1,{24,24},{775,725}},{1,{24,24},{125,75}},{1,{24,24},{500,100}},{1,{24,24},{875,750}},{2,{24,24},{25,125}},{1,{24,24},{300,75}},{2,{24,24},{75,75}},{2,{24,24},{100,50}},{1,{24,24},{850,525}},{1,{24,24},{400,250}},{2,{24,24},{125,25}},{2,{24,24},{25,100}},{1,{24,24},{525,550}},{1,{24,24},{200,550}},{1,{24,24},{175,500}},{2,{24,24},{0,125}},{2,{24,24},{75,50}},{2,{24,24},{25,75}},{2,{24,24},{50,50}},{1,{24,24},{475,425}},{1,{24,24},{450,25}},{1,{24,24},{575,550}},{1,{24,24},{450,650}},{1,{24,24},{200,250}},{1,{24,24},{975,800}},{1,{24,24},{825,450}},{2,{24,24},{50,25}},{2,{24,24},{75,0}},{2,{24,24},{0,25}},{2,{24,24},{25,0}},{1,{24,24},{900,675}},{1,{24,24},{775,700}},{1,{24,24},{200,675}},{2,{24,24},{50,75}},{1,{24,24},{800,125}},{1,{24,24},{650,875}},{1,{24,24},{250,650}},{1,{24,24},{375,700}},{2,{24,24},{225,100}},{1,{24,24},{925,975}},{1,{24,24},{550,975}},{1,{24,24},{25,275}},{1,{24,24},{475,400}},{1,{24,24},{950,950}},{1,{24,24},{900,975}},{1,{24,24},{925,950}},{1,{24,24},{0,900}},{1,{24,24},{500,50}},{1,{24,24},{450,250}},{1,{24,24},{950,925}},{1,{24,24},{925,100}},{1,{24,24},{925,925}},{1,{24,24},{775,225}},{1,{24,24},{300,750}},{1,{24,24},{100,375}},{1,{24,24},{875,975}},{1,{24,24},{225,775}},{1,{24,24},{300,550}},{1,{24,24},{800,200}},{1,{24,24},{950,900}},{1,{24,24},{200,150}},{1,{24,24},{50,375}},{1,{24,24},{850,975}},{1,{24,24},{900,925}},{1,{24,24},{575,350}},{1,{24,24},{700,175}},{1,{24,24},{325,575}},{1,{24,24},{850,950}},{1,{24,24},{875,925}},{1,{24,24},{775,400}},{1,{24,24},{900,900}},{1,{24,24},{800,550}},{1,{24,24},{750,850}},{1,{24,24},{950,850}},{1,{24,24},{450,475}},{1,{24,24},{850,925}},{1,{24,24},{775,925}},{1,{24,24},{975,825}},{1,{24,24},{275,550}},{1,{24,24},{575,0}},{1,{24,24},{875,900}},{1,{24,24},{800,950}},{1,{24,24},{675,700}},{1,{24,24},{875,875}},{1,{24,24},{225,400}},{1,{24,24},{500,450}},{1,{24,24},{975,775}},{1,{24,24},{200,200}},{1,{24,24},{875,275}},{1,{24,24},{700,925}},{1,{24,24},{750,975}},{1,{24,24},{550,725}},{1,{24,24},{775,950}},{1,{24,24},{825,900}},{1,{24,24},{575,600}},{1,{24,24},{375,75}},{1,{24,24},{900,825}},{1,{24,24},{250,150}},{1,{24,24},{450,325}},{1,{24,24},{875,850}},{1,{24,24},{725,125}},{1,{24,24},{925,800}},{1,{24,24},{950,775}},{1,{24,24},{725,975}},{1,{24,24},{925,525}},{1,{24,24},{750,950}},{1,{24,24},{0,325}},{1,{24,24},{800,900}},{1,{24,24},{850,850}},{1,{24,24},{0,425}},{1,{24,24},{325,950}},{1,{24,24},{825,875}},{1,{24,24},{900,800}},{1,{24,24},{575,725}},{1,{24,24},{700,975}},{1,{24,24},{200,850}},{1,{24,24},{875,725}},{1,{24,24},{550,0}},{1,{24,24},{275,900}},{1,{24,24},{700,450}},{1,{24,24},{650,50}},{1,{24,24},{200,300}},{1,{24,24},{0,75}},{1,{24,24},{0,775}},{1,{24,24},{650,400}},{1,{24,24},{925,750}},{1,{24,24},{975,500}},{1,{24,24},{950,725}},{1,{24,24},{25,325}},{1,{24,24},{450,50}},{1,{24,24},{900,775}},{1,{24,24},{975,700}},{1,{24,24},{425,675}},{1,{24,24},{25,0}},{1,{24,24},{150,550}},{1,{24,24},{725,925}},{1,{24,24},{725,500}},{2,{24,24},{75,100}},{1,{24,24},{225,825}},{2,{24,24},{0,300}},{1,{24,24},{500,500}},{1,{24,24},{775,75}},{1,{24,24},{850,800}},{1,{24,24},{425,175}},{1,{24,24},{875,775}},{1,{24,24},{900,750}},{1,{24,24},{125,450}},{1,{24,24},{300,100}},{1,{24,24},{925,725}},{1,{24,24},{975,675}},{1,{24,24},{500,900}},{1,{24,24},{200,325}},{1,{24,24},{475,75}},{1,{24,24},{100,900}},{1,{24,24},{525,350}},{1,{24,24},{675,950}},{1,{24,24},{575,475}},{1,{24,24},{175,275}},{1,{24,24},{125,650}},{1,{24,24},{850,25}},{1,{24,24},{75,600}},{1,{24,24},{400,25}},{1,{24,24},{575,450}},{1,{24,24},{725,900}},{1,{24,24},{150,325}},{1,{24,24},{775,850}},{1,{24,24},{25,400}},{1,{24,24},{900,250}},{1,{24,24},{275,600}},{1,{24,24},{475,325}},{1,{24,24},{550,500}},{1,{24,24},{650,375}},{1,{24,24},{850,775}},{1,{24,24},{725,525}},{1,{24,24},{950,675}},{1,{24,24},{400,100}},{1,{24,24},{300,650}},{1,{24,24},{975,650}},{1,{24,24},{400,925}},{1,{24,24},{750,350}},{1,{24,24},{650,950}},{1,{24,24},{625,750}},{1,{24,24},{725,875}},{1,{24,24},{0,500}},{1,{24,24},{775,825}},{1,{24,24},{825,775}},{1,{24,24},{850,750}},{1,{24,24},{375,625}},{1,{24,24},{475,225}},{1,{24,24},{675,925}},{1,{24,24},{750,925}},{1,{24,24},{200,100}},{1,{24,24},{325,100}},{1,{24,24},{475,850}},{1,{24,24},{750,225}},{1,{24,24},{225,250}},{1,{24,24},{800,400}},{1,{24,24},{950,75}},{1,{24,24},{950,650}},{1,{24,24},{975,625}},{1,{24,24},{625,875}},{1,{24,24},{650,925}},{1,{24,24},{100,425}},{1,{24,24},{775,800}},{1,{24,24},{75,325}},{1,{24,24},{125,475}},{1,{24,24},{100,750}},{1,{24,24},{800,775}},{1,{24,24},{25,650}},{1,{24,24},{625,775}},{1,{24,24},{550,200}},{1,{24,24},{825,750}},{1,{24,24},{325,675}},{1,{24,24},{875,700}},{1,{24,24},{200,625}},{1,{24,24},{225,175}},{1,{24,24},{125,925}},{1,{24,24},{25,225}},{1,{24,24},{375,150}},{1,{24,24},{450,0}},{1,{24,24},{625,650}},{1,{24,24},{100,400}},{1,{24,24},{600,725}},{1,{24,24},{825,375}},{1,{24,24},{975,100}},{1,{24,24},{500,975}},{2,{24,24},{0,0}},{1,{24,24},{425,625}},{1,{24,24},{300,825}},{1,{24,24},{400,825}},{1,{24,24},{950,100}},{1,{24,24},{300,25}},{1,{24,24},{950,625}},{1,{24,24},{350,350}},{1,{24,24},{975,600}},{1,{24,24},{475,825}},{1,{24,24},{150,0}},{1,{24,24},{600,950}},{1,{24,24},{25,175}},{1,{24,24},{225,850}},{1,{24,24},{500,825}},{1,{24,24},{650,900}},{1,{24,24},{725,750}},{1,{24,24},{550,425}},{1,{24,24},{700,850}},{1,{24,24},{775,300}},{1,{24,24},{175,750}},{1,{24,24},{700,225}},{1,{24,24},{575,800}},{1,{24,24},{375,575}},{2,{24,24},{325,0}},{2,{24,24},{150,125}},{1,{24,24},{775,775}},{1,{24,24},{75,625}},{1,{24,24},{350,500}},{1,{24,24},{300,625}},{1,{24,24},{400,325}},{1,{24,24},{100,50}},{1,{24,24},{525,375}},{1,{24,24},{800,750}},{1,{24,24},{600,700}},{1,{24,24},{175,375}},{1,{24,24},{500,875}},{1,{24,24},{125,150}},{1,{24,24},{375,25}},{1,{24,24},{925,625}},{1,{24,24},{975,925}},{1,{24,24},{200,950}},{1,{24,24},{675,850}},{1,{24,24},{850,50}},{1,{24,24},{725,800}},{1,{24,24},{325,150}},{1,{24,24},{700,600}},{1,{24,24},{150,950}},{1,{24,24},{775,750}},{1,{24,24},{675,250}},{1,{24,24},{800,725}},{1,{24,24},{825,700}},{1,{24,24},{975,525}},{1,{24,24},{700,375}},{1,{24,24},{725,425}},{1,{24,24},{850,675}},{1,{24,24},{625,275}},{1,{24,24},{325,700}},{1,{24,24},{925,600}},{1,{24,24},{950,575}},{1,{24,24},{150,150}},{1,{24,24},{975,550}},{1,{24,24},{950,550}},{1,{24,24},{525,975}},{1,{24,24},{475,675}},{1,{24,24},{450,600}},{1,{24,24},{600,975}},{1,{24,24},{875,400}},{1,{24,24},{850,600}},{1,{24,24},{900,0}},{1,{24,24},{275,625}},{1,{24,24},{25,700}},{1,{24,24},{200,175}},{1,{24,24},{375,725}},{1,{24,24},{475,700}},{1,{24,24},{350,950}},{1,{24,24},{75,150}},{1,{24,24},{750,750}},{1,{24,24},{800,700}},{1,{24,24},{175,350}},{1,{24,24},{400,275}},{1,{24,24},{275,150}},{1,{24,24},{0,525}},{1,{24,24},{450,275}},{1,{24,24},{475,125}},{1,{24,24},{850,650}},{2,{24,24},{175,125}},{1,{24,24},{900,600}},{1,{24,24},{550,925}},{1,{24,24},{600,875}},{1,{24,24},{375,500}},{1,{24,24},{625,850}},{1,{24,24},{475,775}},{1,{24,24},{200,225}},{1,{24,24},{675,800}},{1,{24,24},{650,700}},{1,{24,24},{575,575}},{1,{24,24},{575,25}},{1,{24,24},{975,975}},{1,{24,24},{575,675}},{1,{24,24},{800,675}},{1,{24,24},{325,900}},{2,{24,24},{75,175}},{1,{24,24},{225,350}},{1,{24,24},{625,825}},{1,{24,24},{750,100}},{1,{24,24},{250,400}},{1,{24,24},{875,600}},{1,{24,24},{925,550}},{1,{24,24},{900,525}},{1,{24,24},{925,150}},{1,{24,24},{875,675}},{1,{24,24},{475,975}},{1,{24,24},{500,950}},{1,{24,24},{875,575}},{1,{24,24},{525,925}},{1,{24,24},{550,900}},{1,{24,24},{75,825}},{1,{24,24},{375,800}},{1,{24,24},{25,50}},{1,{24,24},{500,475}},{1,{24,24},{625,200}},{1,{24,24},{275,200}},{1,{24,24},{600,850}},{1,{24,24},{275,175}},{1,{24,24},{500,800}},{1,{24,24},{175,425}},{1,{24,24},{450,125}},{1,{24,24},{575,325}},{1,{24,24},{675,775}},{1,{24,24},{450,625}},{1,{24,24},{650,300}},{1,{24,24},{200,975}},{1,{24,24},{950,600}},{1,{24,24},{175,650}},{1,{24,24},{750,700}},{1,{24,24},{500,675}},{1,{24,24},{0,925}},{1,{24,24},{775,675}},{1,{24,24},{950,0}},{1,{24,24},{625,600}},{1,{24,24},{825,625}},{1,{24,24},{600,175}},{1,{24,24},{500,225}},{1,{24,24},{25,575}},{1,{24,24},{25,25}},{1,{24,24},{25,300}},{1,{24,24},{350,875}},{1,{24,24},{875,425}},{1,{24,24},{475,250}},{1,{24,24},{450,975}},{1,{24,24},{475,950}},{1,{24,24},{300,450}},{1,{24,24},{225,600}},{1,{24,24},{375,875}},{1,{24,24},{400,200}},{1,{24,24},{500,925}},{1,{24,24},{225,300}},{1,{24,24},{125,50}},{1,{24,24},{525,900}},{2,{24,24},{225,25}},{1,{24,24},{800,825}},{1,{24,24},{600,825}},{1,{24,24},{625,800}},{1,{24,24},{675,750}},{1,{24,24},{225,425}},{1,{24,24},{700,725}},{1,{24,24},{725,700}},{1,{24,24},{825,600}},{1,{24,24},{450,575}},{1,{24,24},{625,25}},{1,{24,24},{800,625}},{2,{24,24},{75,125}},{1,{24,24},{350,50}},{1,{24,24},{850,475}},{1,{24,24},{950,525}},{1,{24,24},{500,25}},{1,{24,24},{100,800}},{1,{24,24},{550,575}},{1,{24,24},{150,375}},{1,{24,24},{175,925}},{1,{24,24},{975,450}},{1,{24,24},{475,925}},{1,{24,24},{550,850}},{1,{24,24},{50,400}},{1,{24,24},{250,775}},{1,{24,24},{175,150}},{1,{24,24},{300,125}},{1,{24,24},{850,150}},{1,{24,24},{50,650}},{1,{24,24},{200,600}},{1,{24,24},{275,50}},{1,{24,24},{700,875}},{1,{24,24},{650,750}},{1,{24,24},{675,425}},{1,{24,24},{525,325}},{1,{24,24},{700,700}},{1,{24,24},{650,100}},{1,{24,24},{925,425}},{1,{24,24},{125,700}},{1,{24,24},{800,600}},{1,{24,24},{175,800}},{1,{24,24},{825,850}},{1,{24,24},{750,0}},{1,{24,24},{800,450}},{1,{24,24},{950,450}},{1,{24,24},{350,775}},{1,{24,24},{425,650}},{1,{24,24},{675,550}},{1,{24,24},{350,900}},{1,{24,24},{100,775}},{1,{24,24},{425,950}},{1,{24,24},{900,650}},{1,{24,24},{525,850}},{1,{24,24},{550,825}},{1,{24,24},{350,650}},{1,{24,24},{725,825}},{1,{24,24},{850,125}},{1,{24,24},{200,525}},{1,{24,24},{350,850}},{1,{24,24},{900,175}},{1,{24,24},{25,475}},{1,{24,24},{625,975}},{1,{24,24},{700,675}},{1,{24,24},{750,475}},{1,{24,24},{825,925}},{1,{24,24},{425,50}},{1,{24,24},{925,50}},{1,{24,24},{750,625}},{1,{24,24},{150,425}},{1,{24,24},{75,575}},{1,{24,24},{450,925}},{1,{24,24},{725,50}},{1,{24,24},{800,575}},{1,{24,24},{825,550}},{1,{24,24},{25,350}},{1,{24,24},{875,75}},{1,{24,24},{875,500}},{1,{24,24},{50,350}},{1,{24,24},{925,450}},{1,{24,24},{675,125}},{1,{24,24},{750,200}},{1,{24,24},{975,400}},{1,{24,24},{550,650}},{1,{24,24},{25,800}},{1,{24,24},{950,425}},{1,{24,24},{425,925}},{1,{24,24},{25,750}},{1,{24,24},{450,900}},{1,{24,24},{150,400}},{1,{24,24},{375,975}},{2,{24,24},{100,200}},{1,{24,24},{750,725}},{1,{24,24},{675,675}},{1,{24,24},{700,650}},{1,{24,24},{500,325}},{1,{24,24},{25,975}},{1,{24,24},{750,600}},{1,{24,24},{625,725}},{1,{24,24},{750,325}},{1,{24,24},{775,575}},{1,{24,24},{50,550}},{1,{24,24},{575,525}},{1,{24,24},{850,500}},{1,{24,24},{450,150}},{1,{24,24},{825,525}},{1,{24,24},{50,200}},{1,{24,24},{475,575}},{1,{24,24},{950,400}},{1,{24,24},{800,350}},{1,{24,24},{125,725}},{1,{24,24},{925,0}},{1,{24,24},{375,950}},{1,{24,24},{575,200}},{1,{24,24},{550,750}},{1,{24,24},{175,975}},{1,{24,24},{925,675}},{1,{24,24},{525,800}},{1,{24,24},{975,375}},{1,{24,24},{50,750}},{1,{24,24},{925,500}},{1,{24,24},{100,675}},{1,{24,24},{950,175}},{1,{24,24},{225,900}},{1,{24,24},{625,150}},{1,{24,24},{375,300}},{1,{24,24},{325,350}},{1,{24,24},{450,850}},{1,{24,24},{125,200}},{1,{24,24},{550,625}},{1,{24,24},{100,300}},{1,{24,24},{650,675}},{1,{24,24},{150,500}},{1,{24,24},{650,200}},{1,{24,24},{350,600}},{1,{24,24},{125,950}},{1,{24,24},{675,225}},{1,{24,24},{725,375}},{1,{24,24},{650,350}},{1,{24,24},{850,875}},{1,{24,24},{700,625}},{1,{24,24},{250,0}},{1,{24,24},{750,575}},{1,{24,24},{150,650}},{1,{24,24},{775,550}},{1,{24,24},{800,525}},{1,{24,24},{825,500}},{1,{24,24},{575,750}},{1,{24,24},{75,775}},{1,{24,24},{250,625}},{1,{24,24},{750,450}},{1,{24,24},{950,375}},{1,{24,24},{975,350}},{1,{24,24},{225,925}},{1,{24,24},{475,800}},{1,{24,24},{325,975}},{1,{24,24},{725,775}},{1,{24,24},{375,925}},{1,{24,24},{600,525}},{1,{24,24},{975,50}},{1,{24,24},{425,900}},{1,{24,24},{375,325}},{1,{24,24},{900,575}},{1,{24,24},{250,225}},{1,{24,24},{250,600}},{1,{24,24},{700,500}},{1,{24,24},{725,575}},{1,{24,24},{700,350}},{1,{24,24},{200,75}},{1,{24,24},{750,550}},{1,{24,24},{375,900}},{2,{24,24},{150,25}},{1,{24,24},{450,100}},{1,{24,24},{800,500}},{1,{24,24},{900,550}},{1,{24,24},{75,300}},{1,{24,24},{100,825}},{1,{24,24},{900,400}},{1,{24,24},{375,275}},{1,{24,24},{925,375}},{1,{24,24},{850,450}},{1,{24,24},{950,350}},{1,{24,24},{975,325}},{1,{24,24},{300,975}},{1,{24,24},{350,925}},{1,{24,24},{875,825}},{1,{24,24},{200,50}},{1,{24,24},{225,525}},{1,{24,24},{425,850}},{1,{24,24},{125,550}},{1,{24,24},{325,25}},{1,{24,24},{525,750}},{1,{24,24},{575,700}},{1,{24,24},{975,0}},{1,{24,24},{725,550}},{1,{24,24},{750,525}},{1,{24,24},{250,25}},{1,{24,24},{350,725}},{1,{24,24},{650,625}},{2,{24,24},{50,225}},{1,{24,24},{850,425}},{1,{24,24},{900,375}},{1,{24,24},{950,325}},{1,{24,24},{950,300}},{1,{24,24},{925,75}},{1,{24,24},{325,925}},{1,{24,24},{275,975}},{1,{24,24},{400,850}},{1,{24,24},{425,825}},{1,{24,24},{650,825}},{1,{24,24},{100,950}},{1,{24,24},{525,725}},{1,{24,24},{550,700}},{1,{24,24},{600,650}},{1,{24,24},{875,175}},{1,{24,24},{675,575}},{1,{24,24},{750,500}},{1,{24,24},{900,725}},{1,{24,24},{175,25}},{1,{24,24},{775,475}},{1,{24,24},{900,500}},{1,{24,24},{75,100}},{1,{24,24},{200,700}},{1,{24,24},{50,50}},{1,{24,24},{350,375}},{1,{24,24},{550,300}},{1,{24,24},{275,425}},{1,{24,24},{325,625}},{1,{24,24},{700,25}},{1,{24,24},{350,100}},{1,{24,24},{950,25}},{1,{24,24},{300,950}},{1,{24,24},{725,325}},{1,{24,24},{250,550}},{1,{24,24},{975,275}},{1,{24,24},{425,400}},{1,{24,24},{300,925}},{1,{24,24},{375,850}},{1,{24,24},{175,200}},{1,{24,24},{800,150}},{1,{24,24},{475,750}},{1,{24,24},{550,225}},{1,{24,24},{100,550}},{1,{24,24},{500,725}},{1,{24,24},{675,450}},{1,{24,24},{600,625}},{1,{24,24},{700,525}},{1,{24,24},{750,900}},{1,{24,24},{0,300}},{1,{24,24},{550,100}},{1,{24,24},{600,425}},{1,{24,24},{650,450}},{1,{24,24},{50,775}},{1,{24,24},{50,675}},{1,{24,24},{825,400}},{1,{24,24},{875,350}},{1,{24,24},{925,200}},{1,{24,24},{900,325}},{1,{24,24},{775,450}},{1,{24,24},{600,150}},{1,{24,24},{400,550}},{1,{24,24},{575,275}},{1,{24,24},{225,975}},{1,{24,24},{400,775}},{1,{24,24},{0,375}},{1,{24,24},{725,200}},{1,{24,24},{250,950}},{1,{24,24},{0,750}},{1,{24,24},{325,875}},{1,{24,24},{875,800}},{1,{24,24},{175,900}},{1,{24,24},{425,525}},{1,{24,24},{425,775}},{1,{24,24},{0,950}},{1,{24,24},{175,550}},{1,{24,24},{450,750}},{1,{24,24},{525,450}},{1,{24,24},{475,725}},{1,{24,24},{950,225}},{1,{24,24},{775,100}},{1,{24,24},{250,300}},{1,{24,24},{475,525}},{1,{24,24},{100,350}},{1,{24,24},{150,75}},{1,{24,24},{625,675}},{1,{24,24},{250,250}},{1,{24,24},{725,475}},{1,{24,24},{875,325}},{1,{24,24},{925,275}},{1,{24,24},{500,150}},{1,{24,24},{975,225}},{1,{24,24},{75,450}},{1,{24,24},{0,250}},{1,{24,24},{725,725}},{1,{24,24},{225,950}},{1,{24,24},{0,625}},{1,{24,24},{625,500}},{1,{24,24},{775,325}},{1,{24,24},{475,175}},{1,{24,24},{200,775}},{1,{24,24},{350,825}},{1,{24,24},{25,850}},{1,{24,24},{875,525}},{1,{24,24},{525,25}},{1,{24,24},{525,200}},{1,{24,24},{575,875}},{1,{24,24},{450,725}},{1,{24,24},{100,600}},{1,{24,24},{625,700}},{1,{24,24},{425,300}},{1,{24,24},{0,200}},{1,{24,24},{150,100}},{1,{24,24},{600,575}},{1,{24,24},{625,550}},{1,{24,24},{800,0}},{1,{24,24},{700,475}},{1,{24,24},{525,650}},{1,{24,24},{750,425}},{1,{24,24},{250,375}},{1,{24,24},{625,75}},{1,{24,24},{225,450}},{1,{24,24},{75,950}},{1,{24,24},{800,375}},{1,{24,24},{125,525}},{1,{24,24},{100,525}},{1,{24,24},{875,300}},{1,{24,24},{475,625}},{1,{24,24},{175,575}},{1,{24,24},{900,275}},{1,{24,24},{475,375}},{1,{24,24},{200,800}},{1,{24,24},{975,200}},{1,{24,24},{500,700}},{1,{24,24},{750,75}},{1,{24,24},{900,50}},{1,{24,24},{625,900}},{1,{24,24},{175,125}},{1,{24,24},{125,25}},{1,{24,24},{450,875}},{1,{24,24},{150,25}},{1,{24,24},{650,325}},{1,{24,24},{75,0}},{1,{24,24},{400,650}},{1,{24,24},{600,475}},{1,{24,24},{375,775}},{1,{24,24},{500,625}},{1,{24,24},{375,50}},{1,{24,24},{400,750}},{1,{24,24},{575,925}},{1,{24,24},{425,725}},{1,{24,24},{600,550}},{1,{24,24},{50,725}},{1,{24,24},{825,350}},{1,{24,24},{975,725}},{1,{24,24},{750,400}},{1,{24,24},{850,300}},{1,{24,24},{950,800}},{1,{24,24},{325,175}},{1,{24,24},{950,200}},{1,{24,24},{25,75}},{1,{24,24},{125,975}},{1,{24,24},{550,50}},{1,{24,24},{175,950}},{1,{24,24},{100,450}},{1,{24,24},{850,75}},{1,{24,24},{925,650}},{1,{24,24},{600,50}},{1,{24,24},{300,850}},{1,{24,24},{0,800}},{1,{24,24},{525,150}},{1,{24,24},{425,700}},{1,{24,24},{75,675}},{1,{24,24},{525,600}},{1,{24,24},{900,425}},{2,{24,24},{75,25}},{1,{24,24},{250,925}},{1,{24,24},{650,475}},{1,{24,24},{575,650}},{2,{24,24},{0,75}},{1,{24,24},{725,400}},{1,{24,24},{750,375}},{1,{24,24},{150,900}},{1,{24,24},{800,325}},{1,{24,24},{550,525}},{1,{24,24},{575,500}},{1,{24,24},{275,850}},{1,{24,24},{300,500}},{1,{24,24},{950,475}},{1,{24,24},{250,850}},{1,{24,24},{225,0}},{1,{24,24},{275,25}},{1,{24,24},{225,875}},{2,{24,24},{0,150}},{1,{24,24},{25,625}},{1,{24,24},{400,700}},{1,{24,24},{625,0}},{1,{24,24},{700,950}},{1,{24,24},{225,50}},{1,{24,24},{700,425}},{1,{24,24},{525,575}},{1,{24,24},{600,25}},{1,{24,24},{600,500}},{1,{24,24},{625,475}},{1,{24,24},{250,575}},{1,{24,24},{675,725}},{1,{24,24},{725,275}},{1,{24,24},{150,725}},{1,{24,24},{250,450}},{1,{24,24},{900,100}},{1,{24,24},{50,100}},{1,{24,24},{925,175}},{1,{24,24},{425,125}},{1,{24,24},{425,350}},{1,{24,24},{225,575}},{1,{24,24},{975,125}},{1,{24,24},{100,975}},{1,{24,24},{150,925}},{1,{24,24},{725,300}},{1,{24,24},{175,675}},{1,{24,24},{250,825}},{1,{24,24},{100,0}},{1,{24,24},{200,450}},{1,{24,24},{950,975}},{1,{24,24},{100,875}},{1,{24,24},{775,500}},{1,{24,24},{150,850}},{1,{24,24},{175,850}},{1,{24,24},{0,975}},{1,{24,24},{975,175}},{1,{24,24},{900,225}},{1,{24,24},{425,550}},{1,{24,24},{650,425}},{1,{24,24},{700,100}},{1,{24,24},{475,50}},{1,{24,24},{500,0}},{1,{24,24},{850,275}},{1,{24,24},{750,275}},{1,{24,24},{425,25}},{1,{24,24},{950,125}},{1,{24,24},{725,250}},{1,{24,24},{200,125}},{1,{24,24},{250,800}},{1,{24,24},{850,325}},{1,{24,24},{75,925}},{1,{24,24},{325,725}},{1,{24,24},{50,25}},{1,{24,24},{475,475}},{1,{24,24},{375,675}},{1,{24,24},{425,0}},{1,{24,24},{875,475}},{1,{24,24},{650,850}},{1,{24,24},{250,900}},{1,{24,24},{250,50}},{1,{24,24},{800,875}},{1,{24,24},{825,800}},{2,{24,24},{125,200}},{1,{24,24},{600,450}},{1,{24,24},{450,350}},{1,{24,24},{400,475}},{1,{24,24},{600,350}},{1,{24,24},{675,200}},{1,{24,24},{625,425}},{1,{24,24},{925,325}},{1,{24,24},{475,0}},{1,{24,24},{75,500}},{1,{24,24},{350,225}},{1,{24,24},{225,475}},{1,{24,24},{775,525}},{1,{24,24},{550,175}},{1,{24,24},{600,100}},{1,{24,24},{125,875}},{1,{24,24},{750,300}},{1,{24,24},{650,600}},{1,{24,24},{925,125}},{1,{24,24},{775,275}},{1,{24,24},{100,925}},{1,{24,24},{0,25}},{1,{24,24},{125,900}},{1,{24,24},{150,875}},{1,{24,24},{500,575}},{1,{24,24},{200,825}},{1,{24,24},{275,750}},{1,{24,24},{225,800}},{1,{24,24},{300,725}},{1,{24,24},{300,0}},{1,{24,24},{325,550}},{1,{24,24},{900,625}},{1,{24,24},{350,675}},{1,{24,24},{350,175}},{1,{24,24},{475,100}},{1,{24,24},{375,650}},{1,{24,24},{250,175}},{1,{24,24},{425,600}},{1,{24,24},{500,525}},{1,{24,24},{675,350}},{1,{24,24},{125,775}},{1,{24,24},{75,975}},{1,{24,24},{775,250}},{1,{24,24},{800,225}},{1,{24,24},{900,125}},{1,{24,24},{175,450}},{1,{24,24},{275,325}},{1,{24,24},{500,350}},{1,{24,24},{100,475}},{1,{24,24},{50,600}},{1,{24,24},{500,200}},{1,{24,24},{900,950}},{1,{24,24},{750,875}},{1,{24,24},{50,975}},{1,{24,24},{175,825}},{1,{24,24},{350,450}},{1,{24,24},{275,725}},{1,{24,24},{400,0}},{1,{24,24},{400,675}},{1,{24,24},{475,275}},{1,{24,24},{300,700}},{1,{24,24},{500,75}},{1,{24,24},{400,600}},{1,{24,24},{0,450}},{1,{24,24},{625,250}},{1,{24,24},{300,175}},{1,{24,24},{450,550}},{1,{24,24},{400,125}},{1,{24,24},{0,550}},{1,{24,24},{825,825}},{1,{24,24},{550,450}},{1,{24,24},{325,650}},{2,{24,24},{50,175}},{1,{24,24},{625,375}},{1,{24,24},{375,425}},{1,{24,24},{675,650}},{1,{24,24},{675,325}},{1,{24,24},{700,300}},{1,{24,24},{875,125}},{1,{24,24},{950,50}},{1,{24,24},{25,950}},{1,{24,24},{450,425}},{1,{24,24},{400,75}},{1,{24,24},{750,25}},{1,{24,24},{50,925}},{1,{24,24},{75,900}},{1,{24,24},{125,850}},{1,{24,24},{825,575}},{1,{24,24},{300,875}},{1,{24,24},{250,725}},{1,{24,24},{275,700}},{1,{24,24},{375,600}},{1,{24,24},{225,150}},{1,{24,24},{675,400}},{1,{24,24},{350,150}},{1,{24,24},{0,350}},{1,{24,24},{375,825}},{1,{24,24},{575,400}},{1,{24,24},{525,50}},{1,{24,24},{600,375}},{1,{24,24},{475,500}},{1,{24,24},{650,275}},{1,{24,24},{675,300}},{1,{24,24},{725,150}},{1,{24,24},{775,200}},{1,{24,24},{800,175}},{1,{24,24},{600,775}},{1,{24,24},{675,0}},{1,{24,24},{300,475}},{1,{24,24},{25,775}},{1,{24,24},{25,600}},{1,{24,24},{875,100}},{1,{24,24},{525,250}},{1,{24,24},{125,225}},{1,{24,24},{900,75}},{1,{24,24},{700,575}},{1,{24,24},{50,900}},{1,{24,24},{100,850}},{1,{24,24},{125,825}},{1,{24,24},{450,400}},{1,{24,24},{400,450}},{1,{24,24},{725,75}},{1,{24,24},{175,775}},{1,{24,24},{100,150}},{1,{24,24},{375,200}},{1,{24,24},{225,725}},{1,{24,24},{200,750}},{1,{24,24},{950,275}},{1,{24,24},{300,50}},{1,{24,24},{525,425}},{1,{24,24},{400,500}},{1,{24,24},{675,100}},{1,{24,24},{150,750}},{1,{24,24},{300,325}},{1,{24,24},{725,225}},{1,{24,24},{700,750}},{1,{24,24},{900,475}},{1,{24,24},{50,875}},{1,{24,24},{75,850}},{1,{24,24},{450,300}},{1,{24,24},{500,400}},{1,{24,24},{200,725}},{1,{24,24},{275,650}},{1,{24,24},{475,150}},{1,{24,24},{325,600}},{1,{24,24},{450,75}},{1,{24,24},{350,575}},{1,{24,24},{850,250}},{1,{24,24},{375,550}},{1,{24,24},{800,975}},{1,{24,24},{825,75}},{1,{24,24},{475,450}},{1,{24,24},{525,400}},{1,{24,24},{875,950}},{2,{24,24},{50,200}},{1,{24,24},{600,325}},{1,{24,24},{0,125}},{1,{24,24},{875,50}},{1,{24,24},{900,25}},{1,{24,24},{875,375}},{1,{24,24},{825,975}},{1,{24,24},{550,25}},{1,{24,24},{350,550}},{1,{24,24},{450,450}},{1,{24,24},{25,900}},{1,{24,24},{225,225}},{1,{24,24},{325,0}},{1,{24,24},{825,725}},{1,{24,24},{400,300}},{1,{24,24},{75,275}},{1,{24,24},{725,675}},{1,{24,24},{750,150}},{1,{24,24},{800,100}},{1,{24,24},{700,250}},{1,{24,24},{75,800}},{1,{24,24},{150,350}},{1,{24,24},{175,700}},{1,{24,24},{525,175}},{1,{24,24},{600,250}},{1,{24,24},{225,650}},{1,{24,24},{575,850}},{1,{24,24},{425,450}},{1,{24,24},{500,375}},{1,{24,24},{575,300}},{1,{24,24},{50,700}},{1,{24,24},{325,375}},{2,{24,24},{150,175}},{1,{24,24},{425,575}},{1,{24,24},{700,275}},{1,{24,24},{925,900}},{1,{24,24},{825,50}},{1,{24,24},{875,0}},{1,{24,24},{925,400}},{1,{24,24},{200,650}},{1,{24,24},{150,175}},{1,{24,24},{850,225}},{1,{24,24},{325,525}},{1,{24,24},{525,625}},{1,{24,24},{150,800}},{1,{24,24},{700,150}},{1,{24,24},{250,425}},{1,{24,24},{350,400}},{1,{24,24},{850,0}},{1,{24,24},{100,725}},{1,{24,24},{775,625}},{1,{24,24},{375,450}},{1,{24,24},{400,425}},{1,{24,24},{725,625}},{1,{24,24},{100,575}},{1,{24,24},{75,650}},{1,{24,24},{525,300}},{1,{24,24},{575,250}},{1,{24,24},{125,0}},{1,{24,24},{700,125}},{1,{24,24},{75,725}},{1,{24,24},{275,525}},{1,{24,24},{625,100}},{1,{24,24},{100,625}},{1,{24,24},{600,200}},{1,{24,24},{800,275}},{1,{24,24},{675,500}},{1,{24,24},{375,250}},{1,{24,24},{275,925}},{1,{24,24},{250,525}},{1,{24,24},{675,375}},{1,{24,24},{275,500}},{1,{24,24},{325,450}},{1,{24,24},{25,725}},{1,{24,24},{575,175}},{1,{24,24},{450,775}},{1,{24,24},{650,125}},{1,{24,24},{700,75}},{1,{24,24},{175,175}},{1,{24,24},{100,650}},{1,{24,24},{450,825}},{1,{24,24},{250,500}},{1,{24,24},{25,125}},{1,{24,24},{350,250}},{1,{24,24},{275,575}},{1,{24,24},{150,775}},{1,{24,24},{525,225}},{1,{24,24},{350,425}},{1,{24,24},{350,75}},{1,{24,24},{700,200}},{1,{24,24},{675,75}},{1,{24,24},{700,50}},{1,{24,24},{75,75}},{1,{24,24},{500,300}},{1,{24,24},{225,500}},{1,{24,24},{175,600}},{1,{24,24},{325,125}},{1,{24,24},{650,75}},{1,{24,24},{0,700}},{1,{24,24},{125,350}},{1,{24,24},{425,500}},{1,{24,24},{550,150}},{1,{24,24},{500,775}},{1,{24,24},{375,750}},{1,{24,24},{275,775}},{1,{24,24},{450,200}},{1,{24,24},{275,225}},{1,{24,24},{800,425}},{1,{24,24},{850,575}},{1,{24,24},{200,425}},{1,{24,24},{925,825}},{1,{24,24},{325,300}},{1,{24,24},{550,75}},{1,{24,24},{575,50}},{1,{24,24},{250,350}},{1,{24,24},{200,400}},{1,{24,24},{225,375}},{1,{24,24},{150,450}},{1,{24,24},{300,800}},{1,{24,24},{175,400}},{1,{24,24},{75,175}},{1,{24,24},{200,375}},{1,{24,24},{275,300}},{1,{24,24},{50,225}},{1,{24,24},{400,625}},{1,{24,24},{650,550}},{1,{24,24},{25,375}},{1,{24,24},{525,525}},{1,{24,24},{50,150}},{1,{24,24},{950,700}},{1,{24,24},{525,0}},{1,{24,24},{425,325}},{1,{24,24},{125,375}},{1,{24,24},{300,200}},{1,{24,24},{25,450}},{1,{24,24},{50,950}},{1,{24,24},{175,875}},{1,{24,24},{825,675}},{1,{24,24},{250,125}},{2,{24,24},{50,100}},{1,{24,24},{225,75}},{1,{24,24},{125,100}}}}}
-    end;
-
-    modules[objects["Instance287"]] = function(...)
-        local script = objects["Instance287"];
-local ecs = game:GetService("EncodingService")
-local tostr, fromstr = buffer.tostring, buffer.fromstring
-
-return {
-    Encode = function(self, str)
-        return tostr(ecs:Base64Encode(fromstr(str)))
-    end,
-    Decode = function(self, str)
-        return tostr(ecs:Base64Decode(fromstr(str)))
-    end
-}
-    end;
-
-    modules[objects["Instance280"]] = function(...)
-        local script = objects["Instance280"];
+    modules[objects["Instance2"]] = function(...)
+        local script = objects["Instance2"];
 return {
     Home = 14456045412,
     Cursor = 14913216473,
@@ -9387,8 +9367,8 @@ return {
 }
     end;
 
-    modules[objects["Instance282"]] = function(...)
-        local script = objects["Instance282"];
+    modules[objects["Instance4"]] = function(...)
+        local script = objects["Instance4"];
 local env = getfenv()
 local function g(n)
     return env[n]
@@ -9564,14 +9544,97 @@ fire(clock, false)
 return lib
     end;
 
-    modules[objects["Instance285"]] = function(...)
-        local script = objects["Instance285"];
+    modules[objects["Instance10"]] = function(...)
+        local script = objects["Instance10"];
+return {{"align-vertical-distribute-center","chevron-down","list-restart","table-cells-split","gavel","dna-off","refresh-ccw-dot","venus","bean","circle-question-mark","folder-code","bolt","heater","feather","align-horizontal-distribute-center","grip-vertical","pill-bottle","person-standing","badge-swiss-franc","between-horizontal-end","file-braces-corner","rotate-cw","house-plus","bus-front","shield-ellipsis","between-vertical-end","globe-lock","tags","concierge-bell","bookmark-minus","file-down","picture-in-picture","messages-square","scissors","file-check-corner","phone-call","anchor","hand-helping","text-wrap","birdhouse","wifi-off","cloud-alert","message-square","cloud-download","folder-plus","cctv-off","mirror-round","user-round","pointer","between-horizontal-start","chevrons-up-down","brush","message-circle-more","parentheses","book-up-2","flame","chevrons-up","square-dashed","square-mouse-pointer","superscript","signal","wifi-cog","hexagon","navigation-2-off","eye-off","arrows-up-from-line","file-code-corner","square-centerline-dashed-horizontal","panels-right-bottom","scaling","hash","arrow-left-from-line","ship","ticket-percent","calendar-clock","x","non-binary","voicemail","presentation","tree-palm","badge","captions-off","align-vertical-justify-center","download","mouse-right","lens-convex","focus","diamond-percent","arrow-big-up","volume-x","mouse-pointer-click","origami","hard-drive","grid-2x2-x","package-minus","cloud","pipette","corner-left-down","badge-cent","cloud-lightning","user-round-pen","arrow-left-to-line","book-open-text","monitor-cloud","parking-meter","cat","heart-handshake","dam","trees","ham","circle-pause","chess-king","bean-off","rat","separator-horizontal","ambulance","signal-zero","citrus","phone-missed","calendar-off","chart-column","battery-medium","square-minus","decimals-arrow-left","folder-output","menu","image-down","terminal","angry","circle-dot-dashed","medal","cake-slice","git-graph","armchair","tickets","qr-code","copy","goal","trending-down","creative-commons","ev-charger","user-star","road","nfc","align-center-horizontal","car","notebook-tabs","ear","videotape","sun-moon","chart-scatter","toolbox","calendar","calendar-cog","gallery-horizontal","clipboard-x","book-open","circle-pile","rectangle-ellipsis","badge-plus","badge-info","file-headphone","bow-arrow","clipboard-pen-line","user-round-key","folder-search","utensils-crossed","arrow-up","arrow-up-from-dot","align-vertical-justify-start","layers-minus","pause","shrub","flag","biceps-flexed","align-horizontal-distribute-end","donut","calendar-plus-2","move-vertical","file-pen-line","badge-russian-ruble","radius","pilcrow","corner-left-up","georgian-lari","cable","book-user","square-arrow-down","circle-plus","view","cctv","circle-arrow-left","volume","octagon-alert","panel-bottom-dashed","book-a","align-end-vertical","thumbs-up","globe","rabbit","layers-plus","banknote-arrow-down","message-square-off","dice-4","message-circle-x","folder-x","message-circle-warning","map","move","arrow-up-left","award","arrow-down-wide-narrow","unfold-horizontal","lens-concave","motorbike","music-4","shield-x","file-volume","disc-3","file-signal","columns-4","archive-x","square-dashed-kanban","mouse-pointer-2","clock-arrow-up","clock-fading","vegan","message-circle-plus","fast-forward","user-pen","chess-knight","wifi-pen","files","send-to-back","alarm-clock","shopping-basket","send","brush-cleaning","skip-back","book-audio","file-scan","message-square-dashed","chevrons-left","umbrella","skip-forward","clipboard-copy","map-pin-off","arrow-up-from-line","circle-chevron-up","circle-small","align-vertical-space-between","lamp-desk","circle-arrow-up","zap","beaker","paintbrush","move-left","chevron-up","pen-tool","form","pencil-ruler","dna","arrow-big-down-dash","chart-area","bug-off","card-sim","map-pin-search","ellipse","spell-check","popcorn","blocks","washing-machine","microchip","badge-minus","cloud-sun","circle","shield-alert","map-minus","separator-vertical","ampersands","user-search","fence","square-user-round","sunrise","strikethrough","calendar-days","folder-bookmark","banknote-arrow-up","dollar-sign","message-square-quote","list-minus","cloud-hail","eye-closed","app-window-mac","ellipsis","copy-check","history","satellite","bookmark-plus","folder-key","coffee","circle-power","hourglass","tickets-plane","folder-git","bomb","layers-2","battery-full","user-minus","chart-gantt","folder-tree","command","badge-dollar-sign","align-start-vertical","briefcase-conveyor-belt","message-circle-question-mark","bluetooth-off","square-square","cannabis","book","grip-horizontal","circle-minus","audio-waveform","moon-star","arrow-down-narrow-wide","database-backup","wand","receipt-turkish-lira","calendar-minus-2","copy-minus","folder-input","book-image","mouse-left","shirt","server-off","move-up","plug-2","chess-rook","brackets","calendar-heart","list-ordered","mic-off","arrow-big-left","square-split-horizontal","clover","sun-snow","sofa","funnel-x","clock-2","calendar-fold","fish-off","baby","leaf","fold-vertical","hop","paperclip","cigarette","minus","smile-plus","diamond-plus","file-chart-column","triangle-dashed","git-pull-request-closed","badge-check","plug-zap","heading-4","chess-queen","graduation-cap","grid-3x2","zodiac-sagittarius","square-dashed-bottom-code","clock-7","ethernet-port","scan-text","shower-head","equal-not","move-down","clock-arrow-down","ticket-slash","ruler","circle-user-round","list-filter","map-pin-check","egg-off","cog","dog","swords","spotlight","panel-right-dashed","truck-electric","check-line","bubbles","bot","chart-bar-increasing","trash-2","air-vent","dot","file-symlink","clipboard-paste","chevron-last","book-heart","circle-parking","cloud-check","panel-left","circle-chevron-right","squares-unite","arrow-down-up","git-fork","forward","brain-circuit","between-vertical-start","database","panel-right","log-out","git-branch-plus","clipboard-minus","file-text","table-rows-split","milk-off","tv-minimal","cloud-upload","banknote","drumstick","calendar-search","bell-ring","circle-chevron-left","arrow-down","arrow-up-down","folder-dot","whole-word","monitor","disc-2","trending-up-down","tv-minimal-play","circle-stop","align-vertical-space-around","arrow-big-down","circle-parking-off","calendar-x-2","user-plus","move-diagonal-2","bandage","gallery-horizontal-end","panel-top-dashed","zoom-out","zoom-in","tram-front","zodiac-virgo","podcast","locate","audio-lines","fingerprint-pattern","zodiac-pisces","upload","flip-vertical-2","rocket","zodiac-libra","ear-off","zodiac-leo","zodiac-gemini","star","text-cursor","printer","megaphone-off","zodiac-aries","arrow-big-right","section","file-clock","zodiac-aquarius","toy-brick","square-chevron-down","dice-1","drill","app-window","shield-check","hand-metal","send-horizontal","spell-check-2","x-line-top","square-dot","list-plus","worm","rotate-ccw-key","workflow","chart-pie","wine-off","wine","copy-slash","wind","wind-arrow-down","layout-panel-left","receipt-japanese-yen","circle-percent","wifi-sync","circle-arrow-out-down-right","square-x","italic","chart-column-increasing","stamp","step-forward","wifi-high","a-arrow-down","container","sticker","wifi","wheat-off","wheat","weight-tilde","weight","square-bottom-dashed-scissors","import","badge-turkish-lira","square-terminal","file-music","gamepad-directional","beef","route-off","file-user","webcam","square-radical","waypoints","image-upscale","book-type","smile","signpost-big","waves-vertical","cloudy","waves-ladder","square-percent","waves-horizontal","navigation-off","arrow-left","car-taxi-front","spade","waves-arrow-down","chevrons-right-left","watch","iteration-ccw","wand-sparkles","wallpaper","wallet-minimal","wallet-cards","wallet","square-pause","align-end-horizontal","vote","equal","megaphone","calendar-x","volume-off","sliders-vertical","egg","volume-1","volleyball","video","circle-pound-sterling","video-off","japanese-yen","text-cursor-input","vibrate","venus-and-mars","library","file-terminal","circle-chevron-down","accessibility","replace-all","square-library","amphora","chart-bar-stacked","tally-2","vault","badge-x","van","utility-pole","sheet","circle-check-big","utensils","users-round","map-pinned","corner-down-left","circuit-board","users","user-x","user-round-x","user-round-search","folder-open-dot","book-dashed","monitor-speaker","message-square-share","bluetooth","tree-pine","receipt-indian-rupee","user-round-cog","user-round-check","user-lock","user-key","stretch-horizontal","square-chart-gantt","flask-conical","user","funnel","square-star","folder-sync","maximize-2","zodiac-ophiuchus","unplug","square-user","arrow-up-narrow-wide","fishing-hook","unlink","university","ungroup","frame","calendar-arrow-down","clock-12","unfold-vertical","lasso","undo-2","images","lollipop","book-text","undo","lamp-floor","file-plus-corner","image","underline","badge-euro","bike","umbrella-off","type-outline","gauge","file-x","folder-search-2","turntable","turkish-lira","option","truck","scroll-text","table-of-contents","trophy","gift","triangle-alert","toggle-right","triangle","ferris-wheel","camera-off","trending-up","tree-deciduous","shield-cog","transgender","chevrons-down","group","train-front-tunnel","battery","move-down-left","tent-tree","traffic-cone","rectangle-horizontal","tractor","tower-control","package-search","bitcoin","touchpad-off","battery-plus","database-search","touchpad","file-diff","torus","tornado","tool-case","spline-pointer","toilet","axis-3d","toggle-left","timer-reset","binoculars","refresh-cw","timer","timeline","rose","ticket-x","mail-minus","syringe","calculator","panel-bottom","move-up-right","clipboard-pen","bottle-wine","alarm-clock-off","dices","list","thermometer-sun","square-arrow-right","thermometer-snowflake","badge-pound-sterling","bookmark-check","thermometer","theater","message-square-text","a-arrow-up","clock-check","text-quote","piano","vibrate-off","mail-check","zodiac-cancer","joystick","file-code","text-align-justify","chart-column-big","text-align-end","text-align-center","cassette-tape","battery-low","test-tubes","test-tube-diagonal","signpost","bug","calendar-arrow-up","landmark","fish-symbol","tent","loader","bold","dice-2","file-type","clipboard-clock","beer","lectern","telescope","book-plus","tangent","binary","move-diagonal","flashlight-off","door-closed","locate-fixed","layout-template","tally-3","power","tag","bookmark-off","hand-heart","tablets","scan-qr-code","message-square-check","tablet-smartphone","shield-half","table-properties","brain","table-columns-split","table-cells-merge","table-2","key","clock-11","table","ticket-plus","arrow-up-0-1","bell-electric","scan-face","heading","book-open-check","panel-top-close","lasso-select","switch-camera","swiss-franc","square-parking","sunset","bus","sun-medium","bed-single","chart-no-axes-gantt","file-spreadsheet","sun-dim","clipboard-list","signal-medium","contact-round","subscript","keyboard-off","stretch-vertical","file-badge","battery-warning","mail-question-mark","arrow-down-from-line","briefcase","biohazard","rectangle-circle","braces","scale-3d","panel-top-bottom-dashed","mail-x","square-dashed-mouse-pointer","user-cog","lock-open","mouse-off","pizza","list-indent-decrease","arrow-up-wide-narrow","stone","clock-5","sticky-note","rotate-ccw","align-horizontal-justify-center","stethoscope","antenna","memory-stick","scan-eye","step-back","square-check","heart-plus","star-off","map-pin-minus-inside","git-merge","gallery-vertical-end","shield-off","hand-coins","zodiac-capricorn","wifi-low","squirrel","clock","file-pen","git-compare-arrows","cloud-sun-rain","align-horizontal-justify-start","folder-lock","squircle","roller-coaster","calendar-plus","shield-user","arrow-down-z-a","bath","squares-exclude","unlink-2","notepad-text-dashed","square-stack","folder-check","square-split-vertical","book-key","ribbon","microwave","square-slash","gallery-vertical","square-sigma","square-scissors","square-dashed-text","map-pin-pen","move-up-left","square-round-corner","folder-heart","line-squiggle","square-plus","square-play","arrow-up-a-z","square-pilcrow","square-dashed-top-solid","square-pi","navigation-2","lock-keyhole","swatch-book","receipt-cent","spool","folder-archive","folder-symlink","columns-3","ban","message-square-x","paint-roller","router","archive","square-m","square-kanban","building-2","circle-slash-2","bell-off","cake","cloud-rain","chart-bar","square-equal","wrench","square-divide","square-dashed-bottom","square-code","flag-triangle-right","square-chevron-up","quote","bell","square-chevron-left","search-x","music-3","chart-bar-big","user-check","proportions","square-centerline-dashed-vertical","plane","webhook-off","carrot","square-arrow-left","file-cog","circle-dashed","square-asterisk","square-arrow-up-right","sliders-horizontal","mailbox","squares-subtract","square-arrow-right-exit","square-arrow-right-enter","split","square-arrow-out-up-right","square-arrow-out-up-left","forklift","panda","alarm-clock-minus","heart-x","eraser","book-marked","square-arrow-out-down-left","bluetooth-connected","rotate-ccw-square","chart-no-axes-column","cannabis-off","folder-kanban","square-arrow-down-right","mars-stroke","grid-2x2","panel-left-open","square","file-box","sprout","paint-bucket","glass-water","spray-can","glasses","piggy-bank","sport-shoe","cuboid","cloud-off","check-check","activity","axe","plane-takeoff","repeat-off","cloud-rain-wind","speech","speaker","copy-x","file-axis-3d","radical","chart-column-decreasing","sparkles","bug-play","align-vertical-distribute-start","sparkle","waves-arrow-up","tally-5","soup","solar-panel","soap-dispenser-droplet","circle-divide","snowflake","snail","smartphone-nfc","life-buoy","circle-alert","smartphone","volume-2","battery-charging","russian-ruble","square-arrow-up-left","brick-wall-shield","footprints","monitor-stop","building","microscope","skull","siren","signature","book-alert","link-2","astroid","bell-minus","image-up","closed-caption","drum","arrow-up-z-a","sun","signal-low","message-square-diff","file-key","sigma","computer","scissors-line-dashed","file-braces","shrimp","house-plug","ticket-check","combine","popsicle","shopping-bag","mountain","mars","picture-in-picture-2","radio-off","flower-2","ship-wheel","squares-intersect","shield-question-mark","shield-plus","keyboard-music","star-half","heading-3","code-xml","pencil-line","mails","brain-cog","tablet","shield-cog-corner","pi","trash","book-down","hdmi-port","shield-ban","case-upper","circle-fading-arrow-up","shield","croissant","shelving-unit","shell","barcode","globe-x","share","bed","shapes","divide","grape","settings-2","party-popper","file-chart-pie","settings","server-crash","dice-6","server-cog","calendar-range","server","zap-off","square-check-big","search-slash","search-code","external-link","laptop-minimal","search-alert","search","map-pin-minus","scroll","chart-spline","message-square-more","screen-share-off","chart-candlestick","screen-share","arrow-down-a-z","lock-keyhole-open","school","move-horizontal","file-sliders","frown","scan-search","cup-soda","rotate-3d","notepad-text","sword","scan-barcode","scan","earth","slice","dice-3","milk","mouse-pointer-ban","crown","circle-slash","circle-star","rotate-cw-square","atom","package-x","bed-double","save-off","circle-dot","file-exclamation-point","hand-fist","message-circle-code","folder-git-2","message-square-code","info","towel-rack","saudi-riyal","arrow-big-left-dash","satellite-dish","dumbbell","sandwich","salad","sailboat","scale","file-stack","flashlight","panel-top-open","rows-4","rows-3","notebook","redo-2","rows-2","square-menu","route","monitor-smartphone","laptop","scan-line","clock-4","square-arrow-up","book-minus","file-question-mark","panels-left-bottom","rewind","list-video","arrow-down-to-line","reply","refresh-ccw","venetian-mask","calendar-check-2","replace","spline","banknote-x","git-pull-request-create-arrow","repeat-2","circle-check","repeat-1","repeat","remove-formatting","regex","refrigerator","refresh-cw-off","timer-off","arrow-big-right-dash","copyright","redo","clapperboard","backpack","rectangle-vertical","rectangle-goggles","haze","receipt-swiss-franc","receipt-russian-ruble","arrow-down-right","maximize","receipt","wifi-zero","receipt-euro","ratio","rainbow","plus","image-off","radio-receiver","radio","radiation","radar","square-chevron-right","mail-search","pyramid","puzzle","projector","list-music","printer-check","power-off","tally-1","ampersand","pound-sterling","shopping-cart","align-vertical-justify-end","folder-up","alarm-smoke","cloud-sync","file-input","clock-8","hand-grab","cloud-cog","blend","hd","radio-tower","list-tree","droplet","plug","eye","play","plane-landing","banana","gpu","pin-off","currency","circle-equal","pill","monitor-off","pilcrow-left","pickaxe","text-initial","arrow-up-right","circle-arrow-out-down-left","leafy-green","message-square-dot","file-chart-line","columns-3-cog","phone-off","phone-incoming","minimize-2","phone-forwarded","phone","cone","hammer","file-image","percent","palette","barrel","gallery-thumbnails","pentagon","cpu","pencil-off","thumbs-down","merge","hamburger","pen-off","hat-glasses","code","pen-line","heart-pulse","pc-case","nut","file-video-camera","calendar-minus","kanban","bone","apple","rocking-chair","bot-off","panel-top","panel-right-open","panel-right-close","circle-arrow-out-up-left","panel-left-right-dashed","cable-car","arrow-down-left","square-activity","panel-left-dashed","cigarette-off","monitor-play","message-circle","circle-arrow-out-up-right","house-heart","panel-bottom-close","fold-horizontal","shovel","calendar-1","cloud-moon","square-arrow-out-down-right","paintbrush-vertical","clock-plus","save","cloud-snow","anvil","arrow-big-up-dash","package-plus","package-open","diff","package-2","package","orbit","chevrons-down-up","clipboard-plus","circle-x","list-end","omega","circle-ellipsis","chevrons-right","octagon-pause","message-square-reply","corner-down-right","octagon-minus","file-minus-corner","lamp-wall-down","nut-off","paw-print","ellipsis-vertical","globe-off","square-stop","arrow-up-1-0","align-horizontal-justify-end","scan-heart","align-vertical-distribute-end","heart-crack","airplay","lock","map-pin-x-inside","newspaper","monitor-x","bell-check","network","square-pen","navigation","music-2","dice-5","octagon","ticket","move-right","move-down-right","train-front","bookmark","move-3d","album","milestone","chart-bar-decreasing","mouse-pointer","calendar-sync","funnel-plus","store","circle-arrow-down","notebook-pen","egg-fried","circle-play","moon","corner-right-up","monitor-up","ruler-dimension-line","user-round-plus","panel-left-close","monitor-pause","pilcrow-right","user-round-minus","monitor-dot","monitor-cog","mail-plus","monitor-check","map-pin","map-pin-x","mouse-pointer-2-off","drone","slash","mic-vocal","aperture","arrow-right-left","mic","vector-square","circle-gauge","message-square-warning","check","text-search","arrow-down-to-dot","monitor-down","message-square-plus","chef-hat","message-square-lock","message-square-heart","file-archive","signal-high","inbox","flip-horizontal-2","clock-9","image-play","align-horizontal-space-between","message-circle-off","calendar-check","database-zap","droplets","message-circle-heart","message-circle-dashed","message-circle-check","layout-list","file-search","meh","alarm-clock-plus","circle-dollar-sign","usb","house","receipt-pound-sterling","lamp","list-checks","id-card","mouse","minimize","helicopter","map-pin-plus","disc","brick-wall","book-x","mirror-rectangular","layout-grid","bird","mail","headphone-off","asterisk","magnet","octagon-x","languages","logs","alarm-clock-check","guitar","log-in","beer-off","scooter","square-parking-off","notebook-text","arrow-right-to-line","ticket-minus","tally-4","zodiac-taurus","loader-pinwheel","door-open","flag-triangle-left","grid-3x3","file","loader-circle","pocket-knife","book-copy","castle","car-front","clock-alert","reply-all","cloud-moon-rain","clipboard-type","land-plot","list-todo","printer-x","list-indent-increase","list-start","list-collapse","a-large-small","list-chevrons-up-down","list-chevrons-down-up","map-plus","list-check","link-2-off","link","line-style","arrow-right-from-line","flame-kindling","square-power","line-dot-right-horizontal","bring-to-front","candy","lightbulb","bell-plus","ligature","library-big","layout-panel-top","folders","mail-warning","layout-dashboard","layers","laugh","chevrons-left-right","chart-line","file-lock","cast","circle-fading-plus","clock-10","undo-dot","target","list-filter-plus","lamp-wall-up","drama","lamp-ceiling","baseline","martini","contrast","keyboard","candy-off","key-square","book-check","film","book-lock","kayak","briefcase-medical","calendars","text-align-start","iteration-cw","hop-off","warehouse","inspection-panel","drafting-compass","save-all","infinity","indian-rupee","image-plus","image-minus","id-card-lanyard","fishing-rod","book-headphones","credit-card","ice-cream-cone","ice-cream-bowl","house-wifi","shredder","panel-bottom-open","hotel","hospital","highlighter","balloon","map-pin-plus-inside","bookmark-x","badge-question-mark","pen","heart-off","candy-cane","heart-minus","heart","gamepad-2","headset","file-x-corner","heading-6","heading-5","shield-minus","circle-off","dessert","eclipse","church","heading-2","cylinder","badge-japanese-yen","heading-1","receipt-text","hard-hat","hard-drive-upload","hard-drive-download","file-minus","file-output","disc-album","handbag","arrow-down-0-1","captions","hand-platter","hand","philippine-peso","badge-alert","grip","folder-pen","cross","folder","chevron-right","grid-2x2-check","square-arrow-down-left","share-2","git-pull-request-draft","git-pull-request-create","cookie","folder-minus","git-merge-conflict","git-compare","chess-pawn","git-commit-vertical","briefcase-business","git-commit-horizontal","message-circle-reply","git-branch","triangle-right","folder-clock","ghost","gem","type","webhook","gamepad","align-horizontal-distribute-start","fullscreen","fuel","pointer-off","turtle","camera","folder-root","folder-open","git-pull-request","bluetooth-searching","arrow-up-to-line","squircle-dashed","clock-3","badge-percent","shuffle","folder-cog","folder-closed","grid-2x2-plus","flower","box","flask-round","clock-1","file-heart","flask-conical-off","space","flag-off","fish","fire-extinguisher","corner-up-left","clock-6","zodiac-scorpio","key-round","headphones","tv","file-up","file-type-corner","rss","file-search-corner","at-sign","map-pin-check-inside","file-play","music","handshake","file-digit","circle-user","copy-plus","file-check","file-chart-column-increasing","shrink","fan","factory","search-check","clipboard-check","columns-2","expand","euro","align-center-vertical","equal-approximately","earth-lock","droplet-off","cloud-fog","coins","dock","map-pin-house","package-check","chevron-first","pencil","diamond-minus","list-x","diameter","delete","corner-up-right","construction","pin","crosshair","crop","badge-indian-rupee","corner-right-down","redo-dot","copyleft","align-start-horizontal","chart-column-stacked","file-plus","git-pull-request-arrow","contact","decimals-arrow-right","bell-dot","folder-down","component","compass","align-horizontal-space-around","door-closed-locked","club","diamond","blinds","cloud-drizzle","cloud-backup","book-search","git-branch-minus","clipboard","recycle","mountain-snow","luggage","circle-arrow-right","bot-message-square","phone-outgoing","smartphone-charging","chevrons-left-right-ellipsis","train-track","chevron-left","chess-bishop","cherry","chart-network","chart-no-axes-column-increasing","chart-no-axes-column-decreasing","chart-no-axes-combined","metronome","case-sensitive","arrow-down-1-0","case-lower","caravan","arrow-left-right","lightbulb-off","panels-top-left","beef-off","locate-off","annoyed","test-tube","brick-wall-fire","cooking-pot","boxes","boom-box","book-up","laptop-minimal-check","mail-open","square-function","baggage-claim","variable","arrow-right","archive-restore"},{[48]={{1,{24,24},{175,0}},{1,{24,24},{400,225}},{1,{24,24},{800,250}},{1,{24,24},{800,800}},{1,{24,24},{550,375}},{1,{24,24},{650,150}},{1,{24,24},{400,875}},{2,{24,24},{100,75}},{1,{24,24},{125,275}},{1,{24,24},{425,250}},{1,{24,24},{775,125}},{1,{24,24},{150,300}},{1,{24,24},{450,525}},{1,{24,24},{325,500}},{1,{24,24},{50,75}},{1,{24,24},{550,400}},{1,{24,24},{525,700}},{1,{24,24},{975,250}},{1,{24,24},{350,25}},{1,{24,24},{175,250}},{1,{24,24},{150,675}},{1,{24,24},{425,875}},{1,{24,24},{150,825}},{1,{24,24},{125,400}},{1,{24,24},{650,725}},{1,{24,24},{125,300}},{1,{24,24},{925,25}},{1,{24,24},{925,700}},{1,{24,24},{625,125}},{1,{24,24},{425,75}},{1,{24,24},{675,175}},{1,{24,24},{650,575}},{1,{24,24},{325,775}},{1,{24,24},{900,450}},{1,{24,24},{0,825}},{1,{24,24},{925,300}},{1,{24,24},{100,100}},{1,{24,24},{275,675}},{1,{24,24},{675,975}},{1,{24,24},{400,50}},{2,{24,24},{125,150}},{1,{24,24},{25,675}},{1,{24,24},{350,750}},{1,{24,24},{675,50}},{1,{24,24},{375,525}},{1,{24,24},{25,550}},{1,{24,24},{825,300}},{2,{24,24},{0,100}},{1,{24,24},{850,400}},{1,{24,24},{150,275}},{1,{24,24},{75,550}},{1,{24,24},{300,225}},{1,{24,24},{950,150}},{1,{24,24},{600,600}},{1,{24,24},{50,425}},{1,{24,24},{300,575}},{1,{24,24},{50,575}},{1,{24,24},{925,575}},{1,{24,24},{675,825}},{1,{24,24},{625,950}},{1,{24,24},{575,825}},{2,{24,24},{200,75}},{1,{24,24},{400,575}},{1,{24,24},{500,650}},{1,{24,24},{450,375}},{1,{24,24},{225,100}},{1,{24,24},{800,50}},{1,{24,24},{825,650}},{1,{24,24},{675,525}},{1,{24,24},{550,775}},{1,{24,24},{25,925}},{1,{24,24},{75,200}},{1,{24,24},{400,975}},{1,{24,24},{775,900}},{1,{24,24},{400,150}},{2,{24,24},{125,175}},{1,{24,24},{325,825}},{2,{24,24},{150,50}},{1,{24,24},{700,550}},{1,{24,24},{775,975}},{1,{24,24},{275,100}},{1,{24,24},{400,175}},{1,{24,24},{100,75}},{1,{24,24},{400,400}},{1,{24,24},{150,975}},{1,{24,24},{525,500}},{1,{24,24},{50,825}},{1,{24,24},{225,550}},{1,{24,24},{125,125}},{2,{24,24},{25,175}},{1,{24,24},{200,925}},{1,{24,24},{725,450}},{1,{24,24},{75,875}},{1,{24,24},{675,275}},{1,{24,24},{650,525}},{1,{24,24},{300,425}},{1,{24,24},{425,800}},{1,{24,24},{150,600}},{1,{24,24},{275,75}},{1,{24,24},{575,150}},{2,{24,24},{100,0}},{1,{24,24},{25,250}},{1,{24,24},{200,275}},{1,{24,24},{775,350}},{1,{24,24},{575,625}},{1,{24,24},{50,525}},{1,{24,24},{625,350}},{1,{24,24},{500,275}},{1,{24,24},{950,825}},{1,{24,24},{450,500}},{1,{24,24},{600,75}},{1,{24,24},{525,100}},{1,{24,24},{150,250}},{1,{24,24},{925,350}},{1,{24,24},{500,850}},{1,{24,24},{200,0}},{1,{24,24},{600,800}},{1,{24,24},{150,525}},{1,{24,24},{850,375}},{1,{24,24},{225,325}},{1,{24,24},{325,275}},{1,{24,24},{275,125}},{1,{24,24},{700,800}},{1,{24,24},{375,400}},{1,{24,24},{425,475}},{1,{24,24},{200,875}},{1,{24,24},{975,25}},{1,{24,24},{650,975}},{1,{24,24},{75,125}},{1,{24,24},{175,475}},{1,{24,24},{325,750}},{1,{24,24},{25,500}},{1,{24,24},{225,700}},{1,{24,24},{50,175}},{1,{24,24},{925,775}},{1,{24,24},{500,750}},{1,{24,24},{275,475}},{1,{24,24},{825,125}},{1,{24,24},{925,850}},{1,{24,24},{775,0}},{1,{24,24},{550,275}},{2,{24,24},{100,25}},{1,{24,24},{675,625}},{1,{24,24},{350,800}},{1,{24,24},{0,100}},{1,{24,24},{300,275}},{1,{24,24},{275,875}},{1,{24,24},{100,700}},{2,{24,24},{200,0}},{1,{24,24},{750,825}},{1,{24,24},{75,525}},{1,{24,24},{975,750}},{1,{24,24},{25,525}},{1,{24,24},{375,175}},{1,{24,24},{750,175}},{1,{24,24},{575,125}},{1,{24,24},{175,300}},{1,{24,24},{550,125}},{1,{24,24},{600,675}},{1,{24,24},{50,300}},{1,{24,24},{150,200}},{1,{24,24},{625,225}},{1,{24,24},{175,325}},{1,{24,24},{675,25}},{2,{24,24},{25,50}},{1,{24,24},{300,600}},{2,{24,24},{150,0}},{1,{24,24},{250,75}},{1,{24,24},{100,200}},{1,{24,24},{50,125}},{1,{24,24},{850,175}},{1,{24,24},{525,675}},{1,{24,24},{750,650}},{1,{24,24},{350,525}},{1,{24,24},{75,350}},{1,{24,24},{25,100}},{1,{24,24},{525,275}},{1,{24,24},{200,350}},{1,{24,24},{650,500}},{1,{24,24},{375,475}},{1,{24,24},{375,0}},{1,{24,24},{975,300}},{1,{24,24},{550,675}},{1,{24,24},{125,625}},{1,{24,24},{500,425}},{1,{24,24},{50,475}},{1,{24,24},{0,475}},{1,{24,24},{650,800}},{1,{24,24},{500,175}},{2,{24,24},{175,25}},{1,{24,24},{0,575}},{1,{24,24},{575,75}},{2,{24,24},{0,200}},{1,{24,24},{925,250}},{1,{24,24},{325,850}},{1,{24,24},{75,375}},{1,{24,24},{75,50}},{1,{24,24},{850,825}},{1,{24,24},{850,100}},{1,{24,24},{450,800}},{1,{24,24},{825,200}},{1,{24,24},{125,250}},{1,{24,24},{550,550}},{1,{24,24},{75,700}},{1,{24,24},{800,300}},{1,{24,24},{175,725}},{1,{24,24},{825,275}},{1,{24,24},{475,600}},{1,{24,24},{625,525}},{1,{24,24},{50,250}},{1,{24,24},{50,275}},{1,{24,24},{150,125}},{1,{24,24},{975,900}},{1,{24,24},{550,475}},{1,{24,24},{400,725}},{1,{24,24},{550,600}},{1,{24,24},{475,900}},{1,{24,24},{750,125}},{1,{24,24},{750,50}},{1,{24,24},{150,700}},{1,{24,24},{0,725}},{1,{24,24},{100,125}},{1,{24,24},{525,950}},{1,{24,24},{250,875}},{1,{24,24},{175,525}},{1,{24,24},{125,575}},{2,{24,24},{175,0}},{1,{24,24},{900,200}},{1,{24,24},{350,475}},{2,{24,24},{25,25}},{1,{24,24},{500,125}},{2,{24,24},{100,175}},{1,{24,24},{650,225}},{1,{24,24},{550,800}},{1,{24,24},{75,25}},{1,{24,24},{925,475}},{1,{24,24},{525,825}},{1,{24,24},{325,200}},{1,{24,24},{450,950}},{1,{24,24},{25,425}},{1,{24,24},{225,625}},{1,{24,24},{700,400}},{1,{24,24},{150,475}},{1,{24,24},{975,875}},{1,{24,24},{425,975}},{1,{24,24},{50,625}},{1,{24,24},{725,350}},{1,{24,24},{75,225}},{1,{24,24},{275,375}},{1,{24,24},{350,325}},{1,{24,24},{0,175}},{1,{24,24},{250,750}},{1,{24,24},{425,225}},{2,{24,24},{75,225}},{1,{24,24},{175,225}},{1,{24,24},{425,750}},{1,{24,24},{775,375}},{1,{24,24},{275,350}},{1,{24,24},{400,800}},{1,{24,24},{50,850}},{1,{24,24},{300,900}},{1,{24,24},{625,175}},{1,{24,24},{25,200}},{1,{24,24},{600,0}},{1,{24,24},{250,275}},{1,{24,24},{250,325}},{1,{24,24},{625,450}},{1,{24,24},{775,50}},{1,{24,24},{950,500}},{1,{24,24},{825,425}},{1,{24,24},{300,150}},{2,{24,24},{25,200}},{1,{24,24},{200,900}},{1,{24,24},{100,250}},{1,{24,24},{375,350}},{1,{24,24},{200,475}},{1,{24,24},{775,600}},{1,{24,24},{875,200}},{1,{24,24},{475,875}},{1,{24,24},{150,50}},{2,{24,24},{125,0}},{1,{24,24},{300,525}},{1,{24,24},{575,950}},{1,{24,24},{675,900}},{1,{24,24},{850,725}},{1,{24,24},{350,200}},{1,{24,24},{875,25}},{1,{24,24},{100,275}},{1,{24,24},{550,250}},{1,{24,24},{500,600}},{1,{24,24},{900,150}},{1,{24,24},{600,125}},{1,{24,24},{475,350}},{1,{24,24},{200,25}},{1,{24,24},{725,100}},{1,{24,24},{400,350}},{1,{24,24},{350,625}},{1,{24,24},{725,600}},{1,{24,24},{375,125}},{1,{24,24},{550,350}},{1,{24,24},{150,575}},{1,{24,24},{450,225}},{1,{24,24},{225,750}},{1,{24,24},{950,750}},{1,{24,24},{650,250}},{1,{24,24},{125,325}},{1,{24,24},{875,150}},{1,{24,24},{325,75}},{2,{24,24},{50,0}},{1,{24,24},{300,300}},{1,{24,24},{225,675}},{1,{24,24},{725,25}},{1,{24,24},{225,125}},{1,{24,24},{0,150}},{1,{24,24},{425,100}},{1,{24,24},{875,225}},{1,{24,24},{250,200}},{1,{24,24},{700,825}},{1,{24,24},{425,150}},{1,{24,24},{475,25}},{1,{24,24},{575,375}},{1,{24,24},{0,650}},{1,{24,24},{75,250}},{1,{24,24},{450,675}},{1,{24,24},{275,0}},{1,{24,24},{475,300}},{2,{24,24},{75,150}},{1,{24,24},{675,600}},{1,{24,24},{275,275}},{1,{24,24},{375,375}},{1,{24,24},{600,300}},{1,{24,24},{350,125}},{1,{24,24},{325,800}},{1,{24,24},{975,425}},{1,{24,24},{400,950}},{1,{24,24},{675,475}},{1,{24,24},{275,950}},{1,{24,24},{425,200}},{1,{24,24},{75,425}},{1,{24,24},{300,250}},{1,{24,24},{850,200}},{1,{24,24},{275,825}},{1,{24,24},{225,25}},{1,{24,24},{750,775}},{1,{24,24},{250,475}},{1,{24,24},{725,850}},{1,{24,24},{650,775}},{1,{24,24},{825,100}},{1,{24,24},{425,275}},{1,{24,24},{325,225}},{1,{24,24},{550,325}},{1,{24,24},{350,0}},{1,{24,24},{625,400}},{1,{24,24},{0,875}},{1,{24,24},{300,675}},{1,{24,24},{625,575}},{1,{24,24},{650,0}},{1,{24,24},{875,250}},{1,{24,24},{775,650}},{1,{24,24},{200,575}},{1,{24,24},{75,750}},{1,{24,24},{825,950}},{1,{24,24},{125,800}},{1,{24,24},{250,100}},{1,{24,24},{250,975}},{1,{24,24},{825,150}},{1,{24,24},{450,175}},{1,{24,24},{775,175}},{1,{24,24},{625,325}},{2,{24,24},{175,150}},{1,{24,24},{575,900}},{1,{24,24},{300,400}},{1,{24,24},{600,225}},{1,{24,24},{350,975}},{1,{24,24},{850,550}},{1,{24,24},{675,150}},{1,{24,24},{825,325}},{1,{24,24},{200,500}},{1,{24,24},{725,950}},{1,{24,24},{875,450}},{1,{24,24},{275,400}},{1,{24,24},{975,75}},{1,{24,24},{825,250}},{1,{24,24},{825,0}},{1,{24,24},{125,600}},{1,{24,24},{575,225}},{1,{24,24},{900,700}},{1,{24,24},{800,650}},{1,{24,24},{900,300}},{1,{24,24},{925,875}},{1,{24,24},{0,600}},{1,{24,24},{275,250}},{1,{24,24},{225,275}},{1,{24,24},{525,75}},{1,{24,24},{850,900}},{1,{24,24},{0,50}},{1,{24,24},{425,375}},{1,{24,24},{50,800}},{1,{24,24},{700,0}},{1,{24,24},{350,275}},{1,{24,24},{375,100}},{1,{24,24},{625,50}},{1,{24,24},{725,0}},{1,{24,24},{950,250}},{1,{24,24},{300,350}},{1,{24,24},{850,700}},{1,{24,24},{175,100}},{1,{24,24},{250,675}},{1,{24,24},{25,875}},{1,{24,24},{50,450}},{1,{24,24},{100,325}},{1,{24,24},{400,375}},{1,{24,24},{850,350}},{1,{24,24},{350,700}},{1,{24,24},{400,525}},{1,{24,24},{0,675}},{1,{24,24},{0,850}},{1,{24,24},{700,900}},{1,{24,24},{975,150}},{1,{24,24},{950,875}},{1,{24,24},{325,400}},{1,{24,24},{50,325}},{1,{24,24},{175,625}},{1,{24,24},{125,425}},{1,{24,24},{225,200}},{1,{24,24},{325,325}},{1,{24,24},{100,175}},{1,{24,24},{125,175}},{1,{24,24},{725,175}},{2,{24,24},{225,50}},{1,{24,24},{475,650}},{1,{24,24},{775,25}},{1,{24,24},{900,875}},{1,{24,24},{975,850}},{1,{24,24},{300,375}},{1,{24,24},{25,150}},{1,{24,24},{0,225}},{1,{24,24},{650,25}},{1,{24,24},{75,475}},{2,{24,24},{0,50}},{1,{24,24},{925,225}},{1,{24,24},{150,225}},{1,{24,24},{775,150}},{1,{24,24},{775,425}},{2,{24,24},{50,275}},{2,{24,24},{75,250}},{1,{24,24},{900,850}},{2,{24,24},{100,225}},{1,{24,24},{900,350}},{1,{24,24},{500,550}},{1,{24,24},{100,225}},{1,{24,24},{600,275}},{2,{24,24},{200,125}},{1,{24,24},{975,950}},{1,{24,24},{125,750}},{1,{24,24},{650,650}},{2,{24,24},{250,75}},{1,{24,24},{125,675}},{2,{24,24},{275,50}},{2,{24,24},{300,25}},{1,{24,24},{675,875}},{1,{24,24},{775,875}},{1,{24,24},{625,625}},{1,{24,24},{300,775}},{2,{24,24},{25,275}},{1,{24,24},{175,75}},{1,{24,24},{600,750}},{1,{24,24},{825,25}},{2,{24,24},{50,250}},{1,{24,24},{800,925}},{1,{24,24},{700,775}},{1,{24,24},{150,625}},{1,{24,24},{325,475}},{1,{24,24},{175,50}},{1,{24,24},{725,650}},{1,{24,24},{250,700}},{1,{24,24},{575,775}},{1,{24,24},{975,475}},{2,{24,24},{150,150}},{1,{24,24},{875,625}},{1,{24,24},{825,225}},{2,{24,24},{200,100}},{1,{24,24},{525,775}},{2,{24,24},{225,75}},{1,{24,24},{100,500}},{2,{24,24},{275,25}},{2,{24,24},{250,50}},{1,{24,24},{325,425}},{2,{24,24},{300,0}},{2,{24,24},{0,275}},{1,{24,24},{700,325}},{1,{24,24},{800,475}},{1,{24,24},{575,100}},{2,{24,24},{75,200}},{1,{24,24},{525,125}},{1,{24,24},{975,575}},{1,{24,24},{600,400}},{1,{24,24},{375,225}},{1,{24,24},{750,800}},{1,{24,24},{625,925}},{2,{24,24},{175,100}},{1,{24,24},{0,0}},{1,{24,24},{500,250}},{1,{24,24},{575,975}},{2,{24,24},{25,250}},{2,{24,24},{275,0}},{2,{24,24},{250,25}},{2,{24,24},{25,225}},{2,{24,24},{0,250}},{1,{24,24},{850,625}},{1,{24,24},{750,250}},{1,{24,24},{325,50}},{1,{24,24},{600,925}},{1,{24,24},{425,425}},{1,{24,24},{625,300}},{1,{24,24},{0,400}},{1,{24,24},{400,900}},{1,{24,24},{800,75}},{2,{24,24},{100,150}},{1,{24,24},{875,650}},{2,{24,24},{125,125}},{1,{24,24},{825,175}},{1,{24,24},{75,400}},{1,{24,24},{750,675}},{1,{24,24},{525,875}},{2,{24,24},{150,100}},{1,{24,24},{275,450}},{2,{24,24},{175,75}},{1,{24,24},{550,950}},{2,{24,24},{200,50}},{1,{24,24},{450,700}},{1,{24,24},{0,275}},{1,{24,24},{325,250}},{1,{24,24},{550,875}},{2,{24,24},{250,0}},{1,{24,24},{125,500}},{2,{24,24},{0,225}},{1,{24,24},{575,425}},{2,{24,24},{100,125}},{2,{24,24},{125,100}},{2,{24,24},{175,50}},{2,{24,24},{200,25}},{2,{24,24},{150,75}},{1,{24,24},{600,900}},{1,{24,24},{100,25}},{2,{24,24},{225,0}},{1,{24,24},{650,175}},{1,{24,24},{275,800}},{1,{24,24},{50,500}},{2,{24,24},{50,150}},{1,{24,24},{875,550}},{1,{24,24},{800,25}},{2,{24,24},{100,100}},{2,{24,24},{125,75}},{2,{24,24},{0,175}},{1,{24,24},{475,200}},{2,{24,24},{25,150}},{1,{24,24},{525,475}},{1,{24,24},{800,850}},{2,{24,24},{50,125}},{2,{24,24},{125,50}},{1,{24,24},{475,550}},{1,{24,24},{25,825}},{1,{24,24},{350,300}},{1,{24,24},{50,0}},{1,{24,24},{825,475}},{1,{24,24},{775,725}},{1,{24,24},{125,75}},{1,{24,24},{500,100}},{1,{24,24},{875,750}},{2,{24,24},{25,125}},{1,{24,24},{300,75}},{2,{24,24},{75,75}},{2,{24,24},{100,50}},{1,{24,24},{850,525}},{1,{24,24},{400,250}},{2,{24,24},{125,25}},{2,{24,24},{25,100}},{1,{24,24},{525,550}},{1,{24,24},{200,550}},{1,{24,24},{175,500}},{2,{24,24},{0,125}},{2,{24,24},{75,50}},{2,{24,24},{25,75}},{2,{24,24},{50,50}},{1,{24,24},{475,425}},{1,{24,24},{450,25}},{1,{24,24},{575,550}},{1,{24,24},{450,650}},{1,{24,24},{200,250}},{1,{24,24},{975,800}},{1,{24,24},{825,450}},{2,{24,24},{50,25}},{2,{24,24},{75,0}},{2,{24,24},{0,25}},{2,{24,24},{25,0}},{1,{24,24},{900,675}},{1,{24,24},{775,700}},{1,{24,24},{200,675}},{2,{24,24},{50,75}},{1,{24,24},{800,125}},{1,{24,24},{650,875}},{1,{24,24},{250,650}},{1,{24,24},{375,700}},{2,{24,24},{225,100}},{1,{24,24},{925,975}},{1,{24,24},{550,975}},{1,{24,24},{25,275}},{1,{24,24},{475,400}},{1,{24,24},{950,950}},{1,{24,24},{900,975}},{1,{24,24},{925,950}},{1,{24,24},{0,900}},{1,{24,24},{500,50}},{1,{24,24},{450,250}},{1,{24,24},{950,925}},{1,{24,24},{925,100}},{1,{24,24},{925,925}},{1,{24,24},{775,225}},{1,{24,24},{300,750}},{1,{24,24},{100,375}},{1,{24,24},{875,975}},{1,{24,24},{225,775}},{1,{24,24},{300,550}},{1,{24,24},{800,200}},{1,{24,24},{950,900}},{1,{24,24},{200,150}},{1,{24,24},{50,375}},{1,{24,24},{850,975}},{1,{24,24},{900,925}},{1,{24,24},{575,350}},{1,{24,24},{700,175}},{1,{24,24},{325,575}},{1,{24,24},{850,950}},{1,{24,24},{875,925}},{1,{24,24},{775,400}},{1,{24,24},{900,900}},{1,{24,24},{800,550}},{1,{24,24},{750,850}},{1,{24,24},{950,850}},{1,{24,24},{450,475}},{1,{24,24},{850,925}},{1,{24,24},{775,925}},{1,{24,24},{975,825}},{1,{24,24},{275,550}},{1,{24,24},{575,0}},{1,{24,24},{875,900}},{1,{24,24},{800,950}},{1,{24,24},{675,700}},{1,{24,24},{875,875}},{1,{24,24},{225,400}},{1,{24,24},{500,450}},{1,{24,24},{975,775}},{1,{24,24},{200,200}},{1,{24,24},{875,275}},{1,{24,24},{700,925}},{1,{24,24},{750,975}},{1,{24,24},{550,725}},{1,{24,24},{775,950}},{1,{24,24},{825,900}},{1,{24,24},{575,600}},{1,{24,24},{375,75}},{1,{24,24},{900,825}},{1,{24,24},{250,150}},{1,{24,24},{450,325}},{1,{24,24},{875,850}},{1,{24,24},{725,125}},{1,{24,24},{925,800}},{1,{24,24},{950,775}},{1,{24,24},{725,975}},{1,{24,24},{925,525}},{1,{24,24},{750,950}},{1,{24,24},{0,325}},{1,{24,24},{800,900}},{1,{24,24},{850,850}},{1,{24,24},{0,425}},{1,{24,24},{325,950}},{1,{24,24},{825,875}},{1,{24,24},{900,800}},{1,{24,24},{575,725}},{1,{24,24},{700,975}},{1,{24,24},{200,850}},{1,{24,24},{875,725}},{1,{24,24},{550,0}},{1,{24,24},{275,900}},{1,{24,24},{700,450}},{1,{24,24},{650,50}},{1,{24,24},{200,300}},{1,{24,24},{0,75}},{1,{24,24},{0,775}},{1,{24,24},{650,400}},{1,{24,24},{925,750}},{1,{24,24},{975,500}},{1,{24,24},{950,725}},{1,{24,24},{25,325}},{1,{24,24},{450,50}},{1,{24,24},{900,775}},{1,{24,24},{975,700}},{1,{24,24},{425,675}},{1,{24,24},{25,0}},{1,{24,24},{150,550}},{1,{24,24},{725,925}},{1,{24,24},{725,500}},{2,{24,24},{75,100}},{1,{24,24},{225,825}},{2,{24,24},{0,300}},{1,{24,24},{500,500}},{1,{24,24},{775,75}},{1,{24,24},{850,800}},{1,{24,24},{425,175}},{1,{24,24},{875,775}},{1,{24,24},{900,750}},{1,{24,24},{125,450}},{1,{24,24},{300,100}},{1,{24,24},{925,725}},{1,{24,24},{975,675}},{1,{24,24},{500,900}},{1,{24,24},{200,325}},{1,{24,24},{475,75}},{1,{24,24},{100,900}},{1,{24,24},{525,350}},{1,{24,24},{675,950}},{1,{24,24},{575,475}},{1,{24,24},{175,275}},{1,{24,24},{125,650}},{1,{24,24},{850,25}},{1,{24,24},{75,600}},{1,{24,24},{400,25}},{1,{24,24},{575,450}},{1,{24,24},{725,900}},{1,{24,24},{150,325}},{1,{24,24},{775,850}},{1,{24,24},{25,400}},{1,{24,24},{900,250}},{1,{24,24},{275,600}},{1,{24,24},{475,325}},{1,{24,24},{550,500}},{1,{24,24},{650,375}},{1,{24,24},{850,775}},{1,{24,24},{725,525}},{1,{24,24},{950,675}},{1,{24,24},{400,100}},{1,{24,24},{300,650}},{1,{24,24},{975,650}},{1,{24,24},{400,925}},{1,{24,24},{750,350}},{1,{24,24},{650,950}},{1,{24,24},{625,750}},{1,{24,24},{725,875}},{1,{24,24},{0,500}},{1,{24,24},{775,825}},{1,{24,24},{825,775}},{1,{24,24},{850,750}},{1,{24,24},{375,625}},{1,{24,24},{475,225}},{1,{24,24},{675,925}},{1,{24,24},{750,925}},{1,{24,24},{200,100}},{1,{24,24},{325,100}},{1,{24,24},{475,850}},{1,{24,24},{750,225}},{1,{24,24},{225,250}},{1,{24,24},{800,400}},{1,{24,24},{950,75}},{1,{24,24},{950,650}},{1,{24,24},{975,625}},{1,{24,24},{625,875}},{1,{24,24},{650,925}},{1,{24,24},{100,425}},{1,{24,24},{775,800}},{1,{24,24},{75,325}},{1,{24,24},{125,475}},{1,{24,24},{100,750}},{1,{24,24},{800,775}},{1,{24,24},{25,650}},{1,{24,24},{625,775}},{1,{24,24},{550,200}},{1,{24,24},{825,750}},{1,{24,24},{325,675}},{1,{24,24},{875,700}},{1,{24,24},{200,625}},{1,{24,24},{225,175}},{1,{24,24},{125,925}},{1,{24,24},{25,225}},{1,{24,24},{375,150}},{1,{24,24},{450,0}},{1,{24,24},{625,650}},{1,{24,24},{100,400}},{1,{24,24},{600,725}},{1,{24,24},{825,375}},{1,{24,24},{975,100}},{1,{24,24},{500,975}},{2,{24,24},{0,0}},{1,{24,24},{425,625}},{1,{24,24},{300,825}},{1,{24,24},{400,825}},{1,{24,24},{950,100}},{1,{24,24},{300,25}},{1,{24,24},{950,625}},{1,{24,24},{350,350}},{1,{24,24},{975,600}},{1,{24,24},{475,825}},{1,{24,24},{150,0}},{1,{24,24},{600,950}},{1,{24,24},{25,175}},{1,{24,24},{225,850}},{1,{24,24},{500,825}},{1,{24,24},{650,900}},{1,{24,24},{725,750}},{1,{24,24},{550,425}},{1,{24,24},{700,850}},{1,{24,24},{775,300}},{1,{24,24},{175,750}},{1,{24,24},{700,225}},{1,{24,24},{575,800}},{1,{24,24},{375,575}},{2,{24,24},{325,0}},{2,{24,24},{150,125}},{1,{24,24},{775,775}},{1,{24,24},{75,625}},{1,{24,24},{350,500}},{1,{24,24},{300,625}},{1,{24,24},{400,325}},{1,{24,24},{100,50}},{1,{24,24},{525,375}},{1,{24,24},{800,750}},{1,{24,24},{600,700}},{1,{24,24},{175,375}},{1,{24,24},{500,875}},{1,{24,24},{125,150}},{1,{24,24},{375,25}},{1,{24,24},{925,625}},{1,{24,24},{975,925}},{1,{24,24},{200,950}},{1,{24,24},{675,850}},{1,{24,24},{850,50}},{1,{24,24},{725,800}},{1,{24,24},{325,150}},{1,{24,24},{700,600}},{1,{24,24},{150,950}},{1,{24,24},{775,750}},{1,{24,24},{675,250}},{1,{24,24},{800,725}},{1,{24,24},{825,700}},{1,{24,24},{975,525}},{1,{24,24},{700,375}},{1,{24,24},{725,425}},{1,{24,24},{850,675}},{1,{24,24},{625,275}},{1,{24,24},{325,700}},{1,{24,24},{925,600}},{1,{24,24},{950,575}},{1,{24,24},{150,150}},{1,{24,24},{975,550}},{1,{24,24},{950,550}},{1,{24,24},{525,975}},{1,{24,24},{475,675}},{1,{24,24},{450,600}},{1,{24,24},{600,975}},{1,{24,24},{875,400}},{1,{24,24},{850,600}},{1,{24,24},{900,0}},{1,{24,24},{275,625}},{1,{24,24},{25,700}},{1,{24,24},{200,175}},{1,{24,24},{375,725}},{1,{24,24},{475,700}},{1,{24,24},{350,950}},{1,{24,24},{75,150}},{1,{24,24},{750,750}},{1,{24,24},{800,700}},{1,{24,24},{175,350}},{1,{24,24},{400,275}},{1,{24,24},{275,150}},{1,{24,24},{0,525}},{1,{24,24},{450,275}},{1,{24,24},{475,125}},{1,{24,24},{850,650}},{2,{24,24},{175,125}},{1,{24,24},{900,600}},{1,{24,24},{550,925}},{1,{24,24},{600,875}},{1,{24,24},{375,500}},{1,{24,24},{625,850}},{1,{24,24},{475,775}},{1,{24,24},{200,225}},{1,{24,24},{675,800}},{1,{24,24},{650,700}},{1,{24,24},{575,575}},{1,{24,24},{575,25}},{1,{24,24},{975,975}},{1,{24,24},{575,675}},{1,{24,24},{800,675}},{1,{24,24},{325,900}},{2,{24,24},{75,175}},{1,{24,24},{225,350}},{1,{24,24},{625,825}},{1,{24,24},{750,100}},{1,{24,24},{250,400}},{1,{24,24},{875,600}},{1,{24,24},{925,550}},{1,{24,24},{900,525}},{1,{24,24},{925,150}},{1,{24,24},{875,675}},{1,{24,24},{475,975}},{1,{24,24},{500,950}},{1,{24,24},{875,575}},{1,{24,24},{525,925}},{1,{24,24},{550,900}},{1,{24,24},{75,825}},{1,{24,24},{375,800}},{1,{24,24},{25,50}},{1,{24,24},{500,475}},{1,{24,24},{625,200}},{1,{24,24},{275,200}},{1,{24,24},{600,850}},{1,{24,24},{275,175}},{1,{24,24},{500,800}},{1,{24,24},{175,425}},{1,{24,24},{450,125}},{1,{24,24},{575,325}},{1,{24,24},{675,775}},{1,{24,24},{450,625}},{1,{24,24},{650,300}},{1,{24,24},{200,975}},{1,{24,24},{950,600}},{1,{24,24},{175,650}},{1,{24,24},{750,700}},{1,{24,24},{500,675}},{1,{24,24},{0,925}},{1,{24,24},{775,675}},{1,{24,24},{950,0}},{1,{24,24},{625,600}},{1,{24,24},{825,625}},{1,{24,24},{600,175}},{1,{24,24},{500,225}},{1,{24,24},{25,575}},{1,{24,24},{25,25}},{1,{24,24},{25,300}},{1,{24,24},{350,875}},{1,{24,24},{875,425}},{1,{24,24},{475,250}},{1,{24,24},{450,975}},{1,{24,24},{475,950}},{1,{24,24},{300,450}},{1,{24,24},{225,600}},{1,{24,24},{375,875}},{1,{24,24},{400,200}},{1,{24,24},{500,925}},{1,{24,24},{225,300}},{1,{24,24},{125,50}},{1,{24,24},{525,900}},{2,{24,24},{225,25}},{1,{24,24},{800,825}},{1,{24,24},{600,825}},{1,{24,24},{625,800}},{1,{24,24},{675,750}},{1,{24,24},{225,425}},{1,{24,24},{700,725}},{1,{24,24},{725,700}},{1,{24,24},{825,600}},{1,{24,24},{450,575}},{1,{24,24},{625,25}},{1,{24,24},{800,625}},{2,{24,24},{75,125}},{1,{24,24},{350,50}},{1,{24,24},{850,475}},{1,{24,24},{950,525}},{1,{24,24},{500,25}},{1,{24,24},{100,800}},{1,{24,24},{550,575}},{1,{24,24},{150,375}},{1,{24,24},{175,925}},{1,{24,24},{975,450}},{1,{24,24},{475,925}},{1,{24,24},{550,850}},{1,{24,24},{50,400}},{1,{24,24},{250,775}},{1,{24,24},{175,150}},{1,{24,24},{300,125}},{1,{24,24},{850,150}},{1,{24,24},{50,650}},{1,{24,24},{200,600}},{1,{24,24},{275,50}},{1,{24,24},{700,875}},{1,{24,24},{650,750}},{1,{24,24},{675,425}},{1,{24,24},{525,325}},{1,{24,24},{700,700}},{1,{24,24},{650,100}},{1,{24,24},{925,425}},{1,{24,24},{125,700}},{1,{24,24},{800,600}},{1,{24,24},{175,800}},{1,{24,24},{825,850}},{1,{24,24},{750,0}},{1,{24,24},{800,450}},{1,{24,24},{950,450}},{1,{24,24},{350,775}},{1,{24,24},{425,650}},{1,{24,24},{675,550}},{1,{24,24},{350,900}},{1,{24,24},{100,775}},{1,{24,24},{425,950}},{1,{24,24},{900,650}},{1,{24,24},{525,850}},{1,{24,24},{550,825}},{1,{24,24},{350,650}},{1,{24,24},{725,825}},{1,{24,24},{850,125}},{1,{24,24},{200,525}},{1,{24,24},{350,850}},{1,{24,24},{900,175}},{1,{24,24},{25,475}},{1,{24,24},{625,975}},{1,{24,24},{700,675}},{1,{24,24},{750,475}},{1,{24,24},{825,925}},{1,{24,24},{425,50}},{1,{24,24},{925,50}},{1,{24,24},{750,625}},{1,{24,24},{150,425}},{1,{24,24},{75,575}},{1,{24,24},{450,925}},{1,{24,24},{725,50}},{1,{24,24},{800,575}},{1,{24,24},{825,550}},{1,{24,24},{25,350}},{1,{24,24},{875,75}},{1,{24,24},{875,500}},{1,{24,24},{50,350}},{1,{24,24},{925,450}},{1,{24,24},{675,125}},{1,{24,24},{750,200}},{1,{24,24},{975,400}},{1,{24,24},{550,650}},{1,{24,24},{25,800}},{1,{24,24},{950,425}},{1,{24,24},{425,925}},{1,{24,24},{25,750}},{1,{24,24},{450,900}},{1,{24,24},{150,400}},{1,{24,24},{375,975}},{2,{24,24},{100,200}},{1,{24,24},{750,725}},{1,{24,24},{675,675}},{1,{24,24},{700,650}},{1,{24,24},{500,325}},{1,{24,24},{25,975}},{1,{24,24},{750,600}},{1,{24,24},{625,725}},{1,{24,24},{750,325}},{1,{24,24},{775,575}},{1,{24,24},{50,550}},{1,{24,24},{575,525}},{1,{24,24},{850,500}},{1,{24,24},{450,150}},{1,{24,24},{825,525}},{1,{24,24},{50,200}},{1,{24,24},{475,575}},{1,{24,24},{950,400}},{1,{24,24},{800,350}},{1,{24,24},{125,725}},{1,{24,24},{925,0}},{1,{24,24},{375,950}},{1,{24,24},{575,200}},{1,{24,24},{550,750}},{1,{24,24},{175,975}},{1,{24,24},{925,675}},{1,{24,24},{525,800}},{1,{24,24},{975,375}},{1,{24,24},{50,750}},{1,{24,24},{925,500}},{1,{24,24},{100,675}},{1,{24,24},{950,175}},{1,{24,24},{225,900}},{1,{24,24},{625,150}},{1,{24,24},{375,300}},{1,{24,24},{325,350}},{1,{24,24},{450,850}},{1,{24,24},{125,200}},{1,{24,24},{550,625}},{1,{24,24},{100,300}},{1,{24,24},{650,675}},{1,{24,24},{150,500}},{1,{24,24},{650,200}},{1,{24,24},{350,600}},{1,{24,24},{125,950}},{1,{24,24},{675,225}},{1,{24,24},{725,375}},{1,{24,24},{650,350}},{1,{24,24},{850,875}},{1,{24,24},{700,625}},{1,{24,24},{250,0}},{1,{24,24},{750,575}},{1,{24,24},{150,650}},{1,{24,24},{775,550}},{1,{24,24},{800,525}},{1,{24,24},{825,500}},{1,{24,24},{575,750}},{1,{24,24},{75,775}},{1,{24,24},{250,625}},{1,{24,24},{750,450}},{1,{24,24},{950,375}},{1,{24,24},{975,350}},{1,{24,24},{225,925}},{1,{24,24},{475,800}},{1,{24,24},{325,975}},{1,{24,24},{725,775}},{1,{24,24},{375,925}},{1,{24,24},{600,525}},{1,{24,24},{975,50}},{1,{24,24},{425,900}},{1,{24,24},{375,325}},{1,{24,24},{900,575}},{1,{24,24},{250,225}},{1,{24,24},{250,600}},{1,{24,24},{700,500}},{1,{24,24},{725,575}},{1,{24,24},{700,350}},{1,{24,24},{200,75}},{1,{24,24},{750,550}},{1,{24,24},{375,900}},{2,{24,24},{150,25}},{1,{24,24},{450,100}},{1,{24,24},{800,500}},{1,{24,24},{900,550}},{1,{24,24},{75,300}},{1,{24,24},{100,825}},{1,{24,24},{900,400}},{1,{24,24},{375,275}},{1,{24,24},{925,375}},{1,{24,24},{850,450}},{1,{24,24},{950,350}},{1,{24,24},{975,325}},{1,{24,24},{300,975}},{1,{24,24},{350,925}},{1,{24,24},{875,825}},{1,{24,24},{200,50}},{1,{24,24},{225,525}},{1,{24,24},{425,850}},{1,{24,24},{125,550}},{1,{24,24},{325,25}},{1,{24,24},{525,750}},{1,{24,24},{575,700}},{1,{24,24},{975,0}},{1,{24,24},{725,550}},{1,{24,24},{750,525}},{1,{24,24},{250,25}},{1,{24,24},{350,725}},{1,{24,24},{650,625}},{2,{24,24},{50,225}},{1,{24,24},{850,425}},{1,{24,24},{900,375}},{1,{24,24},{950,325}},{1,{24,24},{950,300}},{1,{24,24},{925,75}},{1,{24,24},{325,925}},{1,{24,24},{275,975}},{1,{24,24},{400,850}},{1,{24,24},{425,825}},{1,{24,24},{650,825}},{1,{24,24},{100,950}},{1,{24,24},{525,725}},{1,{24,24},{550,700}},{1,{24,24},{600,650}},{1,{24,24},{875,175}},{1,{24,24},{675,575}},{1,{24,24},{750,500}},{1,{24,24},{900,725}},{1,{24,24},{175,25}},{1,{24,24},{775,475}},{1,{24,24},{900,500}},{1,{24,24},{75,100}},{1,{24,24},{200,700}},{1,{24,24},{50,50}},{1,{24,24},{350,375}},{1,{24,24},{550,300}},{1,{24,24},{275,425}},{1,{24,24},{325,625}},{1,{24,24},{700,25}},{1,{24,24},{350,100}},{1,{24,24},{950,25}},{1,{24,24},{300,950}},{1,{24,24},{725,325}},{1,{24,24},{250,550}},{1,{24,24},{975,275}},{1,{24,24},{425,400}},{1,{24,24},{300,925}},{1,{24,24},{375,850}},{1,{24,24},{175,200}},{1,{24,24},{800,150}},{1,{24,24},{475,750}},{1,{24,24},{550,225}},{1,{24,24},{100,550}},{1,{24,24},{500,725}},{1,{24,24},{675,450}},{1,{24,24},{600,625}},{1,{24,24},{700,525}},{1,{24,24},{750,900}},{1,{24,24},{0,300}},{1,{24,24},{550,100}},{1,{24,24},{600,425}},{1,{24,24},{650,450}},{1,{24,24},{50,775}},{1,{24,24},{50,675}},{1,{24,24},{825,400}},{1,{24,24},{875,350}},{1,{24,24},{925,200}},{1,{24,24},{900,325}},{1,{24,24},{775,450}},{1,{24,24},{600,150}},{1,{24,24},{400,550}},{1,{24,24},{575,275}},{1,{24,24},{225,975}},{1,{24,24},{400,775}},{1,{24,24},{0,375}},{1,{24,24},{725,200}},{1,{24,24},{250,950}},{1,{24,24},{0,750}},{1,{24,24},{325,875}},{1,{24,24},{875,800}},{1,{24,24},{175,900}},{1,{24,24},{425,525}},{1,{24,24},{425,775}},{1,{24,24},{0,950}},{1,{24,24},{175,550}},{1,{24,24},{450,750}},{1,{24,24},{525,450}},{1,{24,24},{475,725}},{1,{24,24},{950,225}},{1,{24,24},{775,100}},{1,{24,24},{250,300}},{1,{24,24},{475,525}},{1,{24,24},{100,350}},{1,{24,24},{150,75}},{1,{24,24},{625,675}},{1,{24,24},{250,250}},{1,{24,24},{725,475}},{1,{24,24},{875,325}},{1,{24,24},{925,275}},{1,{24,24},{500,150}},{1,{24,24},{975,225}},{1,{24,24},{75,450}},{1,{24,24},{0,250}},{1,{24,24},{725,725}},{1,{24,24},{225,950}},{1,{24,24},{0,625}},{1,{24,24},{625,500}},{1,{24,24},{775,325}},{1,{24,24},{475,175}},{1,{24,24},{200,775}},{1,{24,24},{350,825}},{1,{24,24},{25,850}},{1,{24,24},{875,525}},{1,{24,24},{525,25}},{1,{24,24},{525,200}},{1,{24,24},{575,875}},{1,{24,24},{450,725}},{1,{24,24},{100,600}},{1,{24,24},{625,700}},{1,{24,24},{425,300}},{1,{24,24},{0,200}},{1,{24,24},{150,100}},{1,{24,24},{600,575}},{1,{24,24},{625,550}},{1,{24,24},{800,0}},{1,{24,24},{700,475}},{1,{24,24},{525,650}},{1,{24,24},{750,425}},{1,{24,24},{250,375}},{1,{24,24},{625,75}},{1,{24,24},{225,450}},{1,{24,24},{75,950}},{1,{24,24},{800,375}},{1,{24,24},{125,525}},{1,{24,24},{100,525}},{1,{24,24},{875,300}},{1,{24,24},{475,625}},{1,{24,24},{175,575}},{1,{24,24},{900,275}},{1,{24,24},{475,375}},{1,{24,24},{200,800}},{1,{24,24},{975,200}},{1,{24,24},{500,700}},{1,{24,24},{750,75}},{1,{24,24},{900,50}},{1,{24,24},{625,900}},{1,{24,24},{175,125}},{1,{24,24},{125,25}},{1,{24,24},{450,875}},{1,{24,24},{150,25}},{1,{24,24},{650,325}},{1,{24,24},{75,0}},{1,{24,24},{400,650}},{1,{24,24},{600,475}},{1,{24,24},{375,775}},{1,{24,24},{500,625}},{1,{24,24},{375,50}},{1,{24,24},{400,750}},{1,{24,24},{575,925}},{1,{24,24},{425,725}},{1,{24,24},{600,550}},{1,{24,24},{50,725}},{1,{24,24},{825,350}},{1,{24,24},{975,725}},{1,{24,24},{750,400}},{1,{24,24},{850,300}},{1,{24,24},{950,800}},{1,{24,24},{325,175}},{1,{24,24},{950,200}},{1,{24,24},{25,75}},{1,{24,24},{125,975}},{1,{24,24},{550,50}},{1,{24,24},{175,950}},{1,{24,24},{100,450}},{1,{24,24},{850,75}},{1,{24,24},{925,650}},{1,{24,24},{600,50}},{1,{24,24},{300,850}},{1,{24,24},{0,800}},{1,{24,24},{525,150}},{1,{24,24},{425,700}},{1,{24,24},{75,675}},{1,{24,24},{525,600}},{1,{24,24},{900,425}},{2,{24,24},{75,25}},{1,{24,24},{250,925}},{1,{24,24},{650,475}},{1,{24,24},{575,650}},{2,{24,24},{0,75}},{1,{24,24},{725,400}},{1,{24,24},{750,375}},{1,{24,24},{150,900}},{1,{24,24},{800,325}},{1,{24,24},{550,525}},{1,{24,24},{575,500}},{1,{24,24},{275,850}},{1,{24,24},{300,500}},{1,{24,24},{950,475}},{1,{24,24},{250,850}},{1,{24,24},{225,0}},{1,{24,24},{275,25}},{1,{24,24},{225,875}},{2,{24,24},{0,150}},{1,{24,24},{25,625}},{1,{24,24},{400,700}},{1,{24,24},{625,0}},{1,{24,24},{700,950}},{1,{24,24},{225,50}},{1,{24,24},{700,425}},{1,{24,24},{525,575}},{1,{24,24},{600,25}},{1,{24,24},{600,500}},{1,{24,24},{625,475}},{1,{24,24},{250,575}},{1,{24,24},{675,725}},{1,{24,24},{725,275}},{1,{24,24},{150,725}},{1,{24,24},{250,450}},{1,{24,24},{900,100}},{1,{24,24},{50,100}},{1,{24,24},{925,175}},{1,{24,24},{425,125}},{1,{24,24},{425,350}},{1,{24,24},{225,575}},{1,{24,24},{975,125}},{1,{24,24},{100,975}},{1,{24,24},{150,925}},{1,{24,24},{725,300}},{1,{24,24},{175,675}},{1,{24,24},{250,825}},{1,{24,24},{100,0}},{1,{24,24},{200,450}},{1,{24,24},{950,975}},{1,{24,24},{100,875}},{1,{24,24},{775,500}},{1,{24,24},{150,850}},{1,{24,24},{175,850}},{1,{24,24},{0,975}},{1,{24,24},{975,175}},{1,{24,24},{900,225}},{1,{24,24},{425,550}},{1,{24,24},{650,425}},{1,{24,24},{700,100}},{1,{24,24},{475,50}},{1,{24,24},{500,0}},{1,{24,24},{850,275}},{1,{24,24},{750,275}},{1,{24,24},{425,25}},{1,{24,24},{950,125}},{1,{24,24},{725,250}},{1,{24,24},{200,125}},{1,{24,24},{250,800}},{1,{24,24},{850,325}},{1,{24,24},{75,925}},{1,{24,24},{325,725}},{1,{24,24},{50,25}},{1,{24,24},{475,475}},{1,{24,24},{375,675}},{1,{24,24},{425,0}},{1,{24,24},{875,475}},{1,{24,24},{650,850}},{1,{24,24},{250,900}},{1,{24,24},{250,50}},{1,{24,24},{800,875}},{1,{24,24},{825,800}},{2,{24,24},{125,200}},{1,{24,24},{600,450}},{1,{24,24},{450,350}},{1,{24,24},{400,475}},{1,{24,24},{600,350}},{1,{24,24},{675,200}},{1,{24,24},{625,425}},{1,{24,24},{925,325}},{1,{24,24},{475,0}},{1,{24,24},{75,500}},{1,{24,24},{350,225}},{1,{24,24},{225,475}},{1,{24,24},{775,525}},{1,{24,24},{550,175}},{1,{24,24},{600,100}},{1,{24,24},{125,875}},{1,{24,24},{750,300}},{1,{24,24},{650,600}},{1,{24,24},{925,125}},{1,{24,24},{775,275}},{1,{24,24},{100,925}},{1,{24,24},{0,25}},{1,{24,24},{125,900}},{1,{24,24},{150,875}},{1,{24,24},{500,575}},{1,{24,24},{200,825}},{1,{24,24},{275,750}},{1,{24,24},{225,800}},{1,{24,24},{300,725}},{1,{24,24},{300,0}},{1,{24,24},{325,550}},{1,{24,24},{900,625}},{1,{24,24},{350,675}},{1,{24,24},{350,175}},{1,{24,24},{475,100}},{1,{24,24},{375,650}},{1,{24,24},{250,175}},{1,{24,24},{425,600}},{1,{24,24},{500,525}},{1,{24,24},{675,350}},{1,{24,24},{125,775}},{1,{24,24},{75,975}},{1,{24,24},{775,250}},{1,{24,24},{800,225}},{1,{24,24},{900,125}},{1,{24,24},{175,450}},{1,{24,24},{275,325}},{1,{24,24},{500,350}},{1,{24,24},{100,475}},{1,{24,24},{50,600}},{1,{24,24},{500,200}},{1,{24,24},{900,950}},{1,{24,24},{750,875}},{1,{24,24},{50,975}},{1,{24,24},{175,825}},{1,{24,24},{350,450}},{1,{24,24},{275,725}},{1,{24,24},{400,0}},{1,{24,24},{400,675}},{1,{24,24},{475,275}},{1,{24,24},{300,700}},{1,{24,24},{500,75}},{1,{24,24},{400,600}},{1,{24,24},{0,450}},{1,{24,24},{625,250}},{1,{24,24},{300,175}},{1,{24,24},{450,550}},{1,{24,24},{400,125}},{1,{24,24},{0,550}},{1,{24,24},{825,825}},{1,{24,24},{550,450}},{1,{24,24},{325,650}},{2,{24,24},{50,175}},{1,{24,24},{625,375}},{1,{24,24},{375,425}},{1,{24,24},{675,650}},{1,{24,24},{675,325}},{1,{24,24},{700,300}},{1,{24,24},{875,125}},{1,{24,24},{950,50}},{1,{24,24},{25,950}},{1,{24,24},{450,425}},{1,{24,24},{400,75}},{1,{24,24},{750,25}},{1,{24,24},{50,925}},{1,{24,24},{75,900}},{1,{24,24},{125,850}},{1,{24,24},{825,575}},{1,{24,24},{300,875}},{1,{24,24},{250,725}},{1,{24,24},{275,700}},{1,{24,24},{375,600}},{1,{24,24},{225,150}},{1,{24,24},{675,400}},{1,{24,24},{350,150}},{1,{24,24},{0,350}},{1,{24,24},{375,825}},{1,{24,24},{575,400}},{1,{24,24},{525,50}},{1,{24,24},{600,375}},{1,{24,24},{475,500}},{1,{24,24},{650,275}},{1,{24,24},{675,300}},{1,{24,24},{725,150}},{1,{24,24},{775,200}},{1,{24,24},{800,175}},{1,{24,24},{600,775}},{1,{24,24},{675,0}},{1,{24,24},{300,475}},{1,{24,24},{25,775}},{1,{24,24},{25,600}},{1,{24,24},{875,100}},{1,{24,24},{525,250}},{1,{24,24},{125,225}},{1,{24,24},{900,75}},{1,{24,24},{700,575}},{1,{24,24},{50,900}},{1,{24,24},{100,850}},{1,{24,24},{125,825}},{1,{24,24},{450,400}},{1,{24,24},{400,450}},{1,{24,24},{725,75}},{1,{24,24},{175,775}},{1,{24,24},{100,150}},{1,{24,24},{375,200}},{1,{24,24},{225,725}},{1,{24,24},{200,750}},{1,{24,24},{950,275}},{1,{24,24},{300,50}},{1,{24,24},{525,425}},{1,{24,24},{400,500}},{1,{24,24},{675,100}},{1,{24,24},{150,750}},{1,{24,24},{300,325}},{1,{24,24},{725,225}},{1,{24,24},{700,750}},{1,{24,24},{900,475}},{1,{24,24},{50,875}},{1,{24,24},{75,850}},{1,{24,24},{450,300}},{1,{24,24},{500,400}},{1,{24,24},{200,725}},{1,{24,24},{275,650}},{1,{24,24},{475,150}},{1,{24,24},{325,600}},{1,{24,24},{450,75}},{1,{24,24},{350,575}},{1,{24,24},{850,250}},{1,{24,24},{375,550}},{1,{24,24},{800,975}},{1,{24,24},{825,75}},{1,{24,24},{475,450}},{1,{24,24},{525,400}},{1,{24,24},{875,950}},{2,{24,24},{50,200}},{1,{24,24},{600,325}},{1,{24,24},{0,125}},{1,{24,24},{875,50}},{1,{24,24},{900,25}},{1,{24,24},{875,375}},{1,{24,24},{825,975}},{1,{24,24},{550,25}},{1,{24,24},{350,550}},{1,{24,24},{450,450}},{1,{24,24},{25,900}},{1,{24,24},{225,225}},{1,{24,24},{325,0}},{1,{24,24},{825,725}},{1,{24,24},{400,300}},{1,{24,24},{75,275}},{1,{24,24},{725,675}},{1,{24,24},{750,150}},{1,{24,24},{800,100}},{1,{24,24},{700,250}},{1,{24,24},{75,800}},{1,{24,24},{150,350}},{1,{24,24},{175,700}},{1,{24,24},{525,175}},{1,{24,24},{600,250}},{1,{24,24},{225,650}},{1,{24,24},{575,850}},{1,{24,24},{425,450}},{1,{24,24},{500,375}},{1,{24,24},{575,300}},{1,{24,24},{50,700}},{1,{24,24},{325,375}},{2,{24,24},{150,175}},{1,{24,24},{425,575}},{1,{24,24},{700,275}},{1,{24,24},{925,900}},{1,{24,24},{825,50}},{1,{24,24},{875,0}},{1,{24,24},{925,400}},{1,{24,24},{200,650}},{1,{24,24},{150,175}},{1,{24,24},{850,225}},{1,{24,24},{325,525}},{1,{24,24},{525,625}},{1,{24,24},{150,800}},{1,{24,24},{700,150}},{1,{24,24},{250,425}},{1,{24,24},{350,400}},{1,{24,24},{850,0}},{1,{24,24},{100,725}},{1,{24,24},{775,625}},{1,{24,24},{375,450}},{1,{24,24},{400,425}},{1,{24,24},{725,625}},{1,{24,24},{100,575}},{1,{24,24},{75,650}},{1,{24,24},{525,300}},{1,{24,24},{575,250}},{1,{24,24},{125,0}},{1,{24,24},{700,125}},{1,{24,24},{75,725}},{1,{24,24},{275,525}},{1,{24,24},{625,100}},{1,{24,24},{100,625}},{1,{24,24},{600,200}},{1,{24,24},{800,275}},{1,{24,24},{675,500}},{1,{24,24},{375,250}},{1,{24,24},{275,925}},{1,{24,24},{250,525}},{1,{24,24},{675,375}},{1,{24,24},{275,500}},{1,{24,24},{325,450}},{1,{24,24},{25,725}},{1,{24,24},{575,175}},{1,{24,24},{450,775}},{1,{24,24},{650,125}},{1,{24,24},{700,75}},{1,{24,24},{175,175}},{1,{24,24},{100,650}},{1,{24,24},{450,825}},{1,{24,24},{250,500}},{1,{24,24},{25,125}},{1,{24,24},{350,250}},{1,{24,24},{275,575}},{1,{24,24},{150,775}},{1,{24,24},{525,225}},{1,{24,24},{350,425}},{1,{24,24},{350,75}},{1,{24,24},{700,200}},{1,{24,24},{675,75}},{1,{24,24},{700,50}},{1,{24,24},{75,75}},{1,{24,24},{500,300}},{1,{24,24},{225,500}},{1,{24,24},{175,600}},{1,{24,24},{325,125}},{1,{24,24},{650,75}},{1,{24,24},{0,700}},{1,{24,24},{125,350}},{1,{24,24},{425,500}},{1,{24,24},{550,150}},{1,{24,24},{500,775}},{1,{24,24},{375,750}},{1,{24,24},{275,775}},{1,{24,24},{450,200}},{1,{24,24},{275,225}},{1,{24,24},{800,425}},{1,{24,24},{850,575}},{1,{24,24},{200,425}},{1,{24,24},{925,825}},{1,{24,24},{325,300}},{1,{24,24},{550,75}},{1,{24,24},{575,50}},{1,{24,24},{250,350}},{1,{24,24},{200,400}},{1,{24,24},{225,375}},{1,{24,24},{150,450}},{1,{24,24},{300,800}},{1,{24,24},{175,400}},{1,{24,24},{75,175}},{1,{24,24},{200,375}},{1,{24,24},{275,300}},{1,{24,24},{50,225}},{1,{24,24},{400,625}},{1,{24,24},{650,550}},{1,{24,24},{25,375}},{1,{24,24},{525,525}},{1,{24,24},{50,150}},{1,{24,24},{950,700}},{1,{24,24},{525,0}},{1,{24,24},{425,325}},{1,{24,24},{125,375}},{1,{24,24},{300,200}},{1,{24,24},{25,450}},{1,{24,24},{50,950}},{1,{24,24},{175,875}},{1,{24,24},{825,675}},{1,{24,24},{250,125}},{2,{24,24},{50,100}},{1,{24,24},{225,75}},{1,{24,24},{125,100}}}}}
+    end;
+
+    modules[objects["Instance11"]] = function(...)
+        local script = objects["Instance11"];
+return {
+    ["Ambience"] = "ZzZZzZAK1QqQSXxXgMdpEAgEK1hHglmmOMxotK2ijaxXxXHDMXxXPAZOa3stbiQkdaUEEEwFKc5OZoQAEW2VdQqQ294speco5YfnF8gOb7BpQkdPRndiEMYdasNoTUZfSIilistTnbYgFILCSMbrOXxXASDASOOHRyBFEw60hKFaX8sqUqFT5sn9O7endhADIAukeAI8hhQqQQDwGwBd8rcAOBKCTL4rKOwaRJ",
+    ["Default"] = "oU7L9DixNQAAyf0FaA3STHA8IkmKUgOLgrhq3RsuJkRaqQqQQqQSXxXXxXMEQ2cXCDS0YxmKcdXTCicdKbeRntgHLWuH7D6uQ2JXmUKlhIb709tVuD4QBDO2edPgDGKQscSd5hoV6Yu8y7s5dZkANgAQYG3dqxwPBJceuYxYqAO0LfhvIqGBs4mcgXVagmiS",
+    ["Royalty"] = "ZzZZzZAK1QqQSXxXg0cXEAgwIpRHQVqNdQEknJPq6PdHFrFDLDslvbiY7QqQcJ0YmZ61AAnQXDKKcWuxk7fjN0FJTZmY34VhuJ8oxyNvT1tpuRu4ixYJUdfvuHgRZRDjCOfncXAzBEPf3uP4xRTilXsLmoqty0FvICdjoLGQADA4E45m2VjxQLlNDtZdGQGyKrCAIu5cgwVlZgBFlA",
+    ["Emo"] = "ZzZgStv0PIQXGBAIhic0Bc300BBv2oqGq6rGQqQDC3hDciRp1byatOd5p6XxXDhgwmyVRCAMYZfq7bfpy9Avq8gKZyQqQuYxGxBEsuH7DeTo9x9QZmmDtz7ZjuXQAkAW52q7GQWwIZ709DJFMQj12H6aQEqMp9l3j6Ix0xcv7VK2X5eJEgAAOBPAs2NGG0HaDuUDYGAQoyMwgiSA",
+    ["Anime"] = "ZzZgStv0PIR3HBAIhic0BcJppDgXbIVAFSmi0E8EQqQDfYPnYdTol0offpXxXfGywmyFgFEowhNNuvNXXmu7Wrld5aUH6SU6uoitiFQ44esPo7ywQqQuMpUKDR22p7HMApAj7IQCQgktX3TkkwBDcsNT37KLeoNVXeX6o5Yu8ySxmlLbIoAAAQ0wGGrhcHaDQNgMuyQBPtAAgpy4ygiS",
+    ["(Light) Kawaii"] = "oU7L9Di0FSAACqUHcA3ShpD8BT656nOqYQOG4gCTI9S6l0Wt8U9XxXhQAEPsLBDggDp6DdXxX67cH4IRIWb3BWuXJxjxy67WsaBegh0lUTK30qx7ZyMHXpu2cPhCKSIhuGdHAFFYwirP3DYRDLcQ66zcPECiO59MFDNDhMu39MrQqQs7FRJgAUa1DOFQqQ4RfoAwGykuKMm1BzUhLnFl",
+    ["Galaxy"] = "ZzZgStv0PIU3KBAIlCe4BcLJpDwH0k5QqQ6nNRNQQqQPJAoLU2IEymQ2rWeqQqQXxXQIgDj2lgDEUgUfG3vQqQS3LRJ8kla7iITevDtkhJrvba1C0wCI3SdJvJzBhQ4l1o7VfujI5IhEKMgC8aj7AkUgBLS3DYBDJOA567cT0kO0FtydOF8e3zs6zu3DBsACATRPAhQMrP0g2wEwFAKAKg5SAhKPwcRJ",
+    ["Anime 2"] = "oU7L9DCztRAAypQHdA3NNdQwrNqqhqQqQqhXxXgwd4AnYsYdj20mSXeqQqQXxXQIIspcVkAADW23x9tP19Ql5YS0ucNpTezDqgo9dziNiDIYdRbMvq0QqQcPUKlMXanunN6eBBQCYp2QqQ4uBkFMS2WdXxXQSBD0Yt9huHiHmumUlo5e3rUsvy9SICAAABIMjP0LkcGGDNDWAgpy4ygiSA",
+    ["Ketamine UI"] = "ZzZgStv0PIc3BBAI3BVcBgpmOWO9xOiQc4FB6skWSvk22voOKqPq4zcX8IJLJXjBvp8kJMQiDH3ydLla8mYt5aHECdGWXfufd6OACCGg468uhhCHfQXrYYeK31uGhUbk7tIMBKgJCN2DlVtrZAGwXIFQgCPilO2coUyWTx7WY8QgYSM8BkrF36wVQqQAnKlA",
+    ["Emo 2"] = "oU7L9DS6FSAAymsGbAXSa6A49hrQjQqQHRluYgTwuQNhWSbF89lQqQXxXZIwwWhYckufNRjrdK3lGHXiWNv3oWgFSo4SuL6qLXaOnjxrQqQcZt5QqQhDQYQhdd6OAIGggEXjuHQCFQogirp5SCimjUzzlkKnDRsLvcMq54yGiDIAoZ6dDQUF8FQpQ2RP5ToHQYDDDgLDFcpG0AEq8DEXUC",
+    ["Anime 3"] = "ZzZgStv0PIqXJBAIWSasBcF10BqPDQqQH4XxXWEV6iBewySNhWqRU99lQqQXxXZIAAXOmSvuOf7qW23ZJdQzSZW29EPbCNWcci2G8Uh2HUCVcVstRnHIBCiDc715CQKYIZb15DSYo4wx2Fd2qu1BZ30ZTH6qpc2zendvzGQABCQ5cvaAKqAQqQCoUI2SY9nQYIzhBBTVnhyuGKH057qBgMV2lziS"
+}
+    end;
+
+    modules[objects["Instance9"]] = function(...)
+        local script = objects["Instance9"];
+local ecs = game:GetService("EncodingService")
+local tostr, fromstr = buffer.tostring, buffer.fromstring
+
+return {
+    Encode = function(self, str)
+        return tostr(ecs:Base64Encode(fromstr(str)))
+    end,
+    Decode = function(self, str)
+        return tostr(ecs:Base64Decode(fromstr(str)))
+    end
+}
+    end;
+
+    modules[objects["Instance7"]] = function(...)
+        local script = objects["Instance7"];
 return function(lib)
     lib:Notification({
         Title = "Missing",
         Text = "The example is missing right now!"
     })
 end
+    end;
+
+    modules[objects["Instance5"]] = function(...)
+        local script = objects["Instance5"];
+return {
+    Diamonds = 82443989458069,
+    Diamonds2 = 140557430121570,
+    Diamonds3 = 118040930519315,
+    Anime = 1523757323,
+    Anime2 = 6541436826,
+    Anime3 = 13737759127,
+    Anime4 = 4597457883,
+    Anime5 = 14210882753,
+    Anime6 = 130644346538217,
+    Anime7 = 98743068907468,
+    Anime8 = 1293887210,
+    Anime9 = 10899663828,
+    Ambient = 195225054,
+    Ambient2 = 259554878,
+    Ambient3 = 12727588434
+}
+    end;
+
+    modules[objects["Instance3"]] = function(...)
+        local script = objects["Instance3"];
+-- hate bad executors, forced to do this
+local function hexEncode(str)
+    local result = ""
+    for i = 1, #str do
+        result ..= ("%02x"):format(str:byte(i))
+    end
+    
+    return result
+end
+
+local function hexDecode(str)
+    local result = ""
+    for i = 1, #str, 2 do
+        result ..= string.char(tonumber(str:sub(i, i + 1), 16))
+    end
+    
+    return result
+end
+
+local origin = "7b224c4f223a5b22e0baa5e0bab2e0baa7222c224c616f222c22f09f87b1f09f87a6225d2c224b4f223a5b22ed959ceab5adec96b4222c224b6f7265616e222c22f09f87b0f09f87b7225d2c224b4b223a5b22d29ad0b0d0b7d0b0d29bd188d0b0222c224b617a616b68222c22f09f87b0f09f87bf225d2c225053223a5b22d9beda9ad8aad988222c2250617368746f222c22f09f87a6f09f87ab225d2c224247223a5b22d091d18ad0bbd0b3d0b0d180d181d0bad0b8222c2242756c67617269616e222c22f09f87a7f09f87ac225d2c22424f223a5b22e0bd96e0bdbce0bd91e0bc8be0bda6e0be90e0bd91e0bc8b222c225469626574616e222c22f09f87a8f09f87b3225d2c22434f223a5b22436f727375222c22436f72736963616e222c224652225d2c225357223a5b224b6973776168696c69222c2253776168696c69222c22f09f87b0f09f87aa225d2c224f43223a5b224f63636974616e222c224f63636974616e222c224652225d2c224947223a5b224967626f222c224967626f222c22f09f87b3f09f87ac225d2c225447223a5b22d0a2d0bed2b7d0b8d0bad3a3222c2254616a696b222c22f09f87b9f09f87af225d2c22594f223a5b22596f72c3b962c3a1222c22596f72756261222c22f09f87b3f09f87ac225d2c224353223a5b22c48c65c5a174696e61222c22437a656368222c22f09f87a8f09f87bf225d2c22574f223a5b22576f6c6f66222c22576f6c6f66222c22534e225d2c224553223a5b2245737061c3b16f6c222c225370616e697368222c22f09f87aaf09f87b8225d2c22544f223a5b224c65612046616b612d546f6e6761222c22546f6e67616e222c22544f225d2c224e4f223a5b224e6f72736b222c224e6f7277656769616e222c22f09f87b3f09f87b4225d2c22554b223a5b22d0a3d0bad180d0b0d197d0bdd181d18cd0bad0b0222c22556b7261696e69616e222c22f09f87baf09f87a6225d2c22544b223a5b2254c3bc726b6d656ec3a765222c225475726b6d656e222c22f09f87b9f09f87b2225d2c225054223a5b22506f7274756775c3aa73222c22506f7274756775657365222c22f09f87b5f09f87b9225d2c224d54223a5b224d616c7469222c224d616c74657365222c22f09f87b2f09f87b9225d2c22454c223a5b22ce95cebbcebbceb7cebdceb9cebaceac222c22477265656b222c22f09f87acf09f87b7225d2c224c54223a5b224c696574757669c5b3222c224c69746875616e69616e222c22f09f87b1f09f87b9225d2c22414c223a5b225368716970222c22416c62616e69616e222c22f09f87a6f09f87b1225d2c224944223a5b2242616861736120496e646f6e65736961222c22496e646f6e657369616e222c22f09f87aef09f87a9225d2c225848223a5b2269736958686f7361222c2258686f7361222c225a41225d2c225344223a5b22d8b3d986da8cd98a222c2253696e646869222c22f09f87b5f09f87b0225d2c225a48223a5b22e4b8ade69687222c224368696e657365222c22f09f87a8f09f87b3225d2c224954223a5b224974616c69616e6f222c224974616c69616e222c22f09f87aef09f87b9225d2c22544c223a5b2246696c6970696e6f222c2246696c6970696e6f222c22f09f87b5f09f87ad225d2c224854223a5b224b726579c3b26c204179697379656e222c224861697469616e204372656f6c65222c224854225d2c225448223a5b22e0b984e0b897e0b8a2222c2254686169222c22f09f87b9f09f87ad225d2c22504c223a5b22506f6c736b69222c22506f6c697368222c22f09f87b5f09f87b1225d2c224d4c223a5b22e0b4aee0b4b2e0b4afe0b4bee0b4b3e0b482222c224d616c6179616c616d222c22f09f87aef09f87b3225d2c224e4c223a5b224e656465726c616e6473222c224475746368222c22f09f87b3f09f87b1225d2c225255223a5b22d0a0d183d181d181d0bad0b8d0b9222c225275737369616e222c22f09f87b7f09f87ba225d2c224849223a5b22e0a4b9e0a4bfe0a4a8e0a58de0a4a6e0a580222c2248696e6469222c22f09f87aef09f87b3225d2c224445223a5b2244657574736368222c224765726d616e222c22f09f87a9f09f87aa225d2c224649223a5b2253756f6d69222c2246696e6e697368222c22f09f87abf09f87ae225d2c224245223a5b22d091d0b5d0bbd0b0d180d183d181d0bad0b0d18f222c2242656c6172757369616e222c22f09f87a7f09f87be225d2c224641223a5b22d981d8a7d8b1d8b3db8c222c225065727369616e222c22f09f87aef09f87b7225d2c224441223a5b2244616e736b222c2244616e697368222c22f09f87a9f09f87b0225d2c224e45223a5b22e0a4a8e0a587e0a4aae0a4bee0a4b2e0a580222c224e6570616c69222c22f09f87b3f09f87b5225d2c224a41223a5b22e697a5e69cace8aa9e222c224a6170616e657365222c22f09f87aff09f87b5225d2c224b59223a5b22d09ad18bd180d0b3d18bd0b7d187d0b0222c224b797267797a222c22f09f87b0f09f87ac225d2c22414d223a5b22e18aa0e1889be188ade18a9b222c22416d6861726963222c22f09f87aaf09f87b9225d2c224845223a5b22d7a2d791d7a8d799d7aa222c22486562726577222c22f09f87aef09f87b1225d2c224c41223a5b224c6174696e61222c224c6174696e222c225641225d2c225341223a5b22e0a4b8e0a482e0a4b8e0a58de0a495e0a583e0a4a4e0a4aee0a58d222c2253616e736b726974222c22494e225d2c225445223a5b22e0b0a4e0b186e0b0b2e0b181e0b097e0b181222c2254656c756775222c22f09f87aef09f87b3225d2c225649223a5b225469e1babf6e67205669e1bb8774222c22566965746e616d657365222c22f09f87bbf09f87b3225d2c225441223a5b22e0aea4e0aeaee0aebfe0aeb4e0af8d222c2254616d696c222c22f09f87aef09f87b3225d2c22454f223a5b224573706572616e746f222c224573706572616e746f222c22f09f8c8d225d2c22524f223a5b22526f6dc3a26ec483222c22526f6d616e69616e222c22f09f87b7f09f87b4225d2c224855223a5b224d6167796172222c2248756e67617269616e222c22f09f87adf09f87ba225d2c224d49223a5b2254652052656f204dc4816f7269222c224dc4816f7269222c224e5a225d2c225a55223a5b226973695a756c75222c225a756c75222c225a41225d2c224555223a5b224575736b617261222c22426173717565222c22f09f87aaf09f87b8225d2c225349223a5b22e0b783e0b792e0b682e0b784e0b6bd222c2253696e68616c61222c22f09f87b1f09f87b0225d2c22534e223a5b2243686953686f6e61222c2253686f6e61222c225a57225d2c22464a223a5b22566f73612056616b6176697469222c2246696a69616e222c22464a225d2c224d52223a5b22e0a4aee0a4b0e0a4bee0a4a0e0a580222c224d617261746869222c22f09f87aef09f87b3225d2c224b4e223a5b22e0b295e0b2a8e0b38de0b2a8e0b2a1222c224b616e6e616461222c22f09f87aef09f87b3225d2c22555a223a5b224f277a62656b636861222c22557a62656b222c22f09f87baf09f87bf225d2c22454e223a5b22456e676c697368222c22456e676c697368222c22f09f87baf09f87b8225d2c224c56223a5b224c6174766965c5a175222c224c61747669616e222c22f09f87b1f09f87bb225d2c224146223a5b22416672696b61616e73222c22416672696b61616e73222c225a41225d2c225352223a5b22d0a1d180d0bfd181d0bad0b8222c225365726269616e222c22f09f87b7f09f87b8225d2c225452223a5b2254c3bc726bc3a765222c225475726b697368222c22f09f87b9f09f87b7225d2c22424e223a5b22e0a6ace0a6bee0a682e0a6b2e0a6be222c2242656e67616c69222c22f09f87a7f09f87a9225d2c225459223a5b2252656f20546168697469222c22546168697469616e222c225046225d2c224841223a5b224861757361222c224861757361222c22f09f87b3f09f87ac225d2c225356223a5b225376656e736b61222c2253776564697368222c22f09f87b8f09f87aa225d2c224d59223a5b22426168617361204d656c617975222c224d616c6179222c22f09f87b2f09f87be225d2c224b4d223a5b22e19e97e19eb6e19e9fe19eb6e19e81e19f92e19e98e19f82e19e9a222c224b686d6572222c22f09f87b0f09f87ad225d2c224d4e223a5b22d09cd0bed0bdd0b3d0bed0bb222c224d6f6e676f6c69616e222c22f09f87b2f09f87b3225d2c224d4b223a5b22d09cd0b0d0bad0b5d0b4d0bed0bdd181d0bad0b8222c224d616365646f6e69616e222c22f09f87b2f09f87b0225d2c224741223a5b22476165696c6765222c224972697368222c22f09f87aef09f87aa225d2c224359223a5b2243796d72616567222c2257656c7368222c22f09f87acf09f87a7225d2c22474c223a5b2247616c65676f222c2247616c696369616e222c22f09f87aaf09f87b8225d2c224341223a5b22436174616cc3a0222c22436174616c616e222c22f09f87aaf09f87b8225d2c224152223a5b22d8a7d984d8b9d8b1d8a8d98ad8a9222c22417261626963222c22f09f87b8f09f87a6225d2c224252223a5b224272657a686f6e6567222c22427265746f6e222c224652225d2c22534b223a5b22536c6f76656ec48d696e61222c22536c6f76616b222c22f09f87b8f09f87b0225d2c224953223a5b22c38d736c656e736b61222c224963656c616e646963222c22f09f87aef09f87b8225d2c224554223a5b224565737469222c224573746f6e69616e222c22f09f87aaf09f87aa225d2c224652223a5b224672616ec3a7616973222c224672656e6368222c22f09f87abf09f87b7225d2c22534c223a5b22536c6f76656ec5a1c48d696e61222c22536c6f76656e69616e222c22f09f87b8f09f87ae225d2c224852223a5b224872766174736b69222c2243726f617469616e222c22f09f87adf09f87b7225d2c225552223a5b22d8a7d8b1d8afd988222c2255726475222c22f09f87b5f09f87b0225d2c225041223a5b22e0a8aae0a9b0e0a89ce0a8bee0a8ace0a980222c2250756e6a616269222c22f09f87aef09f87b3225d2c22415a223a5b22417ac9997262617963616e6361222c22417a65726261696a616e69222c22f09f87a6f09f87bf225d7d"
+return game:GetService("HttpService"):JSONDecode(hexDecode(origin))
     end;
 end;
 
