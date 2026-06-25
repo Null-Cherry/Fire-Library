@@ -5642,6 +5642,12 @@ local newObject do
         end
     end
 
+    local deferedRefreshes = { }
+    local function objectRefresh(inited, s)
+        inited:Refresh()
+        deferedRefreshes[s] = nil
+    end
+    
     local function newidx(self, key, val)
         local key = (key:sub(1, 1):upper() .. key:sub(2)):gsub("Caption", "Tooltip"):gsub("HoverText", "Tooltip")
 
@@ -5650,7 +5656,12 @@ local newObject do
         
         if inited.Options[key] ~= newValue then
             inited.Options[key] = newValue
-            inited:Refresh()
+            
+            local s = tostring(inited)
+            if not deferedRefreshes[s] then
+                deferedRefreshes[s] = true
+                defer(objectRefresh, inited, s)
+            end
         end
     end
 
@@ -5710,43 +5721,8 @@ local newObject do
         return (str:gsub("userdata", ref.Class or "Object"))
     end
     
-    local refreshCaches = { }
-    local refreshDefers = setmetatable({ }, { __mode = "kv" })
-    local refreshWarnings = setmetatable({ }, { __mode = "kv" })
-    local pack = table.pack
-    local maxWarns = 3
-    
-    local function refreshDefer(self)
-        refreshDefers[self] = false
-    end
-    
     newObject = function(instructions, parent, ...)
         local inited = instructions:Init(getOptions(parent and getWindow(parent), instructions, ...))
-        if instructions.Refresh then
-            local old = instructions.Refresh
-            local newRefresh = refreshCaches[instructions] or function(self, ...)
-                if self.Class ~= "Tab" and refreshDefers[self] then
-                    refreshWarnings[self] = (refreshWarnings[self] or 0) + 1
-                    if refreshWarnings[self] == maxWarns then
-                        -- warn(`Refresh call for {self.Options.Flag or self.Options.Text or self.Class} ({self.Class}) already been called!`)
-                    end
-                    
-                    if refreshWarnings[self] >= maxWarns then
-                        return
-                    end
-                end
-                
-                refreshDefers[self] = refreshDefers[self] or 0
-                local result = pack(old(self, ...))
-                defer(refreshDefer, self)
-                
-                return unpack(result, 1, result.n)
-            end
-            
-            refreshCaches[instructions] = newRefresh
-            instructions.Refresh = newRefresh
-        end
-        
         for i, v in instructions do
             if i ~= "Init" and i ~= "DefaultOptions" then
                 inited[i] = inited[i] or v
@@ -10056,7 +10032,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.2",
+    Version = "5.1.21",
     Author = "Kawi (@kawaii_kebodo)"
 }
     end;
