@@ -7587,7 +7587,7 @@ local basicObjects = {
             local isModern = not strokes or window.Options.ModernToggles and not self.Options.CheckBox
             view.Icon.UIStroke.Enabled = not isModern and strokes
             view.Icon.Frame.Visible = isModern
-            view.Icon.UIAspectRatioConstraint.AspectRatio = not isModern and 0.975 or window.Options.LargeModernToggles and 1.7 or 1.3
+            view.Icon.UIAspectRatioConstraint.AspectRatio = not isModern and 0.975 or (self.Parent.Class == "Groupbox" or window.Options.LargeModernToggles) and 1.7 or 1.3
             view.Icon.Frame.UICorner.CornerRadius = Un(window.Options.RoundEverything and 1 or 0, 0)
             view.Icon.Frame.State.UICorner.CornerRadius = view.Icon.Frame.UICorner.CornerRadius
             view.Icon.Frame.UIStroke.Enabled = strokes
@@ -8497,7 +8497,7 @@ local windowFuncs; windowFuncs = {
         cfg = cfg or { t = 8 }
 
         local cl = self.Class
-        if cl == "FloatingLabel" or cl == "Separator" then return end
+        if cl == "FloatingLabel" or cl == "Separator" or cl == "Header" then return end
 
         if cl == "ColorPicker" then
             if self.Options.NoConfigs then return end
@@ -8551,7 +8551,7 @@ local windowFuncs; windowFuncs = {
             return cfg
         end
 
-        return warn("Unknown class", cl)
+        return warn("Unknown class \"" .. tostring(cl) .. "\"")
     end,
     SetConfig = function(self, cfg, setCfg)
         setCfg = setCfg or self.SetConfig
@@ -8563,7 +8563,7 @@ local windowFuncs; windowFuncs = {
             if cfg.t ~= 8 then window:Notification({ Title = "Config", Text = "The given config is not a config (most likely a theme!)" }) return false end
         end
 
-        if cfg == nil or cl == "FloatingLabel" or cl == "Separator" then return end
+        if cfg == nil or cl == "FloatingLabel" or cl == "Separator" or cl == "Header" then return end
         if cl == "ColorPicker" then
             if self.Options.NoConfigs then return end
             local newCol = C3h(string["for" .. "mat"]("%06x", cfg)) -- suspend studio warning
@@ -9119,8 +9119,8 @@ local windowFuncs; windowFuncs = {
             Icons = allIcons,
             Background = allBackgrounds,
             Emulator = emulator,
-            IsMobile = isMobile,
-            IsDesktop = not isMobile,
+            IsMobile = device == "Mobile",
+            IsDesktop = device == "PC",
             Platform = platform,
             RealPlatform = realPlatform,
             Device = device,
@@ -9742,7 +9742,7 @@ local windowFuncs; windowFuncs = {
         if self.Options.Debounce then return end
 
         local kb = self.Options.Keybind
-        if not self.Options.Keybind and not self.IsMobile and not self.Options.Closed then
+        if not self.Options.Keybind and device ~= "Mobile" and not self.Options.Closed then
             if not self.Options.ToggleKeyObject or not self.Options.ToggleKeyObject.ColorPickers[0] or not self.Options.ToggleKeyObject.ColorPickers[0].Value then
                 self.Options.Visible = true
                 return self:Notification({ Title = "Unable to hide the UI", Duration = 10, Text = "Please set the keybind first!" })
@@ -9831,7 +9831,7 @@ local windowFuncs; windowFuncs = {
 
         self.Options.Visible = not self.Options.Visible
 
-        if not self.Options.Visible and not self.Options.Keybind and not self.IsMobile and not self.Options.Closed then
+        if not self.Options.Visible and not self.Options.Keybind and device ~= "Mobile" and not self.Options.Closed then
             if not self.Options.ToggleKeyObject or not self.Options.ToggleKeyObject.ColorPickers[0] or not self.Options.ToggleKeyObject.ColorPickers[0].Value then
                 self.Options.Visible = true
                 return self:Notification({ Title = "Unable to hide the UI", Duration = 10, Text = "Please set the keybind first!" })
@@ -9959,8 +9959,8 @@ library = newObject({
             Background = allBackgrounds,
             Example = require(script.Example), -- function
             Emulator = emulator,
-            IsMobile = isMobile,
-            IsDesktop = not isMobile,
+            IsMobile = device == "Mobile",
+            IsDesktop = device == "PC",
             Platform = platform,
             RealPlatform = realPlatform,
             Device = device,
@@ -10032,8 +10032,8 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.21",
-    Author = "Kawi (@kawaii_kebodo)"
+    Version = "5.1.22",
+    Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
 
