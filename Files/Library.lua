@@ -8565,7 +8565,7 @@ local windowFuncs; windowFuncs = {
         if cl == "Toggle" or cl == "Input" then
             local pickers = { }
             for i, v in self.ColorPickers do
-                pickers[v.Options.FlagHashShort] = getCfg(v, cfg, getCfg)
+                pickers[tostring(i)] = getCfg(v, cfg, getCfg)
             end
 
             local c = count(pickers)
@@ -8647,7 +8647,7 @@ local windowFuncs; windowFuncs = {
                 for i, v in cfg.c do
                     i = tonumber(i)
 
-                    local obj = self:GetObjectFromHash(i)
+                    local obj = self.ColorPickers[i]
                     if obj then
                         setCfg(obj, v, setCfg)
                     end
@@ -10085,7 +10085,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.3",
+    Version = "5.1.31",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
