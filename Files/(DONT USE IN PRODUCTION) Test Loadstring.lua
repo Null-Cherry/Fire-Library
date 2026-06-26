@@ -4643,7 +4643,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         if configsEnabled then
             isFirst = If(configsRoute .. fl:sub(1, -2)) == false
             print(isFirst)
-            w
+            warn(isFirstTime)
             
             nf(configRoute, false)
             nf(themeRoute, false)
