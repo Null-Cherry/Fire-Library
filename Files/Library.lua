@@ -3944,6 +3944,15 @@ local V2n = Vector2.new
 local TIn = TweenInfo.new
 
 local rs = game:GetService("RunService")
+local function render(times)
+    local start = tick()
+    for i = 1, max(tonumber(times) or 0, 1) do
+        rs.RenderStepped:Wait()
+    end
+
+    return tick() - start
+end
+
 local env = getfenv()
 local function g(n)
     return env[n]
@@ -3956,7 +3965,8 @@ local key = ... or config.Name
 
 if global[key] then
     script.Parent:Destroy()
-    rs.RenderStepped:Wait()
+    render()
+    
     return global[key]
 end
 
@@ -3969,19 +3979,6 @@ local toclip = g("toclipboard") or g("setclipboard")
 local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(df) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function"
 
 local http = game:GetService("HttpService")
-local function safeEncode(str)
-    local encoded = http:UrlEncode(str):gsub("%%20", " "):gsub("%%", ""):gsub("[0-9]", "")
-    while encoded:sub(1, 1) == " " do
-        encoded = encoded:sub(2)
-    end
-
-    while encoded:sub(-1) == " " do
-        encoded = encoded:sub(1, -2)
-    end
-
-    return encoded
-end
-
 local function je(c)
     return http:JSONEncode(c)
 end
@@ -4133,8 +4130,9 @@ local uiBlur = require(script.UIBlur)
 
 local function getObjectFromHash(self, hash)
     local cl = self.Class
-    for i, v in self[if cl == "Button" or cl == "Label" or cl == "Toggle" or cl == "Input" then "ColorPickers" else "Objects"] do
-        if v.Options.FlagHash == hash then
+    local hl = #hash
+    for i, v in self[cl == "Button" or cl == "Label" or cl == "Toggle" or cl == "Input" and "ColorPickers" or "Objects"] do
+        if v.Options.FlagHashFull:sub(1, hl) == hash then
             return v
         end
     end
@@ -4246,7 +4244,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local cp1
     spawn(function()
-        local fl = safeEncode(window.FlagHash) .. "/"
+        local fl = window.FlagHash .. "/"
         local hidden = { }
 
         if not configsEnabled then
@@ -4280,6 +4278,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local configRoute = configsRoute .. fl:sub(1, -2) .. "-AutoLoad" .. json
         local autoLoadConfig
         local configTextBox, configDropdown, themeTextBox, themeDropdown
+        
+        print(configRoute, fl)
 
         if configsEnabled then
             configTextBox = settingsConfigTab:AddTextBox("ConfigName", {
@@ -4639,14 +4639,14 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             if typeof(cont) == "table" then
                 autoLoadTheme.Value = true
                 themeTextBox.Value = cont[1]
-                delay(rs.RenderStepped:Wait() and 0, loadTheme, cont[1])
+                delay(render() and 0, loadTheme, cont[1])
             end
 
             local cont = rf(configRoute, true)
             if typeof(cont) == "table" then
                 autoLoadConfig.Value = true
                 configTextBox.Value = cont[1]
-                delay(0.5 - rs.RenderStepped:Wait(), loadConfig, cont[1])
+                delay(0.5 - render(), loadConfig, cont[1])
             end
         end
 
@@ -5421,8 +5421,7 @@ if platform ~= Enum.Platform.Windows and platform ~= Enum.Platform.IOS and platf
     platform = not isMobile and Enum.Platform.Windows or Enum.Platform.Android
 end
 
-local device = emulator and (isMobile and "PC" or "Mobile") or (isMobile and "Mobile" or "PC")
-
+local device = emulator and (platform == Enum.Platform.Windows and "Mobile" or "PC") or (platform == Enum.Platform.Windows and "PC" or "Mobile")
 local executor, version = (env.identifyexecutor or function()
     return (rs:IsStudio() and "Studio" or "") .. "Client", g("version")()
 end)()
@@ -5529,12 +5528,17 @@ local newObject do
 
     local function prop(self, value)
         local inited = references[self] or self
-        if not inited.Options[currentProperty] then
+        if inited.Options[currentProperty] == nil then
             error("Expected ':' not '.' calling Set function", 0)
         end
-
-        inited.Options[currentProperty] = value
-        inited:Refresh()
+        
+        local proxy = inited.Proxy
+        if not proxy then
+            inited[currentProperty] = value
+            inited:Refresh()
+        else
+            proxy[currentProperty] = value
+        end
     end
 
     local function getprop(self, value)
@@ -5695,12 +5699,17 @@ local newObject do
         ID = ID:lower():gsub("[\0-\47\58-\64\92-\94\96\123-\255]", "") .. "_id"
         counters[ID] = (counters[ID] or -1) + 1
         ID ..= counters[ID]
-
-        local h = compressor:Hash(ID):sub(1, min(#flag, 3) - 1)
+        
+        local hash = compressor:Hash(ID)
+        local h = hash:sub(1, min(max(#flag, 1), 3) - 1)
         counters[h] = (counters[h] or -1) + 1
         h ..= (counters[h] ~= 0 and counters[h] or "")
+
+        options.FlagHashShort = h
+        options.FlagHash = hash:sub(1, 16)
+        options.FlagHashLong = hash
+        options.FlagHashFull = hash
         
-        options.FlagHash = h
         if options.Default ~= nil then
             options.Value, options.Default = options.Default, nil
         end
@@ -5785,7 +5794,7 @@ local function OR(...)
         cons[#cons + 1] = select(i, ...):Connect(cn)
     end
 
-    repeat wait() until done
+    repeat render() until done
 end
 
 local function castCircle(button, window, holder)
@@ -6048,14 +6057,15 @@ local function hoverLogic(object, instance)
         end
 
         tooltipObject.Options.Window = window
-        tooltipObject.Options.Text = translate(object, "Tooltip")
-        tooltipObject:Refresh()
+        tooltipObject.Text = translate(object, "Tooltip")
+        render()
+        tooltipObject.Options.Window = window
+        tooltipObject.Text = translate(object, "Tooltip")
     end)
 
     cons[#cons + 1] = instance.MouseLeave:Connect(function()
         tooltipObject.Options.Window = coreWindow
-        tooltipObject.Options.Text = ""
-        tooltipObject:Refresh()
+        tooltipObject.Text = ""
     end)
 end
 
@@ -7046,7 +7056,7 @@ local basicObjects = {
                 
                 while true do
                     mouse.Move:Wait()
-                    local d = rs.RenderStepped:Wait()
+                    local d = render()
                     
                     if device == "Mobile" then
                         if abs(mouse.Y - startY) > 25 then
@@ -7063,7 +7073,7 @@ local basicObjects = {
                 
                 while sliding and not object.Options.Disabled and con.Connected do
                     spawn(object.Call, object, clamp((mouse.X - bar.AbsolutePosition.X) / bar.AbsoluteSize.X, 0, 1), true)
-                    wait()
+                    render()
                 end
 
                 if c.Connected then
@@ -7257,7 +7267,7 @@ local basicObjects = {
                 if not cd or not getWindow(object).Visible then return end
                 cd = false
                 object:Refresh(true)
-                wait()
+                render()
                 object:Refresh(true)
                 cd = true
             end)
@@ -7379,7 +7389,7 @@ local basicObjects = {
                 cd = false
                 instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 99999)).Y)
                 instance.Size = U2n(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
-                wait()
+                render()
                 instance.Label.Size = U2n(1, -30, 0, getTextSize(instance.Label.Text, instance.Label.TextSize, instance.Label.Font, V2n(instance.Label.AbsoluteSize.X, 99999)).Y)
                 instance.Size = U2n(1, 0, 0, instance.Label.TextBounds.Y + (24 - (object.Proxy.Parent.Class == "Groupbox" and 9 or 0)))
                 cd = true
@@ -7429,7 +7439,7 @@ local basicObjects = {
 
                 cd = false
                 instance.View.Label.Size = U2n(0, getTextSize(instance.View.Label.Text, instance.View.Label.TextSize, instance.View.Label.Font, V2n(99999, 99999)).X, 1, 0)
-                wait()
+                render()
                 instance.View.Label.Size = U2n(0, getTextSize(instance.View.Label.Text, instance.View.Label.TextSize, instance.View.Label.Font, V2n(99999, 99999)).X, 1, 0)
                 cd = true
             end)
@@ -8263,7 +8273,7 @@ local floatingLabel = {
             canChange = false
             object:_Rescale()
 
-            wait()
+            render()
 
             canChange = true
         end)
@@ -8511,7 +8521,7 @@ local windowFuncs; windowFuncs = {
         if cl == "Button" or cl == "Label" then
             local pickers = { }
             for i, v in self.ColorPickers do
-                pickers[tostring(v.Options.FlagHash)] = getCfg(v, cfg, getCfg)
+                pickers[v.Options.FlagHashShort] = getCfg(v, cfg, getCfg)
             end
 
             if count(pickers) == 0 then return end
@@ -8521,7 +8531,7 @@ local windowFuncs; windowFuncs = {
         if cl == "Toggle" or cl == "Input" then
             local pickers = { }
             for i, v in self.ColorPickers do
-                pickers[tostring(v.Options.FlagHash)] = getCfg(v, cfg, getCfg)
+                pickers[v.Options.FlagHashShort] = getCfg(v, cfg, getCfg)
             end
 
             local c = count(pickers)
@@ -8545,7 +8555,7 @@ local windowFuncs; windowFuncs = {
 
         if cl == "Window" or cl == "Tab" or cl == "Groupbox" then
             for i, v in self.Objects do
-                cfg[v.Options.FlagHash] = getCfg(v, { }, getCfg)
+                cfg[v.Options.FlagHashShort] = getCfg(v, { }, getCfg)
             end
 
             return cfg
@@ -8743,7 +8753,7 @@ local windowFuncs; windowFuncs = {
             cp.Contents.Contents.Display.BottomZone.TextBoxes.G.TextBox.Text = tostring(clamp(round(rgb.G * 255), 0, 255))
             cp.Contents.Contents.Display.BottomZone.TextBoxes.B.TextBox.Text = tostring(clamp(round(rgb.B * 255), 0, 255))
 
-            wait()
+            render()
         end
 
         makeDraggable(cp, self, cons)
@@ -8771,7 +8781,7 @@ local windowFuncs; windowFuncs = {
             uis.MouseIconEnabled = old
             tweenOnce(cp.Contents.Contents.Display.ColorZone.HUEZone.Cursor, TIn(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = U2n(1, 2, 0, 2), BackgroundTransparency = 0.25 })
 
-            wait(wait())
+            wait(render())
             self.Tooltip = ""
         end)
 
@@ -8802,7 +8812,7 @@ local windowFuncs; windowFuncs = {
             uis.MouseIconEnabled = old
             tweenOnce(cp.Contents.Contents.Display.ColorZone.PickerZone.Contents.Cursor, TIn(0.5 / handleAnimationSpeed(self.Options.AnimationSpeed)), { Size = U2o(5, 5), BackgroundTransparency = 0.25 })
 
-            wait(wait())
+            wait(render())
             self.Tooltip = ""
         end)
 
@@ -8858,7 +8868,7 @@ local windowFuncs; windowFuncs = {
 
         updateColor()
 
-        repeat wait() until completed
+        repeat render() until completed
 
         for i, v in cons do
             if v.Connected then
@@ -8973,7 +8983,7 @@ local windowFuncs; windowFuncs = {
 
             if options.Duration ~= inf then
                 spawn(function()
-                    rs.RenderStepped:Wait()
+                    render()
 
                     tweenOnce(notif.Background.Progress.Fill, TIn(options.Duration, Enum.EasingStyle.Linear), { Size = U2s(0, 1) })
                     wait(options.Duration)
@@ -9001,7 +9011,7 @@ local windowFuncs; windowFuncs = {
                 tweenOnce(notif.Background.Holder, TIn(.67 --[[AAAA, 67]], Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2n(s == "Left" and 0 or 1, 0, 0, 3) })
             end)
 
-            repeat wait() until done
+            repeat render() until done
 
             con1:Disconnect()
             con2:Disconnect()
@@ -9159,7 +9169,7 @@ local windowFuncs; windowFuncs = {
 
             cd = false
             titleZone.Title.Size = U2n(0, titleZone.Title.TextBounds.X, 1, 0)
-            wait()
+            render()
             titleZone.Title.Size = U2n(0, titleZone.Title.TextBounds.X, 1, 0)
             cd = true
         end)
@@ -9460,7 +9470,7 @@ local windowFuncs; windowFuncs = {
 
         spawn(function()
             gui.Enabled = false
-            rs.RenderStepped:Wait()
+            render()
             gui.Enabled = true
 
             while not object.Closed and wait(0.05) do
@@ -9859,7 +9869,7 @@ tooltipObject = newObject({
             cd = false
             tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
             tooltip.Size = U2o(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
-            wait()
+            render()
             tooltip.TextLabel.Text = tooltip.TextLabelInvisible.Text
             tooltip.Size = U2o(tooltip.TextLabelInvisible.TextBounds.X + 14, tooltip.TextLabelInvisible.TextBounds.Y + 14)
             cd = true
@@ -10022,7 +10032,7 @@ library.WindowRemoved:Connect(function()
     end
 end)
 
-repeat wait() until global.flready
+repeat render() until global.flready
 global.flready = nil
 
 return library
