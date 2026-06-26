@@ -3969,19 +3969,6 @@ local toclip = g("toclipboard") or g("setclipboard")
 local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(df) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function"
 
 local http = game:GetService("HttpService")
-local function safeEncode(str)
-    local encoded = http:UrlEncode(str):gsub("%%20", " "):gsub("%%", ""):gsub("[0-9]", "")
-    while encoded:sub(1, 1) == " " do
-        encoded = encoded:sub(2)
-    end
-
-    while encoded:sub(-1) == " " do
-        encoded = encoded:sub(1, -2)
-    end
-
-    return encoded
-end
-
 local function je(c)
     return http:JSONEncode(c)
 end
@@ -4246,7 +4233,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
     local cp1
     spawn(function()
-        local fl = safeEncode(window.FlagHash) .. "/"
+        local fl = window.FlagHash .. "/"
         local hidden = { }
 
         if not configsEnabled then
@@ -5424,8 +5411,6 @@ if platform ~= Enum.Platform.Windows and platform ~= Enum.Platform.IOS and platf
 end
 
 local device = emulator and (platform == Enum.Platform.Windows and "Mobile" or "PC") or (platform == Enum.Platform.Windows and "PC" or "Mobile")
-print(emulator, isMobile, device, platform)
-
 local executor, version = (env.identifyexecutor or function()
     return (rs:IsStudio() and "Studio" or "") .. "Client", g("version")()
 end)()
@@ -5699,7 +5684,7 @@ local newObject do
         counters[ID] = (counters[ID] or -1) + 1
         ID ..= counters[ID]
 
-        local h = compressor:Hash(ID):sub(1, min(#flag, 3) - 1)
+        local h = compressor:Hash(ID):sub(1, min(max(#flag, 1), 3) - 1)
         counters[h] = (counters[h] or -1) + 1
         h ..= (counters[h] ~= 0 and counters[h] or "")
         
@@ -10405,5 +10390,5 @@ end;
 -- YOUR CODE DOWN HERE --
 
 local obj = objects["Instance0"];
-warn(1488)
+warn(148888)
 return require(obj.Main)
