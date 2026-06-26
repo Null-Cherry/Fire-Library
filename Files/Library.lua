@@ -3062,7 +3062,7 @@ do -- Set properties
     objects["Instance292"]["FontSize"] = Enum.FontSize.Size14;
     objects["Instance292"]["ZIndex"] = 2047483646;
     objects["Instance292"]["BorderSizePixel"] = 0;
-    objects["Instance292"]["Size"] = UDim2.new(0, 50, 0, 50);
+    objects["Instance292"]["Size"] = UDim2.new(0, 40, 0, 40);
 
     objects["Instance293"]["Parent"] = objects["Instance292"];
     objects["Instance293"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
@@ -3901,7 +3901,6 @@ local round = math.round
 local floor = math.floor
 local inf, nan = 1 / 0, 0 / 0
 local max = math.max
-local min = math.min
 local tinsert = table.insert
 local concat = table.concat
 local tsort = table.sort
@@ -4004,6 +4003,20 @@ local encoder = {
 
 local function clean(str)
     return str:gsub("[\n\r\f\t\0 ]", "")
+end
+
+local antiRich do
+    local richReplace = {
+        ["'"] = "&apos;",
+        ['"'] = "&quot;",
+        ["<"] = "&lt;",
+        [">"] = "&gt;",
+        ["&"] = "&amp;"
+    }
+    
+    function antiRich(str)
+        return str:gsub("[&<>'\"%z]", richReplace)
+    end
 end
 
 local wf = configsEnabled and function(name, contents, dontEncode)
@@ -4164,7 +4177,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 allFalses = false
 
                 local color = v.Options.Reference.Options.Value and window.Options.Theme.Main or window.Options.Theme.Text
-                str ..= ` <font color="#{color:ToHex()}" transparency="{v.Options.Reference.Options.Disabled and 0.35 or 0}">{"[" .. gsubInput(Enum.KeyCode:FromValue(v.Options.Value).Name) .. "] " .. v.Options.Reference.Options.Text}</font> \n`
+                str ..= ` <font color="#{color:ToHex()}" transparency="{v.Options.Reference.Options.Disabled and 0.35 or 0}">{"[" .. gsubInput(Enum.KeyCode:FromValue(v.Options.Value).Name) .. "] " .. antiRich(v.Options.Reference.Options.Text)}</font> \n`
             end
         end
 
@@ -4243,6 +4256,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     end, Value = 1 })
 
     local cp1
+    local isFirst = nil
+    
     spawn(function()
         local fl = window.FlagHash .. "/"
         local hidden = { }
@@ -4279,8 +4294,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local autoLoadConfig
         local configTextBox, configDropdown, themeTextBox, themeDropdown
         
-        print(configRoute, fl)
-
         if configsEnabled then
             configTextBox = settingsConfigTab:AddTextBox("ConfigName", {
                 PlaceholderText = "Enter Config name",
@@ -4628,6 +4641,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         end
 
         if configsEnabled then
+            isFirst = If(configsRoute .. fl:sub(1, -2)) == false
+            
             nf(configRoute, false)
             nf(themeRoute, false)
             mf(configsRoute .. fl:sub(1, -2))
@@ -4648,6 +4663,8 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 configTextBox.Value = cont[1]
                 delay(0.5 - render(), loadConfig, cont[1])
             end
+        else
+            isFirst = false
         end
 
         window.ThemeChanged:Connect(function()
@@ -4852,9 +4869,14 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end, Disabled = true })
         end
     end
-
-    local ile = settingsThemeTab:AddTextBox({ PlaceholderText = gca and "Manual info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
+    
+    settingsThemeTab:AddHeader({ Text = "Info Label" })
+    local ile = settingsThemeTab:AddTextBox({ PlaceholderText = "Manual Info Label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
         window.Options.InfoLabelExtra = val
+    end })
+
+    local ilear = settingsThemeTab:AddToggle({ Text = "Enable Rich Text for extra text", NoConfigs = true, Value = window.Options.InfoLabelExtraAntiRich, Callback = function(val)
+        window.Options.InfoLabelExtraAntiRich = val
     end })
 
     settingsThemeTab:AddHeader({ Text = "UI Decorations" })
@@ -5058,6 +5080,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         lmt.Disabled = not rest.Value and not mt.Value
         lmt.Value = window.Options.LargeModernToggles
         mbn.Value = window.Options.MobileButtonNeon
+        ilear.Value = window.Options.InfoLabelExtraAntiRich
 
         for i, v in infoLabelObjs do
             if i == "ExtraInfoLabelTextEnabled" then
@@ -5188,7 +5211,13 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
     end)
     
     reparent()
-
+    repeat render() until isFirst ~= nil
+    
+    window.Options.IsFirstExecution = function()
+        return isFirst
+    end
+    
+    window.Options.FirstExecution = isFirst
     window:Refresh()
 end
 
@@ -5701,7 +5730,7 @@ local newObject do
         ID ..= counters[ID]
         
         local hash = compressor:Hash(ID)
-        local h = hash:sub(1, min(max(#flag, 1), 3) - 1)
+        local h = hash:sub(1, clamp(#flag, 2, 3) - 1)
         counters[h] = (counters[h] or -1) + 1
         h ..= (counters[h] ~= 0 and counters[h] or "")
 
@@ -8275,6 +8304,7 @@ local floatingLabel = {
 
             render()
 
+            object:_Rescale()
             canChange = true
         end)
 
@@ -8390,12 +8420,13 @@ local windowFuncs; windowFuncs = {
             ["21"] = window.Options.OutsideStroke and 1 or 0,
             ["22"] = floor(window.Options.CornerRadius),
             ["23"] = window.Options.BlurBackground and 1 or 0,
-            ["24"] = window.FullBlurSize and 1 or 0,
+            ["24"] = window.Options.FullBlurSize and 1 or 0,
             ["25"] = floor(uiBlur.BlurSize * 100),
             ["26"] = window.Options.RoundEverything and 1 or 0,
-            ["27"] = window.NoStrokes and 1 or 0,
-            ["28"] = window.ModernToggles and 1 or 0,
-            ["29"] = window.LargeModernToggles and 1 or 0,
+            ["27"] = window.Options.NoStrokes and 1 or 0,
+            ["28"] = window.Options.ModernToggles and 1 or 0,
+            ["29"] = window.Options.LargeModernToggles and 1 or 0,
+            ["30"] = window.Options.InfoLabelExtraAntiRich and 1 or 0
         }
 
         return theme
@@ -8435,6 +8466,7 @@ local windowFuncs; windowFuncs = {
             window.Options.NoStrokes = false
             window.Options.ModernToggles = false
             window.Options.LargeModernToggles = false
+            window.Options.InfoLabelExtraAntiRich = true
         else
             window.Options.ShadowSize = theme["0"]
             window.Options.ShadowTransparency = theme["1"] / 100
@@ -8491,11 +8523,13 @@ local windowFuncs; windowFuncs = {
                 window.Options.NoStrokes = theme["27"] == 1
                 window.Options.ModernToggles = theme["28"] == 1
                 window.Options.LargeModernToggles = theme["29"] == 1
+                window.Options.InfoLabelExtraAntiRich = theme["30"] == 1
             else
                 window.Options.RoundEverything = false
                 window.Options.NoStrokes = false
                 window.Options.ModernToggles = false
-                window.Options.LargeModernToggles = true
+                window.Options.LargeModernToggles = false
+                window.Options.InfoLabelExtraAntiRich = true
             end
         end
 
@@ -9059,6 +9093,7 @@ local windowFuncs; windowFuncs = {
         OutsideStroke = true,
         CornerRadius = 0,
         _PrevVisible = false,
+        _OldVisible = false,
         MobileButtonVisible = device == "Mobile",
         MobileButtonAlwaysVisible = device == "Mobile",
         AnimationSpeed = 1,
@@ -9088,6 +9123,8 @@ local windowFuncs; windowFuncs = {
         LargeModernToggles = false,
         _LargeString = "",
         MobileButtonNeon = true,
+        _Ready = false,
+        InfoLabelExtraAntiRich = true,
 
         NotificationSound = sounds.Notification.SoundId,
         ClickSound = sounds.Click.SoundId,
@@ -9453,11 +9490,11 @@ local windowFuncs; windowFuncs = {
 
             local lines = concat(lines, "\n")
             if #origOptions.ExtraInfoLabelText ~= 0 and origOptions.ExtraInfoLabelTextEnabled then
-                lines = lines .. (lines ~= "" and "\n" or "") .. typeof(origOptions.ExtraInfoLabelText) == "table" and table.concat(origOptions.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
+                lines ..= (lines ~= "" and "\n" or "") .. typeof(origOptions.ExtraInfoLabelText) == "table" and table.concat(origOptions.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
             end
 
             if origOptions.InfoLabelExtra ~= "" then
-                lines = lines .. (lines ~= "" and "\n" or "") .. origOptions.InfoLabelExtra
+                lines ..= (lines ~= "" and "\n" or "") .. (origOptions.InfoLabelExtraAntiRich and antiRich(origOptions.InfoLabelExtra) or origOptions.InfoLabelExtra)
             end
 
             label.Text = lines
@@ -9658,7 +9695,7 @@ local windowFuncs; windowFuncs = {
         end
 
         window.Blur.Visible = not options.DisableBlurBackground and options.BlurBackground and options.Visible
-        if self.Options._OldVisible ~= options.Visible and not options.Debounce then
+        if self.Options._OldVisible ~= options.Visible and not options.Debounce and options._Ready then
             self.Options._OldVisible = options.Visible
             if options.Visible then
                 self:Show()
@@ -9669,9 +9706,10 @@ local windowFuncs; windowFuncs = {
 
         return self
     end,
-    IsFirstExecution = function()
+    IsFirstLaunch = function()
         return isFirstTime
     end,
+    FirstLaunch = isFirstTime,
     RefreshAll = function(self)
         refreshEverything(self)
         self.ThemeChanged:Fire(self.Options.Theme)
@@ -9944,9 +9982,10 @@ library = newObject({
         }
     },
 
-    IsFirstExecution = function()
+    IsFirstLaunch = function()
         return isFirstTime
     end,
+    FirstLaunch = isFirstTime,
     Init = function(self, options)
         coreWindow = newObject(windowFuncs, nil, { Visible = false, UnlockMouse = false, Text = guid, Flag = guid, MobileButtonVisible = false, MobileButtonAlwaysVisible = false })
         coreWindow.Window.Visible = false
@@ -10003,15 +10042,19 @@ library = newObject({
 
     Window = function(self, ...)
         self:Refresh()
-
+        
         local window = newObject(windowFuncs, nil, ...)
         tinsert(self.Windows, window)
+        
         self.WindowAdded:Fire(window)
         window.Destroying:Once(function()
             tremove(self.Windows, tfind(self.Windows, window))
             self.WindowRemoved:Fire(window)
         end)
+        
+        repeat render() until window.Options.IsFirstExecution -- function
 
+        window._Ready = true
         return window
     end,
 
@@ -10042,7 +10085,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.22",
+    Version = "5.1.3",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
