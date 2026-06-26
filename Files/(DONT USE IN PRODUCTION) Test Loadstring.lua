@@ -4643,6 +4643,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         if configsEnabled then
             isFirst = If(configsRoute .. fl:sub(1, -2)) == false
             print(isFirst)
+            w
             
             nf(configRoute, false)
             nf(themeRoute, false)
@@ -8331,6 +8332,8 @@ local floatingLabel = {
 
     _Rescale = function(self)
         local l = self.Label
+        if not l or not l:FindFirstChild("Contents") then return end
+        
         local l1, l2 = l.Contents.Contents.Text, l.Contents.Contents.Title
         local t1, t2 = l1.TextBounds, l2.TextBounds
         local hasIcon = setIcon(self.Options.Icon, icons, self, l2.ImageLabel) ~= ""
@@ -10456,5 +10459,5 @@ end;
 -- YOUR CODE DOWN HERE --
 
 local obj = objects["Instance0"];
-warn("Rdy")
+warn("READDYYY")
 return require(obj.Main)
