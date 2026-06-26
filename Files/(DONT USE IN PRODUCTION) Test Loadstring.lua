@@ -5423,8 +5423,8 @@ if platform ~= Enum.Platform.Windows and platform ~= Enum.Platform.IOS and platf
     platform = not isMobile and Enum.Platform.Windows or Enum.Platform.Android
 end
 
-local device = emulator and (isMobile and "PC" or "Mobile") or (isMobile and "Mobile" or "PC")
-print(emulator, device, platform)
+local device = emulator and (platform == Enum.Platform.Windows and "Mobile" or "PC") or (platform == Enum.Platform.Windows and "PC" or "Mobile")
+print(emulator, isMobile, device, platform)
 
 local executor, version = (env.identifyexecutor or function()
     return (rs:IsStudio() and "Studio" or "") .. "Client", g("version")()
@@ -10404,6 +10404,6 @@ end;
 
 -- YOUR CODE DOWN HERE --
 
-warn(123)
 local obj = objects["Instance0"];
+warn(1488)
 return require(obj.Main)
