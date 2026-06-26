@@ -3901,7 +3901,6 @@ local round = math.round
 local floor = math.floor
 local inf, nan = 1 / 0, 0 / 0
 local max = math.max
-local min = math.min
 local tinsert = table.insert
 local concat = table.concat
 local tsort = table.sort
@@ -4004,6 +4003,20 @@ local encoder = {
 
 local function clean(str)
     return str:gsub("[\n\r\f\t\0 ]", "")
+end
+
+local antiRich do
+    local richReplace = {
+        ["'"] = "&apos;",
+        ['"'] = "&quot;",
+        ["<"] = "&lt;",
+        [">"] = "&gt;",
+        ["&"] = "&amp;"
+    }
+    
+    function antiRich(str)
+        return str:gsub("[&<>'\"%z]", richReplace)
+    end
 end
 
 local wf = configsEnabled and function(name, contents, dontEncode)
@@ -4164,7 +4177,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
                 allFalses = false
 
                 local color = v.Options.Reference.Options.Value and window.Options.Theme.Main or window.Options.Theme.Text
-                str ..= ` <font color="#{color:ToHex()}" transparency="{v.Options.Reference.Options.Disabled and 0.35 or 0}">{"[" .. gsubInput(Enum.KeyCode:FromValue(v.Options.Value).Name) .. "] " .. v.Options.Reference.Options.Text}</font> \n`
+                str ..= ` <font color="#{color:ToHex()}" transparency="{v.Options.Reference.Options.Disabled and 0.35 or 0}">{"[" .. gsubInput(Enum.KeyCode:FromValue(v.Options.Value).Name) .. "] " .. antiRich(v.Options.Reference.Options.Text)}</font> \n`
             end
         end
 
@@ -4629,6 +4642,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
         if configsEnabled then
             isFirst = If(configsRoute .. fl:sub(1, -2)) == false
+            print(isFirst)
             
             nf(configRoute, false)
             nf(themeRoute, false)
@@ -4663,7 +4677,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         local premadeThemes = require(script.DefaultThemes)
         if configsEnabled then
             if isFirstTime then
-                warn("FIRST TIME")
                 isFirstTime = false
 
                 for i, v in premadeThemes do
@@ -4857,9 +4870,14 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end, Disabled = true })
         end
     end
-
-    local ile = settingsThemeTab:AddTextBox({ PlaceholderText = gca and "Manual info label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
+    
+    settingsThemeTab:AddHeader({ Text = "Info Label" })
+    local ile = settingsThemeTab:AddTextBox({ PlaceholderText = "Manual Info Label extra text", MultiLine = true, Instant = true, NoConfigs = true, Value = window.Options.InfoLabelExtra or "", Text = "Info label extra text", Callback = function(val)
         window.Options.InfoLabelExtra = val
+    end })
+
+    local ilear = settingsThemeTab:AddToggle({ Text = "Enable Rich Text for extra text", NoConfigs = true, Value = window.Options.InfoLabelExtraAntiRich, Callback = function(val)
+        window.Options.InfoLabelExtraAntiRich = val
     end })
 
     settingsThemeTab:AddHeader({ Text = "UI Decorations" })
@@ -5063,6 +5081,7 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
         lmt.Disabled = not rest.Value and not mt.Value
         lmt.Value = window.Options.LargeModernToggles
         mbn.Value = window.Options.MobileButtonNeon
+        ilear.Value = window.Options.InfoLabelExtraAntiRich
 
         for i, v in infoLabelObjs do
             if i == "ExtraInfoLabelTextEnabled" then
@@ -5712,7 +5731,7 @@ local newObject do
         ID ..= counters[ID]
         
         local hash = compressor:Hash(ID)
-        local h = hash:sub(1, min(max(#flag, 1), 3) - 1)
+        local h = hash:sub(1, clamp(#flag, 2, 3) - 1)
         counters[h] = (counters[h] or -1) + 1
         h ..= (counters[h] ~= 0 and counters[h] or "")
 
@@ -8402,12 +8421,13 @@ local windowFuncs; windowFuncs = {
             ["21"] = window.Options.OutsideStroke and 1 or 0,
             ["22"] = floor(window.Options.CornerRadius),
             ["23"] = window.Options.BlurBackground and 1 or 0,
-            ["24"] = window.FullBlurSize and 1 or 0,
+            ["24"] = window.Options.FullBlurSize and 1 or 0,
             ["25"] = floor(uiBlur.BlurSize * 100),
             ["26"] = window.Options.RoundEverything and 1 or 0,
-            ["27"] = window.NoStrokes and 1 or 0,
-            ["28"] = window.ModernToggles and 1 or 0,
-            ["29"] = window.LargeModernToggles and 1 or 0,
+            ["27"] = window.Options.NoStrokes and 1 or 0,
+            ["28"] = window.Options.ModernToggles and 1 or 0,
+            ["29"] = window.Options.LargeModernToggles and 1 or 0,
+            ["30"] = window.Options.InfoLabelExtraAntiRich and 1 or 0
         }
 
         return theme
@@ -8447,6 +8467,7 @@ local windowFuncs; windowFuncs = {
             window.Options.NoStrokes = false
             window.Options.ModernToggles = false
             window.Options.LargeModernToggles = false
+            window.Options.InfoLabelExtraAntiRich = true
         else
             window.Options.ShadowSize = theme["0"]
             window.Options.ShadowTransparency = theme["1"] / 100
@@ -8503,11 +8524,13 @@ local windowFuncs; windowFuncs = {
                 window.Options.NoStrokes = theme["27"] == 1
                 window.Options.ModernToggles = theme["28"] == 1
                 window.Options.LargeModernToggles = theme["29"] == 1
+                window.Options.InfoLabelExtraAntiRich = theme["30"] == 1
             else
                 window.Options.RoundEverything = false
                 window.Options.NoStrokes = false
                 window.Options.ModernToggles = false
-                window.Options.LargeModernToggles = true
+                window.Options.LargeModernToggles = false
+                window.Options.InfoLabelExtraAntiRich = true
             end
         end
 
@@ -8543,7 +8566,7 @@ local windowFuncs; windowFuncs = {
         if cl == "Toggle" or cl == "Input" then
             local pickers = { }
             for i, v in self.ColorPickers do
-                pickers[v.Options.FlagHashShort] = getCfg(v, cfg, getCfg)
+                pickers[tostring(i)] = getCfg(v, cfg, getCfg)
             end
 
             local c = count(pickers)
@@ -8625,7 +8648,7 @@ local windowFuncs; windowFuncs = {
                 for i, v in cfg.c do
                     i = tonumber(i)
 
-                    local obj = self:GetObjectFromHash(i)
+                    local obj = self.ColorPickers[i]
                     if obj then
                         setCfg(obj, v, setCfg)
                     end
@@ -9102,6 +9125,7 @@ local windowFuncs; windowFuncs = {
         _LargeString = "",
         MobileButtonNeon = true,
         _Ready = false,
+        InfoLabelExtraAntiRich = true,
 
         NotificationSound = sounds.Notification.SoundId,
         ClickSound = sounds.Click.SoundId,
@@ -9467,11 +9491,11 @@ local windowFuncs; windowFuncs = {
 
             local lines = concat(lines, "\n")
             if #origOptions.ExtraInfoLabelText ~= 0 and origOptions.ExtraInfoLabelTextEnabled then
-                lines = lines .. (lines ~= "" and "\n" or "") .. typeof(origOptions.ExtraInfoLabelText) == "table" and table.concat(origOptions.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
+                lines ..= (lines ~= "" and "\n" or "") .. typeof(origOptions.ExtraInfoLabelText) == "table" and table.concat(origOptions.ExtraInfoLabelText, "\n") or options.ExtraInfoLabelText
             end
 
             if origOptions.InfoLabelExtra ~= "" then
-                lines = lines .. (lines ~= "" and "\n" or "") .. origOptions.InfoLabelExtra
+                lines ..= (lines ~= "" and "\n" or "") .. (origOptions.InfoLabelExtraAntiRich and antiRich(origOptions.InfoLabelExtra) or origOptions.InfoLabelExtra)
             end
 
             label.Text = lines
@@ -10062,7 +10086,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.3",
+    Version = "5.1.31",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
@@ -10432,5 +10456,5 @@ end;
 -- YOUR CODE DOWN HERE --
 
 local obj = objects["Instance0"];
-warn("READY")
+warn("Rdy")
 return require(obj.Main)
