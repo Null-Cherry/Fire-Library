@@ -5231,7 +5231,7 @@ local function fixNum(n)
         local before = str:sub(1, dot - 1)
         local after = str:sub(dot + 1)
 
-        if #after >= 13 then
+        if #after > 9 then
             after = after:sub(1, 13):gsub("0+$", "")
         end
 
@@ -10089,7 +10089,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.31",
+    Version = "5.1.4",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
