@@ -1,7 +1,7 @@
 --[[
 	This is a quick version of FireLibrary's loader (only for exploit environments)
 	Everything is pretty much the same as in the original library, but this one loads much faster (but update check comes AFTER the main loading cycle)
-	Read the README.md for more info
+	Read the README.md and Loader.lua for more info
 ]]--
 
 ---
