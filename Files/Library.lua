@@ -3600,6 +3600,7 @@ pc.CanCollide = false
 pc.Material = "Glass"
 pc.Transparency = 0.98
 pc.Name = "BlurPart"
+pc.Color = Color3.new()
 
 local mesh = Inew("SpecialMesh", pc)
 mesh.MeshType = 2
@@ -3612,7 +3613,8 @@ local V2n = Vector2.new
 local pcall = pcall
 
 local game, workspace = game, workspace
-local rs = game:GetService("RunService").RenderStepped
+local rns = game:GetService("RunService")
+local rs = rns.RenderStepped
 
 local acos, max, pi, sqrt, sin, cos, rad = memoize(math.acos), memoize(math.max), math.pi, memoize(math.sqrt), memoize(math.sin), memoize(math.cos), memoize(math.rad)
 local drawQuad do
@@ -3739,7 +3741,7 @@ local function f()
     if enabled then
         enabled = false
         for i, v in binds do
-            if v[1].Visible then
+            if v[6] then
                 enabled = true
                 break
             end
@@ -3775,11 +3777,12 @@ end
 workspace.Changed:Connect(f)
 rs:Connect(f)
 
+local sizeFix = V2n(6, 0)
 local function updateOrientation(frame, parts)
     if not camera then return end
     
     local zIndex = 1 - 0.05 * frame.ZIndex
-    local tl, br = frame.AbsolutePosition, frame.AbsolutePosition + frame.AbsoluteSize
+    local tl, br = frame.AbsolutePosition + sizeFix, frame.AbsolutePosition + frame.AbsoluteSize - sizeFix
     local tr, bl = V2n(br.X, tl.Y), V2n(tl.X, br.Y)
     
     do
@@ -3819,7 +3822,25 @@ lib = {
                 binding[2] = holderFolder
             end
             
-            if not frame.Visible then
+            local visible = frame.Visible
+            if visible then
+                local current = frame.Parent
+                while current and current ~= game do
+                    if current:IsA("GuiObject") and not current.Visible or current:IsA("ScreenGui") and not current.Enabled then
+                        visible = false
+                        break
+                    end
+                    
+                    current = current.Parent
+                end
+                
+                if visible and not current or current == game then
+                    visible = current == game
+                end
+            end
+            
+            binding[6] = visible
+            if not visible then
                 for i, v in parts do
                     pcall(parent, v, nil)
                 end
@@ -3846,6 +3867,8 @@ lib = {
         
         binding[4] = frame.Changed:Connect(refresh)
         binding[5] = rs:Connect(refresh)
+        binding[6] = true
+        
         binds[frame] = binding
         
         refresh()
@@ -4138,7 +4161,16 @@ local safeReparent do
     end)
 end
 
-local isFirstTime = false
+isFirstTime = If and If(coreFolder:sub(1, -2)) == false or false
+task.spawn(function()
+    if mf then
+        mf(coreFolder:sub(1, -2))
+        mf(cacheRoute:sub(1, -2))
+        mf(configsRoute:sub(1, -2))
+        mf(themesRoute:sub(1, -2))
+    end
+end)
+
 local uiBlur = require(script.UIBlur)
 
 local function getObjectFromHash(self, hash)
@@ -6671,7 +6703,7 @@ local basicObjects = {
             AllowUnselect = false, -- Only for non-multi
             Convert = true,
             AutoHide = true, -- Only for non-multi
-            Values = { 1, 2, 3 }, -- List of possible values (numbers, strings, etc.)
+            Values = { One = 1, Two = 2, Three = 3 }, -- List of possible values (numbers, strings, etc.)
             Variants = { }, -- Deprecated, use Values
             Order = false,
             Translations = { }
@@ -9659,7 +9691,7 @@ local windowFuncs; windowFuncs = {
         settingsOverlay.UICorner.CornerRadius = realWindow.UICorner.CornerRadius
         settingsOverlay.SettingsHub.UICorner.CornerRadius = realWindow.UICorner.CornerRadius
         settingsOverlay.SettingsHub.Image.UICorner.CornerRadius = realWindow.UICorner.CornerRadius
-        window.Blur.Size = options.FullBlurSize and U2n(1, -12, 1, 0) or U2n(1, -22, 1, -12)
+        window.Blur.Size = options.FullBlurSize and U2s(1, 1) or U2n(1, -12, 1, -12)
 
         if options.NeonType == "Stroke" then
             realWindowContents.Size = U2n(1, -options.NeonThickness * 2, 1, -options.NeonThickness * 2)
@@ -9961,19 +9993,6 @@ tooltipObject = newObject({
     end
 })
 
-task.spawn(function()
-    isFirstTime = If and If(coreFolder:sub(1, -2)) == false or false
-
-    if mf then
-        mf(coreFolder:sub(1, -2))
-        mf(cacheRoute:sub(1, -2))
-        mf(configsRoute:sub(1, -2))
-        mf(themesRoute:sub(1, -2))
-    end
-
-    global.flready = true
-end)
-
 library = newObject({
     DefaultOptions = {
         Tooltip = "",
@@ -10078,9 +10097,6 @@ library.WindowRemoved:Connect(function()
         uiBlur.BlurSize = 1
     end
 end)
-
-repeat render() until global.flready
-global.flready = nil
 
 return library
     end;
