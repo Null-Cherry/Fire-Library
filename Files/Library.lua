@@ -3998,7 +3998,7 @@ local wf, rf, df, mf, lf, If, IF = g("writefile"), g("readfile"), g("delfile") o
 local gca = g("getcustomasset")
 local toclip = g("toclipboard") or g("setclipboard")
 
-local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(df) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function"
+local configsEnabled = typeof(wf) == "function" and typeof(rf) == "function" and typeof(df) == "function" and typeof(mf) == "function" and typeof(lf) == "function" and typeof(If) == "function" and typeof(IF) == "function"
 
 local http = game:GetService("HttpService")
 local function je(c)
@@ -4161,18 +4161,19 @@ local safeReparent do
     end)
 end
 
-isFirstTime = if If then not If(coreFolder:sub(1, -2)) else false
+isFirstTime = rf and rf(coreFolder .. "FirstRun", true) == nil
+
 task.spawn(function()
     if mf then
         mf(coreFolder:sub(1, -2))
         mf(cacheRoute:sub(1, -2))
         mf(configsRoute:sub(1, -2))
         mf(themesRoute:sub(1, -2))
+        wf(coreFolder .. "FirstRun", "", true)
     end
 end)
 
 local uiBlur = require(script.UIBlur)
-
 local function getObjectFromHash(self, hash)
     local cl = self.Class
     local hl = #hash
@@ -10103,7 +10104,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.51",
+    Version = "5.1.52",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
