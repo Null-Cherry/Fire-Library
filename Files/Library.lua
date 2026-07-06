@@ -4388,8 +4388,10 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
 
                 local data = rf(route, false)
                 if data then
-                    if not window:SetConfigString(data) then
+                    local _, s = window:SetConfigString(data)
+                    if not s then
                         -- window:SetConfig(data)
+                        return
                     end
 
                     window:Notification({ Title = "Success", Text = "Config '" .. name .. "' has been successfully loaded!" })
@@ -4456,8 +4458,11 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             Callback = function(text)
                 if window.Closed then return end
                 if text ~= window:GetConfigString() then
-                    if not window:SetConfigString(text) and clean(text) ~= "" then
+                    local succeed, succeed2 = window:SetConfigString(text)
+                    if not succeed and clean(text) ~= "" then
                         window:Notification({ Title = "Error", Text = "Invalid config share string!" })
+                    elseif succeed2 then
+                        window:Notification({ Title = "Success", Text = "Config 'SharedString' has been successfully loaded!" })
                     end
                 end
             end
@@ -8575,9 +8580,11 @@ local windowFuncs; windowFuncs = {
     end,
     GetConfig = function(self, cfg, getCfg)
         getCfg = getCfg or self.GetConfig
-        cfg = cfg or { t = 8 }
+        cfg = cfg or { Type = 0 }
 
         local cl = self.Class
+        local fl = self.Options.Flag
+
         if cl == "FloatingLabel" or cl == "Separator" or cl == "Header" then return end
 
         if cl == "ColorPicker" then
@@ -8592,11 +8599,11 @@ local windowFuncs; windowFuncs = {
         if cl == "Button" or cl == "Label" then
             local pickers = { }
             for i, v in self.ColorPickers do
-                pickers[v.Options.FlagHashShort] = getCfg(v, cfg, getCfg)
+                pickers[tostring(i)] = getCfg(v, cfg, getCfg)
             end
 
             if count(pickers) == 0 then return end
-            return { c = pickers } -- fun fact: Keybinds also count as ColorPickers in that situation XD
+            return { ColorPickers = pickers } -- fun fact: Keybinds also count as ColorPickers in that situation XD
         end
 
         if cl == "Toggle" or cl == "Input" then
@@ -8612,10 +8619,10 @@ local windowFuncs; windowFuncs = {
 
             local value = cl == "Toggle" and (self.Options.Value and 1 or 0) or self.Options.Value
             return c ~= 0 and not nc and {
-                v = value,
-                c = pickers
+                Value = value,
+                ColorPickers = pickers
             } or c ~= 0 and {
-                c = pickers
+                ColorPickers = pickers
             } or value
         end
 
@@ -8626,26 +8633,26 @@ local windowFuncs; windowFuncs = {
 
         if cl == "Window" or cl == "Tab" or cl == "Groupbox" then
             for i, v in self.Objects do
-                cfg[v.Options.FlagHashShort] = getCfg(v, { }, getCfg)
+                cfg[i] = getCfg(v, { }, getCfg)
             end
 
             return cfg
         end
 
-        return warn("Unknown class \"" .. tostring(cl) .. "\"")
+        return warn("Unknown class", cl)
     end,
     SetConfig = function(self, cfg, setCfg)
         setCfg = setCfg or self.SetConfig
 
         local cl = self.Class
         local window = getWindow(self) or cl == "Window" and self
-        if self == window then
-            if cfg.Type == 0 then window:Notification({ Title = "Config", Text = "The given config format is outdated!\nPlease remake your config!" }) return false end
-            if cfg.t ~= 8 then window:Notification({ Title = "Config", Text = "The given config is not a config (most likely a theme!)" }) return false end
-        end
+        if self == window and cfg.Type ~= 0 then window:Notification({ Title = "Config", Text = "The given config is not a config (most likely a theme!)" }) return false end
 
+        local fl = self.Options.Flag
         if cfg == nil or cl == "FloatingLabel" or cl == "Separator" or cl == "Header" then return end
+
         if cl == "ColorPicker" then
+            if self.Options.NoConfigs then return end
             local newCol = C3h(string["for" .. "mat"]("%06x", cfg)) -- suspend studio warning
             if self.Options.Value == newCol then return end
 
@@ -8657,29 +8664,30 @@ local windowFuncs; windowFuncs = {
         end
 
         if cl == "CustomTab" then
+            if self.Options.NoConfigs then return end
             return self:Set(cfg)
         end
 
         if cl == "Dropdown" then
-            if tEqual(self.Options.Value, cfg) then return end
+            if self.Options.NoConfigs or tEqual(self.Options.Value, cfg) then return end
             return self:Set(cfg)
         end
 
         if cl == "Window" or cl == "Tab" or cl == "Groupbox" then
             for i, v in cfg do
-                local obj = self:GetObjectFromHash(i)
+                local obj = self.Objects[i]
                 if obj then
                     setCfg(obj, v, setCfg)
                 end
             end
 
-            return true
+            return
         end
 
         local isToggle = cl == "Toggle"
         if typeof(cfg) == "table" then
-            if cfg.c then
-                for i, v in cfg.c do
+            if cfg.ColorPickers then
+                for i, v in cfg.ColorPickers do
                     i = tonumber(i)
 
                     local obj = self.ColorPickers[i]
@@ -8689,18 +8697,18 @@ local windowFuncs; windowFuncs = {
                 end
             end
 
-            if cfg.v ~= nil then
-                local b = typeof(cfg.v) == "boolean"
-                local value = b and cfg or not b and isToggle and cfg.v == 1 or not isToggle and cfg.v
+            if cfg.Value ~= nil then
+                local b = typeof(cfg.Value) == "boolean"
+                local value = b and cfg or not b and isToggle and cfg.Value == 1 or not isToggle and cfg.Value
 
-                if self.Options.Value == value then return end
+                if self.Options.NoConfigs or self.Options.Value == value then return end
                 self:Set(value)
             end
         else
             local b = typeof(cfg) == "boolean"
             local value = b and cfg or not b and isToggle and cfg == 1 or not isToggle and cfg
 
-            if self.Options.Value == value then return end
+            if self.Options.NoConfigs or self.Options.Value == value then return end
             self:Set(value)
         end
 
@@ -10104,7 +10112,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.52",
+    Version = "5.1.53",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
