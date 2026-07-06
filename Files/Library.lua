@@ -4161,7 +4161,7 @@ local safeReparent do
     end)
 end
 
-isFirstTime = If and If(coreFolder:sub(1, -2)) == false or false
+isFirstTime = if If then not If(coreFolder:sub(1, -2)) else false
 task.spawn(function()
     if mf then
         mf(coreFolder:sub(1, -2))
@@ -10105,7 +10105,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.4",
+    Version = "5.1.5",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
