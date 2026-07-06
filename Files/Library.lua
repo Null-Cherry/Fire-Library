@@ -8645,7 +8645,6 @@ local windowFuncs; windowFuncs = {
 
         if cfg == nil or cl == "FloatingLabel" or cl == "Separator" or cl == "Header" then return end
         if cl == "ColorPicker" then
-            if self.Options.NoConfigs then return end
             local newCol = C3h(string["for" .. "mat"]("%06x", cfg)) -- suspend studio warning
             if self.Options.Value == newCol then return end
 
@@ -8657,12 +8656,11 @@ local windowFuncs; windowFuncs = {
         end
 
         if cl == "CustomTab" then
-            if self.Options.NoConfigs then return end
             return self:Set(cfg)
         end
 
         if cl == "Dropdown" then
-            if self.Options.NoConfigs or tEqual(self.Options.Value, cfg) then return end
+            if tEqual(self.Options.Value, cfg) then return end
             return self:Set(cfg)
         end
 
@@ -8690,18 +8688,18 @@ local windowFuncs; windowFuncs = {
                 end
             end
 
-            if cfg.v then
+            if cfg.v ~= nil then
                 local b = typeof(cfg.v) == "boolean"
                 local value = b and cfg or not b and isToggle and cfg.v == 1 or not isToggle and cfg.v
 
-                if self.Options.NoConfigs or self.Options.Value == value then return end
+                if self.Options.Value == value then return end
                 self:Set(value)
             end
         else
             local b = typeof(cfg) == "boolean"
             local value = b and cfg or not b and isToggle and cfg == 1 or not isToggle and cfg
 
-            if self.Options.NoConfigs or self.Options.Value == value then return end
+            if self.Options.Value == value then return end
             self:Set(value)
         end
 
@@ -10105,7 +10103,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.5",
+    Version = "5.1.51",
     Author = "Kawi (@kawaii_kebodo on Discord)"
 }
     end;
