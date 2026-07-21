@@ -7714,6 +7714,7 @@ local basicObjects = {
             view.Icon.Frame.UICorner.CornerRadius = Un(window.Options.RoundEverything and 1 or 0, 0)
             view.Icon.Frame.State.UICorner.CornerRadius = view.Icon.Frame.UICorner.CornerRadius
             view.Icon.Frame.UIStroke.Enabled = strokes
+            view.Icon.Frame.UIStroke.Color = window.Theme.Stroke
 
             tweenOnce(view.Icon.Frame, TIn(0.3 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { BackgroundColor3 = (self.Options.Value and window.Theme.Main or window.Theme.Stroke):Lerp(window.Theme.Stroke, self.Options.Disabled and 0.5 or 0) })
             tweenOnce(view.Icon.Frame.State, TIn(0.3 / handleAnimationSpeed(getWindow(self).AnimationSpeed)), { Position = U2s(self.Options.Value and 1 or 0), AnchorPoint = V2n(self.Options.Value and 1 or 0, 0) })
