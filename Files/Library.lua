@@ -171,7 +171,7 @@ local objects = {
     ["Instance162"] = Instance.new("Frame");
     ["Instance163"] = Instance.new("TextButton");
     ["Instance164"] = Instance.new("UIAspectRatioConstraint");
-    ["Instance165"] = Instance.new("Frame");
+    ["Instance165"] = Instance.new("CanvasGroup");
     ["Instance166"] = Instance.new("UIStroke");
     ["Instance167"] = Instance.new("Frame");
     ["Instance168"] = Instance.new("UICorner");
@@ -763,14 +763,15 @@ do -- Set properties
     objects["Instance53"]["ScrollBarImageColor3"] = Color3.new(1, 0, 0.498039);
     objects["Instance53"]["BorderColor3"] = Color3.new(0, 0, 0);
     objects["Instance53"]["ScrollBarThickness"] = 4;
+    objects["Instance53"]["Size"] = UDim2.new(1, 0, 1, 0);
     objects["Instance53"]["Parent"] = objects["Instance52"];
     objects["Instance53"]["TopImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
-    objects["Instance53"]["Name"] = "Page";
+    objects["Instance53"]["BackgroundTransparency"] = 1;
     objects["Instance53"]["TopImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
     objects["Instance53"]["BottomImageContent"] = Content.fromUri("rbxasset://textures/ui/Scroll/scroll-middle.png");
-    objects["Instance53"]["BackgroundTransparency"] = 1;
+    objects["Instance53"]["CanvasPosition"] = Vector2.new(0, 97.5);
     objects["Instance53"]["BottomImage"] = "rbxasset://textures/ui/Scroll/scroll-middle.png";
-    objects["Instance53"]["Size"] = UDim2.new(1, 0, 1, 0);
+    objects["Instance53"]["Name"] = "Page";
     objects["Instance53"]["BackgroundColor3"] = Color3.new(1, 1, 1);
 
     objects["Instance54"]["Parent"] = objects["Instance53"];
@@ -1872,7 +1873,7 @@ do -- Set properties
     objects["Instance165"]["Size"] = UDim2.new(1, 0, 0.3499999940395355, 0);
     objects["Instance165"]["ZIndex"] = 53;
     objects["Instance165"]["BorderSizePixel"] = 0;
-    objects["Instance165"]["BackgroundColor3"] = Color3.new(1, 0, 0.494118);
+    objects["Instance165"]["BackgroundColor3"] = Color3.new(1, 0, 0.490196);
 
     objects["Instance166"]["Thickness"] = 2;
     objects["Instance166"]["Transparency"] = 0.5;
@@ -7167,16 +7168,14 @@ local basicObjects = {
                 local startX = mouse.X
                 local startY = mouse.Y
                 
-                while true do
+                while device == "Mobile" do
                     mouse.Move:Wait()
                     local d = render()
                     
-                    if device == "Mobile" then
-                        if abs(mouse.Y - startY) > 25 then
-                            sliding = false
-                            c:Disconnect()
-                            return
-                        end
+                    if abs(mouse.Y - startY) > 25 then
+                        sliding = false
+                        c:Disconnect()
+                        return
                     end
                     
                     if abs(mouse.X - startX) > 25 then
@@ -9895,7 +9894,7 @@ local windowFuncs; windowFuncs = {
 
         if self.IsDesktop and not self.Options.Closed then
             if not self.Options.First then
-                self.Proxy:Notification({ Title = "UI hidden", Duration = 5, Text = (kb and "Press " .. kb.Name or "") .. (mb and (kb and " or the" or "Press the ") .. "floating button") .. " to open UI" })
+                self.Proxy:Notification({ Title = "UI hidden", Duration = 5, Text = (kb and "Press " .. kb.Name or "") .. (mb and (kb and " or" or "Press") .. " the floating button" or "") .. " to open UI" })
             end
 
             self.Options.First = false
@@ -10165,7 +10164,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.7",
+    Version = "5.1.71",
     Author = "Kawi (@its_kawi on Discord)"
 }
     end;
