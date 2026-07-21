@@ -9214,6 +9214,7 @@ local windowFuncs; windowFuncs = {
         MobileButtonNeon = true,
         _Ready = false,
         InfoLabelExtraAntiRich = true,
+        ThemeString = "",
 
         NotificationSound = sounds.Notification.SoundId,
         ClickSound = sounds.Click.SoundId,
@@ -9878,7 +9879,9 @@ local windowFuncs; windowFuncs = {
         if self.Options.Debounce then return end
 
         local kb = self.Options.Keybind
-        if not self.Options.Keybind and device ~= "Mobile" and not self.Options.Closed then
+        local mb = device == "Mobile" or self.Options.MobileButtonAlwaysVisible or self.Options.MobileButtonVisible
+        
+        if not self.Options.Keybind and not mb and not self.Options.Closed then
             if not self.Options.ToggleKeyObject or not self.Options.ToggleKeyObject.ColorPickers[0] or not self.Options.ToggleKeyObject.ColorPickers[0].Value then
                 self.Options.Visible = true
                 return self:Notification({ Title = "Unable to hide the UI", Duration = 10, Text = "Please set the keybind first!" })
@@ -9891,7 +9894,7 @@ local windowFuncs; windowFuncs = {
 
         if self.IsDesktop and not self.Options.Closed then
             if not self.Options.First then
-                self.Proxy:Notification({ Title = "UI hidden", Duration = 5, Text = "Press " .. kb.Name .. " to open UI" })
+                self.Proxy:Notification({ Title = "UI hidden", Duration = 5, Text = (kb and "Press " .. kb.Name or "") .. (mb and (kb and " or the" or "Press the ") .. "floating button") .. " to open UI" })
             end
 
             self.Options.First = false
@@ -9967,7 +9970,7 @@ local windowFuncs; windowFuncs = {
 
         self.Options.Visible = not self.Options.Visible
 
-        if not self.Options.Visible and not self.Options.Keybind and device ~= "Mobile" and not self.Options.Closed then
+        if not self.Options.Visible and not self.Options.Keybind and device ~= "Mobile" and not (self.Options.MobileButtonAlwaysVisible or self.Options.MobileButtonVisible) and not self.Options.Closed then
             if not self.Options.ToggleKeyObject or not self.Options.ToggleKeyObject.ColorPickers[0] or not self.Options.ToggleKeyObject.ColorPickers[0].Value then
                 self.Options.Visible = true
                 return self:Notification({ Title = "Unable to hide the UI", Duration = 10, Text = "Please set the keybind first!" })
@@ -10128,6 +10131,12 @@ library = newObject({
         repeat render() until window.Options.ExecutionTimes -- function
 
         window._Ready = true
+        
+        local ts = window.ThemeString
+        if ts ~= "" then
+            window:SetThemeString(ts)
+        end
+        
         return window
     end,
 
@@ -10155,7 +10164,7 @@ return library
         local script = objects["Instance6"];
 return {
     Name = "FireLibrary",
-    Version = "5.1.6",
+    Version = "5.1.7",
     Author = "Kawi (@its_kawi on Discord)"
 }
     end;
