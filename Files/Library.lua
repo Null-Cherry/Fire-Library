@@ -9150,7 +9150,7 @@ local windowFuncs; windowFuncs = {
                 if done then return end
 
                 tweenOnce(notif.Background, TIn(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2o(s == "Right" and 1 or 0, 0) })
-                tweenOnce(notif.Background.Holder, TIn(.67 * 3 --[[AAAA, 67]], Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2n(s == "Left" and 0 or 1, 0, 0, 3) })
+                tweenOnce(notif.Background.Holder, TIn(.67 * 1.5 --[[AAAA, 67]], Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), { Position = U2n(s == "Left" and 0 or 1, 0, 0, 3) })
             end)
 
             repeat render() until done
