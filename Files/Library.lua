@@ -4926,11 +4926,6 @@ local function windowSetup(object) -- in theory, that function is just a plugin 
             end
 
             local cont = rf(configRoute, true)
-
-            warn(rf(autosaveRoute, true), typeof(rf(autosaveRoute, true)))
-            warn(rf(themeRoute, true), typeof(rf(themeRoute, true)))
-            warn(cont, typeof(cont))
-            
             autoSaveConfig.Value = rf(autosaveRoute, true)
             
             if typeof(cont) == "table" then
